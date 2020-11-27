@@ -1,5 +1,4 @@
-# Colossal-Cave-Adventure---Java-Project
-Projet Java L3
+Projet Java L3 : COLOSSAL CAVEMAN ADVENTURE
 =
 Réalisation d'un projet en Java dans le cadre de l'unité d'enseignement "Programmation Orientée Objet".
 Le projet portera sur un jeu d'aventure textuelle préexistant et sera réalisé par 3 étudiants de L3 de l'Université de Poitiers :
@@ -8,14 +7,14 @@ Le projet portera sur un jeu d'aventure textuelle préexistant et sera réalisé
 - Gaëtan Frejoux
 - Mathieu Niord
 
-#--- Résumé du jeu ---
-
+--- Résumé du jeu ---
+=
 On évoluera dans la peau d'un homme des cavernes cryogénisé qui se réveille dans un laboratoire des années 80 lorsqu'il était encore
 possible de croire à ce genre d'idioties. Le protagoniste évoluera dans un environnement qui lui sera inconnu et devra se cultiver pour
 s'en échapper.
 
-#--- Synopsis (Proposition de scénario de départ) ---
-
+--- Synopsis (Proposition de scénario de départ) ---
+=
 *=== FR ===
 
 La seconde guerre mondiale se termina officiellement en 1944 avec la victoires des Alliés, menée par les Etats-Unis d'Amérique, qui s'oppose à la défaite de l'Axe, composée notamment des méchants nazis. Bien que les nazis et leur idéologie semblait être vaincue, il planaît encore dans l'air un parfum de non-dits.
