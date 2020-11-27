@@ -14,7 +14,14 @@ public class Animal  {
 	
 	//METHODS
 
-	public void talk(int bLvl){}
+	public void talk(int bLvl){
+		if(bLvl>=this.beschLevel){
+			System.out.print("Dialog with besch");
+		}
+		else {
+			System.out.print("Dialog without besch");
+		}
+	}
 	
 	//getter
 	
