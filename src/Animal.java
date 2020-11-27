@@ -1,9 +1,13 @@
 public class Animal  {
+	// ***** CONSTANTS *****
 	
-	//ATTRIBUTES
+	// ***** ATTRIBUTES *****
 	public final String NAME;
+	
+	//This attribut is used for dialog
 	public final int beschLevel;
-	//CONSTRUCTORS
+	
+	// ***** CONSTRUCTORS *****
 	
 	public Animal(String name, int bLevel){
 		
@@ -12,29 +16,37 @@ public class Animal  {
 		
 	}
 	
-	//METHODS
+	// ***** METHODS *****
 
-	public void talk(int bLvl){
-		if(bLvl>=this.beschLevel){
-			System.out.print("Dialog with besch");
+	public void talk(Hero h){
+		
+		/*If the Bescherelle level of the hero is egal or higher than
+		the Bescherelle level needed to talk with this animal*/
+		if(h.getBLevel()>=beschLevel){
+			
+			System.out.println("Dialog with besch");
+			
 		}
 		else {
-			System.out.print("Dialog without besch");
+			
+			System.out.println("Dialog without besch");
+			
 		}
 	}
 	
-	//getter
+	// Getter
 	
 	
 	
-	//setter
+	// Setter
 	
 	
 	
-	//printer
-	
+	// Display
 	@Override
 	public String toString() {
+		//Return the name of the animal
 		return this.NAME;
 	}
 }
+
