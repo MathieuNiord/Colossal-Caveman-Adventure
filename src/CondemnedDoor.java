@@ -1,7 +1,8 @@
 public class CondemnedDoor extends Door {
 
 	// ***** CONSTRUCTOR *****
-	CondemnedDoor(){
+	CondemnedDoor(Place p1, Place p2){
+		super(p1, p2);
 		System.out.println("You create a condemned door");
 	}
 

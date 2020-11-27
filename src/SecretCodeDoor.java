@@ -5,7 +5,8 @@ public class SecretCodeDoor extends LockableDoor {
 	private final String CODE;
 
 	// ***** CONSTRUCTOR *****
-	SecretCodeDoor(String code){
+	SecretCodeDoor(String code, Place p1, Place p2){
+		super(p1, p2);
 		this.CODE = code;
 	}
 
@@ -16,6 +17,7 @@ public class SecretCodeDoor extends LockableDoor {
 	public void unlock(String code) {
 		if (this.CODE.equals(code)) {
 			super.unlock();
+			System.out.print("\nVALID CODE : The door is now unlocked. Good Boy !\n");
 		}
 		else {
 			System.out.println("Error code, you can't open this door");

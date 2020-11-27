@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Door {
 
@@ -32,13 +30,14 @@ public class Door {
 		return this.open;
 	}
 
-	public HashMap<String, Place> getPlace(){
+	public HashMap<String, Place> getPlaces(){
 		return this.places;
 	}
 
 	// Setter
 	public void open(){
 		this.open = true;
+		System.out.println("You opened the door, u gat dat hommy !\n");
 	}
 
 	public void close(){

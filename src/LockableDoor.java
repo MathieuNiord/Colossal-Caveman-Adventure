@@ -1,7 +1,7 @@
 public abstract class LockableDoor extends Door {
 
 	// ***** ATTRIBUTES *****
-	private boolean lock = true;
+	private boolean lock;
 
 	// ***** CONSTRUCTOR ****
 
@@ -32,6 +32,9 @@ public abstract class LockableDoor extends Door {
 	public void open() {
 		if(!this.lock) {
 			super.open();
+		}
+		else{
+			System.out.print("Hmm Hmm...The door is locked buddy...\n");
 		}
 	}
 
