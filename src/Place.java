@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Place {
 
@@ -22,10 +21,10 @@ public class Place {
 
 
 	// ***** CONSTRUCTOR *****
-	public Place(String NAME, boolean inf, boolean elght, Map<String, Animal> animals, Map<String, Door> doors, Map<String, Obj> objs) {
+	public Place(String NAME, boolean inf, boolean islighted, Map<String, Animal> animals, Map<String, Door> doors, Map<String, Obj> objs) {
 		this.NAME = NAME;
 		this.infested = inf;
-		this.enlightened = elght;
+		this.enlightened = islighted;
 		this.animals = animals;
 		this.doors = doors;
 		this.objs = objs;
@@ -46,16 +45,16 @@ public class Place {
 	}
 
 	public List<String> getAllDoorsNames() {
-		List<String> arr = new ArrayList<String>(this.doors.keySet());
+		List<String> arrDoorsNames = new ArrayList<String>(this.doors.keySet());
 
-		return arr;
+		return arrDoorsNames;
 	}
 
 	public Map<String, Animal> getAnimals() {
 		return this.animals;
 	}
 
-	public Map<String, Ennemy> getEnnemy() {
+	public Map<String, Ennemy> getEnnemies() {
 		return this.ennemies;
 	}
 
@@ -78,25 +77,94 @@ public class Place {
 
 	// Display
 
-	public String ToStringAnimal() {
-		String ret1 = "";
+	public String toStringAnimal() {
+		String retA = "";
 
-		if (this.animals.size() != 0) {
-			int size = this.animals.size();
+		if(this.objs != null) {
+			if (this.animals.size() != 0) {
+				int size = this.animals.size();
 
-			ret1 = "Il y a " + size + " Animaux dans la pièces :";
-			List<String> anim = new ArrayList<String>(this.doors.keySet());
+				retA = "Il y a " + size + " Animaux dans la pièce :";
+				List<String> anim = new ArrayList<String>(this.animals.keySet());
 
-			for (int i = 0; i < size; i++) {
-				ret1 = ret1 + " " + anim.get(i);
+				for (int i = 0; i < size; i++) {
+					retA = retA + " " + anim.get(i);
+				}
+				retA = retA + "\n";
 			}
-			ret1 = ret1 + "\n";
 		}
-		return ret1;
+
+		return retA;
 	}
 
-	public String ToString() {
+	public String toStringObj() {
+		String retO = "";
 
+		if(this.objs != null) {
+			if (this.objs.size() != 0) {
+				int size = this.objs.size();
+
+				retO = "Il y a " + size + " Objets :";
+				List<String> objs = new ArrayList<String>(this.objs.keySet());
+
+				for (int i = 0; i < size; i++) {
+					retO = retO + " " + objs.get(i);
+				}
+				retO = retO + "\n";
+			}
+		}
+
+		return retO;
+	}
+
+	public String toStringDoors() {
+		String retD = "";
+
+		if(this.doors != null) {
+			if (this.doors.size() != 0) {
+				int size = this.doors.size();
+
+				retD = "Il y a " + size + " Objets :";
+				List<String> doors = new ArrayList<String>(this.doors.keySet());
+
+				for (int i = 0; i < size; i++) {
+					retD = retD + " " + doors.get(i);
+				}
+				retD = retD + "\n";
+			}
+		}
+
+		return retD;
+	}
+
+	public String toStringEnnemies() {
+		String retE = "";
+
+		if(this.ennemies != null) {
+			if (this.ennemies.size() != 0) {
+				int size = this.ennemies.size();
+
+				retE = "Il y a " + size + " Objets :";
+				List<String> ennem = new ArrayList<String>(this.ennemies.keySet());
+
+				for (int i = 0; i < size; i++) {
+					retE = retE + " " + ennem.get(i);
+				}
+				retE = retE + "\n";
+			}
+		}
+
+		return retE;
+	}
+
+	@Override
+	public String toString() {
+		String strA = this.toStringAnimal();
+		String strO = this.toStringObj();
+		String strD = this.toStringDoors();
+		String strE = this.toStringEnnemies();
+
+		return strA + strO + strD + strE;
 	}
 
 }

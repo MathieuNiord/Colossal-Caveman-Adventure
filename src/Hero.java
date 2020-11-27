@@ -120,5 +120,5 @@ public class Hero {
 	public void help(String s)
 	{
 		//TODO
-
+	}
 }
