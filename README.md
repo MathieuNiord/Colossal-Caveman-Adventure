@@ -15,7 +15,7 @@ s'en échapper.
 
 --- Synopsis (Proposition de scénario de départ) ---
 =
-*=== FR ===
+*=== FR ===*
 
 La seconde guerre mondiale se termina officiellement en 1944 avec la victoires des Alliés, menée par les Etats-Unis d'Amérique, qui s'oppose à la défaite de l'Axe, composée notamment des méchants nazis. Bien que les nazis et leur idéologie semblait être vaincue, il planaît encore dans l'air un parfum de non-dits.
 
@@ -23,7 +23,7 @@ Nous voici au cours des années 80 dans un mauvais scénario, comme il en pleuva
 
 C'est ici que le 29 février 1984, une année très particulière pour le calendrier, un groupe de chercheurs Nazis déterra un homme des cavernes pris dans la glace. Cet homme c'est vous ! Alors se fait ressentir une lueur d'espoir chez le groupe de chercheurs Nazis...
 
-*=== EN ===
+*=== EN ===*
 
 The Second World War officially ended in 1944 with the victory of the Allies, led by the United States of America, which opposed the defeat of the Axis, made up in particular of the wicked Nazis. Although the Nazis and their ideology seemed to be defeated, there is still a scent of the unspoken in the air.
 
