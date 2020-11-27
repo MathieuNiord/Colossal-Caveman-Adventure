@@ -18,6 +18,7 @@ public class Place {
 	private Map<String, Animal> animals;
 	private Map<String, Obj> objs;
 	private Map<String, Door> doors;
+	private Map<String, Ennemy> ennemies;
 
 
 	// ***** CONSTRUCTOR *****
@@ -29,6 +30,8 @@ public class Place {
 		this.doors = doors;
 		this.objs = objs;
 	}
+
+	// Gestion des portes
 
 	// ***** METHODS *****
 
@@ -43,25 +46,25 @@ public class Place {
 	}
 
 	public List<String> getAllDoorsNames() {
-		List arr = new ArrayList<String>(this.doors.keySet());
+		List<String> arr = new ArrayList<String>(this.doors.keySet());
 
 		return arr;
 	}
 
-	public Animal[] getAnimals() {
-		//TODO
+	public Map<String, Animal> getAnimals() {
+		return this.animals;
 	}
 
-	public Ennemy getEnnemy() {
-		//TODO
+	public Map<String, Ennemy> getEnnemy() {
+		return this.ennemies;
 	}
 
 	public Map<String, Obj> getItems() {
-		//TODO
+		return this.objs;
     }
 
 	public boolean isInfested() {
-		//TODO
+		return this.infested;
 	}
 
 	public boolean isEnlightened() {
@@ -69,14 +72,31 @@ public class Place {
 	}
 
 
-	public String ToString() {
-	}
-
 	// Setter
 
 
 
 	// Display
 
+	public String ToStringAnimal() {
+		String ret1 = "";
+
+		if (this.animals.size() != 0) {
+			int size = this.animals.size();
+
+			ret1 = "Il y a " + size + " Animaux dans la pièces :";
+			List<String> anim = new ArrayList<String>(this.doors.keySet());
+
+			for (int i = 0; i < size; i++) {
+				ret1 = ret1 + " " + anim.get(i);
+			}
+			ret1 = ret1 + "\n";
+		}
+		return ret1;
+	}
+
+	public String ToString() {
+
+	}
 
 }
