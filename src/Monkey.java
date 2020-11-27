@@ -4,6 +4,8 @@ public class Monkey extends Animal{
 	
 	// ***** ATTRIBUTES *****
 	
+	/*This attribut is used to know if the Monkey
+	 got the Banana that he asked for*/
 	private boolean hungry;
 	
 	// ***** CONSTRUCTORS *****
@@ -31,6 +33,7 @@ public class Monkey extends Animal{
 		
 		if(h.getObjs().containsKey("Banana")){
 			h.getObjs().remove("Banana");
+			
 			this.hungry = false;
 		}
 		
