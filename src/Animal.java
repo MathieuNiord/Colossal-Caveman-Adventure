@@ -14,8 +14,8 @@ public class Animal  {
 	
 	//METHODS
 
-	public void talk(int bLvl){
-		if(bLvl>=this.beschLevel){
+	public void talk(Hero h){
+		if(h.getBLevel()>=beschLevel){
 			System.out.print("Dialog with besch");
 		}
 		else {

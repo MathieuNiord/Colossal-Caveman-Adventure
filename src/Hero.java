@@ -63,7 +63,10 @@ public class Hero {
 	public Place getPlace() {
 		return this.place;
 	}
-
+	
+	public Map<String, Obj> getObjs(){
+		return this.objs;
+	}
 
 	// Setter
 
@@ -97,7 +100,7 @@ public class Hero {
 		//TODO
 		if (this.place.getAnimals().containsKey(s)) {
 			Animal animal = this.place.getAnimals().get(s);
-			animal.talk(this.lvlBescherelle);
+			animal.talk(this);
 		}
 		else{
 			System.out.print("\nWhere did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n");
