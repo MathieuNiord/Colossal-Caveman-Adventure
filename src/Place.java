@@ -1,6 +1,7 @@
 import jdk.jfr.Name;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +13,27 @@ public class Place {
 	// ***** ATTRIBUTES *****
 
 	private final String NAME;
-	private boolean infested;
+	private final boolean infested;
 	private boolean enlightened;
+
 	private Map<String, Animal> animals;
 	private Map<String, Obj> objs;
 	private Map<String, Door> doors;
-	private Map<String, Ennemy> ennemies;
+	private Map<String, Ennemy> enemies;
 
 
 	// ***** CONSTRUCTOR *****
-	public Place(String NAME, boolean inf, boolean islighted, Map<String, Animal> animals, Map<String, Door> doors, Map<String, Obj> objs) {
+	public Place(String NAME, boolean inf, boolean isEnlighted, Map<String, Animal> animals, Map<String, Obj> objs, Map<String, Ennemy> enem) {
 		this.NAME = NAME;
 		this.infested = inf;
-		this.enlightened = islighted;
+		this.enlightened = isEnlighted;
 		this.animals = animals;
-		this.doors = doors;
 		this.objs = objs;
-	}
+		this.enemies = enem;
 
-	// Gestion des portes
+		// Il faut impérativement ajouter les portes après avec la méthode addDoors
+		this.doors = null;
+	}
 
 	// ***** METHODS *****
 
@@ -45,17 +48,16 @@ public class Place {
 	}
 
 	public List<String> getAllDoorsNames() {
-		List<String> arrDoorsNames = new ArrayList<String>(this.doors.keySet());
 
-		return arrDoorsNames;
+		return new ArrayList<>(this.doors.keySet());
 	}
 
 	public Map<String, Animal> getAnimals() {
 		return this.animals;
 	}
 
-	public Map<String, Ennemy> getEnnemies() {
-		return this.ennemies;
+	public Map<String, Ennemy> getEnemies() {
+		return this.enemies;
 	}
 
 	public Map<String, Obj> getItems() {
@@ -70,101 +72,187 @@ public class Place {
 		return this.enlightened;
 	}
 
+	public boolean isContainsAnimals() {
+		boolean temp = true;
+		if(this.animals == null || this.animals.size() == 0){
+			temp = false;
+		}
+
+		return temp;
+	}
+
+	public boolean isContainsObjs() {
+		boolean temp = true;
+		if(this.objs == null || this.objs.size() == 0){
+			temp = false;
+		}
+
+		return temp;
+	}
+
+	public boolean isContainsDoors() {
+		boolean temp = true;
+		if(this.doors == null || this.doors.size() == 0){
+			temp = false;
+		}
+
+		return temp;
+	}
+
+	public boolean isContainsEnemies() {
+		boolean temp = true;
+		if(this.enemies == null || this.enemies.size() == 0){
+			temp = false;
+		}
+
+		return temp;
+	}
 
 	// Setter
 
+	public void setDoors(Map<String, Door> newDoors) {
+		this.doors = newDoors;
+	}
 
+	public void addDoor(Door d, String destinationName) {
+
+		assert d.getPlaces().containsKey(destinationName);
+		// ATTENTION , la valeur de de "destinationName" doit ABSOLUMENT etre une clé
+		// contenu dans la map de la porte
+
+
+		if(this.doors == null) {
+			Map<String, Door> mapDoors = new HashMap<>();
+			this.doors = mapDoors;
+		}
+
+		if(!(this.doors.containsValue(d)) && !(this.doors.containsKey(destinationName)))
+			// la lieu ne doit pas déjà contenir la porte ni contenir le meme nom de destination
+
+			this.doors.put(destinationName, d);
+	}
 
 	// Display
 
 	public String toStringAnimal() {
-		String retA = "";
+		StringBuilder retA = new StringBuilder();
 
-		if(this.objs != null) {
+		if(this.animals != null) {
 			if (this.animals.size() != 0) {
 				int size = this.animals.size();
 
-				retA = "Il y a " + size + " Animaux dans la pièce :";
-				List<String> anim = new ArrayList<String>(this.animals.keySet());
+				retA = new StringBuilder("Il y a " + size + " animaux dans la pièce :");
+				List<String> anim = new ArrayList<>(this.animals.keySet());
 
 				for (int i = 0; i < size; i++) {
-					retA = retA + " " + anim.get(i);
+					retA.append(" ").append(anim.get(i));
 				}
-				retA = retA + "\n";
+				retA.append("\n");
 			}
 		}
 
-		return retA;
+		return retA.toString();
 	}
 
 	public String toStringObj() {
-		String retO = "";
+		StringBuilder retO = new StringBuilder();
 
 		if(this.objs != null) {
 			if (this.objs.size() != 0) {
 				int size = this.objs.size();
 
-				retO = "Il y a " + size + " Objets :";
-				List<String> objs = new ArrayList<String>(this.objs.keySet());
+				retO = new StringBuilder("Il y a " + size + " objets :");
+				List<String> objs = new ArrayList<>(this.objs.keySet());
 
 				for (int i = 0; i < size; i++) {
-					retO = retO + " " + objs.get(i);
+					retO.append(" ").append(objs.get(i));
 				}
-				retO = retO + "\n";
+				retO.append("\n");
 			}
 		}
 
-		return retO;
+		return retO.toString();
 	}
 
+	// A refaire : il ne faut pas afficher la pièce dans laquelle le héros se trouve
 	public String toStringDoors() {
-		String retD = "";
+		StringBuilder retD = new StringBuilder();
 
 		if(this.doors != null) {
 			if (this.doors.size() != 0) {
 				int size = this.doors.size();
 
-				retD = "Il y a " + size + " Objets :";
-				List<String> doors = new ArrayList<String>(this.doors.keySet());
+				retD = new StringBuilder("Il y a " + size + " sorties :");
+				List<String> doors = new ArrayList<>(this.doors.keySet());
 
 				for (int i = 0; i < size; i++) {
-					retD = retD + " " + doors.get(i);
+					retD.append(" ").append(doors.get(i));
 				}
-				retD = retD + "\n";
+				retD.append("\n");
 			}
 		}
 
-		return retD;
+		return retD.toString();
 	}
 
-	public String toStringEnnemies() {
-		String retE = "";
+	public String toStringEnemies() {
+		StringBuilder retE = new StringBuilder();
 
-		if(this.ennemies != null) {
-			if (this.ennemies.size() != 0) {
-				int size = this.ennemies.size();
+		if(this.enemies != null) {
+			if (this.enemies.size() != 0) {
+				int size = this.enemies.size();
 
-				retE = "Il y a " + size + " Objets :";
-				List<String> ennem = new ArrayList<String>(this.ennemies.keySet());
+				retE = new StringBuilder("Il y a " + size + " ennemies :");
+				List<String> enemy = new ArrayList<>(this.enemies.keySet());
 
 				for (int i = 0; i < size; i++) {
-					retE = retE + " " + ennem.get(i);
+					retE.append(" ").append(enemy.get(i));
 				}
-				retE = retE + "\n";
+				retE.append("\n");
 			}
 		}
 
-		return retE;
+		return retE.toString();
 	}
 
 	@Override
 	public String toString() {
-		String strA = this.toStringAnimal();
-		String strO = this.toStringObj();
-		String strD = this.toStringDoors();
-		String strE = this.toStringEnnemies();
+		String intro = "Vous êtes dans : " + this.getName() + "\n";
 
-		return strA + strO + strD + strE;
+		String isEnl = "";
+		String isInf = "";
+		String strA = "";
+		String strO = "";
+		String strD = "";
+		String strE = "";
+
+		if (this.isContainsDoors()) {
+			strD = this.toStringDoors();
+		}
+
+
+		if(!this.isEnlightened()) {
+			isEnl = "La pièce n'est pas éclairée, vous ne voyez rien\n";
+		}
+		else {
+			if (this.isInfested()) {
+				isInf = "La pièce est infecté\n";
+			}
+
+			if (this.isContainsAnimals()) {
+				strA = this.toStringAnimal();
+			}
+
+			if (this.isContainsObjs()) {
+				strO = this.toStringObj();
+			}
+
+			if (this.isContainsEnemies()) {
+				strE = this.toStringEnemies();
+			}
+		}
+
+		return intro + isInf + isEnl + strA + strO + strD + strE;
 	}
 
 }
