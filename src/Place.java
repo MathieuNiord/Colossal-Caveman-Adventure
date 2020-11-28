@@ -1,9 +1,5 @@
-import jdk.jfr.Name;
-
-import java.awt.*;
 import java.util.*;
 import java.util.List;
-import java.util.Collections;
 
 public class Place {
 
@@ -26,7 +22,7 @@ public class Place {
 
 
 	// ***** CONSTRUCTOR *****
-	public Place(String NAME, boolean inf, boolean isEnlighted, Map<String, Animal> animals, Map<String, Obj> objs, Map<String, Ennemy> enem) {
+	public Place(String NAME, boolean inf, boolean isEnlighted) {
 		this.NAME = NAME;
 		this.infested = inf;
 		this.enlightened = isEnlighted;
@@ -122,9 +118,13 @@ public class Place {
 
 	// Setter
 
+	public void switchEnlightened() {
+		this.enlightened = !this.enlightened;
+	}
+
 	public void AddAndCreateAnimal(String sousType, String name, int Blvl) {
 		if(this.animals == null) {
-			this.animals = new HashMap<String, Animal>();
+			this.animals = new HashMap<>();
 		}
 
 		// On vérifie le flag pour construire avec le bon type
@@ -142,7 +142,7 @@ public class Place {
 
 	public void AddAndCreateEnemy(String sousType, int hp, int atk, Obj loot) {
 		if(this.enemies == null) {
-			this.enemies = new HashMap<String, Ennemy>();
+			this.enemies = new HashMap<>();
 		}
 
 		// On vérifie le flag pour construire avec le bon type
@@ -164,7 +164,7 @@ public class Place {
 
 	public void AddAndCreateObject(String sousType, String name, int value) {
 		if(this.objs == null) {
-			this.objs = new HashMap<String, Obj>();
+			this.objs = new HashMap<>();
 		}
 
 		// On vérifie le flag pour construire avec le bon type
@@ -190,7 +190,7 @@ public class Place {
 
 	public void addDoor(Door d) {
 		if (this.doors == null) {
-			this.doors = new HashMap<String, Door>();
+			this.doors = new HashMap<>();
 		}
 		if(!this.doors.containsValue(d)) {
 			// On récupère le nom de la destination  en fonction du sens où on emprunte la porte
