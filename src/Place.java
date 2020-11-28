@@ -1,14 +1,17 @@
 import jdk.jfr.Name;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
+import java.util.Collections;
 
 public class Place {
 
 	// ***** CONSTANTS *****
+
+	public static final List<String> AnimalFlag = Arrays.asList("Monkey", "Animal");
+	public static final List<String> EnnemiesFlag = Arrays.asList("AccountGuy", "FinalBoss", "Zombie");
+	public static final List<String> ObjsFlag = Arrays.asList("Item", "Weapon", "Heal", "Casier");
 
 	// ***** ATTRIBUTES *****
 
@@ -27,9 +30,11 @@ public class Place {
 		this.NAME = NAME;
 		this.infested = inf;
 		this.enlightened = isEnlighted;
-		this.animals = animals;
-		this.objs = objs;
-		this.enemies = enem;
+
+		// On ajoute avec AddAndCreate les animaux, objets et ennemies
+		this.animals = null;
+		this.objs = null;
+		this.enemies = null;
 
 		// Il faut impérativement ajouter les portes après avec la méthode addDoors
 		this.doors = null;
@@ -47,9 +52,16 @@ public class Place {
 		return this.doors;
 	}
 
-	public List<String> getAllDoorsNames() {
+	public String getDestinationName(Door d) {
+		ArrayList<String> list = new ArrayList<>(d.getPlaces().keySet());
 
-		return new ArrayList<>(this.doors.keySet());
+		String res = list.get(0);
+		if(list.contains(this.NAME)) {
+			if (res.equals(this.NAME)) {
+				res = list.get(1);
+			}
+		}
+		return res;
 	}
 
 	public Map<String, Animal> getAnimals() {
@@ -110,26 +122,81 @@ public class Place {
 
 	// Setter
 
-	public void setDoors(Map<String, Door> newDoors) {
-		this.doors = newDoors;
-	}
-
-	public void addDoor(Door d, String destinationName) {
-
-		assert d.getPlaces().containsKey(destinationName);
-		// ATTENTION , la valeur de de "destinationName" doit ABSOLUMENT etre une clé
-		// contenu dans la map de la porte
-
-
-		if(this.doors == null) {
-			Map<String, Door> mapDoors = new HashMap<>();
-			this.doors = mapDoors;
+	public void AddAndCreateAnimal(String sousType, String name, int Blvl) {
+		if(this.animals == null) {
+			this.animals = new HashMap<String, Animal>();
 		}
 
-		if(!(this.doors.containsValue(d)) && !(this.doors.containsKey(destinationName)))
-			// la lieu ne doit pas déjà contenir la porte ni contenir le meme nom de destination
+		// On vérifie le flag pour construire avec le bon type
+		if(Place.AnimalFlag.contains(sousType)) {
+			if (sousType.equals("Animal")) {
+				Animal ani = new Animal(name, Blvl);
+				this.animals.put(name, ani);
+			}
+			if (sousType.equals("Monkey")) {
+				Animal ani = new Monkey(name, Blvl);
+				this.animals.put(name, ani);
+			}
+		}
+	}
 
-			this.doors.put(destinationName, d);
+	public void AddAndCreateEnemy(String sousType, int hp, int atk, Obj loot) {
+		if(this.enemies == null) {
+			this.enemies = new HashMap<String, Ennemy>();
+		}
+
+		// On vérifie le flag pour construire avec le bon type
+		if(Place.EnnemiesFlag.contains(sousType)) {
+			if (sousType.equals("AccountGuy")) {
+				Ennemy enem = new AccountGuy(hp, atk, loot);
+				this.enemies.put("AccountGuy", enem);
+			}
+			/*if (sousType.equals("FinalBoss")) {
+				Ennemy enem = new FinalBoss();
+				this.enemies.put("FinalBoss", enem);
+			}
+			if (sousType.equals("Zombie")) {
+				Ennemy enem = new Zombie();
+				this.enemies.put("Zombie", enem);
+			}*/
+		}
+	}
+
+	public void AddAndCreateObject(String sousType, String name, int value) {
+		if(this.objs == null) {
+			this.objs = new HashMap<String, Obj>();
+		}
+
+		// On vérifie le flag pour construire avec le bon type
+		if(Place.ObjsFlag.contains(sousType)) {
+			if (sousType.equals("Item")) {
+				Obj o = new Item(name);
+				this.objs.put(name, o);
+			}
+			if (sousType.equals("Weapon")) {
+				Obj o = new Weapon(name, value);
+				this.objs.put(name, o);
+			}
+			if (sousType.equals("Heal")) {
+				Obj o = new Heal(name, value);
+				this.objs.put(name, o);
+			}
+			/*if (sousType.equals("Casier")) {
+				Obj o = new Casier(name);
+				this.objs.put(name, o);
+			}*/
+		}
+	}
+
+	public void addDoor(Door d) {
+		if (this.doors == null) {
+			this.doors = new HashMap<String, Door>();
+		}
+		if(!this.doors.containsValue(d)) {
+			// On récupère le nom de la destination  en fonction du sens où on emprunte la porte
+			String destName = this.getDestinationName(d);
+			this.doors.put(destName, d);
+		}
 	}
 
 	// Display
@@ -202,7 +269,7 @@ public class Place {
 			if (this.enemies.size() != 0) {
 				int size = this.enemies.size();
 
-				retE = new StringBuilder("Il y a " + size + " ennemies :");
+				retE = new StringBuilder("Il y a " + size + " ennemie :");
 				List<String> enemy = new ArrayList<>(this.enemies.keySet());
 
 				for (int i = 0; i < size; i++) {
