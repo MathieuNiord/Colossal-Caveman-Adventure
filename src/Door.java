@@ -12,14 +12,14 @@ public class Door {
 
 	Door(Place place){
 		this.places = new HashMap<>();
-		this.places.put(place.toString(), place);
+		this.places.put(place.getName(), place);
 		//System.out.println("You create a basic door")
 	}
 
 	Door(Place p1, Place p2){
 		this.places = new HashMap<>();
-		this.places.put(p1.toString(),p1);
-		this.places.put(p2.toString(), p2);
+		this.places.put(p1.getName(),p1);
+		this.places.put(p2.getName(), p2);
 	}
 
 	// ***** METHODS *****
