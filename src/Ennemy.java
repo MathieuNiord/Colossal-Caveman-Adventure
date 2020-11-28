@@ -55,15 +55,22 @@ public abstract class Ennemy {
     // Setter
 
     public void damage(int damage){
-        this.hp -= damage;
+        if(this.hp > 0 && this.state){
+            this.hp -= damage;
+        }
+        this.Kill();
     }
 
     public void Heal(int heal){
-        this.hp += heal;
+        if(this.state && this.hp > 0){
+            this.hp += heal;
+        }
     }
 
     public void Kill(){
-        this.state = false;
+        if(hp <= 0 && this.state){
+            this.state = false;
+        }
     }
 
     public void Loot(){
