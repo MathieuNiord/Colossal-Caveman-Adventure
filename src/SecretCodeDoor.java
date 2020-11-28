@@ -15,12 +15,12 @@ public class SecretCodeDoor extends LockableDoor {
 	// Setter
 
 	public void unlock(String code) {
-		if (this.CODE.equals(code)) {
+		if (this.CODE.equalsIgnoreCase(code)) {
 			super.unlock();
-			System.out.print("\nVALID CODE : The door is now unlocked. Good Boy !\n");
+			System.out.print("\nVALID CODE. The door is now unlocked. Good Boy !\n");
 		}
 		else {
-			System.out.println("Error code, you can't open this door");
+			System.out.println("ERROR CODE. Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...");
 		}
 	}
 

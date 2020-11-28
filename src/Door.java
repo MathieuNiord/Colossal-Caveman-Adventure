@@ -37,7 +37,9 @@ public class Door {
 	// Setter
 	public void open(){
 		this.open = true;
-		System.out.println("You opened the door, u gat dat hommy !\n");
+		if(!this.getClass().getSimpleName().equals("DestructableDoor")){
+			System.out.println("You opened the door, u gat dat hommy !");
+		}
 	}
 
 	public void close(){

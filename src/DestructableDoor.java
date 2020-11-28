@@ -21,10 +21,13 @@ public class DestructableDoor extends LockableDoor {
         System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n");
     }
 
-    public void unlock(boolean weapon) {
-        if (weapon) {
+
+
+    public void unlock(boolean destructed) {
+        if (destructed) {
             super.unlock();
-            System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is now unlocked...\n");
+            super.open();
+            System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
         }
         else {
             System.out.print("What didn't you understand in \"it's doomed\" ? STOOOPID CAVEMAN !\n");
