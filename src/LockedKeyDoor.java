@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class LockedKeyDoor extends LockableDoor{
 
 	// ***** CONSTANTS *****
@@ -36,9 +38,14 @@ public class LockedKeyDoor extends LockableDoor{
 	public void unlock(int key){
 		if(key >= this.keyLvlNeed && !this.isUnlock()) {
 			super.unlock();
-			System.out.print("Wow !!! Where did you find this key ?\nThe door is now unlocked. Who's the Good Boy ?\n");
-			//Ce serait sympa de faire un rand ici histoire d'avoir diverses remarques de la part du narrateur
-			//System.out.print("\nWhat a smart guy ! Haha just kidding, you got the key baby ! You unlocked " + s + "\n");
+			Random rand = new Random();
+			int tmp = rand.nextInt(10 + 1);
+			if(tmp % 2 == 0){
+				System.out.print("Wow !!! Where did you find this key ?\nThe door is now unlocked. Who's the Good Boy ?\n");
+			}
+			else{
+				System.out.print("\nWhat a smart guy ! Haha just kidding, you got the key baby ! You unlocked the door !\n");
+			}
 		}
 		else if (key < this.keyLvlNeed){
 			System.out.print("You must have the good key to open this door STOOOPID CAVEMAN !\n");
@@ -49,15 +56,9 @@ public class LockedKeyDoor extends LockableDoor{
 
 	@Override
 	public void go(Hero hero, String s){
-		if(this.getPlaces().containsKey(s)){
-			this.unlock(hero.getKeyLevel()); //On teste si le joueur possède bien la clé nécessaire
-			if(this.isUnlock()){
-				hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
-				System.out.print("\nYou entered in " + s + "\n");
-			}
-		}
-		else{
-			System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
+		this.unlock(hero.getKeyLevel()); //On teste si le joueur possède bien la clé nécessaire
+		if(this.isUnlock()){
+			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
 		}
 	}
 

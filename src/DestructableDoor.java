@@ -34,18 +34,12 @@ public class DestructableDoor extends LockableDoor {
 
     @Override
     public void go(Hero hero, String s){
-        if(this.getPlaces().containsKey(s)){
-            this.unlock(hero.getObjs().containsKey("Club")); //On cherche si le joueur possède le gourdin dans ses items
-            if(this.isUnlock()){
-                hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
-                System.out.print("\nYou entered in " + s + "\n");
-            }
-            else{
-                System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n"); //Sinon indication
-            }
+        this.unlock(hero.getObjs().containsKey("Club")); //On cherche si le joueur possède le gourdin dans ses items
+        if(this.isUnlock()){
+            hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
         }
         else{
-            System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
+            System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n"); //Sinon indication
         }
     }
 

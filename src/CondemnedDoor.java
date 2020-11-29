@@ -17,9 +17,7 @@ public class CondemnedDoor extends Door {
 	}
 
 	@Override
-	public void go(Hero hero, String s){
-
-	}
+	public void go(Hero hero, String s){}
 
 	// Display
 }

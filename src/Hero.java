@@ -117,7 +117,7 @@ public class Hero {
 			this.getPlace().getDoors().get(s).go(this, s);
 		}
 		else {
-			System.out.println("Sorry, I don't recognize this place\n");
+			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
 		}
 	}
 

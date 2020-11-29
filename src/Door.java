@@ -46,13 +46,8 @@ public class Door {
 	//Other
 
 	public void go(Hero hero, String s){
-		if(this.getPlaces().containsKey(s)){
-			if(this.isOpen()){
-				hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
-			}
-		}
-		else{
-			System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
+		if(this.isOpen()){
+			hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
 		}
 	}
 

@@ -39,14 +39,8 @@ public abstract class LockableDoor extends Door {
 
 	@Override
 	public void go(Hero hero, String s){
-		if(this.getPlaces().containsKey(s)){
-			if(this.isUnlock()){
-				hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
-				System.out.print("\nYou entered in " + s + "\n");
-			}
-		}
-		else{
-			System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
+		if(this.isUnlock()){
+			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
 		}
 	}
 
