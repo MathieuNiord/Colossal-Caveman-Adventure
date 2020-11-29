@@ -18,6 +18,10 @@ public class Place {
 	private Map<String, Animal> animals;
 	private Map<String, Obj> objs;
 	private Map<String, Door> doors;
+	private Map<String, Door> left;
+	private Map<String, Door> right;
+	private Map<String, Door> up;
+	private Map<String, Door> down;
 	private Map<String, Ennemy> enemies;
 
 
@@ -34,6 +38,10 @@ public class Place {
 
 		// Il faut impérativement ajouter les portes après avec la méthode addDoors
 		this.doors = null;
+		this.left = null;
+		this.right = null;
+		this.up = null;
+		this.down = null;
 	}
 
 	// ***** METHODS *****
