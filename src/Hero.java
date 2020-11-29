@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Hero {
 
@@ -111,10 +112,11 @@ public class Hero {
 	{
 		if(this.getPlace().getDoors().containsKey(s)) {
 			Door d = this.getPlace().getDoors().get(s);
+			this.place = d.getPlaces().get(s);
 			if (d.isOpen()) {
 				this.place = d.getPlaces().get(s);
 			} else {
-				if (d instanceof CondemnedDoor) {
+				/*if (d instanceof CondemnedDoor) {
 					System.out.println("This door is not openable, don't try to open it\n");
 				}
 				if (d instanceof DestructableDoor) {
@@ -122,9 +124,17 @@ public class Hero {
 				}
 				if (d instanceof LockedKeyDoor) {
 					System.out.println("This door need a key to get opened\n");
-				}
+				}*/
 				if (d instanceof SecretCodeDoor) {
-					System.out.println("This door need a code to get opened, search around you there is maybe an object that can helps you\n");
+					//System.out.println("This door need a code to get opened, search around you there is maybe an object that can helps you\n");
+					SecretCodeDoor scd = (SecretCodeDoor)d;
+					Scanner sc = new Scanner(System.in);
+					System.out.print("\nCODE : ");
+					String code = sc.nextLine();
+					scd.unlock(code);
+				}
+				else{
+					d.open();
 				}
 			}
 		} else {
