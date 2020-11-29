@@ -5,9 +5,9 @@ public class Place {
 
 	// ***** CONSTANTS *****
 
-	public static final List<String> AnimalFlag = Arrays.asList("Monkey", "Animal");
-	public static final List<String> EnnemiesFlag = Arrays.asList("AccountGuy", "FinalBoss", "Zombie");
-	public static final List<String> ObjsFlag = Arrays.asList("Item", "Weapon", "Heal", "Casier");
+	public static final List<String> ANIMALFLAG = Arrays.asList("Monkey", "Animal");
+	public static final List<String> ENNEMIESFLAG = Arrays.asList("AccountGuy", "FinalBoss", "Zombie");
+	public static final List<String> OBJSFLAG = Arrays.asList("Item", "Weapon", "Heal", "Casier");
 
 	// ***** ATTRIBUTES *****
 
@@ -81,39 +81,19 @@ public class Place {
 	}
 
 	public boolean isContainsAnimals() {
-		boolean temp = true;
-		if(this.animals == null || this.animals.size() == 0){
-			temp = false;
-		}
-
-		return temp;
+		return (this.animals != null && this.animals.size() > 0);
 	}
 
 	public boolean isContainsObjs() {
-		boolean temp = true;
-		if(this.objs == null || this.objs.size() == 0){
-			temp = false;
-		}
-
-		return temp;
+		return (this.objs != null && this.objs.size() > 0);
 	}
 
 	public boolean isContainsDoors() {
-		boolean temp = true;
-		if(this.doors == null || this.doors.size() == 0){
-			temp = false;
-		}
-
-		return temp;
+		return (this.doors != null && this.doors.size() > 0);
 	}
 
 	public boolean isContainsEnemies() {
-		boolean temp = true;
-		if(this.enemies == null || this.enemies.size() == 0){
-			temp = false;
-		}
-
-		return temp;
+		return (this.enemies != null && this.enemies.size() > 0);
 	}
 
 	// Setter
@@ -122,13 +102,13 @@ public class Place {
 		this.enlightened = !this.enlightened;
 	}
 
-	public void AddAndCreateAnimal(String sousType, String name, int Blvl) {
+	public void addAndCreateAnimal(String sousType, String name, int Blvl) {
 		if(this.animals == null) {
 			this.animals = new HashMap<>();
 		}
 
 		// On vérifie le flag pour construire avec le bon type
-		if(Place.AnimalFlag.contains(sousType)) {
+		if(Place.ANIMALFLAG.contains(sousType)) {
 			if (sousType.equals("Animal")) {
 				Animal ani = new Animal(name, Blvl);
 				this.animals.put(name, ani);
@@ -140,35 +120,21 @@ public class Place {
 		}
 	}
 
-	public void AddAndCreateEnemy(String sousType, int hp, int atk, Obj loot) {
+	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft) {
 		if(this.enemies == null) {
 			this.enemies = new HashMap<>();
 		}
-
-		// On vérifie le flag pour construire avec le bon type
-		if(Place.EnnemiesFlag.contains(sousType)) {
-			if (sousType.equals("AccountGuy")) {
-				Ennemy enem = new AccountGuy(hp, atk, loot);
-				this.enemies.put("AccountGuy", enem);
-			}
-			/*if (sousType.equals("FinalBoss")) {
-				Ennemy enem = new FinalBoss();
-				this.enemies.put("FinalBoss", enem);
-			}
-			if (sousType.equals("Zombie")) {
-				Ennemy enem = new Zombie();
-				this.enemies.put("Zombie", enem);
-			}*/
-		}
+		Ennemy enem = new Ennemy(name, hp, dmg, loot, op, atk, dft);
+		this.enemies.put(name, enem);
 	}
 
-	public void AddAndCreateObject(String sousType, String name, int value) {
+	public void addAndCreateObject(String sousType, String name, int value) {
 		if(this.objs == null) {
 			this.objs = new HashMap<>();
 		}
 
 		// On vérifie le flag pour construire avec le bon type
-		if(Place.ObjsFlag.contains(sousType)) {
+		if(Place.OBJSFLAG.contains(sousType)) {
 			if (sousType.equals("Item")) {
 				Obj o = new Item(name);
 				this.objs.put(name, o);
@@ -296,7 +262,6 @@ public class Place {
 		if (this.isContainsDoors()) {
 			strD = this.toStringDoors();
 		}
-
 
 		if(!this.isEnlightened()) {
 			isEnl = "La pièce n'est pas éclairée, vous ne voyez rien\n";

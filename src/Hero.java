@@ -109,7 +109,27 @@ public class Hero {
 
 	public void go(String s)
 	{
-		//TODO
+		if(this.getPlace().getDoors().containsKey(s)) {
+			Door d = this.getPlace().getDoors().get(s);
+			if (d.isOpen()) {
+				this.place = d.getPlaces().get(s);
+			} else {
+				if (d instanceof CondemnedDoor) {
+					System.out.println("This door is not openable, don't try to open it\n");
+				}
+				if (d instanceof DestructableDoor) {
+					System.out.println("This door is locked but it looks like it might be forced...\n");
+				}
+				if (d instanceof LockedKeyDoor) {
+					System.out.println("This door need a key to get opened\n");
+				}
+				if (d instanceof SecretCodeDoor) {
+					System.out.println("This door need a code to get opened, search around you there is maybe an object that can helps you\n");
+				}
+			}
+		} else {
+			System.out.println("Sorry, I don't recognize this place\n");
+		}
 	}
 
 	public void use(String s)
