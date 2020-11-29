@@ -1,11 +1,13 @@
-public abstract class Ennemy {
+public class Ennemy {
 
     // ***** CONSTANTS *****
-    private final int DEFAULT_HP = 30;
-    private final int DEFAULT_DAMAGE = 7;
+    private static final int DEFAULT_HP = 30;
+    private static final int DEFAULT_DAMAGE = 7;
+    private static final String DEFAULT_NAME = "Ennemy_TEST";
 
     // ***** ATTRIBUTES *****
 
+    private final String NAME;
     private int hp;
     private int damage;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
@@ -16,16 +18,24 @@ public abstract class Ennemy {
 
     // ***** CONSTRUCTORS *****
 
-    Ennemy(Obj loot){
+    Ennemy(Obj loot, String op, String atk, String dft){
+        this.NAME = DEFAULT_NAME;
         this.hp = DEFAULT_HP;
         this.damage = DEFAULT_DAMAGE;
         this.item = loot;
+        this.opening = op;
+        this.attack = atk;
+        this.defeat = dft;
     }
 
-    Ennemy(int hp, int atk, Obj loot){
+    Ennemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft){
+        this.NAME = name;
         this.hp = hp;
-        this.damage = atk;
+        this.damage = dmg;
         this.item = loot;
+        this.opening = op;
+        this.attack = atk;
+        this.defeat = dft;
     }
 
     // ***** METHODS *****

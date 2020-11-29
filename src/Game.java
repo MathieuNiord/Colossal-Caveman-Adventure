@@ -36,9 +36,9 @@ public class Game {
 		Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
 		Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
 
-		Door animAndTransf = new SecretCodeDoor("MOT DE PASSE DU CHAT", animalRoom, transferRoom);
-		Door experimAndReserv = new SecretCodeDoor("MOT DE PASSE DE LA SOURIS", experimentsRoom, productsReserve);
-		Door experimAndDirty = new SecretCodeDoor("MOT DE PASSE DU SINGE", experimentsRoom, dirtyChangingRoom);
+		Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
+		Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
+		Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
 
 		Door transfAndChang = new Door(transferRoom, changingRoom);
 		Door transfAndExper = new Door(transferRoom, experimentsRoom);
