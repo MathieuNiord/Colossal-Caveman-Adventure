@@ -162,14 +162,39 @@ public class Place {
 		}
 	}
 
-	public void addDoor(Door d) {
+	public void addDoor(Door d, String where) {
 		if (this.doors == null) {
 			this.doors = new HashMap<>();
 		}
 		if(!this.doors.containsValue(d)) {
-			// On récupère le nom de la destination  en fonction du sens où on emprunte la porte
+			// On récupère le nom de la destination en fonction du sens où on emprunte la porte
 			String destName = this.getDestinationName(d);
 			this.doors.put(destName, d);
+
+			if(where.equals("up")) {
+				if(this.up == null) {
+					this.up = new HashMap<>();
+				}
+				this.up.put(destName, d);
+			}
+			if(where.equals("down")) {
+				if(this.down == null) {
+					this.down = new HashMap<>();
+				}
+				this.down.put(destName, d);
+			}
+			if(where.equals("left")) {
+				if(this.left == null) {
+					this.left = new HashMap<>();
+				}
+				this.left.put(destName, d);
+			}
+			if(where.equals("right")) {
+				if(this.right == null) {
+					this.right = new HashMap<>();
+				}
+				this.right.put(destName, d);
+			}
 		}
 	}
 
@@ -219,20 +244,62 @@ public class Place {
 	public String toStringDoors() {
 		StringBuilder retD = new StringBuilder();
 
-		if(this.doors != null) {
-			if (this.doors.size() != 0) {
-				int size = this.doors.size();
+		if(this.up != null) {
+			if (this.up.size() != 0) {
 
-				retD = new StringBuilder("Il y a " + size + " sorties :");
-				List<String> doors = new ArrayList<>(this.doors.keySet());
+				int size = this.up.size();
+				retD.append("There is ").append(size).append(" exits in up : ");
+				List<String> up = new ArrayList<>(this.up.keySet());
 
-				for (int i = 0; i < size; i++) {
-					retD.append(" ").append(doors.get(i));
+				retD.append(up.get(0));
+				for (int i = 1; i < size; i++) {
+					retD.append(" | ").append(up.get(i));
 				}
 				retD.append("\n");
 			}
 		}
+		if(this.down != null) {
+			if (this.down.size() != 0) {
 
+				int size = this.down.size();
+				retD.append("There is ").append(size).append(" exits in down : ");
+				List<String> down = new ArrayList<>(this.down.keySet());
+
+				retD.append(down.get(0));
+				for (int i = 1; i < size; i++) {
+					retD.append(" | ").append(down.get(i));
+				}
+				retD.append("\n");
+			}
+		}
+		if(this.left != null) {
+			if (this.left.size() != 0) {
+
+				int size = this.left.size();
+				retD.append("There is ").append(size).append(" exits in left : ");
+				List<String> left = new ArrayList<>(this.left.keySet());
+
+				retD.append(left.get(0));
+				for (int i = 1; i < size; i++) {
+					retD.append(" | ").append(left.get(i));
+				}
+				retD.append("\n");
+			}
+		}
+		if(this.right != null) {
+			if (this.right.size() != 0) {
+
+				int size = this.right.size();
+				retD.append("There is ").append(size).append(" exits in right : ");
+				List<String> right = new ArrayList<>(this.right.keySet());
+
+				retD.append(right.get(0));
+				for (int i = 1; i < size; i++) {
+					retD.append(" | ").append(right.get(i));
+				}
+				retD.append("\n");
+			}
+		}
 		return retD.toString();
 	}
 

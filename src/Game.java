@@ -54,52 +54,52 @@ public class Game {
 
 
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
-		animalRoom.addDoor(animAndTransf);
+		animalRoom.addDoor(animAndTransf, "up");
 
-		changingRoom.addDoor(transfAndChang);
-		changingRoom.addDoor(changAndEntry);
+		changingRoom.addDoor(transfAndChang, "up");
+		changingRoom.addDoor(changAndEntry, "down");
 
-		entry.addDoor(changAndEntry); // doit on vraiment lui ajouter la porte ?
+		entry.addDoor(changAndEntry, "up"); // doit on vraiment lui ajouter la porte ?
 
-		transferRoom.addDoor(animAndTransf);
-		transferRoom.addDoor(transfAndChang);
-		transferRoom.addDoor(transfAndMeet);
-		transferRoom.addDoor(transfAndExper);
+		transferRoom.addDoor(animAndTransf, "down");
+		transferRoom.addDoor(transfAndChang, "down");
+		transferRoom.addDoor(transfAndMeet, "right");
+		transferRoom.addDoor(transfAndExper, "up");
 
-		meetingRoom.addDoor(transfAndMeet);
-		meetingRoom.addDoor(meetAndArch);
+		meetingRoom.addDoor(transfAndMeet, "left");
+		meetingRoom.addDoor(meetAndArch, "right");
 
-		archivesRoom.addDoor(meetAndArch);
+		archivesRoom.addDoor(meetAndArch, "left");
 
-		experimentsRoom.addDoor(transfAndExper);
-		experimentsRoom.addDoor(experimAndMort);
-		experimentsRoom.addDoor(experimAndConda);
-		experimentsRoom.addDoor(experimAndReserv);
-		experimentsRoom.addDoor(experimAndCold);
-		experimentsRoom.addDoor(experimAndDirty);
+		experimentsRoom.addDoor(transfAndExper, "down");
+		experimentsRoom.addDoor(experimAndMort, "right");
+		experimentsRoom.addDoor(experimAndConda, "up");
+		experimentsRoom.addDoor(experimAndReserv, "up");
+		experimentsRoom.addDoor(experimAndCold, "right");
+		experimentsRoom.addDoor(experimAndDirty, "right");
 
-		mortuary.addDoor(experimAndMort);
-		mortuary.addDoor(secretPassage);
+		mortuary.addDoor(experimAndMort, "left");
+		mortuary.addDoor(secretPassage, "down");
 
-		condamnedSAS.addDoor(experimAndConda);
-		condamnedSAS.addDoor(condaAndDesert);
+		condamnedSAS.addDoor(experimAndConda, "down");
+		condamnedSAS.addDoor(condaAndDesert, "up");
 
-		desertedRoom.addDoor(condaAndDesert);
+		desertedRoom.addDoor(condaAndDesert, "down");
 
-		productsReserve.addDoor(experimAndReserv);
+		productsReserve.addDoor(experimAndReserv, "down");
 
-		coldRoom.addDoor(experimAndCold);
-		coldRoom.addDoor(coldAndGarb);
+		coldRoom.addDoor(experimAndCold, "right");
+		coldRoom.addDoor(coldAndGarb, "up");
 
-		garbageRoom.addDoor(coldAndGarb);
+		garbageRoom.addDoor(coldAndGarb, "down");
 
-		dirtyChangingRoom.addDoor(experimAndDirty);
-		dirtyChangingRoom.addDoor(dirtAndDecon);
+		dirtyChangingRoom.addDoor(experimAndDirty, "right");
+		dirtyChangingRoom.addDoor(dirtAndDecon, "left");
 
-		decontaminationRoom.addDoor(dirtAndDecon);
-		decontaminationRoom.addDoor(decontAndExit);
+		decontaminationRoom.addDoor(dirtAndDecon, "right");
+		decontaminationRoom.addDoor(decontAndExit, "left");
 
-		exit.addDoor(decontAndExit);  // doit on vraiment lui ajouter la porte ?
+		exit.addDoor(decontAndExit, "right");  // doit on vraiment lui ajouter la porte ?
 
 
 		// We add the animals to the rooms

@@ -113,7 +113,8 @@ public class Hero {
 		if(this.getPlace().getDoors().containsKey(s)) {
 			Door d = this.getPlace().getDoors().get(s);
 			this.place = d.getPlaces().get(s);
-			if (d.isOpen()) {
+			this.place = d.getPlaces().get(s);
+			/*if (d.isOpen()) {
 				this.place = d.getPlaces().get(s);
 			} else {
 				/*if (d instanceof CondemnedDoor) {
@@ -136,7 +137,7 @@ public class Hero {
 				else{
 					d.open();
 				}
-			}
+			}*/
 		} else {
 			System.out.println("Sorry, I don't recognize this place\n");
 		}
