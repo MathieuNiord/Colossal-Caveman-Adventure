@@ -10,26 +10,40 @@ public class Script {
     // === ANIMALS ===
 
     //Cat
-    public static final String CAT_TEXT01 = "";
-    public static final String CAT_TEXT02 = "";
-    public static final String CAT_DESCRIPT = "";
+    public static final String CAT_TEXT01 = "Meeeeew mew meeew mew";
+    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany. I saw all those “glorious" +
+            " soldier” who left you here. They laughed and the boss said you were a stupid frenchy caveman who could" +
+            " never find a way out of this mansion ! Another said that for sure no one will find the password because" +
+            " it is too smart, two letters I ... T. IT, IT, IT is the password ! What a funny password, who came up with" +
+            " this great idea ? Definitely someone in a psychology degree course, haha, of course you have to be smart" +
+            " and quirky if you want to come up with those kinds of passwords or become a Nazi.";
+    public static final String CAT_DESCRIPT = "Ohw easy man ! It's one of those Nazi cats !";
 
     //Mouse
-    public static final String MOUSE_TEXT01 = "";
-    public static final String MOUSE_TEXT02 = "";
-    public static final String MOUSE_DESCRIPT = "";
+    public static final String MOUSE_TEXT01 = "krrih krrih…";
+    public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very" +
+            " smart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are you homeless ? Hmm…no matter !" +
+            " The password is S A GREAT. Bye, come see me later.";
+    public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.";
 
     //Monkey
-    public static final String MONKEY_TEXT01 = "";
-    public static final String MONKEY_TEXT02 = "";
-    public static final String MONKEY_TEXT03 = "";
-    public static final String MONKEY_DESCRIPT = "";
+    public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !";
+    public static final String MONKEY_TEXT02 = "Wuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a" +
+            " f***ing mansion in da f***ing 80’s with da return of da f***ing Nazis : wut da hell bru ? No waaay a die" +
+            " here ! and u know wut ma man ? A’m starving like a wulf, yep ! Go find me nice food and a give u da password" +
+            " u need for escaping those bastards.";
+    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause" +
+            " a m black… r u a f***ing racist ? … Wait a minute… dat’s not food dumbass, it’s a GOLD BANANA !? eh u know" +
+            " wut, a give u da password but only ‘cause a m better than u, u know wut u deserve ? dat a grab ma own shit" +
+            " and throw it in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine not urs ! Pshht," +
+            " go away !";
+    public static final String MONKEY_DESCRIPT = "Do you know this monkey ? He calls you with great gestures. Maybe he's family ?";
 
     // === ENNEMIES ===
 
     //Account Guy
-    public static final String ACCOUNTGUY_DEFAULT = "H! !'M 7H3 4CC0UN7!N9 9UY! Y0U W4N7 70 83 MY FR!3ND ?";
-    public static final String ACCOUNTGUY_ATTACK = "";
+    public static final String ACCOUNTGUY_DEFAULT = "H1 1'M 7H3 4CC0UN7 9UY ! Y0U W4N7 70 83 MY FR13ND ?";
+    public static final String ACCOUNTGUY_ATTACK = "1'M 83773R 7H4N Y0U ! D13 57000P1D !";
     public static final String ACCOUNTGUY_DEFEAT = "4444RRR9H = 1";
     public static final String ACCOUNTGUY_DESCRIPT = "";
 
