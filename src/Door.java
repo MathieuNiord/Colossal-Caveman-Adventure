@@ -5,18 +5,20 @@ public class Door {
 
 	// ***** ATTRIBUTES *****
 
-	protected boolean open = true;
+	protected boolean open;
 	private HashMap<String, Place> places;
 
 	// ***** CONSTRUCTORS *****
 
 	Door(Place place){
+		this.open = true;
 		this.places = new HashMap<>();
 		this.places.put(place.getName(), place);
 		//System.out.println("You create a basic door")
 	}
 
 	Door(Place p1, Place p2){
+		this.open = true;
 		this.places = new HashMap<>();
 		this.places.put(p1.getName(),p1);
 		this.places.put(p2.getName(), p2);
