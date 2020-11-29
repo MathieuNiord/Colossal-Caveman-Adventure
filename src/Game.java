@@ -96,4 +96,27 @@ public class Game {
 
 	}
 
+	public static void printLetterByLetter(String s) throws InterruptedException{
+		
+		int len = s.length();
+		for(int i = 0 ; i < len; i++){
+			char c = s.charAt(i);
+			System.out.print(c);
+			if( c=='.' || c=='?' || c==',' || c=='!')
+			{
+				if(i!=len-1){
+					if(s.charAt(i+1)!=c){
+						System.out.println();
+					}
+				}
+				Thread.sleep(600);
+			}
+			
+			Thread.sleep(100);
+		}
+	}
+	
+	public static void main(String[] args) throws InterruptedException {
+		Game.printLetterByLetter("Test,I'm a test ?Yes,you're a test !OK then.Good Test...\n");
+	}
 }

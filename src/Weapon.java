@@ -15,9 +15,6 @@ public class Weapon extends Obj{
 	
 	
 	//getter
-	public int getValue(){
-		return this.VALUE;
-	}
 	
 	
 	//setter
