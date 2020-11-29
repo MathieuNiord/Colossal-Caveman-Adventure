@@ -17,20 +17,35 @@ public class DestructableDoor extends LockableDoor {
     // Setter
 
     @Override
-    public void unlock() {
-        System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n");
-    }
-
-
+    public void unlock() {}
 
     public void unlock(boolean destructed) {
-        if (destructed) {
+        if (destructed) { //Ssi le joueur possède un gourdin pour défoncer la porte
             super.unlock();
             super.open();
             System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
         }
-        else {
+/*        else {
             System.out.print("What didn't you understand in \"it's doomed\" ? STOOOPID CAVEMAN !\n");
+        }*/
+    }
+
+    //Other
+
+    @Override
+    public void go(Hero hero, String s){
+        if(this.getPlaces().containsKey(s)){
+            this.unlock(hero.getObjs().containsKey("Club")); //On cherche si le joueur possède le gourdin dans ses items
+            if(this.isUnlock()){
+                hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
+                System.out.print("\nYou entered in " + s + "\n");
+            }
+            else{
+                System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n"); //Sinon indication
+            }
+        }
+        else{
+            System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
         }
     }
 

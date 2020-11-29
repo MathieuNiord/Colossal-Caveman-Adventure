@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class SecretCodeDoor extends LockableDoor {
 
 	// ***** ATTRIBUTES *****
@@ -24,16 +26,30 @@ public class SecretCodeDoor extends LockableDoor {
 		}
 	}
 
+	//Other
+
 	@Override
-	public void unlock() {
-		System.out.println("You must enter a code to unlock this door");
+	public void go(Hero hero, String s){
+		if(this.getPlaces().containsKey(s)){
+			Scanner sc = new Scanner(System.in);
+			System.out.print("\nCODE : ");
+			String code = sc.nextLine();
+			this.unlock(code);
+			if(this.isUnlock()){
+				hero.setPlace(this.getPlaces().get(s));
+				System.out.print("\nYou entered in " + s + "\n");
+			}
+		}
+		else{
+			System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
+		}
 	}
 
 	// Display
 
-	@Override
+	/*@Override
 	public String toString() {
 		return super.toString() + ", code access : " + this.CODE;
-	}
+	}*/
 
 }

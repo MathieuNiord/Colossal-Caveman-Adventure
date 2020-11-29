@@ -21,10 +21,6 @@ public abstract class LockableDoor extends Door {
 
 	// Setter
 
-	public void lock() {
-		this.lock = true;
-	}
-
 	public void unlock() {
 		this.lock = false;
 	}
@@ -36,6 +32,21 @@ public abstract class LockableDoor extends Door {
 		}
 		else{
 			System.out.print("Hmm Hmm...The door is locked buddy...\n");
+		}
+	}
+
+	//Other
+
+	@Override
+	public void go(Hero hero, String s){
+		if(this.getPlaces().containsKey(s)){
+			if(this.isUnlock()){
+				hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
+				System.out.print("\nYou entered in " + s + "\n");
+			}
+		}
+		else{
+			System.out.print("\nYou live in a cave ? There's nothing like " + s + "around you stupid caveman !\n"); //On se fait insulter
 		}
 	}
 

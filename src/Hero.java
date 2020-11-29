@@ -79,6 +79,10 @@ public class Hero {
 		this.keyLevel++;
 	}
 
+	public void setPlace(Place newPlace){
+		this.place = newPlace;
+	}
+
 	// Display
 
 
@@ -108,37 +112,11 @@ public class Hero {
 		}
 	}
 
-	public void go(String s)
-	{
-		if(this.getPlace().getDoors().containsKey(s)) {
-			Door d = this.getPlace().getDoors().get(s);
-			if (d.isOpen()) {
-				this.place = d.getPlaces().get(s);
-				System.out.print("\nJe vais dans " + s + "\n");
-			}
-			else if(d instanceof LockableDoor){
-				if(((LockableDoor) d).isUnlock()){
-					this.place = d.getPlaces().get(s);
-					System.out.print("\nJe vais dans " + s + "\n");
-				}
-				else{
-					if (d instanceof SecretCodeDoor) {
-						SecretCodeDoor scd = (SecretCodeDoor)d;
-						Scanner sc = new Scanner(System.in);
-						System.out.print("\nCODE : ");
-						String code = sc.nextLine();
-						scd.unlock(code);
-						if(scd.isUnlock()){
-							this.place = d.getPlaces().get(s);
-							System.out.print("\nJe vais dans " + s + "\n");
-						}
-					}
-					/*else{
-						d.open();
-					}*/
-				}
-			}
-		} else {
+	public void go(String s) {
+		if(this.getPlace().getDoors().containsKey(s) && this.getPlace().getDoors() != null) {
+			this.getPlace().getDoors().get(s).go(this, s);
+		}
+		else {
 			System.out.println("Sorry, I don't recognize this place\n");
 		}
 	}
