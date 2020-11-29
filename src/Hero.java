@@ -133,6 +133,9 @@ public class Hero {
 					System.out.print("\nCODE : ");
 					String code = sc.nextLine();
 					scd.unlock(code);
+					if(scd.isUnlock()){
+						this.place = d.getPlaces().get(s);
+					}
 				}
 				else{
 					d.open();
