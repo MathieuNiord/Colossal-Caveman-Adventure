@@ -5,7 +5,7 @@ public class Door {
 
 	// ***** ATTRIBUTES *****
 
-	private boolean open = false;
+	protected boolean open = true;
 	private HashMap<String, Place> places;
 
 	// ***** CONSTRUCTORS *****

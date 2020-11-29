@@ -7,6 +7,7 @@ public abstract class LockableDoor extends Door {
 
 	LockableDoor(Place p1, Place p2){
 		super(p1, p2);
+		this.open = false;
 		this.lock = true;
 	}
 

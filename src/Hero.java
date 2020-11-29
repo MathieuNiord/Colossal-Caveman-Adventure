@@ -114,10 +114,12 @@ public class Hero {
 			Door d = this.getPlace().getDoors().get(s);
 			if (d.isOpen()) {
 				this.place = d.getPlaces().get(s);
+				System.out.print("\nJe vais dans " + s + "\n");
 			}
 			else if(d instanceof LockableDoor){
 				if(((LockableDoor) d).isUnlock()){
 					this.place = d.getPlaces().get(s);
+					System.out.print("\nJe vais dans " + s + "\n");
 				}
 				else{
 					if (d instanceof SecretCodeDoor) {
@@ -128,11 +130,12 @@ public class Hero {
 						scd.unlock(code);
 						if(scd.isUnlock()){
 							this.place = d.getPlaces().get(s);
+							System.out.print("\nJe vais dans " + s + "\n");
 						}
 					}
-					else{
+					/*else{
 						d.open();
-					}
+					}*/
 				}
 			}
 		} else {
