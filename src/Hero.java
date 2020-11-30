@@ -69,6 +69,9 @@ public class Hero {
 		return this.objs;
 	}
 
+	public boolean isAlive(){
+		return this.hp>0;
+	}
 	// Setter
 
 	public void increaseBescherelle() {
@@ -125,9 +128,16 @@ public class Hero {
 	{
 		//TODO
 	}
-
-	public void help(String s)
-	{
+	
+	public void look(String s) {
 		//TODO
+	}
+	
+	public void help() throws InterruptedException {
+		Game.printLetterByLetter(Script.HELP_DEFAULT);
+	}
+	
+	public void quit() {
+		this.hp = 0;
 	}
 }

@@ -59,7 +59,15 @@ public class Script {
     public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...";
     public static final String BOSS_DESCRIPT = "";
 
-
-
-
+    //HELP fonction
+    
+    public static final String HELP_DEFAULT = "List of commands :" +
+            "\n- go (location)" +
+            "\n- help" +
+            "\n- look" +
+            "\n- look (object)" +
+            "\n- take (object)" +
+            "\n- quit" +
+            "\n- use (object)" +
+            "\n- talk (Someone)";
 }

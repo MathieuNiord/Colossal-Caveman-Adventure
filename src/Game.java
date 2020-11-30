@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Game {
 
@@ -11,21 +13,21 @@ public class Game {
 	public Game(String heroName)
 	{
 		// We create the rooms
-		Place animalRoom = new Place("Animal room", false, true);
-		Place transferRoom = new Place("Transfer room", false, true);
-		Place changingRoom = new Place("Changing room", false, true);
+		Place animalRoom = new Place("Animal-room", false, true);
+		Place transferRoom = new Place("Transfer-Room", false, true);
+		Place changingRoom = new Place("Changing-room", false, true);
 		Place entry = new Place("Entry", false, true);
-		Place meetingRoom = new Place("Meeting room", false, true);
-		Place archivesRoom = new Place("Archives room", false, true);
-		Place experimentsRoom = new Place("Experiments room", false, true);
+		Place meetingRoom = new Place("Meeting-room", false, true);
+		Place archivesRoom = new Place("Archives-room", false, true);
+		Place experimentsRoom = new Place("Experiments-room", false, true);
 		Place mortuary = new Place("Mortuary", false, true); // on éclaire la pièce ?
-		Place condamnedSAS = new Place("Condamned sas", true, true);
-		Place desertedRoom = new Place("Deserted room", false, true);
-		Place productsReserve = new Place("Products reserve", false, true);
-		Place garbageRoom = new Place("Garbage room", false, true);
-		Place coldRoom = new Place("Cold room", false, false);
-		Place dirtyChangingRoom = new Place("Dirty changing room", false, true); // est ce qu'on pourrait pas l'enlever ?
-		Place decontaminationRoom = new Place("Decontamination room", false, true);
+		Place condamnedSAS = new Place("Condamned-sas", true, true);
+		Place desertedRoom = new Place("Deserted-room", false, true);
+		Place productsReserve = new Place("Products-reserve", false, true);
+		Place garbageRoom = new Place("Garbage-room", false, true);
+		Place coldRoom = new Place("Cold-room", false, false);
+		Place dirtyChangingRoom = new Place("Dirty-changing-room", false, true); // est ce qu'on pourrait pas l'enlever ?
+		Place decontaminationRoom = new Place("Decontamination-room", false, true);
 		Place exit = new Place("Exit", false, true);
 
 
@@ -149,14 +151,47 @@ public class Game {
 
 	}
 
-	public void Play()
-	{
-
+	public void Play() throws InterruptedException {
+		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
+			this.PlayATurn();
+		}
 	}
 
-	public void PlayATurn()
-	{
-
+	public void PlayATurn() throws InterruptedException {
+		//Used to store inputs
+		
+		System.out.print("Command :>");
+		int count=0;
+		String input;
+		String[] tabInput = new String[0];
+		//Création d'un scanner pour lire les inputs.
+		Scanner scanner = new Scanner(System.in);
+		if(scanner.hasNext()){
+			input= scanner.nextLine();
+			tabInput = input.split(" ");
+		}
+		count = tabInput.length;
+		switch (count){
+			case 1:
+				switch (tabInput[0]) {
+					case "help" -> this.hero.help();
+					case "quit"-> this.hero.quit();
+					case "look"-> printLetterByLetter(this.hero.getPlace().toString());
+					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+				}
+				break;
+			case 2:
+				switch (tabInput[0]) {
+					case "go" -> this.hero.go(tabInput[1]);
+					case "take" -> this.hero.take(tabInput[1]);
+					case "use" -> this.hero.use(tabInput[1]);
+					case "look" -> printLetterByLetter(this.hero.getPlace().toString());
+					case "talk" -> this.hero.talk(tabInput[1]);
+					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+				}
+				break;
+			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
+		}
 	}
 
 	public static void printLetterByLetter(String s) throws InterruptedException{
@@ -175,11 +210,16 @@ public class Game {
 				Thread.sleep(600);
 			}
 			
-			Thread.sleep(100);
+			Thread.sleep(20);
 		}
+		System.out.println();
 	}
 	
 	/*public static void main(String[] args) throws InterruptedException {
-		Game.printLetterByLetter("Test,I'm a test ?Yes,you're a test !OK then.Good Test...\n");
-	}*/
+		Game g = new Game("Gaetan");
+		g.hero.increaseBescherelle();
+		g.Play();
+		
+	}
+	 */
 }
