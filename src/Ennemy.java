@@ -15,6 +15,7 @@ public class Ennemy {
     private String opening;
     private String attack;
     private String defeat;
+    //Je pensais ajouter un healcounter de manière à ce que l'ennemi puisse se soigner un certain nb de fois au cours du combat
 
     // ***** CONSTRUCTORS *****
 
@@ -64,7 +65,7 @@ public class Ennemy {
 
     // Setter
 
-    public void damage(int damage){
+    public void takeDamage(int damage){
         if(this.hp > 0 && this.state){
             this.hp -= damage;
         }
