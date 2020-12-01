@@ -96,6 +96,7 @@ public class Hero {
 			Obj item = this.place.getItems().get(s);
 			this.objs.put(s, item);
 			//Retirer l'item de la hashMap du lieu
+			this.place.getItems().remove(s);
 		}
 		else{
 			System.out.print("\nNo kind of" + s + " in this place STOOOPID CAVEMAN !\n");
@@ -103,8 +104,7 @@ public class Hero {
 	}
 
 
-	public void talk(String s)
-	{
+	public void talk(String s) throws InterruptedException {
 		//TODO
 		if (this.place.getAnimals().containsKey(s)) {
 			Animal animal = this.place.getAnimals().get(s);
