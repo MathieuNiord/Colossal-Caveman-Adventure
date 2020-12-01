@@ -53,13 +53,13 @@ public class Script {
     public static final String ACCOUNTGUY_DEFAULT = "H1 1'M 7H3 4CC0UN7 9UY ! Y0U W4N7 70 83 MY FR13ND ?";
     public static final String ACCOUNTGUY_ATTACK = "1'M 83773R 7H4N Y0U ! D13 57000P1D !";
     public static final String ACCOUNTGUY_DEFEAT = "4444RRR9H = 1";
-    public static final String ACCOUNTGUY_DESCRIPT = "";
+    public static final String ACCOUNTGUY_DESCRIPT = "He seems lonely, certainly the ACCOUNT GUY. Even Nazis don't understand him.";
 
     //Zombie
     public static final String ZOMBIE_DEFAULT  = "Grrrr…";
     public static final String ZOMBIE_ATTACK = "Grrrr…";
     public static final String ZOMBIE_DEFEAT = "Aaaaarghrrgrr...";
-    public static final String ZOMBIEDESCRIPT = "";
+    public static final String ZOMBIEDESCRIPT = "So it was true, the Nazis created zombies ?! However, we are in the 80s, beware of the clichés.";
 
     //Boss Final
     public static final String BOSS_DEFAULT = "Blablablablablablablabla";
