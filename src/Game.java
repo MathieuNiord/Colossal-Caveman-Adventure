@@ -232,11 +232,11 @@ public class Game {
 		}
 	}
 	
-	public static void main(String[] args) throws InterruptedException {
+	/*public static void main(String[] args) throws InterruptedException {
 		Game g = new Game("Gaetan");
 		g.hero.increaseBescherelle();
 		g.Play();
 		
-	}
+	}*/
 	
 }
