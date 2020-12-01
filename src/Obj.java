@@ -9,6 +9,12 @@ public abstract class Obj {
 	}
 	//METHODS
 
+	public abstract void use(Hero h);
+	
+	public void take(Hero h) {
+		h.getObjs().put(this.name,this);
+		h.getPlace().getItems().remove(this.name);
+	}
 	//getter
 
 	//setter

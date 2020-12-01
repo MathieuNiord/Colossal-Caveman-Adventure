@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Door {
@@ -6,7 +5,7 @@ public class Door {
 	// ***** ATTRIBUTES *****
 
 	protected boolean open;
-	private HashMap<String, Place> places;
+	private final HashMap<String, Place> places;
 
 	// ***** CONSTRUCTORS *****
 

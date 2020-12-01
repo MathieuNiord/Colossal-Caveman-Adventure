@@ -26,6 +26,12 @@ public class Heal extends Obj {
 	
 	
 	@Override
+	public void use(Hero h) {
+		h.setImmunised();
+	}
+	
+	
+	@Override
 	public String toString() {
 		return super.toString() + ",Value : " + this.VALUE;
 	}

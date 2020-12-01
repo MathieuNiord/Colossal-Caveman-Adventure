@@ -10,6 +10,11 @@ public class Weapon extends Obj{
 		super(name);
 		this.VALUE = val;
 	}
+	
+	@Override
+	public void use(Hero h) {
+	
+	}
 	//METHODS
 	
 	
