@@ -6,31 +6,30 @@ public class Animal  {
 	
 	//This attribut is used for dialog
 	public final int beschLevel;
-	
+	public final String noBeschDialog;
+	public final String beschDialog;
 	// ***** CONSTRUCTORS *****
 	
-	public Animal(String name, int bLevel){
+	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog){
 		
 		this.NAME = name;
 		this.beschLevel=bLevel;
+		this.beschDialog = beschDialog;
+		this.noBeschDialog = noBeschDialog;
 		
 	}
 	
 	// ***** METHODS *****
 
-	public void talk(Hero h){
+	public void talk(Hero h) throws InterruptedException {
 		
 		/*If the Bescherelle level of the hero is egal or higher than
 		the Bescherelle level needed to talk with this animal*/
 		if(h.getBLevel()>=beschLevel){
-			
-			System.out.println("Dialog with besch");
-			
+			Game.printLetterByLetter(this.beschDialog);
 		}
 		else {
-			
-			System.out.println("Dialog without besch");
-			
+			Game.printLetterByLetter(this.noBeschDialog);
 		}
 	}
 	

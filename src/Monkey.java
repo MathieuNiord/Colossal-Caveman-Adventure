@@ -7,13 +7,15 @@ public class Monkey extends Animal{
 	/*This attribut is used to know if the Monkey
 	 got the Banana that he asked for*/
 	private boolean hungry;
+	public final String hungryDialog;
+	
 	
 	// ***** CONSTRUCTORS *****
-	
-	public Monkey(String name, int bLevel) {
-		super(name, bLevel);
-		this.hungry = true;
+	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog) {
+		super(name, bLevel, noBeschDialog, beschDialog);
+		this.hungryDialog = hungryDialog;
 	}
+
 	
 	// ***** METHODS *****
 	
@@ -29,7 +31,7 @@ public class Monkey extends Animal{
 	
 	
 	@Override
-	public void talk(Hero h) {
+	public void talk(Hero h) throws InterruptedException {
 		
 		if(h.getObjs().containsKey("Banana")){
 			h.getObjs().remove("Banana");
@@ -41,7 +43,7 @@ public class Monkey extends Animal{
 			super.talk(h);
 		}
 		else{
-			System.out.println("Dialog when hungry");
+		
 		}
 	}
 }
