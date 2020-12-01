@@ -24,15 +24,15 @@ public class Script {
             "\ntwo letters I ... T. IT, IT, IT is the password !" +
             "\nWhat a funny password, who came up with this great idea ? " +
             "\nDefinitely someone in a psychology degree course, haha, of course you have to be smart" +
-            "\nand quirky if you want to come up with those kinds of passwords or become a Nazi.";
+            "\nand quirky if you want to come up with those kinds of passwords or become a Nazi.\n";
     public static final String CAT_DESCRIPT = "Ohw easy man ! It's one of those Nazi cats !";
 
     //Mouse
     public static final String MOUSE_TEXT01 = "krrih krrih…";
     public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very" +
             " smart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are you homeless ? Hmm…no matter !" +
-            " The password is S A GREAT. Bye, come see me later.";
-    public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.";
+            " The password is S A GREAT. Bye, come see me later.\n";
+    public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.\n";
 
     //Monkey
     public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !";
@@ -65,25 +65,25 @@ public class Script {
     public static final String BOSS_DEFAULT = "Blablablablablablablabla";
     public static final String BOSS_ATTACCK = "BlablablACHTUNG !";
     public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...";
-    public static final String BOSS_DESCRIPT = "";
+    public static final String BOSS_DESCRIPT = "Wow, what a big and strong man ! He's certainly a kind of final boss...";
 
     //OBJECTS
     public static final String KEY_DESCRIPT = "It's just a key...";
     public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.";
-    public static final String SILEX_DESCRIPT = "";
-    public static final String STICK_DESCRIPT = "";
-    public static final String BANANA_DESCRIPT = "";
-
+    public static final String SILEX_DESCRIPT = "Just a stone that fell out of your underpants.";
+    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
+    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.";
+    public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
 
     //HELP fonction
-    
     public static final String HELP_DEFAULT = "List of commands :" +
             "\n- go (location)" +
             "\n- help" +
             "\n- look" +
-            "\n- look (object)" +
-            "\n- take (object)" +
-            "\n- quit" +
-            "\n- use (object)" +
-            "\n- talk (Someone)";
+            "\n- look (Object)" +
+            "\n- take (Object)" +
+            "\n- use (Object)" +
+            "\n- inventory" +
+            "\n- talk (Somebody)" +
+            "\n- quit";
 }
