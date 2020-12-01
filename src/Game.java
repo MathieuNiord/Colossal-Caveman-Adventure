@@ -1,11 +1,10 @@
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
 
 	// ***** ATTRIBUTES *****
-	private Hero hero;
+	private final Hero hero;
 	private Map<String,Place> places;
 
 	// ***** CONSTRUCTORS *****
@@ -68,6 +67,7 @@ public class Game {
 		Item stick = new Item("Stick");
 		Item silex = new Item("Silex");
 		
+		Bescherelle b1 = new Bescherelle("Bescherelle");
 		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
 		animalRoom.addDoor(animAndTransf, "up");
@@ -129,6 +129,7 @@ public class Game {
 		productsReserve.addObject(potion);
 		archivesRoom.addObject(club);
 		transferRoom.addObject(silex);
+		animalRoom.addObject(b1);
 
 		// We add the enemies to the rooms
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT);
@@ -154,7 +155,9 @@ public class Game {
 
 
 	// Display
-
+	public void help() throws InterruptedException {
+		Game.printLetterByLetter(Script.HELP_DEFAULT);
+	}
 
 	public void displayEnvironment()
 	{
@@ -188,7 +191,7 @@ public class Game {
 		switch (count){
 			case 1:
 				switch (tabInput[0]) {
-					case "help" -> this.hero.help();
+					case "help" -> this.help();
 					case "quit"-> this.hero.quit();
 					case "look"-> printLetterByLetter(this.hero.getPlace().toString());
 					case "inventory"->printLetterByLetter(this.hero.getObjs().keySet().toString());
@@ -232,11 +235,10 @@ public class Game {
 		}
 	}
 	
-	/*public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		Game g = new Game("Gaetan");
-		g.hero.increaseBescherelle();
 		g.Play();
 		
-	}*/
+	}
 	
 }
