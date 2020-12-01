@@ -116,7 +116,7 @@ public class Hero {
 	}
 
 	public void go(String s) {
-		if(this.getPlace().getDoors().containsKey(s) && this.getPlace().getDoors() != null) {
+		if(this.getPlace().getDoors() != null && this.getPlace().getDoors().containsKey(s)) {
 			this.getPlace().getDoors().get(s).go(this, s);
 		}
 		else {

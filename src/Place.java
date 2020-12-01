@@ -207,7 +207,7 @@ public class Place {
 			if (this.animals.size() != 0) {
 				int size = this.animals.size();
 
-				retA = new StringBuilder("Il y a " + size + " animaux dans la pièce :");
+				retA = new StringBuilder("There is " + size + " animal(s) in this room :");
 				List<String> anim = new ArrayList<>(this.animals.keySet());
 
 				for (int i = 0; i < size; i++) {
@@ -227,7 +227,7 @@ public class Place {
 			if (this.objs.size() != 0) {
 				int size = this.objs.size();
 
-				retO = new StringBuilder("Il y a " + size + " objets :");
+				retO = new StringBuilder("There is " + size + " object(s) :");
 				List<String> objs = new ArrayList<>(this.objs.keySet());
 
 				for (int i = 0; i < size; i++) {
@@ -310,7 +310,7 @@ public class Place {
 			if (this.enemies.size() != 0) {
 				int size = this.enemies.size();
 
-				retE = new StringBuilder("Il y a " + size + " ennemie :");
+				retE = new StringBuilder("There is " + size + " ennemie :");
 				List<String> enemy = new ArrayList<>(this.enemies.keySet());
 
 				for (int i = 0; i < size; i++) {
@@ -325,7 +325,7 @@ public class Place {
 
 	@Override
 	public String toString() {
-		String intro = "Vous êtes dans : " + this.getName() + "\n";
+		String intro = "You are in : " + this.getName() + "\n";
 
 		String isEnl = "";
 		String isInf = "";
@@ -339,11 +339,11 @@ public class Place {
 		}
 
 		if(!this.isEnlightened()) {
-			isEnl = "La pièce n'est pas éclairée, vous ne voyez rien\n";
+			isEnl = "The room is not lit, you can't see anything\n";
 		}
 		else {
 			if (this.isInfested()) {
-				isInf = "La pièce est infecté\n";
+				isInf = "The room is infected\n";
 			}
 
 			if (this.isContainsAnimals()) {

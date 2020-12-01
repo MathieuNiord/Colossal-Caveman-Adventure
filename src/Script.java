@@ -3,8 +3,10 @@ public class Script {
     public static final String DEFAULT_WELCOME = "===== synopsis =====" +
             "\nA caveman found frozen in the Arctic." +
             "\nA team of researchers thaws it and locks it in a laboratory." +
-            "\nBeing just an uneducated caveman, he is only able to express himself through : Houga Bouga!" +
-            "\nYou have to help him out of this lab.\n\n\n";
+            "\nBeing just an uneducated caveman," +
+            "\nYou have to help him out of this lab." +
+            "\n" +
+            "\nWrite : help, and press enter to get the list of command available";
     
     // === HERO ===
     public static final String DEFAULT_HERO = "Houga Bouga";
