@@ -168,6 +168,7 @@ public class Game {
 	
 	public void Play() throws InterruptedException {
 		printLetterByLetter(Script.DEFAULT_WELCOME);
+		sysClear();
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
@@ -229,7 +230,7 @@ public class Game {
 	}
 
 	//Pour clean la console s'il y a besoin
-	public void sysClear(){
+	public static void sysClear(){
 		for (int i = 0; i < 100; i++){
 			System.out.println();
 		}
