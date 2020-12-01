@@ -33,18 +33,18 @@ public class Game {
 
 		// We create the doors
 		Door secretPassage = new Door(archivesRoom);
-
+		
 		Door changAndEntry = new CondemnedDoor(changingRoom, entry);
-
+		
 		Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
-
+		
 		Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
 		Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
-
+		
 		Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
 		Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
 		Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
-
+		
 		Door transfAndChang = new Door(transferRoom, changingRoom);
 		Door transfAndExper = new Door(transferRoom, experimentsRoom);
 		Door experimAndMort = new Door(experimentsRoom, mortuary);
@@ -53,8 +53,22 @@ public class Game {
 		Door experimAndCold = new Door(experimentsRoom, coldRoom);
 		Door coldAndGarb = new Door(coldRoom, garbageRoom);
 		Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
-
-
+		
+		//We create Animals
+		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02);
+		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02);
+		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03);
+		
+		//We create Objects
+		Weapon club = new Weapon("Club",5);
+		
+		Heal potion = new Heal("Potion",50);
+		
+		Item banana = new Item("Banana");
+		Item stick = new Item("Stick");
+		Item silex = new Item("Silex");
+		
+		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
 		animalRoom.addDoor(animAndTransf, "up");
 
@@ -105,13 +119,16 @@ public class Game {
 
 
 		// We add the animals to the rooms
-		animalRoom.addAndCreateAnimal("Animal", "cat", 1);
-
-		experimentsRoom.addAndCreateAnimal("Animal", "mouse", 2);
-		experimentsRoom.addAndCreateAnimal("Monkey", "monkey", 3);
-
+		animalRoom.addAnimal(cat);
+		experimentsRoom.addAnimal(monkey);
+		experimentsRoom.addAnimal(mouse);
+		
 		// We add the objects to the rooms
-
+		coldRoom.addObject(banana);
+		garbageRoom.addObject(stick);
+		productsReserve.addObject(potion);
+		archivesRoom.addObject(club);
+		transferRoom.addObject(silex);
 
 		// We add the enemies to the rooms
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT);
@@ -145,12 +162,7 @@ public class Game {
 	}
 
 	// Other
-
-	public void VerifAction(String[] cmd)
-	{
-
-	}
-
+	
 	public void Play() throws InterruptedException {
 		printLetterByLetter(Script.DEFAULT_WELCOME);
 		this.displayEnvironment();
@@ -179,6 +191,7 @@ public class Game {
 					case "help" -> this.hero.help();
 					case "quit"-> this.hero.quit();
 					case "look"-> printLetterByLetter(this.hero.getPlace().toString());
+					case "inventory"->printLetterByLetter(this.hero.getObjs().keySet().toString());
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
@@ -219,11 +232,11 @@ public class Game {
 		}
 	}
 	
-	/*public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		Game g = new Game("Gaetan");
 		g.hero.increaseBescherelle();
 		g.Play();
 		
-	}*/
+	}
 	
 }
