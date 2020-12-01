@@ -17,12 +17,14 @@ public class Script {
 
     //Cat
     public static final String CAT_TEXT01 = "Meeeeew mew meeew mew";
-    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany. I saw all those “glorious" +
-            " soldier” who left you here. They laughed and the boss said you were a stupid frenchy caveman who could" +
-            " never find a way out of this mansion ! Another said that for sure no one will find the password because" +
-            " it is too smart, two letters I ... T. IT, IT, IT is the password ! What a funny password, who came up with" +
-            " this great idea ? Definitely someone in a psychology degree course, haha, of course you have to be smart" +
-            " and quirky if you want to come up with those kinds of passwords or become a Nazi.";
+    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany." +
+            "\nI saw all those “glorioussoldier” who left you here." +
+            "\nThey laughed and the boss said you were a stupid frenchy caveman who could never find a way out of this mansion !" +
+            "\nAnother said that for sure no one will find the password because it is too smart," +
+            "\ntwo letters I ... T. IT, IT, IT is the password !" +
+            "\nWhat a funny password, who came up with this great idea ? " +
+            "\nDefinitely someone in a psychology degree course, haha, of course you have to be smart" +
+            "\nand quirky if you want to come up with those kinds of passwords or become a Nazi.";
     public static final String CAT_DESCRIPT = "Ohw easy man ! It's one of those Nazi cats !";
 
     //Mouse
