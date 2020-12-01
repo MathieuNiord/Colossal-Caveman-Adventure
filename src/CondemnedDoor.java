@@ -4,7 +4,6 @@ public class CondemnedDoor extends Door {
 	CondemnedDoor(Place p1, Place p2){
 		super(p1, p2);
 		this.open = false;
-		System.out.println("You create a condemned door");
 	}
 
 	// ***** METHODS *****

@@ -168,7 +168,8 @@ public class Game {
 	
 	public void Play() throws InterruptedException {
 		printLetterByLetter(Script.DEFAULT_WELCOME);
-		sysClear();
+		Thread.sleep(7000);
+		sysClear(100);
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
@@ -230,16 +231,23 @@ public class Game {
 	}
 
 	//Pour clean la console s'il y a besoin
-	public static void sysClear(){
-		for (int i = 0; i < 100; i++){
+	public static void sysClear(int howmuch){
+		for (int i = 0; i < howmuch; i++){
 			System.out.println();
 		}
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		Game g = new Game("Gaetan");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
+		System.out.print("Answer : ");
+		Game g = new Game(sc.nextLine());
+		System.out.println("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
+		System.out.print("Answer : ");
+		String noMatter = sc.nextLine();
+		System.out.println("As you want HOUGA BOUGA !");
+		sysClear(20);
 		g.Play();
-		
 	}
 	
 }

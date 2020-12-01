@@ -66,6 +66,7 @@ public class Ennemy {
     // Setter
 
     public void takeDamage(int damage){
+        System.out.println(Script.ANGRY_HERO);
         if(this.hp > 0 && this.state){
             this.hp -= damage;
         }
@@ -81,6 +82,7 @@ public class Ennemy {
     public void Kill(){
         if(hp <= 0 && this.state){
             this.state = false;
+            System.out.println(this.defeat);
         }
     }
 
