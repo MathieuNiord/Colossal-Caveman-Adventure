@@ -110,22 +110,11 @@ public class Place {
 		this.enlightened = !this.enlightened;
 	}
 
-	public void addAndCreateAnimal(String sousType, String name, int Blvl) {
+	public void addAnimal(Animal ani) {
 		if(this.animals == null) {
 			this.animals = new HashMap<>();
 		}
-
-		// On vérifie le flag pour construire avec le bon type
-		if(Place.ANIMALFLAG.contains(sousType)) {
-			if (sousType.equals("Animal")) {
-				Animal ani = new Animal(name, Blvl);
-				this.animals.put(name, ani);
-			}
-			if (sousType.equals("Monkey")) {
-				Animal ani = new Monkey(name, Blvl);
-				this.animals.put(name, ani);
-			}
-		}
+		this.animals.put(ani.NAME,ani);
 	}
 
 	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft) {
@@ -136,30 +125,11 @@ public class Place {
 		this.enemies.put(name, enem);
 	}
 
-	public void addAndCreateObject(String sousType, String name, int value) {
+	public void addObject(Obj o) {
 		if(this.objs == null) {
 			this.objs = new HashMap<>();
 		}
-
-		// On vérifie le flag pour construire avec le bon type
-		if(Place.OBJSFLAG.contains(sousType)) {
-			if (sousType.equals("Item")) {
-				Obj o = new Item(name);
-				this.objs.put(name, o);
-			}
-			if (sousType.equals("Weapon")) {
-				Obj o = new Weapon(name, value);
-				this.objs.put(name, o);
-			}
-			if (sousType.equals("Heal")) {
-				Obj o = new Heal(name, value);
-				this.objs.put(name, o);
-			}
-			/*if (sousType.equals("Casier")) {
-				Obj o = new Casier(name);
-				this.objs.put(name, o);
-			}*/
-		}
+		this.objs.put(o.name,o);
 	}
 
 	public void addDoor(Door d, String where) {
