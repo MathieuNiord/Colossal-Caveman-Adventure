@@ -163,7 +163,7 @@ public class Game {
 		//Used to store inputs
 		
 		System.out.print("Command :>");
-		int count=0;
+		int count;
 		String input;
 		String[] tabInput = new String[0];
 		//Création d'un scanner pour lire les inputs.
@@ -210,6 +210,13 @@ public class Game {
 			Thread.sleep(20);
 		}
 		System.out.println();
+	}
+
+	//Pour clean la console s'il y a besoin
+	public void sysClear(){
+		for (int i = 0; i < 100; i++){
+			System.out.println();
+		}
 	}
 	
 	/*public static void main(String[] args) throws InterruptedException {
