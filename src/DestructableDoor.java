@@ -18,7 +18,7 @@ public class DestructableDoor extends LockableDoor {
     public void unlock() {}
 
     public void unlock(boolean destructed) {
-        if (destructed) { //Ssi le joueur possède un gourdin pour défoncer la porte
+        if (destructed && !this.isUnlock()) { //Ssi le joueur possède un gourdin pour défoncer la porte
             super.unlock();
             super.open();
             System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
