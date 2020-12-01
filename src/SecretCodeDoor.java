@@ -21,22 +21,23 @@ public class SecretCodeDoor extends LockableDoor {
 
 		Random rand = new Random();
 		int tmp = rand.nextInt(10 + 1);
-
-		if (this.CODE.equalsIgnoreCase(code)) {
-			super.unlock();
-			if(tmp % 2 == 0){
-				System.out.print("\nVALID CODE. The door is now unlocked. Good Boy !\n");
+		if(!this.isUnlock()){
+			if (this.CODE.equalsIgnoreCase(code)) {
+				super.unlock();
+				if(tmp % 2 == 0){
+					System.out.print("\nVALID CODE. The door is now unlocked. Good Boy !\n");
+				}
+				else{
+					System.out.print("\nVALID CODE. Good Gosh ! You're smarter than I thought ! You unlocked the door !\n");
+				}
 			}
-			else{
-				System.out.print("\nVALID CODE. Good Gosh ! You're smarter than I thought ! You unlocked the door !\n");
-			}
-		}
-		else {
-			if(tmp % 2 == 0){
-				System.out.println("ERROR CODE. Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...");
-			}
-			else{
-				System.out.print("\nERROR CODE. Hmmm, maybe you're not a good writer...\n");
+			else {
+				if(tmp % 2 == 0){
+					System.out.println("ERROR CODE. Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...");
+				}
+				else{
+					System.out.print("\nERROR CODE. Hmmm, maybe you're not a good writer...\n");
+				}
 			}
 		}
 	}

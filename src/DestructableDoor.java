@@ -10,8 +10,6 @@ public class DestructableDoor extends LockableDoor {
 
     // ***** METHODS *****
 
-    // Getter
-
     // Setter
 
     @Override

@@ -1,12 +1,12 @@
 public class Script {
     // === WELCOME MESSAGES ===
-    public static final String DEFAULT_WELCOME = "===== synopsis =====" +
+    public static final String DEFAULT_WELCOME = "===== SYNOPSIS =====" +
             "\nA caveman found frozen in the Arctic." +
-            "\nA team of researchers thaws it and locks it in a laboratory." +
+            "\nA team of Nazis researchers thaws it and locks it in a laboratory." +
             "\nBeing just an uneducated caveman," +
             "\nYou have to help him out of this lab." +
             "\n" +
-            "\nWrite : help, and press enter to get the list of command available";
+            "\nWrite : help, and press enter to get the list of available commands";
     
     // === HERO ===
     public static final String DEFAULT_HERO = "Houga Bouga";
@@ -66,6 +66,14 @@ public class Script {
     public static final String BOSS_ATTACCK = "BlablablACHTUNG !";
     public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...";
     public static final String BOSS_DESCRIPT = "";
+
+    //OBJECTS
+    public static final String KEY_DESCRIPT = "It's just a key...";
+    public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.";
+    public static final String SILEX_DESCRIPT = "";
+    public static final String STICK_DESCRIPT = "";
+    public static final String BANANA_DESCRIPT = "";
+
 
     //HELP fonction
     
