@@ -19,7 +19,7 @@ public class Hero {
 	private int keyLevel;
 	private int lvlBescherelle;
 	private boolean immunised;
-	private Map<String, Obj> objs;
+	private final Map<String, Obj> objs;
 	private Place place;
 
 	// ***** CONSTRUCTORS *****
@@ -81,7 +81,9 @@ public class Hero {
 	public void increaseKey() {
 		this.keyLevel++;
 	}
-
+	public void setImmunised(){
+		this.immunised=true;
+	}
 	public void setPlace(Place newPlace){
 		this.place = newPlace;
 	}
@@ -93,10 +95,7 @@ public class Hero {
 
 	public void take(String s) {
 		if (this.place.getItems().containsKey(s)) {
-			Obj item = this.place.getItems().get(s);
-			this.objs.put(s, item);
-			//Retirer l'item de la hashMap du lieu
-			this.place.getItems().remove(s);
+			this.place.getItems().get(s).take(this);
 		}
 		else{
 			System.out.print("\nNo kind of" + s + " in this place STOOOPID CAVEMAN !\n");
@@ -107,8 +106,7 @@ public class Hero {
 	public void talk(String s) throws InterruptedException {
 		//TODO
 		if (this.place.getAnimals().containsKey(s)) {
-			Animal animal = this.place.getAnimals().get(s);
-			animal.talk(this);
+			this.place.getAnimals().get(s).talk(this);
 		}
 		else{
 			System.out.print("\nWhere did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n");
@@ -124,17 +122,12 @@ public class Hero {
 		}
 	}
 
-	public void use(String s)
-	{
+	public void use(String s) {
 		//TODO
 	}
 	
 	public void look(String s) {
 		//TODO
-	}
-	
-	public void help() throws InterruptedException {
-		Game.printLetterByLetter(Script.HELP_DEFAULT);
 	}
 	
 	public void quit() {

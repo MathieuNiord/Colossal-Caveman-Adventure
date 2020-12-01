@@ -9,7 +9,10 @@ public class Item extends Obj{
 		super(name);
 	}
 	
+	@Override
+	public void use(Hero h) {
 	
+	}
 	
 	//METHODS
 	
