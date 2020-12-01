@@ -2,8 +2,6 @@ public class DestructableDoor extends LockableDoor {
 
     // ***** ATTRIBUTES *****
 
-    private boolean weapon = false;
-
     // ***** CONSTRUCTORS *****
 
     DestructableDoor(Place p1, Place p2) {
