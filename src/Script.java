@@ -1,7 +1,11 @@
 public class Script {
-
-    // ***** CONSTANTES *****
-
+    // === WELCOME MESSAGES ===
+    public static final String DEFAULT_WELCOME = "===== synopsis =====" +
+            "\nA caveman found frozen in the Arctic." +
+            "\nA team of researchers thaws it and locks it in a laboratory." +
+            "\nBeing just an uneducated caveman, he is only able to express himself through : Houga Bouga!" +
+            "\nYou have to help him out of this lab.\n\n\n";
+    
     // === HERO ===
     public static final String DEFAULT_HERO = "Houga Bouga";
     public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !";

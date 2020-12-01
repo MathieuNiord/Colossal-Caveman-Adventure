@@ -139,7 +139,7 @@ public class Game {
 	// Display
 
 
-	public void DisplayEnvironment()
+	public void displayEnvironment()
 	{
 		System.out.println(this.hero.getPlace().toString());
 	}
@@ -152,6 +152,8 @@ public class Game {
 	}
 
 	public void Play() throws InterruptedException {
+		printLetterByLetter(Script.DEFAULT_WELCOME);
+		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
 		}
@@ -202,12 +204,7 @@ public class Game {
 			System.out.print(c);
 			if( c=='.' || c=='?' || c==',' || c=='!')
 			{
-				if(i!=len-1){
-					if(s.charAt(i+1)!=c){
-						System.out.println();
-					}
-				}
-				Thread.sleep(600);
+				Thread.sleep(1000);
 			}
 			
 			Thread.sleep(20);
@@ -215,11 +212,11 @@ public class Game {
 		System.out.println();
 	}
 	
-	/*public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		Game g = new Game("Gaetan");
 		g.hero.increaseBescherelle();
 		g.Play();
 		
 	}
-	 */
+	
 }
