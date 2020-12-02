@@ -70,7 +70,7 @@ public class Script {
     //OBJECTS
     public static final String KEY_DESCRIPT = "It's just a key...";
     public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.";
-    public static final String SILEX_DESCRIPT = "Just a stone that fell out of your underpants.";
+    public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.";
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
     public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.";
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";

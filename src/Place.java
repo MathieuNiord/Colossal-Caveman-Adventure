@@ -117,11 +117,11 @@ public class Place {
 		this.animals.put(ani.NAME,ani);
 	}
 
-	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft) {
+	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft,String desc) {
 		if(this.enemies == null) {
 			this.enemies = new HashMap<>();
 		}
-		Ennemy enem = new Ennemy(name, hp, dmg, loot, op, atk, dft);
+		Ennemy enem = new Ennemy(name, hp, dmg, loot, op, atk, dft,desc);
 		this.enemies.put(name, enem);
 	}
 
