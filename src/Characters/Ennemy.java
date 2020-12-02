@@ -13,7 +13,7 @@ public class Ennemy implements Lookable {
 
     // ***** ATTRIBUTES *****
 
-    private final String NAME;
+    public final String NAME;
     private int hp;
     private final int damage;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
@@ -80,19 +80,15 @@ public class Ennemy implements Lookable {
         if(this.hp > 0 && this.state){
             this.hp -= damage;
         }
-        this.Kill();
+        else if(hp <= 0 && this.state){
+            this.state = false;
+            System.out.println(this.defeat);
+        }
     }
 
     public void Heal(int heal){
         if(this.state && this.hp > 0){
             this.hp += heal;
-        }
-    }
-
-    public void Kill(){
-        if(hp <= 0 && this.state){
-            this.state = false;
-            System.out.println(this.defeat);
         }
     }
 

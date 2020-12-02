@@ -67,7 +67,7 @@ public class Game {
 		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 		
 		//We create Objects
-		Weapon club = new Weapon("Club",5);
+		Weapon club = new Weapon("Club");
 
 		Potion potion = new Potion("Potion");
 		
@@ -79,9 +79,11 @@ public class Game {
 		Bescherelle catB = new Bescherelle("Bescherelle");
 		Bescherelle mouseB = new Bescherelle("Bescherelle");
 		Bescherelle monkeyB = new Bescherelle("Bescherelle");
+
+		Key k1 = new Key("Key");
+		Key k2 = new Key("Key");
 		
 		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
-		
 		
 		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
@@ -150,23 +152,23 @@ public class Game {
 		transferRoom.addObject(electricityMeter);
 
 		// We add the enemies to the rooms
-		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null,
+		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, null,
+		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		decontaminationRoom.addAndCreateEnemy("NOM DU BOSS", 20, 6, null,
+		decontaminationRoom.addAndCreateEnemy("NOM DU BOSS", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
 		// We create the Characters.Hero
 		this.hero = new Hero(heroName, animalRoom);
 		Locker locker = new Locker("Locker",this.hero);
-		locker.addObj(fuse);
+		//locker.addObj(fuse);
 		changingRoom.addObject(locker);
 	}
 
 	// ***** METHODS *****
 
-	// Getter
+	// === Getter
 	public Hero getHero() {
 		return this.hero;
 	}
@@ -178,7 +180,7 @@ public class Game {
 	// Setter
 
 
-	// Display
+	// === Display
 	public void help() throws InterruptedException {
 		Game.printLetterByLetter(Script.HELP_DEFAULT);
 	}
@@ -187,8 +189,40 @@ public class Game {
 		printLetterByLetter(this.hero.getPlace().toString());
 	}
 
-	// Other
-	
+	public static void printLetterByLetter(String s) throws InterruptedException{
+		System.out.println();
+		int len = s.length();
+		for(int i = 0 ; i < len; i++){
+			char c = s.charAt(i);
+			System.out.print(c);
+			if( c=='.' || c=='?' || c==',' || c=='!')
+			{
+				Thread.sleep(1000);
+			}
+
+			Thread.sleep(20);
+		}
+
+	}
+
+	//Pour clean la console s'il y a besoin
+	public static void sysClear(int howmuch){
+		for (int i = 0; i < howmuch; i++){
+			System.out.println();
+		}
+	}
+
+	public static void pressAnyKeyToContinue() throws InterruptedException {
+		printLetterByLetter("Press Enter key to continue...");
+		Scanner scanner = new Scanner(System.in);
+		try
+		{
+			scanner.nextLine();
+		}
+		catch(Exception ignored){}
+	}
+
+	// === Other
 	public void Play() throws InterruptedException {
 		//printLetterByLetter(Script.DEFAULT_WELCOME);
 		//pressAnyKeyToContinue();
@@ -201,6 +235,9 @@ public class Game {
 	}
 
 	public void PlayATurn() throws InterruptedException {
+		if (this.hero.getPlace().isContainsEnemies()) {
+			battle(this.hero, this.hero.getPlace().getEnemies());
+		}
 		printLetterByLetter("Command :> ");
 		int count; //count of words
 		String input; //input String
@@ -212,7 +249,7 @@ public class Game {
 			input = scanner.nextLine();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
-		count = tabInput.length; //count is egal to the number of words
+		count = tabInput.length; //count is equal to the number of words
 		switch (count){
 			case 1:
 				switch (tabInput[0]) {
@@ -245,37 +282,57 @@ public class Game {
 		}
 	}
 
-	public static void printLetterByLetter(String s) throws InterruptedException{
-		System.out.println();
-		int len = s.length();
-		for(int i = 0 ; i < len; i++){
-			char c = s.charAt(i);
-			System.out.print(c);
-			if( c=='.' || c=='?' || c==',' || c=='!')
-			{
-				Thread.sleep(1000);
-			}
-			
-			Thread.sleep(20);
-		}
-		
-	}
+	public void battle(Hero hero, Ennemy ennemy){
+		System.out.println("COMBAT !");
+		Scanner sc = new Scanner(System.in);
+		String input;
+		String[] tabInput;
+		int count;
 
-	//Pour clean la console s'il y a besoin
-	public static void sysClear(int howmuch){
-		for (int i = 0; i < howmuch; i++){
-			System.out.println();
+		while (hero.isAlive() && ennemy.isDefeat()) {
+
+			ennemy.attack();
+			hero.setLife(-(ennemy.getDamage()));
+			input = sc.nextLine();
+			tabInput = input.split(" ");
+			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
+
+			switch (count) {
+
+				case 1 :
+					switch (tabInput[0]) {
+						case "attack" -> hero.attack(ennemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
+						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
+						default -> System.out.println("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
+				}
+				break;
+				case 2 :
+
+					if (tabInput[1].equalsIgnoreCase(ennemy.NAME)) {		//Si le joueur écrit par hasard le nom de l'ennemi
+						switch (tabInput[0]) {
+							case "attack" -> hero.attack(ennemy);	//Le joueur attaque l'ennemi
+							case "heal" -> System.out.println("You cannot cure " + ennemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
+							default -> System.out.println("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
+						}
+					}
+
+					else if (tabInput[1].equalsIgnoreCase("Poster")) {
+						switch (tabInput[0]) {
+							case "attack" -> System.out.println("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
+							case "heal" -> hero.heal();	//Le joueur se soigne
+							default -> System.out.println("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
+						}
+					}
+
+					else {
+						System.out.println("Come on get serious, it's not the moment, you're fighting dude...You pass your turn !\n");
+					}
+				default : System.out.println("Whatever ! You pass your turn !\n");
+			}
 		}
-	}
-	
-	public static void pressAnyKeyToContinue() throws InterruptedException {
-		printLetterByLetter("Press Enter key to continue...");
-		Scanner scanner = new Scanner(System.in);
-		try
-		{
-			scanner.nextLine();
-		}
-		catch(Exception ignored){}
+		hero.getPlace().setEnemy(null);
+		hero.getObjs().put(ennemy.getItem().NAME, ennemy.getItem());
+		System.out.println("An object fell from the corpse of " + ennemy.NAME + ". Looks like a" + ennemy.getItem().NAME + "\n");
 	}
 	
 	public static void main(String[] args) throws InterruptedException {

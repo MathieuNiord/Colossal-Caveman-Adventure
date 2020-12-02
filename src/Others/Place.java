@@ -10,9 +10,9 @@ public class Place implements Lookable {
 
 	// ***** CONSTANTS *****
 
-	public static final List<String> ANIMALFLAG = Arrays.asList("Characters.Monkey", "Characters.Animal");
+	public static final List<String> ANIMALFLAG = Arrays.asList("Monkey", "Animal");
 	public static final List<String> ENNEMIESFLAG = Arrays.asList("AccountGuy", "FinalBoss", "Zombie");
-	public static final List<String> OBJSFLAG = Arrays.asList("Item", "Objects.Weapon", "Objects.Heal", "Casier");
+	public static final List<String> OBJSFLAG = Arrays.asList("Item", "Weapon", "Potion", "Locker");
 
 	// ***** ATTRIBUTES *****
 
@@ -27,7 +27,7 @@ public class Place implements Lookable {
 	private Map<String, Door> right;
 	private Map<String, Door> up;
 	private Map<String, Door> down;
-	private Map<String, Ennemy> enemies;
+	private Ennemy enemy;
 
 
 	// ***** CONSTRUCTOR *****
@@ -39,7 +39,7 @@ public class Place implements Lookable {
 		// On ajoute avec AddAndCreate les animaux, objets et ennemies
 		this.animals = null;
 		this.objs = null;
-		this.enemies = null;
+		this.enemy = null;
 
 		// Il faut impérativement ajouter les portes après avec la méthode addDoors
 		this.doors = null;
@@ -77,8 +77,8 @@ public class Place implements Lookable {
 		return this.animals;
 	}
 
-	public Map<String, Ennemy> getEnemies() {
-		return this.enemies;
+	public Ennemy getEnemies() {
+		return this.enemy;
 	}
 
 	public Map<String, Obj> getItems() {
@@ -106,7 +106,7 @@ public class Place implements Lookable {
 	}
 
 	public boolean isContainsEnemies() {
-		return (this.enemies != null && this.enemies.size() > 0);
+		return (this.enemy != null);
 	}
 
 	// Setter
@@ -123,11 +123,13 @@ public class Place implements Lookable {
 	}
 
 	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
-		if(this.enemies == null) {
-			this.enemies = new HashMap<>();
+		if(this.enemy == null) {
+			this.enemy = new Ennemy(name, hp, dmg, loot, op, atk, dft,desc);
 		}
-		Ennemy enem = new Ennemy(name, hp, dmg, loot, op, atk, dft,desc);
-		this.enemies.put(name, enem);
+	}
+
+	public void setEnemy(Ennemy enemy){
+		this.enemy = enemy;
 	}
 
 	public void addObject(Obj o) {
@@ -281,20 +283,9 @@ public class Place implements Lookable {
 	public String toStringEnemies() {
 		StringBuilder retE = new StringBuilder();
 
-		if(this.enemies != null) {
-			if (this.enemies.size() != 0) {
-				int size = this.enemies.size();
-
-				retE = new StringBuilder("There is ");
-				List<String> enemy = new ArrayList<>(this.enemies.keySet());
-
-				for (int i = 0; i < size; i++) {
-					retE.append(" ").append(enemy.get(i));
-				}
-				retE.append("\n");
-			}
+		if(this.enemy != null) {
+			return "There's ennemy : " + this.enemy.NAME;
 		}
-
 		return retE.toString();
 	}
 

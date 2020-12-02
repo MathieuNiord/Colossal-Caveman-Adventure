@@ -12,6 +12,8 @@ public class Hero {
 	public final static int DEFAULT_BESCHERELLE_LEVEL = 0;
 	public final static int DEFAULT_KEY_LEVEL = 0;
 	public final static boolean DEFAULT_IMMUNISED_VALUE = false;
+	public final static int DEFAULT_CLUB_DAMAGE = 15;
+	public final static int DEFAULT_DAMAGE = 1;
 
 	public final static String NAME = "Houga Bouga";
 
@@ -76,8 +78,9 @@ public class Hero {
 	public boolean isAlive(){
 		return this.hp>0;
 	}
-	// Setter
 
+
+	// === Setter
 	public void increaseBescherelle() {
 		this.lvlBescherelle++;
 	}
@@ -85,12 +88,24 @@ public class Hero {
 	public void increaseKey() {
 		this.keyLevel++;
 	}
+
+	public void setLife(int damageHeal){
+		this.hp += damageHeal;
+		if(damageHeal < 0){
+			System.out.println("Ouch ! You loose " + damageHeal + " points of your life ! Take care my man...\n");
+		}
+		else{
+			System.out.println("You have just gained " + damageHeal + " life points! Well done Champion !");
+		}
+	}
 	public void setImmunised(){
 		this.immunised=true;
 	}
+
 	public void setPlace(Place newPlace){
 		this.place = newPlace;
 	}
+
 
 	// Display
 	public void showInventory(){
@@ -98,8 +113,8 @@ public class Hero {
 		System.out.println(this.getObjs().keySet().toString());
 	}
 
-	// Others
 
+	// Others
 	public void take(String s) throws InterruptedException {
 		if (this.place.getItems().containsKey(s)) {
 			this.place.getItems().get(s).take(this);
@@ -108,7 +123,6 @@ public class Hero {
 			System.out.print("\nNo kind of" + s + " in this place STOOOPID CAVEMAN !\n");
 		}
 	}
-
 
 	public void talk(String s) throws InterruptedException {
 		if (this.place.getAnimals().containsKey(s)) {
@@ -141,11 +155,11 @@ public class Hero {
 		if(this.getObjs().containsKey(s1)){
 			this.getObjs().get(s1).use(this,s2);
 		}
-		
 	}
+
 	public void lookAt(String s) throws InterruptedException {
-		if(this.getPlace().isContainsEnemies() && this.getPlace().getEnemies().containsKey(s)){
-			this.getPlace().getEnemies().get(s).look();
+		if(this.getPlace().isContainsEnemies()){
+			this.getPlace().getEnemies().look();
 		}
 		if(this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)){
 			this.getPlace().getAnimals().get(s).look();
@@ -153,8 +167,32 @@ public class Hero {
 		if(this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)){
 			this.getPlace().getItems().get(s).look();
 		}
+		if (this.getObjs().containsKey(s)) {
+			this.getObjs().get(s).look();
+		}
 	}
-	
+
+	public void attack(Ennemy ennemy){
+		if(this.objs.containsKey("Club")){
+			ennemy.takeDamage(DEFAULT_CLUB_DAMAGE);
+			System.out.println(Script.ANGRY_HERO + "\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + ennemy.NAME + " !\n");
+			System.out.println(ennemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + ennemy.NAME + " life : " + ennemy.getHP());
+		}
+		else{
+			ennemy.takeDamage(DEFAULT_DAMAGE);
+			System.out.println(Script.ANGRY_HERO + "\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + ennemy.NAME + " !\n");
+			System.out.println(ennemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + ennemy.NAME + " life : " + ennemy.getHP());
+		}
+	}
+
+	public void heal(){
+		if(this.objs.containsKey("Poster")){
+			System.out.println("No please put this thing away for me ... this is absolutely no time or place for this sort of thing\n");
+			this.hp += 20;
+			System.out.println("You gained 20 HP\n");
+		}
+	}
+
 	public void quit() {
 		this.hp = 0;
 	}
