@@ -23,7 +23,7 @@ public class Locker extends Obj{
 	// ***** METHODS *****
 	@Override
 	public void take(Hero h) throws InterruptedException {
-		Game.printLetterByLetter("What the hell man, you're trying to take A fu**ing Objects.Locker");
+		Game.printLetterByLetter("What the hell man, you're trying to take A fu**ing Objects.Locker\n");
 	}
 	// Getter
 
@@ -55,7 +55,7 @@ public class Locker extends Obj{
 			for (Obj obj : this.objs) {
 				this.hero.getObjs().put(obj.NAME, obj);
 			}
-			Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString());
+			Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString() + " !\n");
 			
 		}
 		

@@ -17,6 +17,7 @@ public class Monkey extends Animal{
 	// ***** CONSTRUCTORS *****
 	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
 		super(name, bLevel, noBeschDialog, beschDialog,desc);
+		this.hungry = true;
 		this.hungryDialog = hungryDialog;
 	}
 
@@ -28,7 +29,10 @@ public class Monkey extends Animal{
 	
 	
 	// Setter
-	
+
+	public void setUnHungry() {
+		this.hungry = false;
+	}
 	
 	
 	// Display

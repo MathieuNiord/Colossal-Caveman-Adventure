@@ -121,7 +121,7 @@ public class Hero {
 			this.place.getItems().get(s).take(this);
 		}
 		else{
-			System.out.print("\nNo kind of" + s + " in this place STOOOPID CAVEMAN !\n");
+			System.out.print("\nNo kind of " + s + " in this place STOOOPID CAVEMAN !\n");
 		}
 	}
 

@@ -107,8 +107,8 @@ public class Game {
 		experimentsRoom.addDoor(experimAndMort, "right");
 		experimentsRoom.addDoor(experimAndConda, "up");
 		experimentsRoom.addDoor(experimAndReserv, "up");
-		experimentsRoom.addDoor(experimAndCold, "right");
-		experimentsRoom.addDoor(experimAndDirty, "right");
+		experimentsRoom.addDoor(experimAndCold, "left");
+		experimentsRoom.addDoor(experimAndDirty, "left");
 
 		mortuary.addDoor(experimAndMort, "left");
 		mortuary.addDoor(secretPassage, "down");
@@ -157,8 +157,6 @@ public class Game {
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
 		decontaminationRoom.addAndCreateEnemy("SUPER-NAZI", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
-		//TEST COMBATS
-		animalRoom.addAndCreateEnemy("Test", 3, 1, k1, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT, Script.ACCOUNTGUY_DESCRIPT);
 
 		// We create the Characters.Hero
 		this.hero = new Hero(heroName, animalRoom);
@@ -333,7 +331,9 @@ public class Game {
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
 		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
 		hero.getPlace().setEnemy(null);
-		hero.getObjs().put(enemy.getItem().NAME, enemy.getItem());
+		hero.getPlace().addObject(enemy.getItem());
+		hero.take(enemy.getItem().NAME);
+		hero.getPlace().getItems().remove(enemy.getItem().NAME);
 		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 	}
 	

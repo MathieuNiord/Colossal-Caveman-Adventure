@@ -184,11 +184,12 @@ public class Place implements Lookable {
 			if (this.animals.size() != 0) {
 				int size = this.animals.size();
 
-				retA = new StringBuilder("There is " + size + " animal(s) in this room :");
+				retA = new StringBuilder("There is " + size + " animal(s) in this room : ");
 				List<String> anim = new ArrayList<>(this.animals.keySet());
 
-				for (int i = 0; i < size; i++) {
-					retA.append(" ").append(anim.get(i));
+				retA.append(anim.get(0));
+				for (int i = 1; i < size; i++) {
+					retA.append(" | ").append(anim.get(i));
 				}
 				retA.append("\n");
 			}
@@ -204,11 +205,12 @@ public class Place implements Lookable {
 			if (this.objs.size() != 0) {
 				int size = this.objs.size();
 
-				retO = new StringBuilder("There is " + size + " object(s) :");
+				retO = new StringBuilder("There is " + size + " object(s) : ");
 				List<String> objs = new ArrayList<>(this.objs.keySet());
 
-				for (int i = 0; i < size; i++) {
-					retO.append(" ").append(objs.get(i));
+				retO.append(objs.get(0));
+				for (int i = 1; i < size; i++) {
+					retO.append(" | ").append(objs.get(i));
 				}
 				retO.append("\n");
 			}

@@ -17,7 +17,7 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	
 	@Override
 	public void take(Hero h) throws InterruptedException {
-		Game.printLetterByLetter("You successfully took the object !");
+		Game.printLetterByLetter("You successfully took the object !\n");
 		h.getObjs().put(this.NAME,this);
 		h.getPlace().getItems().remove(this.NAME);
 	}

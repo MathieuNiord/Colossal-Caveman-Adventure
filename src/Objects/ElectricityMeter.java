@@ -35,7 +35,7 @@ public class ElectricityMeter extends Obj{
 	
 	@Override
 	public void take(Hero h) throws InterruptedException {
-		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA");
+		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n");
 	}
 	
 	// Getter
