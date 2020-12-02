@@ -4,7 +4,7 @@ import Others.*;
 import Objects.*;
 import Interfaces.*;
 
-public class Ennemy implements Lookable {
+public class Enemy implements Lookable {
 
     // ***** CONSTANTS *****
     private static final int DEFAULT_HP = 30;
@@ -17,7 +17,7 @@ public class Ennemy implements Lookable {
     private int hp;
     private final int damage;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
-    private boolean state; //true = vivant
+    private boolean state = true; //true = vivant
     private final String opening;
     private final String attack;
     private final String defeat;
@@ -26,18 +26,7 @@ public class Ennemy implements Lookable {
 
     // ***** CONSTRUCTORS *****
 
-    Ennemy(Obj loot, String op, String atk, String dft, String desc){
-        this.NAME = DEFAULT_NAME;
-        this.hp = DEFAULT_HP;
-        this.damage = DEFAULT_DAMAGE;
-        this.item = loot;
-        this.opening = op;
-        this.attack = atk;
-        this.defeat = dft;
-        this.description=desc;
-    }
-
-    public Ennemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc){
+    public Enemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
         this.NAME = name;
         this.hp = hp;
         this.damage = dmg;
@@ -54,61 +43,63 @@ public class Ennemy implements Lookable {
     // Getter
 
     //On souhaite connaître les points de vies restants de l'ennemi
-    public int getHP(){
+    public int getHP() {
         return this.hp;
     }
 
     //On souhaite connaître les dégâts d'attaque de l'ennemi
-    public int getDamage(){
+    public int getDamage() {
         return this.damage;
     }
 
     //On souhaite savoir si l'ennemi a perdu
-    public boolean isDefeat(){
+    public boolean isDefeat() {
+        if (this.hp <= 0) {
+            this.state = false;
+        }
         return !this.state;
     }
 
     //On souhaite connaître l'objet que possède l'ennemi
-    public Obj getItem(){
+    public Obj getItem() {
         return this.item;
     }
 
     // Setter
 
-    public void takeDamage(int damage){
-        System.out.println(Script.ANGRY_HERO);
-        if(this.hp > 0 && this.state){
+    public void takeDamage(int damage) throws InterruptedException {
+        if (this.hp > 0 && this.state) {
             this.hp -= damage;
         }
-        else if(hp <= 0 && this.state){
+        else if (hp <= 0 && this.state) {
             this.state = false;
-            System.out.println(this.defeat);
+            Game.printLetterByLetter(this.defeat);
         }
     }
 
-    public void Heal(int heal){
-        if(this.state && this.hp > 0){
+    public void Heal(int heal) {
+        if (this.state && this.hp > 0) {
             this.hp += heal;
         }
     }
 
-    public void Loot(){
+    public void Loot() {
         //TODO drop l'item au joueur
         this.item = null;
     }
 
     // Display
 
-    public void opening(){
-        System.out.print(this.opening);
+    public void opening() throws InterruptedException {
+        Game.printLetterByLetter(this.opening);
     }
 
-    public void attack(){
-        System.out.print(this.attack);
+    public void attack() throws InterruptedException {
+        Game.printLetterByLetter(this.attack);
     }
 
-    public void defeat(){
-        System.out.print(this.defeat);
+    public void defeat() throws InterruptedException {
+        Game.printLetterByLetter(this.defeat);
     }
     
     public void look() throws InterruptedException {

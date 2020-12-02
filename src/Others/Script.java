@@ -9,11 +9,18 @@ public class Script {
             "\nYou have to help him out of this lab." +
             "\n" +
             "\nWrite : help, and press enter to get the list of available commands";
+
+    // === INTRO BATTLES ===
+    public static final String BATTLE_BEGIN = "\n=========== BAAAAAAAATTLE ===========\n" +
+            "\nYou come face to face with a ";
+    public static final String BATTLE_HELP = "\n=========== LIST OF COMMANDS ===========" +
+            "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\nBEWARE OF WHAT YOU'RE WRITING OR YOU COULD HAVE A BAD PRESENT...\n\n";
+    public static final String BATTLE_HELP_DEFAULT = "\n\n=========== LIST OF COMMANDS ===========\n" +
+            "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\n";
     
     // === HERO ===
     public static final String DEFAULT_HERO = "Houga Bouga";
     public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !";
-    //public static final String
 
     // === ANIMALS ===
 
@@ -52,32 +59,32 @@ public class Script {
     // === ENNEMIES ===
 
     //Account Guy
-    public static final String ACCOUNTGUY_DEFAULT = "H1 1'M 7H3 4CC0UN7 9UY ! Y0U W4N7 70 83 MY FR13ND ?";
-    public static final String ACCOUNTGUY_ATTACK = "1'M 83773R 7H4N Y0U ! D13 57000P1D !";
-    public static final String ACCOUNTGUY_DEFEAT = "4444RRR9H = 1";
-    public static final String ACCOUNTGUY_DESCRIPT = "He seems lonely, certainly the ACCOUNT GUY. Even Nazis don't understand him.";
+    public static final String ACCOUNTGUY_DEFAULT = "H1 1'M 7H3 4CC0UN7 9UY ! Y0U W4N7 70 83 MY FR13ND ?\n";
+    public static final String ACCOUNTGUY_ATTACK = "1'M 83773R 7H4N Y0U ! D13 57000P1D !\n";
+    public static final String ACCOUNTGUY_DEFEAT = "4444RRR9H = 1\n";
+    public static final String ACCOUNTGUY_DESCRIPT = "He seems lonely, certainly the ACCOUNT GUY. Even Nazis don't understand him.\n";
 
     //Zombie
-    public static final String ZOMBIE_DEFAULT  = "Grrrr…";
-    public static final String ZOMBIE_ATTACK = "Grrrr…";
-    public static final String ZOMBIE_DEFEAT = "Aaaaarghrrgrr...";
-    public static final String ZOMBIEDESCRIPT = "So it was true, the Nazis created zombies ?! However, we are in the 80s, beware of the clichés.";
+    public static final String ZOMBIE_DEFAULT  = "Grrrr…\n";
+    public static final String ZOMBIE_ATTACK = "Grrrr…\n";
+    public static final String ZOMBIE_DEFEAT = "Aaaaarghrrgrr...\n";
+    public static final String ZOMBIEDESCRIPT = "So it was true, the Nazis created zombies ?! However, we are in the 80s, beware of the clichés.\n";
 
     //Boss Final
-    public static final String BOSS_DEFAULT = "Blablablablablablablabla";
-    public static final String BOSS_ATTACCK = "BlablablACHTUNG !";
-    public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...";
-    public static final String BOSS_DESCRIPT = "Wow, what a big and strong man ! He's certainly a kind of final boss...";
+    public static final String BOSS_DEFAULT = "Blablablablablablablabla\n";
+    public static final String BOSS_ATTACCK = "BlablablACHTUNG !\n";
+    public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...\n";
+    public static final String BOSS_DESCRIPT = "Wow, what a big and strong man ! He's certainly a kind of final boss...\n";
 
     //OBJECTS
-    public static final String KEY_DESCRIPT = "It's just a key...";
-    public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.";
-    public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.";
-    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
-    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.";
+    public static final String KEY_DESCRIPT = "It's just a key...\n";
+    public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.\n";
+    public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.\n";
+    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
+    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.\n";
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
-    public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter";
-    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation";
+    public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
+    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
     
     //HELP fonction
     public static final String HELP_DEFAULT = "List of commands :" +

@@ -27,7 +27,7 @@ public class Place implements Lookable {
 	private Map<String, Door> right;
 	private Map<String, Door> up;
 	private Map<String, Door> down;
-	private Ennemy enemy;
+	private Enemy enemy;
 
 
 	// ***** CONSTRUCTOR *****
@@ -77,7 +77,7 @@ public class Place implements Lookable {
 		return this.animals;
 	}
 
-	public Ennemy getEnemies() {
+	public Enemy getEnemies() {
 		return this.enemy;
 	}
 
@@ -124,11 +124,11 @@ public class Place implements Lookable {
 
 	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
 		if(this.enemy == null) {
-			this.enemy = new Ennemy(name, hp, dmg, loot, op, atk, dft,desc);
+			this.enemy = new Enemy(name, hp, dmg, loot, op, atk, dft,desc);
 		}
 	}
 
-	public void setEnemy(Ennemy enemy){
+	public void setEnemy(Enemy enemy){
 		this.enemy = enemy;
 	}
 

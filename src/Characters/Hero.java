@@ -92,10 +92,10 @@ public class Hero {
 	public void setLife(int damageHeal){
 		this.hp += damageHeal;
 		if(damageHeal < 0){
-			System.out.println("Ouch ! You loose " + damageHeal + " points of your life ! Take care my man...\n");
+			System.out.println("\nOuch ! You loose " + damageHeal + " points of your life ! Take care my man...\n");
 		}
 		else{
-			System.out.println("You have just gained " + damageHeal + " life points! Well done Champion !");
+			System.out.println("\nYou have just gained " + damageHeal + " life points! Well done Champion !\n");
 		}
 	}
 	public void setImmunised(){
@@ -109,8 +109,9 @@ public class Hero {
 
 	// Display
 	public void showInventory(){
-		System.out.println("Your inventory :");
-		System.out.println(this.getObjs().keySet().toString());
+		System.out.print("\nYour inventory : ");
+		System.out.print(this.getObjs().keySet().toString());
+		Game.sysClear(3);
 	}
 
 
@@ -172,24 +173,32 @@ public class Hero {
 		}
 	}
 
-	public void attack(Ennemy ennemy){
+	public void attack(Enemy enemy) throws InterruptedException {
 		if(this.objs.containsKey("Club")){
-			ennemy.takeDamage(DEFAULT_CLUB_DAMAGE);
-			System.out.println(Script.ANGRY_HERO + "\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + ennemy.NAME + " !\n");
-			System.out.println(ennemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + ennemy.NAME + " life : " + ennemy.getHP());
+			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
+			System.out.print("\nHouga Bouga :");
+			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+			Game.sysClear(2);
 		}
 		else{
-			ennemy.takeDamage(DEFAULT_DAMAGE);
-			System.out.println(Script.ANGRY_HERO + "\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + ennemy.NAME + " !\n");
-			System.out.println(ennemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + ennemy.NAME + " life : " + ennemy.getHP());
+			enemy.takeDamage(DEFAULT_DAMAGE);
+			System.out.print("\nHouga Bouga :");
+			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+			Game.sysClear(2);
 		}
 	}
 
-	public void heal(){
+	public void heal() throws InterruptedException {
 		if(this.objs.containsKey("Poster")){
-			System.out.println("No please put this thing away for me ... this is absolutely no time or place for this sort of thing\n");
+			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
 			this.hp += 20;
-			System.out.println("You gained 20 HP\n");
+			System.out.println("\nYou gained 20 HP\n");
+		}
+		else{
+			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n");
+			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
 		}
 	}
 

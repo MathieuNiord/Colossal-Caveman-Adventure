@@ -1,10 +1,9 @@
 package Others;
 
 import Characters.*;
-import Others.*;
 import Doors.*;
 import Objects.*;
-import Interfaces.*;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -156,8 +155,10 @@ public class Game {
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
 		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		decontaminationRoom.addAndCreateEnemy("NOM DU BOSS", 20, 6, k2,
+		decontaminationRoom.addAndCreateEnemy("SUPER-NAZI", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
+		//TEST COMBATS
+		animalRoom.addAndCreateEnemy("Test", 3, 1, k1, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT, Script.ACCOUNTGUY_DESCRIPT);
 
 		// We create the Characters.Hero
 		this.hero = new Hero(heroName, animalRoom);
@@ -177,12 +178,10 @@ public class Game {
 		return this.places;
 	}
 
-	// Setter
-
 
 	// === Display
-	public void help() throws InterruptedException {
-		Game.printLetterByLetter(Script.HELP_DEFAULT);
+	public void help() {
+		System.out.println(Script.HELP_DEFAULT);
 	}
 
 	public void displayEnvironment() throws InterruptedException {
@@ -197,7 +196,7 @@ public class Game {
 			System.out.print(c);
 			if( c=='.' || c=='?' || c==',' || c=='!')
 			{
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			}
 
 			Thread.sleep(20);
@@ -224,9 +223,9 @@ public class Game {
 
 	// === Other
 	public void Play() throws InterruptedException {
-		//printLetterByLetter(Script.DEFAULT_WELCOME);
-		//pressAnyKeyToContinue();
-		//sysClear(100);
+		System.out.println(Script.DEFAULT_WELCOME);
+		pressAnyKeyToContinue();
+		sysClear(20);
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
@@ -238,7 +237,7 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		printLetterByLetter("Command :> ");
+		System.out.print("Command :> ");
 		int count; //count of words
 		String input; //input String
 		String[] tabInput = new String[0]; //Tab of words
@@ -282,17 +281,28 @@ public class Game {
 		}
 	}
 
-	public void battle(Hero hero, Ennemy ennemy){
-		System.out.println("COMBAT !");
+	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+
+		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
+		sysClear(1);
+		System.out.print(enemy.NAME + " :");
+		enemy.opening();
 		Scanner sc = new Scanner(System.in);
 		String input;
 		String[] tabInput;
 		int count;
+		System.out.println(Script.BATTLE_HELP);
 
-		while (hero.isAlive() && ennemy.isDefeat()) {
+		while (hero.isAlive() && !enemy.isDefeat()) {
 
-			ennemy.attack();
-			hero.setLife(-(ennemy.getDamage()));
+			//ENEMY TURN
+			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
+			System.out.print(enemy.NAME + " :");
+			enemy.attack();
+			hero.setLife(-(enemy.getDamage()));
+			//HERO TURN
+			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
+			System.out.print("Choice :>");
 			input = sc.nextLine();
 			tabInput = input.split(" ");
 			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
@@ -301,47 +311,39 @@ public class Game {
 
 				case 1 :
 					switch (tabInput[0]) {
-						case "attack" -> hero.attack(ennemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
+						case "attack" -> hero.attack(enemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
 						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
-						default -> System.out.println("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
+						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
 				}
 				break;
+
 				case 2 :
-
-					if (tabInput[1].equalsIgnoreCase(ennemy.NAME)) {		//Si le joueur écrit par hasard le nom de l'ennemi
-						switch (tabInput[0]) {
-							case "attack" -> hero.attack(ennemy);	//Le joueur attaque l'ennemi
-							case "heal" -> System.out.println("You cannot cure " + ennemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
-							default -> System.out.println("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
-						}
+					switch (tabInput[0]) {
+						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
+						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
+						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
 					}
+					break;
 
-					else if (tabInput[1].equalsIgnoreCase("Poster")) {
-						switch (tabInput[0]) {
-							case "attack" -> System.out.println("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
-							case "heal" -> hero.heal();	//Le joueur se soigne
-							default -> System.out.println("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
-						}
-					}
-
-					else {
-						System.out.println("Come on get serious, it's not the moment, you're fighting dude...You pass your turn !\n");
-					}
-				default : System.out.println("Whatever ! You pass your turn !\n");
+				default : printLetterByLetter("Whatever ! You pass your turn !\n");
 			}
+
 		}
+		//ONCE ENEMY IS DEFEATED
+		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
+		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
 		hero.getPlace().setEnemy(null);
-		hero.getObjs().put(ennemy.getItem().NAME, ennemy.getItem());
-		System.out.println("An object fell from the corpse of " + ennemy.NAME + ". Looks like a" + ennemy.getItem().NAME + "\n");
+		hero.getObjs().put(enemy.getItem().NAME, enemy.getItem());
+		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
-		printLetterByLetter("Answer : ");
+		System.out.println("Your answer : ");
 		Game g = new Game(sc.nextLine());
 		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
-		printLetterByLetter("Answer : ");
+		System.out.println("Answer : ");
 		String noMatter = sc.nextLine();
 		printLetterByLetter("As you want HOUGA BOUGA !");
 		sysClear(20);
