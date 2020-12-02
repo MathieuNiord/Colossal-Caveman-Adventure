@@ -21,7 +21,7 @@ public class Banana extends Obj {
 			System.out.println("I think you should keep this Banana for somebody...");
 		}
 		else{
-			System.out.println("I think you shoud go talk to the monkey");
+			System.out.println("I think you shoud go talk to the monkey...");
 			
 		}
 	}

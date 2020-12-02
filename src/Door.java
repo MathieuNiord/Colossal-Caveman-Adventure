@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Door {
+public class Door implements Crossable {
 
 	// ***** ATTRIBUTES *****
 
@@ -44,7 +44,7 @@ public class Door {
 
 	//Other
 
-	public void go(Hero hero, String s){
+	public void cross(Hero hero, String s){
 		if(this.isOpen()){
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
 		}

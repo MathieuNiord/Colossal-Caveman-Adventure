@@ -5,7 +5,7 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		System.out.println("You cannot use a Bescherelle ...");
+		System.out.println("You cannot use a Bescherelle. STOOPID");
 	}
 	
 	@Override

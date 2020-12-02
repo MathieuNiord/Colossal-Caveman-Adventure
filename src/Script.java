@@ -74,7 +74,9 @@ public class Script {
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
     public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.";
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
-
+    public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter";
+    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation";
+    
     //HELP fonction
     public static final String HELP_DEFAULT = "List of commands :" +
             "\n- go (location)" +

@@ -1,4 +1,4 @@
-public class Ennemy {
+public class Ennemy implements Lookable{
 
     // ***** CONSTANTS *****
     private static final int DEFAULT_HP = 30;

@@ -68,10 +68,13 @@ public class Game {
 		Banana banana = new Banana("Banana");
 		Stick stick = new Stick("Stick");
 		Flint flint = new Flint("Flint");
+		Fuse fuse = new Fuse("Fuse");
 		
 		Bescherelle catB = new Bescherelle("Bescherelle");
 		Bescherelle mouseB = new Bescherelle("Bescherelle");
 		Bescherelle monkeyB = new Bescherelle("Bescherelle");
+		
+		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
 		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
 		animalRoom.addDoor(animAndTransf, "up");
@@ -136,6 +139,8 @@ public class Game {
 		animalRoom.addObject(catB);
 		archivesRoom.addObject(mouseB);
 		desertedRoom.addObject(monkeyB);
+		changingRoom.addObject(fuse);
+		transferRoom.addObject(electricityMeter);
 
 		// We add the enemies to the rooms
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null,
@@ -195,7 +200,7 @@ public class Game {
 		
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			tabInput = input.split(" "); //Split the into the tab when the char is "space"
+			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 		count = tabInput.length; //count is egal to the number of words
 		switch (count){
@@ -203,7 +208,7 @@ public class Game {
 				switch (tabInput[0]) {
 					case "help" -> this.help(); //show commands
 					case "quit"-> this.hero.quit(); //Set the life to 0 so the hero die
-					case "look"-> printLetterByLetter(this.hero.getPlace().toString());
+					case "look"-> this.hero.getPlace().look();
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -213,7 +218,7 @@ public class Game {
 					case "go" -> this.hero.go(tabInput[1]);
 					case "take" -> this.hero.take(tabInput[1]);
 					case "use" -> this.hero.use(tabInput[1]);
-					case "look" -> this.hero.look(tabInput[1]);
+					case "look" -> this.hero.lookAt(tabInput[1]);
 					case "talk" -> this.hero.talk(tabInput[1]);
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -221,10 +226,10 @@ public class Game {
 			case 3:
 				switch (tabInput[0]) {
 					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
-					case "look"->this.hero.look(tabInput[1]+" "+tabInput[2]);
-					
+					case "look"->this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
+				break;
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
 	}

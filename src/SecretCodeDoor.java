@@ -43,7 +43,7 @@ public class SecretCodeDoor extends LockableDoor {
 	//Other
 
 	@Override
-	public void go(Hero hero, String s){
+	public void cross(Hero hero, String s){
 		if(!this.isUnlock()){
 			Scanner sc = new Scanner(System.in);	//Nouveau scanner
 			System.out.print("\nCODE : ");

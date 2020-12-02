@@ -1,4 +1,4 @@
-public abstract class Obj {
+public abstract class Obj implements Lookable,Usable,Takable{
 	
 	//ATTRIBUTES
 	public final String name;
@@ -8,8 +8,6 @@ public abstract class Obj {
 		this.name = name;
 	}
 	//METHODS
-
-	public abstract void use(Hero h);
 	
 	public void take(Hero h) throws InterruptedException {
 		Game.printLetterByLetter("You successfully took the object !");
@@ -27,5 +25,4 @@ public abstract class Obj {
 		return this.name;
 	}
 	
-	public abstract void look() throws InterruptedException;
 }

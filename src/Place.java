@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.List;
 
-public class Place {
+public class Place implements Lookable{
 
 	// ***** CONSTANTS *****
 
@@ -331,5 +331,9 @@ public class Place {
 
 		return intro + isInf + isEnl + strA + strO + strD + strE;
 	}
-
+	
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(this.toString());
+	}
 }

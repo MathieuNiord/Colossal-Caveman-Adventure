@@ -42,7 +42,7 @@ public abstract class LockableDoor extends Door {
 	//Other
 
 	@Override
-	public void go(Hero hero, String s){
+	public void cross(Hero hero, String s){
 		if(this.isUnlock()){
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
 		}

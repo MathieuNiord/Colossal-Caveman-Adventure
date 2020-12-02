@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Hero {
 
@@ -117,7 +116,7 @@ public class Hero {
 
 	public void go(String s) {
 		if(this.getPlace().getDoors() != null && this.getPlace().getDoors().containsKey(s)) {
-			this.getPlace().getDoors().get(s).go(this, s);
+			this.getPlace().getDoors().get(s).cross(this, s);
 		}
 		else {
 			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
@@ -134,7 +133,7 @@ public class Hero {
 	
 	}
 	
-	public void look(String s) throws InterruptedException {
+	public void lookAt(String s) throws InterruptedException {
 		//TODO
 		if(this.getPlace().isContainsEnemies() && this.getPlace().getEnemies().containsKey(s)){
 			this.getPlace().getEnemies().get(s).look();

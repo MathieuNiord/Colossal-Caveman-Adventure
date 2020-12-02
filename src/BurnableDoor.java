@@ -11,7 +11,7 @@ public class BurnableDoor extends LockableDoor{
 	}
 	// ***** METHODS *****
 	@Override
-	public void go(Hero hero, String s){
+	public void cross(Hero hero, String s){
 		if(!this.isUnlock()){
 			if(hero.getObjs().containsKey("FiredStick")){
 				System.out.println("You burned the door !" +

@@ -29,7 +29,7 @@ public class DestructableDoor extends LockableDoor {
     //Other
 
     @Override
-    public void go(Hero hero, String s){
+    public void cross(Hero hero, String s){
         this.unlock(hero.getObjs().containsKey("Club")); //On cherche si le joueur possède le gourdin dans ses items
         if(this.isUnlock()){
             hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer

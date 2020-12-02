@@ -1,15 +1,17 @@
 import java.util.ArrayList;
 
-public class Locker{
+public class Locker extends Obj{
 	
 	// ***** ATTRIBUTES *****
 	private ArrayList<Obj> objs;
 	
-	// ***** CONSTRUCTOR *****
-	
-	public Locker() {
+	public Locker(String name) {
+		super(name);
 		this.objs = new ArrayList<>();
 	}
+	
+	// ***** CONSTRUCTOR *****
+
 
 	// ***** METHODS *****
 
@@ -32,5 +34,15 @@ public class Locker{
 	@Override
 	public String toString(){
 		return this.getClass().getSimpleName();
+	}
+	
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString());
+	}
+	
+	@Override
+	public void use(Hero h) {
+		System.out.println("You cannot use a Locker STOOPID Caveman");
 	}
 }
