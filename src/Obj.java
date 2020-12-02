@@ -11,7 +11,8 @@ public abstract class Obj {
 
 	public abstract void use(Hero h);
 	
-	public void take(Hero h) {
+	public void take(Hero h) throws InterruptedException {
+		Game.printLetterByLetter("You successfully took the object !");
 		h.getObjs().put(this.name,this);
 		h.getPlace().getItems().remove(this.name);
 	}
