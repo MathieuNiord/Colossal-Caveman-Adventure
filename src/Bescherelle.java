@@ -9,9 +9,8 @@ public class Bescherelle extends Obj{
 	}
 	
 	@Override
-	public void take(Hero h) {
+	public void take(Hero h) throws InterruptedException {
 		h.increaseBescherelle();
-		h.getObjs().put(this.name,this);
-		h.getPlace().getItems().remove(this.name);
+		super.take(h);
 	}
 }
