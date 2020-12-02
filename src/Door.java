@@ -49,7 +49,10 @@ public class Door {
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
 		}
 	}
-
+	
+	public void look() {
+	}
+	
 	// Display
 
 	/*public String toString(){

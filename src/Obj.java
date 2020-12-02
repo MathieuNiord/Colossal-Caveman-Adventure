@@ -26,4 +26,6 @@ public abstract class Obj {
 	public String toString() {
 		return this.name;
 	}
+	
+	public abstract void look() throws InterruptedException;
 }

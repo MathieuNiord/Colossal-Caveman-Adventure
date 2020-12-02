@@ -107,7 +107,6 @@ public class Hero {
 
 
 	public void talk(String s) throws InterruptedException {
-		//TODO
 		if (this.place.getAnimals().containsKey(s)) {
 			this.place.getAnimals().get(s).talk(this);
 		}
@@ -135,8 +134,20 @@ public class Hero {
 	
 	}
 	
-	public void look(String s) {
+	public void look(String s) throws InterruptedException {
 		//TODO
+		if(this.getPlace().isContainsEnemies() && this.getPlace().getEnemies().containsKey(s)){
+			this.getPlace().getEnemies().get(s).look();
+		}
+		if(this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)){
+			this.getPlace().getAnimals().get(s).look();
+		}
+		if(this.getPlace().isContainsDoors() && this.getPlace().getDoors().containsKey(s)){
+			this.getPlace().getDoors().get(s).look();
+		}
+		if(this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)){
+			this.getPlace().getItems().get(s).look();
+		}
 	}
 	
 	public void quit() {

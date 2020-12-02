@@ -1,13 +1,11 @@
 public class Heal extends Obj {
 	
 	//ATTRIBUTES
-	public final int VALUE;
 	
 	
 	//CONSTRUCTORS
-	public Heal(String name, int val) {
+	public Heal(String name) {
 		super(name);
-		this.VALUE = val;
 	}
 	
 	//METHODS
@@ -19,20 +17,25 @@ public class Heal extends Obj {
 	
 	
 	//setter
-	
+	@Override
+	public void use(Hero h) {
+		//TODO message
+		h.setImmunised();
+		h.getObjs().remove("Potion");
+	}
 	
 	
 	//printer
-	
-	
 	@Override
-	public void use(Hero h) {
-		h.setImmunised();
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.FLINT_DESCRIPT);
 	}
+	
+	
 	
 	
 	@Override
 	public String toString() {
-		return super.toString() + ",Value : " + this.VALUE;
+		return super.toString();
 	}
 }

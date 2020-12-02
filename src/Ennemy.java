@@ -9,17 +9,18 @@ public class Ennemy {
 
     private final String NAME;
     private int hp;
-    private int damage;
+    private final int damage;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
     private boolean state; //true = vivant
-    private String opening;
-    private String attack;
-    private String defeat;
+    private final String opening;
+    private final String attack;
+    private final String defeat;
+    private final String description;
     //Je pensais ajouter un healcounter de manière à ce que l'ennemi puisse se soigner un certain nb de fois au cours du combat
 
     // ***** CONSTRUCTORS *****
 
-    Ennemy(Obj loot, String op, String atk, String dft){
+    Ennemy(Obj loot, String op, String atk, String dft,String desc){
         this.NAME = DEFAULT_NAME;
         this.hp = DEFAULT_HP;
         this.damage = DEFAULT_DAMAGE;
@@ -27,9 +28,10 @@ public class Ennemy {
         this.opening = op;
         this.attack = atk;
         this.defeat = dft;
+        this.description=desc;
     }
 
-    Ennemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft){
+    Ennemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft,String desc){
         this.NAME = name;
         this.hp = hp;
         this.damage = dmg;
@@ -37,6 +39,8 @@ public class Ennemy {
         this.opening = op;
         this.attack = atk;
         this.defeat = dft;
+        this.description=desc;
+    
     }
 
     // ***** METHODS *****
@@ -87,6 +91,7 @@ public class Ennemy {
     }
 
     public void Loot(){
+        //TODO drop l'item au joueur
         this.item = null;
     }
 
@@ -102,5 +107,9 @@ public class Ennemy {
 
     public void defeat(){
         System.out.print(this.defeat);
+    }
+    
+    public void look() throws InterruptedException {
+        Game.printLetterByLetter(this.description);
     }
 }

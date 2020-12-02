@@ -22,6 +22,11 @@ public class Weapon extends Obj{
 			//h.getPlace().getEnemies().forEach();
 		}
 	}
+	
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter("Club");
+	}
 	//METHODS
 	
 	

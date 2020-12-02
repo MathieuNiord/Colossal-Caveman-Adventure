@@ -25,6 +25,8 @@ public class Banana extends Obj {
 			
 		}
 	}
+	
+	
 	// Getter
 	
 	
@@ -34,4 +36,8 @@ public class Banana extends Obj {
 	
 	
 	// Display
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.BANANA_DESCRIPT);
+	}
 }

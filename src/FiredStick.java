@@ -15,7 +15,7 @@ public class FiredStick extends Obj {
 	// ***** METHODS *****
 	@Override
 	public void use(Hero h) {
-		//TODO
+		System.out.println("Use this item for something else...");
 	}
 	// Getter
 	
@@ -26,4 +26,7 @@ public class FiredStick extends Obj {
 	
 	
 	// Display
+	@Override
+	public void look() throws InterruptedException {
+	}
 }

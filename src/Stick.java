@@ -38,4 +38,8 @@ public class Stick extends Obj {
 	
 	
 	// Display
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.STICK_DESCRIPT);
+	}
 }
