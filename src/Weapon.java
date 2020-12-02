@@ -13,7 +13,14 @@ public class Weapon extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-	
+		if(h.getPlace().getEnemies().size()>0){
+			
+			
+			//TODO hit enemy
+			
+			
+			//h.getPlace().getEnemies().forEach();
+		}
 	}
 	//METHODS
 	
