@@ -4,7 +4,11 @@ public abstract class LockableDoor extends Door {
 	private boolean lock;
 
 	// ***** CONSTRUCTOR ****
-
+	LockableDoor(Place p1){
+		super(p1);
+		this.open = false;
+		this.lock = true;
+	}
 	LockableDoor(Place p1, Place p2){
 		super(p1, p2);
 		this.open = false;
