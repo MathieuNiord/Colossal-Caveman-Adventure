@@ -89,11 +89,14 @@ public class Hero {
 	}
 
 	// Display
-
+	public void showInventory(){
+		System.out.println("Your inventory :");
+		System.out.println(this.getObjs().keySet().toString());
+	}
 
 	// Others
 
-	public void take(String s) {
+	public void take(String s) throws InterruptedException {
 		if (this.place.getItems().containsKey(s)) {
 			this.place.getItems().get(s).take(this);
 		}
@@ -123,7 +126,13 @@ public class Hero {
 	}
 
 	public void use(String s) {
-		//TODO
+		if(this.getObjs().containsKey(s)){
+			this.getObjs().get(s).use(this);
+		}
+		else{
+			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
+		}
+	
 	}
 	
 	public void look(String s) {
