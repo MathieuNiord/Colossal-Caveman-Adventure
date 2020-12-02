@@ -236,7 +236,8 @@ public class Game {
 			case 3:
 				switch (tabInput[0]) {
 					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
-					case "look"->this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
+					case "look"-> this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
+					case "use"-> this.hero.use(tabInput[1],tabInput[2]);
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;

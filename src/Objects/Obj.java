@@ -21,6 +21,11 @@ public abstract class Obj implements Lookable, Usable, Takable {
 		h.getObjs().put(this.NAME,this);
 		h.getPlace().getItems().remove(this.NAME);
 	}
+	
+	@Override
+	public void use(Hero h,String s) {
+		System.out.println("You cannot combine those object together");
+	}
 	//getter
 
 	//setter

@@ -137,7 +137,12 @@ public class Hero {
 		}
 	
 	}
-	
+	public void use(String s1,String s2) {
+		if(this.getObjs().containsKey(s1)){
+			this.getObjs().get(s1).use(this,s2);
+		}
+		
+	}
 	public void lookAt(String s) throws InterruptedException {
 		if(this.getPlace().isContainsEnemies() && this.getPlace().getEnemies().containsKey(s)){
 			this.getPlace().getEnemies().get(s).look();
