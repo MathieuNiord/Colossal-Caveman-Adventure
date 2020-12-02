@@ -56,14 +56,14 @@ public class Game {
 		Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
 		
 		//We create Animals
-		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02);
-		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02);
-		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03);
+		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 		
 		//We create Objects
 		Weapon club = new Weapon("Club",5);
 		
-		Heal potion = new Heal("Potion",50);
+		Heal potion = new Heal("Potion");
 		
 		Banana banana = new Banana("Banana");
 		Stick stick = new Stick("Stick");
@@ -138,9 +138,12 @@ public class Game {
 		desertedRoom.addObject(monkeyB);
 
 		// We add the enemies to the rooms
-		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT);
-		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, null, Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT);
-		decontaminationRoom.addAndCreateEnemy("NOM DU BOSS", 20, 6, null, Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT);
+		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null,
+				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
+		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, null,
+				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
+		decontaminationRoom.addAndCreateEnemy("NOM DU BOSS", 20, 6, null,
+				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
 		// We create the Hero
 		this.hero = new Hero(heroName, animalRoom);
@@ -210,7 +213,7 @@ public class Game {
 					case "go" -> this.hero.go(tabInput[1]);
 					case "take" -> this.hero.take(tabInput[1]);
 					case "use" -> this.hero.use(tabInput[1]);
-					case "look" -> System.out.println("I don't know !");   //TODO
+					case "look" -> this.hero.look(tabInput[1]);
 					case "talk" -> this.hero.talk(tabInput[1]);
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -218,6 +221,7 @@ public class Game {
 			case 3:
 				switch (tabInput[0]) {
 					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
+					case "look"->this.hero.look(tabInput[1]+" "+tabInput[2]);
 					
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
