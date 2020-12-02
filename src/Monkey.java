@@ -39,11 +39,14 @@ public class Monkey extends Animal{
 			this.hungry = false;
 		}
 		
-		if(!this.hungry){
-			super.talk(h);
+		if(this.beschLevel>h.getBLevel()){
+			Game.printLetterByLetter(Script.MONKEY_TEXT01);
+		}
+		else if(this.hungry){
+			Game.printLetterByLetter(Script.MONKEY_TEXT02);
 		}
 		else{
-		
+			Game.printLetterByLetter(Script.MONKEY_TEXT03);
 		}
 	}
 }
