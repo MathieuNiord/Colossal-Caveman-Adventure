@@ -8,14 +8,16 @@ public class Animal  {
 	public final int beschLevel;
 	public final String noBeschDialog;
 	public final String beschDialog;
+	public final String description;
 	// ***** CONSTRUCTORS *****
 	
-	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog){
+	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc){
 		
 		this.NAME = name;
 		this.beschLevel=bLevel;
 		this.beschDialog = beschDialog;
 		this.noBeschDialog = noBeschDialog;
+		this.description = desc;
 		
 	}
 	
@@ -46,6 +48,10 @@ public class Animal  {
 	public String toString() {
 		//Return the name of the animal
 		return this.NAME;
+	}
+	
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(this.description);
 	}
 }
 
