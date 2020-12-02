@@ -9,6 +9,7 @@ public abstract class Obj implements Lookable,Usable,Takable{
 	}
 	//METHODS
 	
+	@Override
 	public void take(Hero h) throws InterruptedException {
 		Game.printLetterByLetter("You successfully took the object !");
 		h.getObjs().put(this.name,this);

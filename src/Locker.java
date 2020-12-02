@@ -4,17 +4,22 @@ public class Locker extends Obj{
 	
 	// ***** ATTRIBUTES *****
 	private ArrayList<Obj> objs;
+	private final Hero hero;
 	
-	public Locker(String name) {
+	public Locker(String name, Hero hero) {
 		super(name);
-		this.objs = new ArrayList<>();
+		this.objs = null;
+		this.hero = hero;
 	}
 	
 	// ***** CONSTRUCTOR *****
 
 
 	// ***** METHODS *****
-
+	@Override
+	public void take(Hero h) throws InterruptedException {
+		Game.printLetterByLetter("What the hell man, you're trying to take A fu**ing Locker");
+	}
 	// Getter
 
 	public ArrayList<Obj> getObjs(){
@@ -25,6 +30,9 @@ public class Locker extends Obj{
 	// Setter
 
 	public void addObj(Obj o){
+		if(this.objs==null){
+			this.objs = new ArrayList<>();
+		}
 		this.objs.add(o);
 	}
 	
@@ -38,7 +46,15 @@ public class Locker extends Obj{
 	
 	@Override
 	public void look() throws InterruptedException {
-		Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString());
+		if(this.objs!=null){
+			for (Obj obj : this.objs) {
+				this.hero.getObjs().put(obj.name, obj);
+			}
+			Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString());
+			
+		}
+		
+		this.objs = null;
 	}
 	
 	@Override

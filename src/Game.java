@@ -76,6 +76,8 @@ public class Game {
 		
 		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
 		
+		
+		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
 		animalRoom.addDoor(animAndTransf, "up");
 
@@ -139,7 +141,6 @@ public class Game {
 		animalRoom.addObject(catB);
 		archivesRoom.addObject(mouseB);
 		desertedRoom.addObject(monkeyB);
-		changingRoom.addObject(fuse);
 		transferRoom.addObject(electricityMeter);
 
 		// We add the enemies to the rooms
@@ -152,6 +153,9 @@ public class Game {
 
 		// We create the Hero
 		this.hero = new Hero(heroName, animalRoom);
+		Locker locker = new Locker("Locker",this.hero);
+		locker.addObj(fuse);
+		changingRoom.addObject(locker);
 	}
 
 	// ***** METHODS *****
