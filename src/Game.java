@@ -1,5 +1,7 @@
+
 import java.util.Map;
 import java.util.Scanner;
+
 
 public class Game {
 
@@ -12,26 +14,26 @@ public class Game {
 	public Game(String heroName)
 	{
 		// We create the rooms
-		Place animalRoom = new Place("Animal-room", false, true);
-		Place transferRoom = new Place("Transfer-Room", false, true);
-		Place changingRoom = new Place("Changing-room", false, true);
+		Place animalRoom = new Place("Animal room", false, true);
+		Place transferRoom = new Place("Transfer room", false, true);
+		Place changingRoom = new Place("Changing room", false, true);
 		Place entry = new Place("Entry", false, true);
-		Place meetingRoom = new Place("Meeting-room", false, true);
-		Place archivesRoom = new Place("Archives-room", false, true);
-		Place experimentsRoom = new Place("Experiments-room", false, true);
+		Place meetingRoom = new Place("Meeting room", false, true);
+		Place archivesRoom = new Place("Archives room", false, true);
+		Place experimentsRoom = new Place("Experiments room", false, true);
 		Place mortuary = new Place("Mortuary", false, true); // on éclaire la pièce ?
-		Place condamnedSAS = new Place("Condamned-sas", true, true);
-		Place desertedRoom = new Place("Deserted-room", false, true);
-		Place productsReserve = new Place("Products-reserve", false, true);
-		Place garbageRoom = new Place("Garbage-room", false, true);
-		Place coldRoom = new Place("Cold-room", false, false);
-		Place dirtyChangingRoom = new Place("Dirty-changing-room", false, true); // est ce qu'on pourrait pas l'enlever ?
-		Place decontaminationRoom = new Place("Decontamination-room", false, true);
+		Place condamnedSAS = new Place("Condamned sas", true, true);
+		Place desertedRoom = new Place("Deserted room", false, true);
+		Place productsReserve = new Place("Products reserve", false, true);
+		Place garbageRoom = new Place("Garbage room", false, true);
+		Place coldRoom = new Place("Cold room", false, false);
+		Place dirtyChangingRoom = new Place("Dirty changingRoom", false, true); // est ce qu'on pourrait pas l'enlever ?
+		Place decontaminationRoom = new Place("Decontamination room", false, true);
 		Place exit = new Place("Exit", false, true);
 
 
 		// We create the doors
-		Door secretPassage = new Door(archivesRoom);
+		Door secretPassage = new BurnableDoor(archivesRoom);
 		
 		Door changAndEntry = new CondemnedDoor(changingRoom, entry);
 		
@@ -63,11 +65,13 @@ public class Game {
 		
 		Heal potion = new Heal("Potion",50);
 		
-		Item banana = new Item("Banana");
-		Item stick = new Item("Stick");
-		Item silex = new Item("Silex");
+		Banana banana = new Banana("Banana");
+		Stick stick = new Stick("Stick");
+		Flint flint = new Flint("Flint");
 		
-		Bescherelle b1 = new Bescherelle("Bescherelle");
+		Bescherelle catB = new Bescherelle("Bescherelle");
+		Bescherelle mouseB = new Bescherelle("Bescherelle");
+		Bescherelle monkeyB = new Bescherelle("Bescherelle");
 		
 		// We add the doors to the rooms (2 * 15 doors + secret passage)
 		animalRoom.addDoor(animAndTransf, "up");
@@ -128,8 +132,10 @@ public class Game {
 		garbageRoom.addObject(stick);
 		productsReserve.addObject(potion);
 		archivesRoom.addObject(club);
-		transferRoom.addObject(silex);
-		animalRoom.addObject(b1);
+		transferRoom.addObject(flint);
+		animalRoom.addObject(catB);
+		archivesRoom.addObject(mouseB);
+		desertedRoom.addObject(monkeyB);
 
 		// We add the enemies to the rooms
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, null, Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT);
@@ -159,44 +165,43 @@ public class Game {
 		Game.printLetterByLetter(Script.HELP_DEFAULT);
 	}
 
-	public void displayEnvironment()
-	{
-		System.out.println(this.hero.getPlace().toString());
+	public void displayEnvironment() throws InterruptedException {
+		printLetterByLetter(this.hero.getPlace().toString());
 	}
 
 	// Other
 	
 	public void Play() throws InterruptedException {
 		printLetterByLetter(Script.DEFAULT_WELCOME);
-		Thread.sleep(7000);
+		pressAnyKeyToContinue();
 		sysClear(100);
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
 		}
+		//Die or Win Text
 	}
 
 	public void PlayATurn() throws InterruptedException {
-		//Used to store inputs
+		printLetterByLetter("Command :> ");
+		int count; //count of words
+		String input; //input String
+		String[] tabInput = new String[0]; //Tab of words
 		
-		System.out.print("Command :>");
-		int count;
-		String input;
-		String[] tabInput = new String[0];
-		//Création d'un scanner pour lire les inputs.
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); //Scanner for input
+		
 		if(scanner.hasNext()){
-			input= scanner.nextLine();
-			tabInput = input.split(" ");
+			input = scanner.nextLine();
+			tabInput = input.split(" "); //Split the into the tab when the char is "space"
 		}
-		count = tabInput.length;
+		count = tabInput.length; //count is egal to the number of words
 		switch (count){
 			case 1:
 				switch (tabInput[0]) {
-					case "help" -> this.help();
-					case "quit"-> this.hero.quit();
+					case "help" -> this.help(); //show commands
+					case "quit"-> this.hero.quit(); //Set the life to 0 so the hero die
 					case "look"-> printLetterByLetter(this.hero.getPlace().toString());
-					case "inventory"->printLetterByLetter(this.hero.getObjs().keySet().toString());
+					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
@@ -205,17 +210,23 @@ public class Game {
 					case "go" -> this.hero.go(tabInput[1]);
 					case "take" -> this.hero.take(tabInput[1]);
 					case "use" -> this.hero.use(tabInput[1]);
-					case "look" -> printLetterByLetter(this.hero.getPlace().toString());
+					case "look" -> System.out.println("I don't know !");   //TODO
 					case "talk" -> this.hero.talk(tabInput[1]);
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
+			case 3:
+				switch (tabInput[0]) {
+					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
+					
+					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+				}
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
 	}
 
 	public static void printLetterByLetter(String s) throws InterruptedException{
-		
+		System.out.println();
 		int len = s.length();
 		for(int i = 0 ; i < len; i++){
 			char c = s.charAt(i);
@@ -227,7 +238,7 @@ public class Game {
 			
 			Thread.sleep(20);
 		}
-		System.out.println();
+		
 	}
 
 	//Pour clean la console s'il y a besoin
@@ -237,15 +248,25 @@ public class Game {
 		}
 	}
 	
+	public static void pressAnyKeyToContinue() throws InterruptedException {
+		printLetterByLetter("Press Enter key to continue...");
+		Scanner scanner = new Scanner(System.in);
+		try
+		{
+			scanner.nextLine();
+		}
+		catch(Exception ignored){}
+	}
+	
 	public static void main(String[] args) throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
-		System.out.print("Answer : ");
+		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
+		printLetterByLetter("Answer : ");
 		Game g = new Game(sc.nextLine());
-		System.out.println("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
-		System.out.print("Answer : ");
+		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
+		printLetterByLetter("Answer : ");
 		String noMatter = sc.nextLine();
-		System.out.println("As you want HOUGA BOUGA !");
+		printLetterByLetter("As you want HOUGA BOUGA !");
 		sysClear(20);
 		g.Play();
 	}
