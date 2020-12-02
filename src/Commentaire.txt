@@ -16,3 +16,12 @@
 
 
 	// Display
+
+
+	//Packages
+
+	import Characters.*;
+    import Others.*;
+    import Doors.*;
+    import Objects.*;
+    import Interfaces.*;
