@@ -173,7 +173,6 @@ public class Game {
 
 			//ENEMY TURN
 			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
-			System.out.print(enemy.NAME + " :");
 			enemy.attack();
 			hero.setLife(-(enemy.getDamage()));
 			//HERO TURN
