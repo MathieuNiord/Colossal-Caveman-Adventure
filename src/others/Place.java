@@ -191,19 +191,13 @@ public class Place implements Lookable {
 		if(this.animals != null) {
 			if (this.animals.size() != 0) {
 				int size = this.animals.size();
-				if(size==1){
-					retA = new StringBuilder("There is " + size + " animal in this room : ");
-					
-				}
-				else{
-					retA = new StringBuilder("There are " + size + " animals in this room : ");
-					
-				}
+				retA = new StringBuilder("Animal(s) in this room :\n");
+				
 				List<String> anim = new ArrayList<>(this.animals.keySet());
 
-				retA.append(anim.get(0));
-				for (int i = 1; i < size; i++) {
-					retA.append(" | ").append(anim.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retA.append("- ").append(anim.get(i)).append("\n");
 				}
 				retA.append("\n");
 			}
@@ -218,19 +212,11 @@ public class Place implements Lookable {
 		if(this.objs != null) {
 			if (this.objs.size() != 0) {
 				int size = this.objs.size();
-				if(size==1){
-					retO = new StringBuilder("There is " + size + " object : ");
-					
-				}
-				else{
-					retO = new StringBuilder("There are " + size + " objects : ");
-					
-				}
+				retO = new StringBuilder("\nObject(s) in this room :\n");
 				List<String> objs = new ArrayList<>(this.objs.keySet());
-
-				retO.append(objs.get(0));
-				for (int i = 1; i < size; i++) {
-					retO.append(" | ").append(objs.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retO.append("- ").append(objs.get(i)).append("\n");
 				}
 				retO.append("\n");
 			}
@@ -240,24 +226,19 @@ public class Place implements Lookable {
 	}
 
 	public String toStringDoors() {
-		StringBuilder retD = new StringBuilder();
+		StringBuilder retD = new StringBuilder("Door(s) in this room : \n\n");
 
 		if(this.up != null) {
 			if (this.up.size() != 0) {
 
 				int size = this.up.size();
-				if(size==1){
-					retD.append("There is ").append(size).append(" exit at the top : ");
-					
-				}else{
-					retD.append("There are ").append(size).append(" exits at the top : ");
-					
-				}
+				
+				retD.append("At the top : \n");
+				
 				List<String> up = new ArrayList<>(this.up.keySet());
-
-				retD.append(up.get(0));
-				for (int i = 1; i < size; i++) {
-					retD.append(" | ").append(up.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retD.append("- ").append(up.get(i)).append("\n");
 				}
 				retD.append("\n");
 			}
@@ -266,18 +247,12 @@ public class Place implements Lookable {
 			if (this.down.size() != 0) {
 
 				int size = this.down.size();
-				if(size==1){
-					retD.append("There is ").append(size).append(" exit down : ");
-					
-				}else{
-					retD.append("There are ").append(size).append(" exits down : ");
-					
-				}
+				retD.append("Down : \n");
+				
 				List<String> down = new ArrayList<>(this.down.keySet());
-
-				retD.append(down.get(0));
-				for (int i = 1; i < size; i++) {
-					retD.append(" | ").append(down.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retD.append("- ").append(down.get(i)).append("\n");
 				}
 				retD.append("\n");
 			}
@@ -286,18 +261,12 @@ public class Place implements Lookable {
 			if (this.left.size() != 0) {
 
 				int size = this.left.size();
-				if(size==1){
-					retD.append("There is ").append(size).append(" exit on the left : ");
-					
-				}else{
-					retD.append("There are ").append(size).append(" exits on the left : ");
-					
-				}
+				retD.append("On the left : \n");
+				
 				List<String> left = new ArrayList<>(this.left.keySet());
-
-				retD.append(left.get(0));
-				for (int i = 1; i < size; i++) {
-					retD.append(" | ").append(left.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retD.append("- ").append(left.get(i)).append("\n");
 				}
 				retD.append("\n");
 			}
@@ -306,18 +275,12 @@ public class Place implements Lookable {
 			if (this.right.size() != 0) {
 
 				int size = this.right.size();
-				if(size==1){
-					retD.append("There is ").append(size).append(" exit on the right : ");
-					
-				}else{
-					retD.append("There are ").append(size).append(" exits on the right : ");
-					
-				}
+				retD.append("On the right : \n");
+				
 				List<String> right = new ArrayList<>(this.right.keySet());
-
-				retD.append(right.get(0));
-				for (int i = 1; i < size; i++) {
-					retD.append(", ").append(right.get(i));
+				
+				for (int i = 0; i < size; i++) {
+					retD.append("- ").append(right.get(i)).append("\n");
 				}
 				retD.append("\n");
 			}
@@ -370,7 +333,7 @@ public class Place implements Lookable {
 			}
 		}
 
-		return intro + isInf + isEnl + strA + strO + strD + strE;
+		return intro + isInf + isEnl + strO + strA + strD + strE;
 	}
 
 }

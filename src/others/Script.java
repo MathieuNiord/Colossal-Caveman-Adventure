@@ -5,7 +5,7 @@ public class Script {
     // === WELCOME MESSAGES ===
 
     public static final String WELCOME_MESSAGE =
-            "\n\t=========================================  WELCOME  ==========================================" +
+            "\t=========================================  WELCOME  ==========================================" +
             "\n\t==                                                                                          ==" +
             "\n\t==  Hello and welcome to our game The Colossal Caveman Adventure.                           ==" +
             "\n\t==  This game is the product of many hours of work and deserves to be fully appreciated.    ==" +
@@ -16,28 +16,20 @@ public class Script {
             "\n\t==============================================================================================";
 
     public static final String SYNOPSIS =
-            "\n\t===============================  SYNOPSIS  ===============================" +
+            "\t===============================  SYNOPSIS  ===============================" +
             "\n\t==  A caveman found frozen in the Arctic.                               ==" +
             "\n\t== A team of Nazis researchers thaws it and locks it in a laboratory.   ==" +
             "\n\t== Being just an uneducated caveman,                                    ==" +
             "\n\t== You have to help him out of this lab.                                ==" +
             "\n\t==========================================================================" +
-            "\n\n\tWrite : help, and press enter to get the list of available commands";
+            "\n\tWrite : help, and press enter to get the list of available commands";
 
 
 
     // === ENDDING MESSAGES ===
 
-    public static final String YOU_WIN =
-            "\nYou managed to run away from the lab and escape those fucking Nazis ! You are free !\n" +
-            "\n36 years later you are the head of the stock exchange, rising star of cinema and " +
-            "\npresident of the United States of America. Women run after you and men envy you, you" +
-            "\nare voted the sexiest man in the world and your three children, Gaëtan, Benjamin and" +
-            "\nMathieu, have obtained a superb rating for their Java project.\n" +
-            "\n" +
-            "(Thanks for them...)\n\n";
-
-    public static final String YOU_LOOSE = "\nI thought this game was easy, you suck on a keyboard...\nYou remind me of Psychology students ...\n";
+    public static final String YOU_WIN = "";
+    public static final String YOU_LOOSE = "";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you xoxo !\n";
     public static final String CREDITS =
             "======================== CREDITS ========================\n" +
