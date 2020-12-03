@@ -225,7 +225,7 @@ public class Game {
 
 	public void Play(){
 		sysClear();
-		printLetterByLetter(Script.SYNOPSIS);
+		System.out.print(Script.SYNOPSIS + "\n");
 		pressAnyKeyToContinue();
 		sysClear();
 		displayEnvironment();
@@ -244,8 +244,6 @@ public class Game {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
 		this.displayEnvironment();
-		//cmdPush(2);	//========================================SAUTS DE LIGNES
-		//displayEnvironment();//=====================================modif
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -254,8 +252,6 @@ public class Game {
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			//this.displayEnvironment();//===================================================modif
-			//sysClear();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 
@@ -316,8 +312,8 @@ public class Game {
 				case "yes", "YES", "y", "Y", "1" : this.Play();
 
 				default :
-					printLetterByLetter("\nOk as you want mister, goodbye !");
-
+					//EXIT
+					System.out.print(Script.GAME_OVER);
 					try {
 						Thread.sleep(5000);
 						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
@@ -365,7 +361,9 @@ public class Game {
 			pressAnyKeyToContinue();
 
 			//EXIT
+			System.out.print(Script.GAME_OVER);
 			try {
+				Thread.sleep(5000);
 				new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
 			}
 			catch (final Exception e) {
@@ -382,7 +380,6 @@ public class Game {
 	}
 
 	public static void printLetterByLetter(String s) {
-		//System.out.println();
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
@@ -415,7 +412,7 @@ public class Game {
 	}
 
 	public static void pressAnyKeyToContinue() {
-		System.out.print("Press Enter key to continue...");
+		System.out.print("\nPress Enter key to continue...");
 		Scanner scanner = new Scanner(System.in);
 		try
 		{
@@ -434,16 +431,17 @@ public class Game {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		printLetterByLetter(Script.WELCOME_MESSAGE);
+		Game.sysClear();
+		System.out.println(Script.WELCOME_MESSAGE);
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
-		
-		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
+
+		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
 				"\n1 - Yes for sure\t2 - Yes I've no other choice\n");
-		System.out.print("\n\nAnswer : ");
+		System.out.print("\nAnswer : ");
 		sc.nextLine();
-		printLetterByLetter("\n\nAs you want HOUGA BOUGA !\n");
-		pressAnyKeyToContinue();
+		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n");
+		Game.pressAnyKeyToContinue();
 		g.Play();
 	}
 	

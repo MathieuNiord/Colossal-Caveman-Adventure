@@ -38,7 +38,7 @@ public class Script {
             "(Thanks for them...)\n\n";
 
     public static final String YOU_LOOSE = "\nI thought this game was easy, you suck on a keyboard...\nYou remind me of Psychology students ...\n";
-    public static final String GAME_OVER = "";
+    public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you xoxo !\n";
     public static final String CREDITS =
             "======================== CREDITS ========================\n" +
             "=========================================================\n" +
