@@ -227,6 +227,7 @@ public class Game {
 		sysClear();
 		printLetterByLetter(Script.SYNOPSIS);
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
+			//this.displayEnvironment();//===================================================modif
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -236,8 +237,8 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		this.displayEnvironment();
-		cmdPush(5);	//========================================SAUTS DE LIGNES
+		//this.displayEnvironment(); //=======================================modif origine
+		cmdPush(2);	//========================================SAUTS DE LIGNES
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -248,6 +249,7 @@ public class Game {
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
 			sysClear();
+			this.displayEnvironment();//===================================================modif
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 		count = tabInput.length; //count is equal to the number of words
@@ -285,6 +287,7 @@ public class Game {
 
 	public void gameOver() {
 
+		//LOOSE ENDING
 		if (this.hero.getHP() <= 0) {
 
 			Scanner sc = new Scanner(System.in);
@@ -292,7 +295,7 @@ public class Game {
 
 			sysClear();
 			printLetterByLetter(Script.YOU_LOOSE);
-			cmdPush(25);
+			cmdPush(30);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
 
@@ -304,7 +307,7 @@ public class Game {
 					printLetterByLetter("\nOk as you want mister, goodbye !");
 
 					try {
-						Thread.sleep(200);
+						Thread.sleep(5000);
 						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
 					}
 					catch (final Exception e) {
@@ -313,6 +316,7 @@ public class Game {
 			}
 		}
 
+		//WIN ENDING
 		else {
 			sysClear();
 			printLetterByLetter(Script.YOU_WIN);
@@ -321,9 +325,9 @@ public class Game {
 			}
 			catch (final Exception e) {
 				System.out.println("Error");
-				
 			}
 
+			//CREDITS
 			sysClear();
 			System.out.print(Script.CREDITS);
 
@@ -335,6 +339,7 @@ public class Game {
 				
 			}
 
+			//THANKING
 			sysClear();
 			printLetterByLetter(Script.THANKING_PLAYER);
 
@@ -343,7 +348,16 @@ public class Game {
 			}
 			catch (final Exception e) {
 				System.out.println("Error");
-				
+			}
+
+			pressAnyKeyToContinue();
+
+			//EXIT
+			try {
+				new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
+			}
+			catch (final Exception e) {
+				System.out.println("Error");
 			}
 		}
 	}
@@ -352,7 +366,7 @@ public class Game {
 	// === DISPLAY ===
 
 	public void displayEnvironment() {
-		System.out.println(this.hero.getPlace().toString());
+		System.out.println("\n" + this.hero.getPlace().toString());
 	}
 
 	public static void printLetterByLetter(String s) {
@@ -362,8 +376,8 @@ public class Game {
 			for (int i = 0 ; i < len; i++) {
 				char c = s.charAt(i);
 				System.out.print(c);
-				if ( c=='.' || c=='?' || c==',' || c=='!') {
-					Thread.sleep(100);
+				if ( c=='.' || c=='?' || c==',') {
+					Thread.sleep(500);
 				}
 
 				Thread.sleep(20);
@@ -412,8 +426,8 @@ public class Game {
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
 		
-		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?" +
-				"\n1 - Yes for sure\t2 - Yes I've no other choice");
+		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
+				"\n1 - Yes for sure\t2 - Yes I've no other choice\n");
 		System.out.print("\n\nAnswer : ");
 		sc.nextLine();
 		printLetterByLetter("\n\nAs you want HOUGA BOUGA !\n");

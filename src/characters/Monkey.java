@@ -39,13 +39,14 @@ public class Monkey extends Animal{
 	
 	@Override
 	public void talk(Hero h) {
-		
+
 		if(h.getObjs().containsKey("Banana")){
 			h.getObjs().remove("Banana");
 			
 			this.hungry = false;
 		}
-		
+
+		System.out.print(("\n" + this.NAME + " :\n"));
 		if(this.beschLevel>h.getBLevel()){
 			Game.printLetterByLetter(this.noBeschDialog);
 		}

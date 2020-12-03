@@ -85,7 +85,7 @@ public class Script {
     //Cat
     public static final String CAT_TEXT01 = "Meeeeew mew meeew mew\n";
     public static final String CAT_TEXT02 = "Hello where are you from I came from Germany." +
-            "\nI saw all those “glorioussoldier” who left you here." +
+            "\nI saw all those \"glorious soldier\" who left you here." +
             "\nThey laughed and the boss said you were a stupid frenchy caveman who could never find a way out of this mansion !" +
             "\nAnother said that for sure no one will find the password because it is too smart," +
             "\ntwo letters I ... T. IT, IT, IT is the password !" +

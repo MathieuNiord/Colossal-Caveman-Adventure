@@ -41,7 +41,7 @@ public class Animal implements Lookable {
 	// === COMMANDS ===
 
 	public void talk(Hero h) {
-
+		System.out.print(("\n" + this.NAME + " :\n"));
 		/*If the Objects.Bescherelle level of the hero is egal or higher than
 		the Objects.Bescherelle level needed to talk with this animal*/
 		if(h.getBLevel()>=beschLevel){

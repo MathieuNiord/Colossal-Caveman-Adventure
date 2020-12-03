@@ -1,6 +1,7 @@
 package objects;
 
 import characters.Hero;
+import others.Game;
 import others.Script;
 
 public class SexyPoster extends Poster{
@@ -19,18 +20,12 @@ public class SexyPoster extends Poster{
 	
 	@Override
 	public void look() {
-		this.HERO.heal();
-		System.out.println(Script.SEXY_POSTER);
+		Game.printLetterByLetter("Hmmmm ! What a seeeexy girl !\n\nYou took the poster and put it in your inventory\n");
+		this.take(this.HERO);
 	}
 	
 	@Override
 	public void take(Hero h) {
-		
-		h.heal();
-		
-		System.out.println(Script.SEXY_POSTER);
-		System.out.println("This Poster is now in your inventory, use it to heal yourself !");
-		
 		this.HERO.getObjs().put(this.NAME,this);
 		this.HERO.getPlace().getItems().remove(this.NAME);
 	}
@@ -38,7 +33,6 @@ public class SexyPoster extends Poster{
 	@Override
 	public void use(Hero h) {
 		h.heal();
-		System.out.println("You healed !");
 	}
 	
 	@Override
