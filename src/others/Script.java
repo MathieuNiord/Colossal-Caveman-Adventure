@@ -5,7 +5,7 @@ public class Script {
     // === WELCOME MESSAGES ===
 
     public static final String WELCOME_MESSAGE = "Hello and welcome to our game The Colossal Caveman Adventure." +
-            " This game is the product of many hours of work and deserves to be fully appreciated." +
+            "\nThis game is the product of many hours of work and deserves to be fully appreciated." +
             "\nTherefore if you are reluctant to a little dirty humor, if you hate bad scenarios" +
             "\nor if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !" +
             "\n\nConversely, we wish you a good game and hope for a good return.\n";
@@ -45,7 +45,7 @@ public class Script {
             "===                                                   ===\n" +
             "===  SPECIAL GUESTS :                                 ===\n" +
             "===                                                   ===\n" +
-            "===    IN THE ROLE OF HOUGA BOUGA :             YOU    ===\n" +
+            "===    IN THE ROLE OF HOUGA BOUGA :             YOU   ===\n" +
             "===                                                   ===\n" +
             "===    IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER  ===\n" +
             "===    IN THE ROLE OF THE ZOMBIE NAZI : AFIDA TURNER  ===\n" +
@@ -76,7 +76,6 @@ public class Script {
 
     // === HERO ===
 
-    public static final String DEFAULT_HERO = "Houga Bouga";
     public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !";
 
 
@@ -155,7 +154,6 @@ public class Script {
     public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
     public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
     public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";
-    public static final String DEFAULT_POSTER = "This is a Poster\n";
     public static final String SEXY_POSTER = "You are looking to this and you're so excited that you're gaining LIFE !!!\n";
     public static final String NAZI_POSTER = "You are looking to this and this is so ugly that you've loosed LIFE !!!\n";
 		

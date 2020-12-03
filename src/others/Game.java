@@ -64,7 +64,7 @@ public class Game {
 		// ANIMALS CREATION
 		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
 		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
 
 		// OBJECTS CREATION
@@ -79,11 +79,11 @@ public class Game {
 		Bescherelle monkeyB = new Bescherelle("Bescherelle");
 		Key k1 = new Key("Key1");
 		Key k2 = new Key("Key2");
-		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
+		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricMeter",coldRoom);
 		Locker locker = new Locker("Locker",this.hero);
-		NaziPoster naziPoster = new NaziPoster("naziPoster",this.hero);
-		SexyPoster sexyPoster = new SexyPoster("sexyPoster",this.hero);
-		
+		NaziPoster naziPoster = new NaziPoster("NaziPoster",this.hero);
+		SexyPoster sexyPoster = new SexyPoster("SexyPoster",this.hero);
+		Walkman walkman = new Walkman("Walkman");
 		
 		
 		// DOORS ADDING TO ROOMS
@@ -139,7 +139,7 @@ public class Game {
 		changingRoom.addObject(locker);
 		experimentsRoom.addObject(naziPoster);
 		changingRoom.addObject(sexyPoster);
-		
+		locker.addObj(walkman);
 		
 		// ENEMIES ADDING TO ROOMS
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, k1,
@@ -212,11 +212,9 @@ public class Game {
 		hero.getPlace().addObject(enemy.getItem());
 		hero.take(enemy.getItem().NAME);
 		hero.getPlace().getItems().remove(enemy.getItem().NAME);
-		
+		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 		enemy.loot();
 		hero.getPlace().setEnemy(null);
-		
-		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 	}
 
 	public void help() {
@@ -228,7 +226,7 @@ public class Game {
 
 	public void Play(){
 		sysClear();
-		this.displayEnvironment();
+		printLetterByLetter(Script.SYNOPSIS);
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
 		}
@@ -239,7 +237,8 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		cmdPush(30);	//========================================SAUTS DE LIGNES
+		this.displayEnvironment();
+		cmdPush(5);	//========================================SAUTS DE LIGNES
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -309,7 +308,9 @@ public class Game {
 						Thread.sleep(200);
 						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
 					}
-					catch (final Exception e) {}
+					catch (final Exception e) {
+						System.out.println("Error");
+					}
 			}
 		}
 
@@ -317,25 +318,34 @@ public class Game {
 			sysClear();
 			printLetterByLetter(Script.YOU_WIN);
 			try {
-				Thread.sleep(200);
+				Thread.sleep(10000);
 			}
-			catch (final Exception e) {}
+			catch (final Exception e) {
+				System.out.println("Error");
+				
+			}
 
 			sysClear();
 			System.out.print(Script.CREDITS);
 
 			try {
-				Thread.sleep(200);
+				Thread.sleep(10000);
 			}
-			catch (final Exception e) {}
+			catch (final Exception e) {
+				System.out.println("Error");
+				
+			}
 
 			sysClear();
 			printLetterByLetter(Script.THANKING_PLAYER);
 
 			try {
-				Thread.sleep(200);
+				Thread.sleep(10000);
 			}
-			catch (final Exception e) {}
+			catch (final Exception e) {
+				System.out.println("Error");
+				
+			}
 		}
 	}
 
@@ -343,7 +353,7 @@ public class Game {
 	// === DISPLAY ===
 
 	public void displayEnvironment() {
-		printLetterByLetter(this.hero.getPlace().toString());
+		System.out.println(this.hero.getPlace().toString());
 	}
 
 	public static void printLetterByLetter(String s) {
@@ -360,7 +370,8 @@ public class Game {
 				Thread.sleep(20);
 			}}
 		catch (Exception e) {
-		
+			System.out.println("Error");
+			
 		}
 
 	}
@@ -393,8 +404,7 @@ public class Game {
 			System.out.println();
 		}
 	}
-
-
+	
 	// === MAIN ===
 
 	public static void main(String[] args) {

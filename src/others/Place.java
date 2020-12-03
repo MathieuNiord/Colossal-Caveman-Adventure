@@ -179,7 +179,7 @@ public class Place implements Lookable {
 
 	@Override
 	public void look() {
-		Game.printLetterByLetter(this.toString());
+		System.out.println(this.toString());
 	}
 
 
