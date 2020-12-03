@@ -172,6 +172,7 @@ public class Script {
             "\n- look (Object)" +
             "\n- take (Object)" +
             "\n- use (Object)" +
+            "\n- use (Object) (Object)" +
             "\n- inventory" +
             "\n- talk (Somebody)" +
             "\n- quit";

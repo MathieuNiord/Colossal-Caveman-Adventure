@@ -227,8 +227,6 @@ public class Game {
 	// === OTHER ===
 
 	public void Play(){
-		System.out.println(Script.SYNOPSIS);
-		pressAnyKeyToContinue();
 		sysClear();
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
@@ -241,7 +239,7 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		System.out.print("Command :> ");
+		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
 		String[] tabInput = new String[0]; //Tab of words
@@ -376,14 +374,18 @@ public class Game {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
-		System.out.println("Your answer : ");
+		printLetterByLetter(Script.WELCOME_MESSAGE);
+		
+		
+		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
-		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
-		System.out.println("Answer : ");
+		
+		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?" +
+				"\n1 - Yes for sure\t2 - Yes I've no other choice");
+		System.out.print("\n\nAnswer : ");
 		sc.nextLine();
-		printLetterByLetter("As you want HOUGA BOUGA !");
-		sysClear();
+		printLetterByLetter("\n\nAs you want HOUGA BOUGA !\n");
+		pressAnyKeyToContinue();
 		g.Play();
 	}
 	
