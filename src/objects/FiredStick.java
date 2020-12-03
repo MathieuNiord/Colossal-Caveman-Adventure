@@ -25,5 +25,10 @@ public class FiredStick extends Obj {
 	public void use(Hero h) {
 		System.out.println("Use this item for something else...");
 	}
-
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
 }

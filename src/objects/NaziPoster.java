@@ -41,4 +41,9 @@ public class NaziPoster extends Poster{
 		System.out.println("You loosed life !");
 	}
 	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
 }

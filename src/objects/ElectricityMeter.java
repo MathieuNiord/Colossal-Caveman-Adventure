@@ -62,5 +62,10 @@ public class ElectricityMeter extends Obj{
 			System.out.println("You've already placed the Objects.Fuse !");
 		}
 	}
-
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
 }

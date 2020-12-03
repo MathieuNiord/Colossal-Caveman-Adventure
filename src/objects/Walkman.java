@@ -17,4 +17,9 @@ public class Walkman extends Obj{
 	public void use(Hero h) {
 		Game.printLetterByLetter("Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n\n");
 	}
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
 }

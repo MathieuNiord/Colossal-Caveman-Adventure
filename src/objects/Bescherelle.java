@@ -24,6 +24,11 @@ public class Bescherelle extends Obj{
 	}
 	
 	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
+	@Override
 	public void take(Hero h)  {
 		h.increaseBescherelle();
 		super.take(h);

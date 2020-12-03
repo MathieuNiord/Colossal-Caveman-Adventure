@@ -20,7 +20,12 @@ public class Key extends Obj{
     public void use(Hero h) {
         System.out.println("What exactly are you trying to do with this key ?");
     }
-
+    
+    @Override
+    public void use(Hero h, String s) {
+    
+    }
+    
     @Override
     public void take(Hero h) {
         h.increaseKey();

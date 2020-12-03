@@ -64,8 +64,13 @@ public class Locker extends Obj{
 	public void use(Hero h) {
 		System.out.println("You cannot use a Locker STOOPID Caveman\n");
 	}
-
-
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
+	
 	// === DISPLAY ===
 
 	@Override

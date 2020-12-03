@@ -25,7 +25,7 @@ public class Flint extends Obj {
 	}
 	
 	@Override
-	public void use(Hero h) {}
+	public void use(Hero h) {System.out.println("Use this item for something else...");}
 	
 	@Override
 	public void use(Hero h,String s) {

@@ -40,5 +40,10 @@ public class SexyPoster extends Poster{
 		h.heal();
 		System.out.println("You healed !");
 	}
-
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
 }

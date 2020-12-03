@@ -25,9 +25,14 @@ public class Fuse extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		if(h.getPlace().getItems().containsKey("ElectricityMeter")){
-			h.getPlace().getItems().get("ElectricityMeter").use(h);
+		System.out.println("Use this item with something else...");
+	}
+	
+	@Override
+	public void use(Hero h, String s) {
+		if(h.getPlace().getItems().containsKey("ElectricMeter")){
+			h.getPlace().getItems().get("ElectricMeter").use(h);
 		}
 	}
-
+	
 }

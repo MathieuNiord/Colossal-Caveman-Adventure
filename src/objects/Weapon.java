@@ -22,6 +22,9 @@ public class Weapon extends Obj{
 	public void use(Hero h) {}
 	
 	@Override
+	public void use(Hero h, String s) {}
+	
+	@Override
 	public void look() {
 		Game.printLetterByLetter("Club");
 	}

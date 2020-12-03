@@ -51,5 +51,10 @@ public class Banana extends Obj {
 			}
 		}
 	}
-
+	
+	@Override
+	public void use(Hero h, String s) {
+	
+	}
+	
 }
