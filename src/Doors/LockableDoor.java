@@ -5,10 +5,14 @@ import Others.*;
 
 public abstract class LockableDoor extends Door {
 
+
 	// ***** ATTRIBUTES *****
+
 	private boolean lock;
 
-	// ***** CONSTRUCTOR ****
+
+	// ***** CONSTRUCTORS ****
+
 	LockableDoor(Place p1){
 		super(p1);
 		this.open = false;
@@ -21,15 +25,18 @@ public abstract class LockableDoor extends Door {
 		this.lock = true;
 	}
 
+
 	// ***** METHODS *****
 
-	// Getter
+
+	// === GETTER ===
 
 	public boolean isUnlock() {
 		return !this.lock;
 	}
 
-	// Setter
+
+	// === SETTER ===
 
 	public void unlock() {
 		this.lock = false;
@@ -45,7 +52,8 @@ public abstract class LockableDoor extends Door {
 		}
 	}
 
-	//Other
+
+	// === OTHER ===
 
 	@Override
 	public void cross(Hero hero, String s){
@@ -53,4 +61,5 @@ public abstract class LockableDoor extends Door {
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
 		}
 	}
+
 }

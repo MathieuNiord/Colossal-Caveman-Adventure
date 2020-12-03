@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Place implements Lookable {
 
+
 	// ***** ATTRIBUTES *****
 
 	private final String NAME;
@@ -47,7 +48,8 @@ public class Place implements Lookable {
 
 	// ***** METHODS *****
 
-	// === Getter ===
+
+	// === GETTER ===
 
 	public String getName() {
 		return this.NAME;
@@ -106,7 +108,7 @@ public class Place implements Lookable {
 	}
 
 
-	// === Setter ===
+	// === SETTER ===
 
 	public void switchEnlightened() {
 		this.enlightened = !this.enlightened;
@@ -173,7 +175,15 @@ public class Place implements Lookable {
 	}
 
 
-	// === Display ===
+	// === COMMANDS ===
+
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(this.toString());
+	}
+
+
+	// === DISPLAY ===
 
 	public String toStringAnimal() {
 		StringBuilder retA = new StringBuilder();
@@ -327,11 +337,4 @@ public class Place implements Lookable {
 		return intro + isInf + isEnl + strA + strO + strD + strE;
 	}
 
-
-	// === Commands ===
-
-	@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(this.toString());
-	}
 }

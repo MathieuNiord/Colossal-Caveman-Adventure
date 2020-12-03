@@ -6,14 +6,17 @@ import Others.*;
 public class CondemnedDoor extends Door {
 
 	// ***** CONSTRUCTOR *****
+
 	public CondemnedDoor(Place p1, Place p2){
 		super(p1, p2);
 		this.open = false;
 	}
 
+
 	// ***** METHODS *****
 
-	// Setter
+
+	// === SETTER ===
 
 	@Override
 	public void open() {
@@ -25,5 +28,4 @@ public class CondemnedDoor extends Door {
 		this.open();
 	}
 
-	// Display
 }

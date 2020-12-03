@@ -30,7 +30,7 @@ public class Animal implements Lookable {
 
 	// ***** METHODS *****
 
-	// === Display ===
+	// === DISPLAY ===
 
 	@Override
 	public String toString() {
@@ -38,7 +38,7 @@ public class Animal implements Lookable {
 		return this.NAME;
 	}
 
-	// === Commands ===
+	// === COMMANDS ===
 
 	public void talk(Hero h) throws InterruptedException {
 

@@ -6,10 +6,13 @@ import Interfaces.*;
 
 public class Enemy implements Lookable {
 
+
     // ***** CONSTANTS *****
+
     private static final int DEFAULT_HP = 30;
     private static final int DEFAULT_DAMAGE = 7;
     private static final String DEFAULT_NAME = "Ennemy_TEST";
+
 
     // ***** ATTRIBUTES *****
 
@@ -24,7 +27,8 @@ public class Enemy implements Lookable {
     private final String description;
     //Je pensais ajouter un healcounter de manière à ce que l'ennemi puisse se soigner un certain nb de fois au cours du combat
 
-    // ***** CONSTRUCTORS *****
+
+    // ***** CONSTRUCTOR *****
 
     public Enemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
         this.NAME = name;
@@ -38,9 +42,11 @@ public class Enemy implements Lookable {
     
     }
 
+
     // ***** METHODS *****
 
-    // Getter
+
+    // === GETTER ===
 
     //On souhaite connaître les points de vies restants de l'ennemi
     public int getHP() {
@@ -65,7 +71,8 @@ public class Enemy implements Lookable {
         return this.item;
     }
 
-    // Setter
+
+    // === SETTER ===
 
     public void takeDamage(int damage) throws InterruptedException {
         if (this.hp > 0 && this.state) {
@@ -83,26 +90,29 @@ public class Enemy implements Lookable {
         }
     }
 
-    public void Loot() {
-        //TODO drop l'item au joueur
-        this.item = null;
-    }
 
-    // Display
+    // === DISPLAY ===
 
     public void opening() throws InterruptedException {
+        System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.opening);
     }
 
     public void attack() throws InterruptedException {
+        System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.attack);
     }
 
     public void defeat() throws InterruptedException {
+        System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.defeat);
     }
-    
+
+
+    // === COMMANDS ===
+
     public void look() throws InterruptedException {
         Game.printLetterByLetter(this.description);
     }
+
 }

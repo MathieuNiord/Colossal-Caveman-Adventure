@@ -4,38 +4,26 @@ import Characters.*;
 import Others.*;
 
 public class Weapon extends Obj{
-	
-	//CONSTRUCTORS
+
+
+	// ***** CONSTRUCTOR *****
+
 	public Weapon(String name) {
 		super(name);
 	}
-	
+
+
+	// ***** METHODS *****
+
+
+	// === COMMANDS ===
+
 	@Override
-	public void use(Hero h) {
-		if(h.getPlace().getEnemies() != null){
-			
-			
-			//TODO hit enemy
-			
-			
-			//h.getPlace().getEnemies().forEach();
-		}
-	}
+	public void use(Hero h) {}
 	
 	@Override
 	public void look() throws InterruptedException {
 		Game.printLetterByLetter("Club");
 	}
-	//METHODS
-	
-	
-	
-	//getter
-	
-	
-	//setter
-	
-	
-	
-	//printer
+
 }

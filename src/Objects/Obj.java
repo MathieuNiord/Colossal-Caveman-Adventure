@@ -5,15 +5,24 @@ import Others.*;
 import Interfaces.*;
 
 public abstract class Obj implements Lookable, Usable, Takable {
-	
-	//ATTRIBUTES
+
+
+	// ***** ATTRIBUTES *****
+
 	public final String NAME;
-	
-	//CONSTRUCTORS
+
+
+	// ***** CONSTRUCTOR *****
+
 	public Obj(String name) {
 		this.NAME = name;
 	}
-	//METHODS
+
+
+	// ***** METHODS *****
+
+
+	// === COMMANDS ===
 	
 	@Override
 	public void take(Hero h) throws InterruptedException {
@@ -26,11 +35,9 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	public void use(Hero h,String s) {
 		System.out.println("You cannot combine those object together");
 	}
-	//getter
 
-	//setter
-	
-	//printer
+
+	// === DISPLAY ===
 	
 	@Override
 	public String toString() {

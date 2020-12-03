@@ -7,18 +7,24 @@ import java.util.*;
 
 public class SecretCodeDoor extends LockableDoor {
 
+
 	// ***** ATTRIBUTES *****
 
 	private final String CODE;
+
+
 	// ***** CONSTRUCTOR *****
+
 	public SecretCodeDoor(String code, Place p1, Place p2){
 		super(p1, p2);
 		this.CODE = code;
 	}
 
+
 	// ***** METHODS *****
 
-	// Setter
+
+	// === SETTER ===
 
 	public void unlock(String code) {
 		Random rand = new Random();
@@ -44,7 +50,8 @@ public class SecretCodeDoor extends LockableDoor {
 	
 	}
 
-	//Other
+
+	// === OTHER ===
 
 	@Override
 	public void cross(Hero hero, String s) {
@@ -60,4 +67,5 @@ public class SecretCodeDoor extends LockableDoor {
 			hero.setPlace(this.getPlaces().get(s));
 		}
 	}
+
 }

@@ -4,24 +4,25 @@ import Characters.*;
 import Others.*;
 
 public class Potion extends Obj {
+
 	
-	//ATTRIBUTES
-	
-	
-	//CONSTRUCTORS
+	// ***** CONSTRUCTOR *****
+
 	public Potion(String name) {
 		super(name);
 	}
+
 	
-	//METHODS
+	// ***** METHODS *****
 	
-	
-	
-	//getter
-	
-	
-	
-	//setter
+
+	// === COMMANDS ===
+
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.POTION_DESCRIPT);
+	}
+
 	@Override
 	public void use(Hero h) {
 		h.setImmunised();
@@ -30,11 +31,7 @@ public class Potion extends Obj {
 	}
 	
 	
-	//printer
-	//@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(Script.FLINT_DESCRIPT);
-	}
+	// === DISPLAY ===
 	
 	@Override
 	public String toString() {

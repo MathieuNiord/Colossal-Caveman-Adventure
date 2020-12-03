@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Game {
 
+
 	// ***** ATTRIBUTES *****
 
 	private final Hero hero;
@@ -144,12 +145,14 @@ public class Game {
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
 		decontaminationRoom.addAndCreateEnemy("SUPER-NAZI", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
+
 	}
 
 
 	// ***** METHODS *****
 
-	// === Getter ===
+
+	// === GETTER ===
 
 	public Hero getHero() {
 		return this.hero;
@@ -160,52 +163,72 @@ public class Game {
 	}
 
 
-	// === Display ===
+	// === COMMANDS ===
+
+	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+
+		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
+		sysClear();
+		System.out.print(enemy.NAME + " :");
+		enemy.opening();
+		Scanner sc = new Scanner(System.in);
+		String input;
+		String[] tabInput;
+		int count;
+		System.out.println(Script.BATTLE_HELP);
+
+		while (hero.isAlive() && !enemy.isDefeat()) {
+
+			//ENEMY TURN
+			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
+			System.out.print(enemy.NAME + " :");
+			enemy.attack();
+			hero.setLife(-(enemy.getDamage()));
+			//HERO TURN
+			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
+			System.out.print("Choice :>");
+			input = sc.nextLine();
+			tabInput = input.split(" ");
+			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
+
+			switch (count) {
+
+				case 1 :
+					switch (tabInput[0]) {
+						case "attack" -> hero.attack(enemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
+						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
+						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
+					}
+					break;
+
+				case 2 :
+					switch (tabInput[0]) {
+						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
+						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
+						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
+					}
+					break;
+
+				default : printLetterByLetter("Whatever ! You pass your turn !\n");
+			}
+
+		}
+		//ONCE ENEMY IS DEFEATED
+		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
+		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
+		hero.getPlace().setEnemy(null);
+		hero.getPlace().addObject(enemy.getItem());
+		hero.take(enemy.getItem().NAME);
+		hero.getPlace().getItems().remove(enemy.getItem().NAME);
+		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
+	}
 
 	public void help() {
 		System.out.println(Script.HELP_DEFAULT);
 	}
 
-	public void displayEnvironment() throws InterruptedException {
-		printLetterByLetter(this.hero.getPlace().toString());
-	}
 
-	public static void printLetterByLetter(String s) throws InterruptedException{
-		System.out.println();
-		int len = s.length();
-		for(int i = 0 ; i < len; i++){
-			char c = s.charAt(i);
-			System.out.print(c);
-			if( c=='.' || c=='?' || c==',' || c=='!')
-			{
-				Thread.sleep(100);
-			}
-
-			Thread.sleep(20);
-		}
-
-	}
-
-	//Pour clean la console s'il y a besoin
-	public static void sysClear(){
-		for (int i = 0; i < 100; i++) {
-			System.out.println();
-		}
-		System.out.flush();
-	}
-
-	public static void pressAnyKeyToContinue() throws InterruptedException {
-		printLetterByLetter("Press Enter key to continue...");
-		Scanner scanner = new Scanner(System.in);
-		try
-		{
-			scanner.nextLine();
-		}
-		catch(Exception ignored){}
-	}
-
-
-	// === Other ===
+	// === OTHER ===
 
 	public void Play() throws InterruptedException {
 		System.out.println(Script.DEFAULT_WELCOME);
@@ -226,9 +249,9 @@ public class Game {
 		int count; //count of words
 		String input; //input String
 		String[] tabInput = new String[0]; //Tab of words
-		
+
 		Scanner scanner = new Scanner(System.in); //Scanner for input
-		
+
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
@@ -267,64 +290,44 @@ public class Game {
 	}
 
 
-	// === Commands ===
+	// === DISPLAY ===
 
-	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+	public void displayEnvironment() throws InterruptedException {
+		printLetterByLetter(this.hero.getPlace().toString());
+	}
 
-		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
-		sysClear();
-		System.out.print(enemy.NAME + " :");
-		enemy.opening();
-		Scanner sc = new Scanner(System.in);
-		String input;
-		String[] tabInput;
-		int count;
-		System.out.println(Script.BATTLE_HELP);
-
-		while (hero.isAlive() && !enemy.isDefeat()) {
-
-			//ENEMY TURN
-			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
-			System.out.print(enemy.NAME + " :");
-			enemy.attack();
-			hero.setLife(-(enemy.getDamage()));
-			//HERO TURN
-			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
-			System.out.print("Choice :>");
-			input = sc.nextLine();
-			tabInput = input.split(" ");
-			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
-
-			switch (count) {
-
-				case 1 :
-					switch (tabInput[0]) {
-						case "attack" -> hero.attack(enemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
-						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
-						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
-				}
-				break;
-
-				case 2 :
-					switch (tabInput[0]) {
-						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
-						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
-						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
-					}
-					break;
-
-				default : printLetterByLetter("Whatever ! You pass your turn !\n");
+	public static void printLetterByLetter(String s) throws InterruptedException{
+		System.out.println();
+		int len = s.length();
+		for(int i = 0 ; i < len; i++){
+			char c = s.charAt(i);
+			System.out.print(c);
+			if( c=='.' || c=='?' || c==',' || c=='!')
+			{
+				Thread.sleep(100);
 			}
 
+			Thread.sleep(20);
 		}
-		//ONCE ENEMY IS DEFEATED
-		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
-		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
-		hero.getPlace().setEnemy(null);
-		hero.getPlace().addObject(enemy.getItem());
-		hero.take(enemy.getItem().NAME);
-		hero.getPlace().getItems().remove(enemy.getItem().NAME);
-		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
+
+	}
+
+	//Pour clean la console s'il y a besoin
+	public static void sysClear(){
+		for (int i = 0; i < 100; i++) {
+			System.out.println();
+		}
+		System.out.flush();
+	}
+
+	public static void pressAnyKeyToContinue() throws InterruptedException {
+		printLetterByLetter("Press Enter key to continue...");
+		Scanner scanner = new Scanner(System.in);
+		try
+		{
+			scanner.nextLine();
+		}
+		catch(Exception ignored){}
 	}
 
 

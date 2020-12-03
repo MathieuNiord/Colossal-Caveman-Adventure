@@ -4,21 +4,20 @@ import Characters.*;
 import Others.*;
 
 public class Stick extends Obj {
+
 	
-	
-	
-	
-	// ***** CONSTANTS *****
-	
-	// ***** ATTRIBUTES *****
-	
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
 	
 	public Stick(String name) {
 		super(name);
 	}
-	
+
+
 	// ***** METHODS *****
+
+
+	// === COMMANDS ===
+
 	@Override
 	public void use(Hero h) {
 		if(h.getPlace().getName().equals("Mortuary")){
@@ -34,6 +33,7 @@ public class Stick extends Obj {
 			
 		}
 	}
+
 	@Override
 	public void use(Hero h,String s) {
 		if(s.equals("Flint")){
@@ -56,17 +56,10 @@ public class Stick extends Obj {
 			System.out.println("You cannot combine those object together");
 		}
 	}
-	// Getter
-	
-	
-	
-	// Setter
-	
-	
-	
-	// Display
+
 	@Override
 	public void look() throws InterruptedException {
 		Game.printLetterByLetter(Script.STICK_DESCRIPT);
 	}
+
 }

@@ -4,9 +4,19 @@ import Characters.*;
 import Others.*;
 
 public class Bescherelle extends Obj{
+
+
+	// ***** CONSTRUCTOR *****
+
 	public Bescherelle(String name) {
 		super(name);
 	}
+
+
+	// ***** METHODS *****
+
+
+	// === COMMANDS ===
 	
 	@Override
 	public void use(Hero h) {
@@ -23,4 +33,5 @@ public class Bescherelle extends Obj{
 	public void look() throws InterruptedException {
 		Game.printLetterByLetter(Script.BESCH_DESCRIPT);
 	}
+
 }

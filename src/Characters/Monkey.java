@@ -12,7 +12,7 @@ public class Monkey extends Animal{
 	public final String hungryDialog;
 	
 	
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
 
 	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
 		super(name, bLevel, noBeschDialog, beschDialog,desc);
@@ -22,14 +22,15 @@ public class Monkey extends Animal{
 	
 	// ***** METHODS *****
 
-	// === Setter ===
+
+	// === SETTER ===
 
 	public void setUnHungry() {
 		this.hungry = false;
 	}
 
 
-	// === Commands ===
+	// === COMMANDS ===
 	
 	@Override
 	public void talk(Hero h) throws InterruptedException {
@@ -50,4 +51,5 @@ public class Monkey extends Animal{
 			Game.printLetterByLetter(Script.MONKEY_TEXT03);
 		}
 	}
+
 }

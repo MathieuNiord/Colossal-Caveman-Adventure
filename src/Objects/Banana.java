@@ -4,21 +4,30 @@ import Characters.*;
 import Others.*;
 
 public class Banana extends Obj {
-	
-	
-	
-	
-	// ***** CONSTANTS *****
-	
+
+
 	// ***** ATTRIBUTES *****
+
 	private static int count = 0;
-	// ***** CONSTRUCTORS *****
+
+
+	// ***** CONSTRUCTOR *****
 	
 	public Banana(String name) {
 		super(name);
 	}
-	
+
+
 	// ***** METHODS *****
+
+
+	// === COMMANDS ===
+
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.BANANA_DESCRIPT);
+	}
+
 	@Override
 	public void use(Hero h) {
 		if (h.getPlace().getName().equals("Experiments room")) {
@@ -42,19 +51,5 @@ public class Banana extends Obj {
 			}
 		}
 	}
-	
-	
-	// Getter
-	
-	
-	
-	// Setter
-	
-	
-	
-	// Display
-	@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(Script.BANANA_DESCRIPT);
-	}
+
 }

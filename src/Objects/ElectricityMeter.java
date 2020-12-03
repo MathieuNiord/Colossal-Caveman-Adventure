@@ -5,19 +5,49 @@ import Others.*;
 
 public class ElectricityMeter extends Obj{
 	
-	
-	// ***** CONSTANTS *****
-	
+
 	// ***** ATTRIBUTES *****
+
 	private boolean hasFuse;
 	public final Place place;
-	// ***** CONSTRUCTORS *****
+
+
+	// ***** CONSTRUCTOR *****
+
 	public ElectricityMeter(String name, Place p) {
 		super(name);
 		this.hasFuse=false;
 		this.place=p;
 	}
+
+
 	// ***** METHODS *****
+	
+	
+	// === SETTER ===
+
+	public void setHasFuse(){
+		this.hasFuse=true;
+	}
+	
+	
+	// === COMMANDS ===
+
+	@Override
+	public void look() throws InterruptedException {
+		if(!this.hasFuse){
+			Game.printLetterByLetter(Script.ELECTRICMETER_MISSING_DESCRIPT);
+		}
+		else{
+			Game.printLetterByLetter(Script.ELECTRICMETER_DESCRIPT);
+		}
+	}
+
+	@Override
+	public void take(Hero h) throws InterruptedException {
+		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n");
+	}
+
 	@Override
 	public void use(Hero h) {
 		if(h.getObjs().containsKey("Fuse")){
@@ -32,30 +62,5 @@ public class ElectricityMeter extends Obj{
 			System.out.println("You've already placed the Objects.Fuse !");
 		}
 	}
-	
-	@Override
-	public void take(Hero h) throws InterruptedException {
-		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n");
-	}
-	
-	// Getter
-	
-	
-	
-	// Setter
-	public void setHasFuse(){
-		this.hasFuse=true;
-	}
-	
-	
-	// Display
-	@Override
-	public void look() throws InterruptedException {
-		if(!this.hasFuse){
-			Game.printLetterByLetter(Script.ELECTRICMETER_MISSING_DESCRIPT);
-		}
-		else{
-			Game.printLetterByLetter(Script.ELECTRICMETER_DESCRIPT);
-		}
-	}
+
 }

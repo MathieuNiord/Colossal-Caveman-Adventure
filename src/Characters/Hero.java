@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class Hero {
 
+
+	// ***** CONSTANTS *****
+
 	public final static int DEFAULT_HP = 100;
 	public final static int DEFAULT_BESCHERELLE_LEVEL = 0;
 	public final static int DEFAULT_KEY_LEVEL = 0;
@@ -28,7 +31,9 @@ public class Hero {
 	private final Map<String, Obj> objs;
 	private Place place;
 
-	// ***** CONSTRUCTORS *****
+
+	// ***** CONSTRUCTOR *****
+
 	public Hero(String name, Place place) {
 
 		this.PLAYERNAME = name;
@@ -45,7 +50,7 @@ public class Hero {
 	// ***** METHODS *****
 
 
-	// Getter
+	// === GETTER ===
 
 	public int getHP() {
 		return this.hp;
@@ -80,7 +85,8 @@ public class Hero {
 	}
 
 
-	// === Setter
+	// === SETTER ===
+
 	public void increaseBescherelle() {
 		this.lvlBescherelle++;
 	}
@@ -98,6 +104,7 @@ public class Hero {
 			System.out.println("\nYou have just gained " + damageHeal + " life points! Well done Champion !\n");
 		}
 	}
+
 	public void setImmunised(){
 		this.immunised=true;
 	}
@@ -107,30 +114,30 @@ public class Hero {
 	}
 
 
-	// Display
+	// === DISPLAY ===
+
 	public void showInventory(){
 		System.out.print("\nYour inventory : ");
 		System.out.print(this.getObjs().keySet().toString());
 	}
 
 
-	// Others
-	public void take(String s) throws InterruptedException {
-		if (this.place.getItems().containsKey(s)) {
-			this.place.getItems().get(s).take(this);
-		}
-		else{
-			System.out.print("\nNo kind of " + s + " in this place STOOOPID CAVEMAN !\n");
-		}
-	}
+	// === COMMANDS ===
 
-	public void talk(String s) throws InterruptedException {
-		if (this.place.getAnimals().containsKey(s)) {
-			this.place.getAnimals().get(s).talk(this);
+	public void attack(Enemy enemy) throws InterruptedException {
+		if(this.objs.containsKey("Club")){
+			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
+			System.out.print("\nHouga Bouga :");
+			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 		}
 		else{
-			System.out.print("\nWhere did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n");
+			enemy.takeDamage(DEFAULT_DAMAGE);
+			System.out.print("\nHouga Bouga :");
+			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 		}
+		Game.sysClear();
 	}
 
 	public void go(String s) {
@@ -142,18 +149,16 @@ public class Hero {
 		}
 	}
 
-	public void use(String s) {
-		if(this.getObjs().containsKey(s)){
-			this.getObjs().get(s).use(this);
+	public void heal() throws InterruptedException {
+		if(this.objs.containsKey("Poster")){
+			this.objs.remove("Poster");
+			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
+			this.hp += 20;
+			System.out.println("\nYou gained 20 HP\n");
 		}
 		else{
-			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
-		}
-	
-	}
-	public void use(String s1,String s2) {
-		if(this.getObjs().containsKey(s1)){
-			this.getObjs().get(s1).use(this,s2);
+			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n");
+			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
 		}
 	}
 
@@ -172,36 +177,45 @@ public class Hero {
 		}
 	}
 
-	public void attack(Enemy enemy) throws InterruptedException {
-		if(this.objs.containsKey("Club")){
-			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
-			System.out.print("\nHouga Bouga :");
-			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+	public void take(String s) throws InterruptedException {
+		if (this.place.getItems().containsKey(s)) {
+			this.place.getItems().get(s).take(this);
 		}
 		else{
-			enemy.takeDamage(DEFAULT_DAMAGE);
-			System.out.print("\nHouga Bouga :");
-			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+			System.out.print("\nNo kind of " + s + " in this place STOOOPID CAVEMAN !\n");
 		}
-		Game.sysClear();
 	}
 
-	public void heal() throws InterruptedException {
-		if(this.objs.containsKey("Poster")){
-			this.objs.remove("Poster");
-			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
-			this.hp += 20;
-			System.out.println("\nYou gained 20 HP\n");
+	public void talk(String s) throws InterruptedException {
+		if (this.place.getAnimals().containsKey(s)) {
+			this.place.getAnimals().get(s).talk(this);
 		}
 		else{
-			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n");
-			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
+			System.out.print("\nWhere did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n");
 		}
 	}
+
+	public void use(String s) {
+		if(this.getObjs().containsKey(s)){
+			this.getObjs().get(s).use(this);
+		}
+		else{
+			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
+		}
+
+	}
+
+	public void use(String s1,String s2) {
+		if(this.getObjs().containsKey(s1)){
+			this.getObjs().get(s1).use(this,s2);
+		}
+	}
+
+
+	// === OTHER ===
 
 	public void quit() {
 		this.hp = 0;
 	}
+
 }

@@ -4,9 +4,17 @@ import Characters.*;
 import Others.*;
 
 public class Key extends Obj{
+
+    // ***** CONSTRUCTOR *****
+
     public Key(String name) {
         super(name);
     }
+
+    // ***** METHODS *****
+
+
+    // === COMMANDS ===
 
     @Override
     public void use(Hero h) {
@@ -14,7 +22,7 @@ public class Key extends Obj{
     }
 
     @Override
-    public void take(Hero h) throws InterruptedException {
+    public void take(Hero h) {
         h.increaseKey();
         h.getObjs().put(this.NAME, this);
     }
@@ -23,4 +31,5 @@ public class Key extends Obj{
     public void look() throws InterruptedException {
         Game.printLetterByLetter(Script.KEY_DESCRIPT);
     }
+
 }

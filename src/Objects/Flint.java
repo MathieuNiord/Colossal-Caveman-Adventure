@@ -4,21 +4,25 @@ import Characters.*;
 import Others.*;
 
 public class Flint extends Obj {
+
 	
-	
-	
-	
-	// ***** CONSTANTS *****
-	
-	// ***** ATTRIBUTES *****
-	
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
 	
 	public Flint(String name) {
 		super(name);
 	}
-	
+
+
 	// ***** METHODS *****
+	
+	
+	// === COMMANDS ===
+	
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.FLINT_DESCRIPT);
+	}
+
 	@Override
 	public void use(Hero h) {
 		if(h.getPlace().getName().equals("Mortuary")){
@@ -34,10 +38,10 @@ public class Flint extends Obj {
 		}
 		else{
 			System.out.println("Maybe you should use it in the right Room...");
-			
+
 		}
 	}
-	
+
 	@Override
 	public void use(Hero h,String s) {
 		if(s.equals("Stick")){
@@ -60,18 +64,5 @@ public class Flint extends Obj {
 			System.out.println("You cannot combine those object together");
 		}
 	}
-	// Getter
-	
-	
-	
-	// Setter
-	
-	
-	
-	// Display
-	
-	@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(Script.FLINT_DESCRIPT);
-	}
+
 }

@@ -5,12 +5,15 @@ import Others.*;
 
 public class BurnableDoor extends LockableDoor{
 	
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
+
 	public BurnableDoor(Place p1) {
 		super(p1);
 	}
 
+
 	// ***** METHODS *****
+
 	@Override
 	public void cross(Hero hero, String s){
 		if(!this.isUnlock()){
@@ -29,4 +32,5 @@ public class BurnableDoor extends LockableDoor{
 			hero.setPlace(this.getPlaces().get(s));
 		}
 	}
+
 }

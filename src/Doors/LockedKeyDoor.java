@@ -7,28 +7,31 @@ import java.util.Random;
 
 public class LockedKeyDoor extends LockableDoor{
 
-	// ***** CONSTANTS *****
 
 	// ***** ATTRIBUTES *****
 
 	private int keyLvlNeed;
 
-	// ***** CONSTRUCTORS *****
+
+	// ***** CONSTRUCTOR *****
 
 	public LockedKeyDoor(int key, Place p1, Place p2){
 		super(p1, p2);
 		this.keyLvlNeed = key;
 	}
 
+
 	// ***** METHODS *****
 
-	// Getter
+
+	// === GETTER ===
 
 	public int keyLevel(){
 		return this.keyLvlNeed;
 	}
 
-	// Setter
+
+	// === SETTER ===
 
 	@Override
 	public void unlock(){
@@ -54,7 +57,8 @@ public class LockedKeyDoor extends LockableDoor{
 		}
 	}
 
-	//Other
+
+	// === OTHER ===
 
 	@Override
 	public void cross(Hero hero, String s){
@@ -63,4 +67,5 @@ public class LockedKeyDoor extends LockableDoor{
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
 		}
 	}
+
 }

@@ -4,35 +4,30 @@ import Characters.*;
 import Others.*;
 
 public class Fuse extends Obj {
+
 	
-	// ***** CONSTANTS *****
-	
-	// ***** ATTRIBUTES *****
-	
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
+
 	public Fuse(String name) {
 		super(name);
 	}
+
+
 	// ***** METHODS *****
+
+	
+	// === COMMANDS ===
+
+	@Override
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.FUSE_DESCRIPT);
+	}
+
 	@Override
 	public void use(Hero h) {
 		if(h.getPlace().getItems().containsKey("ElectricityMeter")){
 			h.getPlace().getItems().get("ElectricityMeter").use(h);
 		}
 	}
-	
-	
-	// Getter
-	
-	
-	
-	// Setter
-	
-	
-	
-	// Display
-	@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(Script.FUSE_DESCRIPT);
-	}
+
 }

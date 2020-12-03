@@ -5,9 +5,18 @@ import Others.*;
 
 public class InfectedRoomDoor extends LockableDoor{
 
+
+    // ***** CONSTRUCTOR *****
+
     public InfectedRoomDoor(Place p1, Place p2){
         super(p1, p2);
     }
+
+
+    // ***** METHODS *****
+
+
+    // === OTHER ===
 
     @Override
     public void cross(Hero hero, String s){
@@ -25,4 +34,5 @@ public class InfectedRoomDoor extends LockableDoor{
             hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
         }
     }
+
 }

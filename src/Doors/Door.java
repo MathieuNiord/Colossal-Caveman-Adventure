@@ -8,10 +8,12 @@ import java.util.HashMap;
 
 public class Door implements Crossable {
 
+
 	// ***** ATTRIBUTES *****
 
 	protected boolean open;
 	private final HashMap<String, Place> places;
+
 
 	// ***** CONSTRUCTORS *****
 
@@ -28,9 +30,11 @@ public class Door implements Crossable {
 		this.places.put(p2.getName(), p2);
 	}
 
+
 	// ***** METHODS *****
 
-	// Getter
+
+	// === GETTER ===
 
 	public boolean isOpen(){
 		return this.open;
@@ -40,7 +44,9 @@ public class Door implements Crossable {
 		return this.places;
 	}
 
-	// Setter
+
+	// === SETTER ===
+
 	public void open(){
 		this.open = true;
 		if(!this.getClass().getSimpleName().equals("Doors.DestructableDoor")){
@@ -48,11 +54,13 @@ public class Door implements Crossable {
 		}
 	}
 
-	//Other
+
+	// === OTHER ===
 
 	public void cross(Hero hero, String s){
 		if(this.isOpen()){
 			hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
 		}
 	}
+
 }
