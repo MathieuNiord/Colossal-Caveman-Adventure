@@ -40,7 +40,7 @@ public class Animal implements Lookable {
 
 	// === COMMANDS ===
 
-	public void talk(Hero h) throws InterruptedException {
+	public void talk(Hero h) {
 
 		/*If the Objects.Bescherelle level of the hero is egal or higher than
 		the Objects.Bescherelle level needed to talk with this animal*/
@@ -52,7 +52,7 @@ public class Animal implements Lookable {
 		}
 	}
 
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(this.description);
 	}
 }

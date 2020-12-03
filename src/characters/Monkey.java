@@ -33,7 +33,7 @@ public class Monkey extends Animal{
 	// === COMMANDS ===
 	
 	@Override
-	public void talk(Hero h) throws InterruptedException {
+	public void talk(Hero h) {
 		
 		if(h.getObjs().containsKey("Banana")){
 			h.getObjs().remove("Banana");

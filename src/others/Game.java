@@ -159,7 +159,7 @@ public class Game {
 	
 	// === COMMANDS ===
 
-	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+	public void battle(Hero hero, Enemy enemy){
 
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		sysClear();
@@ -228,7 +228,7 @@ public class Game {
 
 	// === OTHER ===
 
-	public void Play() throws InterruptedException {
+	public void Play(){
 		System.out.println(Script.SYNOPSIS);
 		pressAnyKeyToContinue();
 		sysClear();
@@ -239,7 +239,7 @@ public class Game {
 		//Die or Win Text
 	}
 
-	public void PlayATurn() throws InterruptedException {
+	public void PlayATurn(){
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
@@ -290,13 +290,14 @@ public class Game {
 
 	// === DISPLAY ===
 
-	public void displayEnvironment() throws InterruptedException {
+	public void displayEnvironment() {
 		printLetterByLetter(this.hero.getPlace().toString());
 	}
 
-	public static void printLetterByLetter(String s) throws InterruptedException{
+	public static void printLetterByLetter(String s){
 		System.out.println();
 		int len = s.length();
+		try{
 		for(int i = 0 ; i < len; i++){
 			char c = s.charAt(i);
 			System.out.print(c);
@@ -306,11 +307,15 @@ public class Game {
 			}
 
 			Thread.sleep(20);
+		}}
+		catch (Exception e){
+		
 		}
 
 	}
 
 	//Pour clean la console s'il y a besoin
+	
 	public static void sysClear(){
 		try
 		{
@@ -323,7 +328,7 @@ public class Game {
 		System.out.flush();
 	}
 
-	public static void pressAnyKeyToContinue() throws InterruptedException {
+	public static void pressAnyKeyToContinue() {
 		printLetterByLetter("Press Enter key to continue...");
 		Scanner scanner = new Scanner(System.in);
 		try
@@ -336,7 +341,7 @@ public class Game {
 
 	// === MAIN ===
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
 		System.out.println("Your answer : ");

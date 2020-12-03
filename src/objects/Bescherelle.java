@@ -24,13 +24,13 @@ public class Bescherelle extends Obj{
 	}
 	
 	@Override
-	public void take(Hero h) throws InterruptedException {
+	public void take(Hero h)  {
 		h.increaseBescherelle();
 		super.take(h);
 	}
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(Script.BESCH_DESCRIPT);
 	}
 

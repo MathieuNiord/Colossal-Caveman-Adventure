@@ -19,7 +19,7 @@ public class Stick extends Obj {
 	// === COMMANDS ===
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(Script.STICK_DESCRIPT);
 	}
 	

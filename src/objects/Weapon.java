@@ -22,7 +22,7 @@ public class Weapon extends Obj{
 	public void use(Hero h) {}
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter("Club");
 	}
 

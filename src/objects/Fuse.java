@@ -19,12 +19,12 @@ public class Fuse extends Obj {
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(Script.FUSE_DESCRIPT);
 	}
 
 	@Override
-	public void use(Hero h) throws InterruptedException {
+	public void use(Hero h) {
 		if(h.getPlace().getItems().containsKey("ElectricityMeter")){
 			h.getPlace().getItems().get("ElectricityMeter").use(h);
 		}

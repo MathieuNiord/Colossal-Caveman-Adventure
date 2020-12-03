@@ -20,7 +20,7 @@ public class Flint extends Obj {
 	
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(Script.FLINT_DESCRIPT);
 	}
 	

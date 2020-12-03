@@ -119,7 +119,7 @@ public class Hero {
 
 	// === COMMANDS ===
 
-	public void attack(Enemy enemy) throws InterruptedException {
+	public void attack(Enemy enemy)  {
 		if(this.objs.containsKey("Club")){
 			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 			System.out.print("\nHouga Bouga :");
@@ -144,7 +144,7 @@ public class Hero {
 		}
 	}
 
-	public void heal() throws InterruptedException {
+	public void heal() {
 		if(this.objs.containsKey("Poster")){
 			this.objs.remove("Poster");
 			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
@@ -157,7 +157,7 @@ public class Hero {
 		}
 	}
 
-	public void lookAt(String s) throws InterruptedException {
+	public void lookAt(String s) {
 		if(this.getPlace().isContainsEnemies()){
 			this.getPlace().getEnemies().look();
 		}
@@ -172,7 +172,7 @@ public class Hero {
 		}
 	}
 
-	public void take(String s) throws InterruptedException {
+	public void take(String s) {
 		if (this.place.getItems().containsKey(s)) {
 			this.place.getItems().get(s).take(this);
 		}
@@ -181,7 +181,7 @@ public class Hero {
 		}
 	}
 
-	public void talk(String s) throws InterruptedException {
+	public void talk(String s) {
 		if (this.place.getAnimals().containsKey(s)) {
 			this.place.getAnimals().get(s).talk(this);
 		}
@@ -190,7 +190,7 @@ public class Hero {
 		}
 	}
 
-	public void use(String s) throws InterruptedException {
+	public void use(String s) {
 		if(this.getObjs().containsKey(s)){
 			this.getObjs().get(s).use(this);
 		}

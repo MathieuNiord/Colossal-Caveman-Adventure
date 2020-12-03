@@ -67,7 +67,7 @@ public class Enemy implements Lookable {
 
     // === SETTER ===
 
-    public void takeDamage(int damage) throws InterruptedException {
+    public void takeDamage(int damage) {
         if (this.hp > 0 && this.state) {
             this.hp -= damage;
         }
@@ -89,17 +89,17 @@ public class Enemy implements Lookable {
 
     // === DISPLAY ===
 
-    public void opening() throws InterruptedException {
+    public void opening() {
         System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.opening);
     }
 
-    public void attack() throws InterruptedException {
+    public void attack() {
         System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.attack);
     }
 
-    public void defeat() throws InterruptedException {
+    public void defeat() {
         System.out.print(this.NAME + " :");
         Game.printLetterByLetter(this.defeat);
     }
@@ -107,7 +107,7 @@ public class Enemy implements Lookable {
 
     // === COMMANDS ===
 
-    public void look() throws InterruptedException {
+    public void look() {
         Game.printLetterByLetter(this.description);
     }
 

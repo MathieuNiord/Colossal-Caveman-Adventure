@@ -34,7 +34,7 @@ public class ElectricityMeter extends Obj{
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		if(!this.hasFuse){
 			Game.printLetterByLetter(Script.ELECTRICMETER_MISSING_DESCRIPT);
 		}
@@ -44,7 +44,7 @@ public class ElectricityMeter extends Obj{
 	}
 
 	@Override
-	public void take(Hero h) throws InterruptedException {
+	public void take(Hero h) {
 		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n");
 	}
 

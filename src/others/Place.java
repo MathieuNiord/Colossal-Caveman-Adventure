@@ -178,7 +178,7 @@ public class Place implements Lookable {
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(this.toString());
 	}
 

@@ -19,7 +19,7 @@ public class Potion extends Obj {
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look()  {
 		Game.printLetterByLetter(Script.POTION_DESCRIPT);
 	}
 

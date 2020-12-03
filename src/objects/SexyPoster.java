@@ -18,13 +18,13 @@ public class SexyPoster extends Poster{
 	// === COMMANDS ===
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		this.HERO.heal();
 		System.out.println(Script.SEXY_POSTER);
 	}
 	
 	@Override
-	public void take(Hero h) throws InterruptedException {
+	public void take(Hero h) {
 		
 		h.heal();
 		
@@ -36,7 +36,7 @@ public class SexyPoster extends Poster{
 	}
 	
 	@Override
-	public void use(Hero h) throws InterruptedException {
+	public void use(Hero h) {
 		h.heal();
 		System.out.println("You healed !");
 	}

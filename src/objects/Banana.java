@@ -24,7 +24,7 @@ public class Banana extends Obj {
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		Game.printLetterByLetter(Script.BANANA_DESCRIPT);
 	}
 

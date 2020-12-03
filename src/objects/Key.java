@@ -28,7 +28,7 @@ public class Key extends Obj{
     }
 
     @Override
-    public void look() throws InterruptedException {
+    public void look() {
         Game.printLetterByLetter(Script.KEY_DESCRIPT);
     }
 

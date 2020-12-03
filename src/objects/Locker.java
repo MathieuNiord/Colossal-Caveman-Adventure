@@ -43,7 +43,7 @@ public class Locker extends Obj{
 	// === COMMANDS ===
 
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		if(this.objs!=null){
 			for (Obj obj : this.objs) {
 				this.hero.getObjs().put(obj.NAME, obj);
@@ -56,7 +56,7 @@ public class Locker extends Obj{
 	}
 
 	@Override
-	public void take(Hero h) throws InterruptedException {
+	public void take(Hero h) {
 		Game.printLetterByLetter("What the hell man, you're trying to take A fu**ing Objects.Locker\n");
 	}
 
