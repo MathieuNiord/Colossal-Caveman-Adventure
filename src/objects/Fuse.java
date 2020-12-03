@@ -30,8 +30,8 @@ public class Fuse extends Obj {
 	
 	@Override
 	public void use(Hero h, String s) {
-		if(h.getPlace().getItems().containsKey("ElectricMeter")){
-			h.getPlace().getItems().get("ElectricMeter").use(h);
+		if(h.getPlace().getItems().containsKey(s)){
+			h.getPlace().getItems().get(s).use(h);
 		}
 	}
 	
