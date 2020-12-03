@@ -75,12 +75,12 @@ public class Game {
 		Flint flint = new Flint("Flint");
 		Fuse fuse = new Fuse("Fuse");
 		
-		Bescherelle catB = new Bescherelle("Bescherelle");
-		Bescherelle mouseB = new Bescherelle("Bescherelle");
-		Bescherelle monkeyB = new Bescherelle("Bescherelle");
+		Bescherelle catB = new Bescherelle("Cat-Bescherelle");
+		Bescherelle mouseB = new Bescherelle("Mouse-Bescherelle");
+		Bescherelle monkeyB = new Bescherelle("Monkey-Bescherelle");
 
-		Key k1 = new Key("Key");
-		Key k2 = new Key("Key");
+		Key k1 = new Key("Key1");
+		Key k2 = new Key("Key2");
 		
 		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
 		

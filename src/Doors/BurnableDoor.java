@@ -18,6 +18,7 @@ public class BurnableDoor extends LockableDoor{
 				System.out.println("You burned the door !" +
 						"\nYou are now in the Archives-room");
 				this.unlock();
+				hero.getObjs().remove("FiredStick");
 			}
 			else{
 				System.out.println("This door looks very dry," +

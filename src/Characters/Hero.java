@@ -179,15 +179,14 @@ public class Hero {
 			System.out.print("\nHouga Bouga :");
 			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
 			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
-			Game.sysClear(2);
 		}
 		else{
 			enemy.takeDamage(DEFAULT_DAMAGE);
 			System.out.print("\nHouga Bouga :");
 			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
 			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
-			Game.sysClear(2);
 		}
+		Game.sysClear(2);
 	}
 
 	public void heal() throws InterruptedException {
