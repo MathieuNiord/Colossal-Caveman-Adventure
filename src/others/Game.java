@@ -376,7 +376,7 @@ public class Game {
 	}
 
 	public static void printLetterByLetter(String s) {
-		//System.out.println();
+		System.out.println();
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
