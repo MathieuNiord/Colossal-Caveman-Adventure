@@ -55,7 +55,7 @@ public class Locker extends Obj{
 			for (Obj obj : this.objs) {
 				this.hero.getObjs().put(obj.NAME, obj);
 			}
-			Game.printLetterByLetter("You just looked in the locker and found :" + this.objs.toString() + " !\n");
+			Game.printLetterByLetter("You just looked in the locker and found : " + this.objs.toString() + " !\n");
 			
 		}
 		
