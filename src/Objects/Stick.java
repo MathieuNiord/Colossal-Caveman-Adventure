@@ -17,22 +17,14 @@ public class Stick extends Obj {
 
 
 	// === COMMANDS ===
-
+	
 	@Override
-	public void use(Hero h) {
-		if(h.getPlace().getName().equals("Mortuary")){
-			if(h.getObjs().containsKey("Flint")){
-				h.getObjs().remove("Stick");
-				h.getObjs().remove("Flint");
-				FiredStick firedStick = new FiredStick("FiredStick");
-				h.getObjs().put(firedStick.NAME,firedStick);
-			}
-		}
-		else{
-			System.out.println("Maybe you should use it in the right Room...");
-			
-		}
+	public void look() throws InterruptedException {
+		Game.printLetterByLetter(Script.STICK_DESCRIPT);
 	}
+	
+	@Override
+	public void use(Hero h) {}
 
 	@Override
 	public void use(Hero h,String s) {
@@ -56,10 +48,6 @@ public class Stick extends Obj {
 			System.out.println("You cannot combine those object together");
 		}
 	}
-
-	@Override
-	public void look() throws InterruptedException {
-		Game.printLetterByLetter(Script.STICK_DESCRIPT);
-	}
-
+	
 }
+

@@ -4,6 +4,7 @@ import Characters.*;
 import Doors.*;
 import Objects.*;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -165,7 +166,7 @@ public class Game {
 
 	// === COMMANDS ===
 
-	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+	public void battle(Hero hero, Enemy enemy) throws InterruptedException, IOException {
 
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		sysClear();
@@ -178,7 +179,7 @@ public class Game {
 		System.out.println(Script.BATTLE_HELP);
 
 		while (hero.isAlive() && !enemy.isDefeat()) {
-
+			
 			//ENEMY TURN
 			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
 			System.out.print(enemy.NAME + " :");
@@ -190,7 +191,6 @@ public class Game {
 			input = sc.nextLine();
 			tabInput = input.split(" ");
 			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
-
 			switch (count) {
 
 				case 1 :
@@ -230,7 +230,7 @@ public class Game {
 
 	// === OTHER ===
 
-	public void Play() throws InterruptedException {
+	public void Play() throws InterruptedException, IOException {
 		System.out.println(Script.DEFAULT_WELCOME);
 		pressAnyKeyToContinue();
 		sysClear();
@@ -241,13 +241,14 @@ public class Game {
 		//Die or Win Text
 	}
 
-	public void PlayATurn() throws InterruptedException {
+	public void PlayATurn() throws InterruptedException, IOException {
+		
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
 		System.out.print("Command :> ");
 		int count; //count of words
-		String input; //input String
+		String input=""; //input String
 		String[] tabInput = new String[0]; //Tab of words
 
 		Scanner scanner = new Scanner(System.in); //Scanner for input
@@ -256,6 +257,7 @@ public class Game {
 			input = scanner.nextLine();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
+		sysClear();
 		count = tabInput.length; //count is equal to the number of words
 		switch (count){
 			case 1:
@@ -314,11 +316,18 @@ public class Game {
 
 	//Pour clean la console s'il y a besoin
 	public static void sysClear(){
-		for (int i = 0; i < 100; i++) {
-			System.out.println();
+			try
+			{
+					new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			}
+			catch (final Exception e)
+			{
+				//  Handle any exceptions.
+			}
+			System.out.flush();
 		}
-		System.out.flush();
-	}
+		
+	
 
 	public static void pressAnyKeyToContinue() throws InterruptedException {
 		printLetterByLetter("Press Enter key to continue...");
@@ -333,16 +342,15 @@ public class Game {
 
 	// === MAIN ===
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		Scanner sc = new Scanner(System.in);
-		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
-		System.out.println("Your answer : ");
+		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.\n\n");
+		System.out.print("Your answer : ");
 		Game g = new Game(sc.nextLine());
-		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
-		System.out.println("Answer : ");
+		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice\n\n");
+		System.out.print("Answer : ");
 		String noMatter = sc.nextLine();
 		printLetterByLetter("As you want HOUGA BOUGA !");
-		sysClear();
 		g.Play();
 	}
 	

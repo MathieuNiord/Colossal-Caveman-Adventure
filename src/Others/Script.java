@@ -107,9 +107,14 @@ public class Script {
     public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
     public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
     public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";
-
-
-
+    public static final String DEFAULT_POSTER = "This is a Poster\n";
+    public static final String SEXY_POSTER = "You are looking to this and you're so excited that you're gaining LIFE !!!\n";
+    public static final String NAZI_POSTER = "You are looking to this and this is so ugly that you've loosed LIFE !!!\n";
+		
+    
+    
+    
+    
     //HELP function
 
     public static final String HELP_DEFAULT = "List of commands :" +

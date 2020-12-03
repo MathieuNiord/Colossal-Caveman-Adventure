@@ -24,7 +24,7 @@ public class Fuse extends Obj {
 	}
 
 	@Override
-	public void use(Hero h) {
+	public void use(Hero h) throws InterruptedException {
 		if(h.getPlace().getItems().containsKey("ElectricityMeter")){
 			h.getPlace().getItems().get("ElectricityMeter").use(h);
 		}
