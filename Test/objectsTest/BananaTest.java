@@ -2,7 +2,6 @@ package objectsTest;
 
 import characters.Hero;
 import characters.Monkey;
-import doors.Door;
 import objects.Banana;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,20 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class BananaTest {
 
     private Banana b;
-    private Place A;
     private Place B;
     private Hero h;
-    private Monkey m;
 
     @BeforeEach
     void setUp() {
-        A = new Place("Place", false, true);
+        Place a = new Place("Place", false, true);
         B = new Place("Experiments room", false, true);
 
         b = new Banana("Banana");
-        A.addObject(b);
+        a.addObject(b);
 
-        h = new Hero("Test", A);
+        h = new Hero("Test", a);
     }
 
     @Test
@@ -48,7 +45,7 @@ class BananaTest {
         // case with monkey in Experiments room
         h.setPlace(B);
 
-        m = new Monkey("Monkey", 0,
+        Monkey m = new Monkey("Monkey", 0,
                 "Monkey Script noBesch", "Monkey Script Besch",
                 "Script Hungry Diag", "Monkey Description");
         B.addAnimal(m);
