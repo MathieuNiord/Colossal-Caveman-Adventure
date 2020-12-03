@@ -10,14 +10,13 @@ public class Monkey extends Animal{
 	
 	/*This attribut is used to know if the Characters.Monkey
 	 got the Objects.Banana that he asked for*/
-	private boolean hungry;
+	private boolean hungry = true;
 	public final String hungryDialog;
 	
 	
 	// ***** CONSTRUCTORS *****
 	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
 		super(name, bLevel, noBeschDialog, beschDialog,desc);
-		this.hungry = true;
 		this.hungryDialog = hungryDialog;
 	}
 
