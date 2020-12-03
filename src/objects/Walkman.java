@@ -22,4 +22,9 @@ public class Walkman extends Obj{
 	public void use(Hero h, String s) {
 	
 	}
+
+	@Override
+	public String toString() {
+		return this.NAME;
+	}
 }

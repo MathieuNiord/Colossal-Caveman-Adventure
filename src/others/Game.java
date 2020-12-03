@@ -228,6 +228,7 @@ public class Game {
 		printLetterByLetter(Script.SYNOPSIS);
 
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
+			//displayEnvironment();//============================================modif
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -239,7 +240,7 @@ public class Game {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
 
-		cmdPush(2);	//========================================SAUTS DE LIGNES
+		//cmdPush(2);	//========================================SAUTS DE LIGNES
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -248,7 +249,6 @@ public class Game {
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			sysClear();
 			this.displayEnvironment();//===================================================modif
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
@@ -288,6 +288,7 @@ public class Game {
 
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
+		sysClear();
 	}
 
 	public void gameOver() {
@@ -375,7 +376,7 @@ public class Game {
 	}
 
 	public static void printLetterByLetter(String s) {
-		System.out.println();
+		//System.out.println();
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
