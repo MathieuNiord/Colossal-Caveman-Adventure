@@ -195,7 +195,10 @@ public class Hero {
 		if(this.getObjs().containsKey(s)){
 			this.getObjs().get(s).use(this);
 		}
-		else{
+		else if (s.equalsIgnoreCase("ElectricMeter")) {
+			Game.printLetterByLetter("\nI'm not sure you can use this machine, it's heavy and you don't even know how it works.\n");
+		}
+		else {
 			Game.printLetterByLetter("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
 		}
 
