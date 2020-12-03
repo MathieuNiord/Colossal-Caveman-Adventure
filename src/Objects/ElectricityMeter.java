@@ -55,8 +55,8 @@ public class ElectricityMeter extends Obj{
 			h.getObjs().remove("Fuse");
 			this.setHasFuse();
 		}
-		if(this.hasFuse && !place.isEnlightened()){
-			place.switchEnlightened();
+		if(this.hasFuse && place.isEnlightened()){
+			place.setEnlightened();
 		}
 		else{
 			System.out.println("You've already placed the Objects.Fuse !");

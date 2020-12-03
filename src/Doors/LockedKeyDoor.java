@@ -10,7 +10,7 @@ public class LockedKeyDoor extends LockableDoor{
 
 	// ***** ATTRIBUTES *****
 
-	private int keyLvlNeed;
+	public final int keyLvlNeed;
 
 
 	// ***** CONSTRUCTOR *****
@@ -25,11 +25,7 @@ public class LockedKeyDoor extends LockableDoor{
 
 
 	// === GETTER ===
-
-	public int keyLevel(){
-		return this.keyLvlNeed;
-	}
-
+	
 
 	// === SETTER ===
 

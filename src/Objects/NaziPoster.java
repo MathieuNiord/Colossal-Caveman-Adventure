@@ -18,13 +18,13 @@ public class NaziPoster extends Poster{
 	// === COMMANDS ===
 	
 	@Override
-	public void look() throws InterruptedException {
+	public void look() {
 		this.HERO.setLife((-10));
 		System.out.println(Script.NAZI_POSTER);
 	}
 	
 	@Override
-	public void take(Hero h) throws InterruptedException {
+	public void take(Hero h)  {
 		
 		h.setLife((-10));
 		
@@ -36,7 +36,7 @@ public class NaziPoster extends Poster{
 	}
 	
 	@Override
-	public void use(Hero h) throws InterruptedException {
+	public void use(Hero h){
 		h.setLife((-10));
 		System.out.println("You loosed life !");
 	}

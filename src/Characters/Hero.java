@@ -3,7 +3,6 @@ package Characters;
 import Others.*;
 import Objects.*;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public class Hero {
 
 	// ***** ATTRIBUTES *****
 
-	private final String PLAYERNAME;
+	public final String PLAYERNAME;
 	private int hp;
 	private int keyLevel;
 	private int lvlBescherelle;
@@ -69,9 +68,7 @@ public class Hero {
 		return this.immunised;
 	}
 
-	public String getPLAYERNAME() {
-		return this.PLAYERNAME;
-	}
+	
 
 	public Place getPlace() {
 		return this.place;
@@ -125,7 +122,7 @@ public class Hero {
 
 	// === COMMANDS ===
 
-	public void attack(Enemy enemy) throws InterruptedException, IOException {
+	public void attack(Enemy enemy) throws InterruptedException {
 		if(this.objs.containsKey("Club")){
 			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 			System.out.print("\nHouga Bouga :");

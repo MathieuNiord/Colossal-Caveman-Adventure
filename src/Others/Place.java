@@ -110,8 +110,8 @@ public class Place implements Lookable {
 
 	// === SETTER ===
 
-	public void switchEnlightened() {
-		this.enlightened = !this.enlightened;
+	public void setEnlightened() {
+		this.enlightened =true;
 	}
 
 	public void addAnimal(Animal ani) {
@@ -313,7 +313,7 @@ public class Place implements Lookable {
 			strD = this.toStringDoors();
 		}
 
-		if(!this.isEnlightened()) {
+		if(this.isEnlightened()) {
 			isEnl = "The room is not lit, you can't see anything\n";
 		}
 		else {

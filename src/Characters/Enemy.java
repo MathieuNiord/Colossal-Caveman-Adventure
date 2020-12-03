@@ -77,7 +77,7 @@ public class Enemy implements Lookable {
         }
     }
 
-    public void Heal(int heal) {
+    public void heal(int heal) {
         if (this.state && this.hp > 0) {
             this.hp += heal;
         }

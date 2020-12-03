@@ -4,7 +4,6 @@ import Characters.*;
 import Doors.*;
 import Objects.*;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -161,7 +160,7 @@ public class Game {
 
 	// === COMMANDS ===
 
-	public void battle(Hero hero, Enemy enemy) throws InterruptedException, IOException {
+	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
 
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		sysClear();
@@ -226,7 +225,7 @@ public class Game {
 
 	// === OTHER ===
 
-	public void Play() throws InterruptedException, IOException {
+	public void Play() throws InterruptedException {
 		System.out.println(Script.SYNOPSIS);
 		pressAnyKeyToContinue();
 		sysClear();
@@ -237,7 +236,7 @@ public class Game {
 		//Die or Win Text
 	}
 
-	public void PlayATurn() throws InterruptedException, IOException {
+	public void PlayATurn() throws InterruptedException {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
@@ -334,7 +333,7 @@ public class Game {
 
 	// === MAIN ===
 
-	public static void main(String[] args) throws InterruptedException, IOException {
+	public static void main(String[] args) throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
 		System.out.println("Your answer : ");
