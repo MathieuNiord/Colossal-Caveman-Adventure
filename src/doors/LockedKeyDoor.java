@@ -22,11 +22,8 @@ public class LockedKeyDoor extends LockableDoor{
 
 
 	// ***** METHODS *****
-
-
-	// === GETTER ===
 	
-
+	
 	// === SETTER ===
 
 	@Override

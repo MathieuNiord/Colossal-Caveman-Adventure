@@ -43,14 +43,19 @@ class BananaTest {
         b.use(h);
 
         // case with monkey in Experiments room
+        h.take("Banana");
+        assertTrue(h.getObjs().containsValue(b));
+        assertFalse(h.getPlace().getItems().containsValue(b));
         h.setPlace(B);
+
 
         Monkey m = new Monkey("Monkey", 0,
                 "Monkey Script noBesch", "Monkey Script Besch",
                 "Script Hungry Diag", "Monkey Description");
         B.addAnimal(m);
 
-        b.use(h);
+        h.getObjs().get("Banana").use(h);
+
         assertFalse(m.getHungry());
     }
 }

@@ -16,14 +16,23 @@ public class ElectricityMeter extends Obj{
 
 	public ElectricityMeter(String name, Place p) {
 		super(name);
-		this.hasFuse=false;
-		this.place=p;
+		this.hasFuse = false;
+		this.place = p;
 	}
 
 
 	// ***** METHODS *****
-	
-	
+
+	// === GETTER ===
+
+	public boolean getHasFuse() {
+		return this.hasFuse;
+	}
+
+	public Place getPlace() {
+		return this.place;
+	}
+
 	// === SETTER ===
 
 	public void setHasFuse(){
@@ -55,11 +64,11 @@ public class ElectricityMeter extends Obj{
 			h.getObjs().remove("Fuse");
 			this.setHasFuse();
 		}
-		if(this.hasFuse && place.isEnlightened()){
+		if(this.hasFuse && !place.isEnlightened()){
 			place.setEnlightened();
 		}
 		else{
-			System.out.println("You've already placed the Objects.Fuse !");
+			System.out.println("You've already placed the Fuse !");
 		}
 	}
 	

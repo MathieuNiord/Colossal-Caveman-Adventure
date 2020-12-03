@@ -15,7 +15,7 @@ public class Animal implements Lookable {
 	public final String description;
 
 
-	// ***** CONSTRUCTORS *****
+	// ***** CONSTRUCTOR *****
 	
 	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc){
 		
@@ -52,6 +52,7 @@ public class Animal implements Lookable {
 		}
 	}
 
+	
 	public void look() {
 		Game.printLetterByLetter(this.description);
 	}

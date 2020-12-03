@@ -13,32 +13,20 @@ public class DestructableDoor extends LockableDoor {
 
 
     // ***** METHODS *****
-
-
-    // === SETTER ===
-
-    @Override
-    public void unlock() {}
-
-    public void unlock(boolean destructed) {
-        if (destructed && !this.isUnlock()) { //Ssi le joueur possède un gourdin pour défoncer la porte
-            super.unlock();
-            super.open();
-            System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
-        }
-    }
-
-
-    // === OTHER ===
-
+    
     @Override
     public void cross(Hero hero, String s){
-        this.unlock(hero.getObjs().containsKey("Club")); //On cherche si le joueur possède le gourdin dans ses items
+        
+        if(hero.getObjs().containsKey("Club") && !this.isUnlock()){ // If the hero has the Club
+            this.unlock();
+            System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
+        }
+        
         if(this.isUnlock()){
-            hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
+            hero.setPlace(this.getPlaces().get(s));
         }
         else{
-            System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n"); //Sinon indication
+            System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n");
         }
     }
 
