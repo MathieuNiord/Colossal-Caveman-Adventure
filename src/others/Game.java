@@ -241,6 +241,7 @@ public class Game {
 		}
 
 		//cmdPush(2);	//========================================SAUTS DE LIGNES
+		displayEnvironment();//=====================================modif
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -249,7 +250,8 @@ public class Game {
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			this.displayEnvironment();//===================================================modif
+			//this.displayEnvironment();//===================================================modif
+			sysClear();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 
@@ -288,7 +290,6 @@ public class Game {
 
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
-		sysClear();
 	}
 
 	public void gameOver() {
@@ -376,7 +377,7 @@ public class Game {
 	}
 
 	public static void printLetterByLetter(String s) {
-		System.out.println();
+		//System.out.println();
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
