@@ -30,6 +30,7 @@ public class Key extends Obj{
     public void take(Hero h) {
         h.increaseKey();
         h.getObjs().put(this.NAME, this);
+        h.getPlace().getItems().remove(this.NAME);
     }
 
     @Override

@@ -210,7 +210,6 @@ public class Game {
 		
 		hero.getPlace().addObject(enemy.getItem());
 		hero.take(enemy.getItem().NAME);
-		hero.getPlace().getItems().remove(enemy.getItem().NAME);
 		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 		enemy.loot();
 		hero.getPlace().setEnemy(null);
