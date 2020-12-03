@@ -18,7 +18,7 @@ public class Key extends Obj{
 
     @Override
     public void use(Hero h) {
-        System.out.println("What exactly are you trying to do with this key ?");
+        Game.printLetterByLetter("What exactly are you trying to do with this key ?");
     }
     
     @Override

@@ -25,7 +25,7 @@ public class Flint extends Obj {
 	}
 	
 	@Override
-	public void use(Hero h) {System.out.println("Use this item for something else...");}
+	public void use(Hero h) {Game.printLetterByLetter("Use this item for something else...");}
 	
 	@Override
 	public void use(Hero h,String s) {
@@ -36,17 +36,17 @@ public class Flint extends Obj {
 					h.getObjs().remove("Flint");
 					FiredStick firedStick = new FiredStick("FiredStick");
 					h.getObjs().put(firedStick.NAME,firedStick);
-					System.out.println("With your knowledge of caveman," +
+					Game.printLetterByLetter("With your knowledge of caveman," +
 							"\nyou managed to create fire with your flint and your stick a firedstick." +
 							"\nMaybe he is useful in this room");
 				}
 			}
 			else{
-				System.out.println("Maybe you should use it in the right Room...");
+				Game.printLetterByLetter("Maybe you should use it in the right Room...");
 			}
 		}
 		else{
-			System.out.println("You cannot combine those object together");
+			Game.printLetterByLetter("You cannot combine those object together");
 		}
 	}
 

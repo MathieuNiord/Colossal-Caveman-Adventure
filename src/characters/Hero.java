@@ -146,8 +146,8 @@ public class Hero {
 	}
 
 	public void heal() {
-		if(this.objs.containsKey("Poster")){
-			this.objs.remove("Poster");
+		if(this.objs.containsKey("SexyPoster")){
+			this.objs.remove("SexyPoster");
 			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
 			this.hp += 20;
 			System.out.println("\nYou gained 20 HP\n");
@@ -196,7 +196,7 @@ public class Hero {
 			this.getObjs().get(s).use(this);
 		}
 		else{
-			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
+			Game.printLetterByLetter("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
 		}
 
 	}

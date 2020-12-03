@@ -10,7 +10,7 @@ public class Walkman extends Obj{
 	
 	@Override
 	public void look() {
-		System.out.println("Wow this Walkman has a good music on it !!!");
+		System.out.println("Wow this Walkman has some good music on !!!");
 	}
 	
 	@Override

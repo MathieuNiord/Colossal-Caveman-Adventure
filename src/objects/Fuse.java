@@ -25,7 +25,7 @@ public class Fuse extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		System.out.println("Use this item with something else...");
+		Game.printLetterByLetter("Use this item with something else...");
 	}
 	
 	@Override

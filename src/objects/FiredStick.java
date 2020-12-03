@@ -1,6 +1,7 @@
 package objects;
 
 import characters.*;
+import others.Game;
 
 public class FiredStick extends Obj {
 
@@ -23,7 +24,7 @@ public class FiredStick extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		System.out.println("Use this item for something else...");
+		Game.printLetterByLetter("Use this item for something else...");
 	}
 	
 	@Override

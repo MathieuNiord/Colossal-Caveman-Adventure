@@ -26,7 +26,7 @@ public class Potion extends Obj {
 	@Override
 	public void use(Hero h) {
 		h.setImmunised();
-		System.out.println("I don't know what was in this solution but you no longer have a nose. Fortunately you are an athlete and a freediving champion. You should be immune now.");
+		Game.printLetterByLetter("I don't know what was in this solution but you no longer have a nose. Fortunately you are an athlete and a freediving champion. You should be immune now.");
 		h.getObjs().remove("Potion");
 	}
 	

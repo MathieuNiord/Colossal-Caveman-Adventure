@@ -40,15 +40,15 @@ public class Banana extends Obj {
 			Monkey m = (Monkey) a;
 
 			m.setUnHungry();
-			System.out.println("You give the banana to the Monkey MY BOUGA BOUGA !");
+			Game.printLetterByLetter("You give the banana to the Monkey !");
 		}
 		else {
 			count++;
 			if (count < 3) {
-				System.out.println("I think you should keep this Banana for somebody...");
+				Game.printLetterByLetter("I think you should keep this Banana for somebody...");
 			}
 			else {
-				System.out.println("I think you shoud go talk to the monkey...");
+				Game.printLetterByLetter("I think you should go talk to the monkey...");
 			}
 		}
 	}

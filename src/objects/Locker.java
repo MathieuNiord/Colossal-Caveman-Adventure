@@ -57,12 +57,12 @@ public class Locker extends Obj{
 
 	@Override
 	public void take(Hero h) {
-		Game.printLetterByLetter("What the hell man, you're trying to take A fu**ing Locker\n");
+		Game.printLetterByLetter("What the hell man, you're trying to take a god damn Locker\n");
 	}
 
 	@Override
 	public void use(Hero h) {
-		System.out.println("You cannot use a Locker STOOPID Caveman\n");
+		Game.printLetterByLetter("You cannot use a Locker STOOPID Caveman\n");
 	}
 	
 	@Override

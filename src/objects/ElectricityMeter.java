@@ -60,7 +60,7 @@ public class ElectricityMeter extends Obj{
 	@Override
 	public void use(Hero h) {
 		if(h.getObjs().containsKey("Fuse")){
-			System.out.println("You just added the missing fuse");
+			Game.printLetterByLetter("You just added the missing fuse");
 			h.getObjs().remove("Fuse");
 			this.setHasFuse();
 		}
@@ -68,7 +68,7 @@ public class ElectricityMeter extends Obj{
 			place.setEnlightened();
 		}
 		else{
-			System.out.println("You've already placed the Fuse !");
+			Game.printLetterByLetter("You've already placed the Fuse !");
 		}
 	}
 	

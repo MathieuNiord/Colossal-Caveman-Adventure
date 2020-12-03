@@ -2,6 +2,7 @@ package objects;
 
 import characters.*;
 import interfaces.*;
+import others.Game;
 
 public abstract class Obj implements Lookable, Usable, Takable {
 
@@ -25,7 +26,7 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	
 	@Override
 	public void take(Hero h) {
-		System.out.println("You successfully took the object !\n");
+		Game.printLetterByLetter("You successfully took the object !\n");
 		h.getObjs().put(this.NAME,this);
 		h.getPlace().getItems().remove(this.NAME);
 	}

@@ -47,7 +47,6 @@ public class SecretCodeDoor extends LockableDoor {
 				System.out.print("\nERROR CODE. Hmmm, maybe you're not a good writer...\n");
 			}
 		}
-	
 	}
 
 

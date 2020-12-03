@@ -226,24 +226,24 @@ public class Game {
 	public void Play(){
 		sysClear();
 		printLetterByLetter(Script.SYNOPSIS);
+
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
-			//this.displayEnvironment();//===================================================modif
 			this.PlayATurn();
 		}
 		this.gameOver();
 	}
 
 	public void PlayATurn(){
+
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		//this.displayEnvironment(); //=======================================modif origine
+
 		cmdPush(2);	//========================================SAUTS DE LIGNES
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
 		String[] tabInput = new String[0]; //Tab of words
-
 		Scanner scanner = new Scanner(System.in); //Scanner for input
 
 		if(scanner.hasNext()){
@@ -252,8 +252,10 @@ public class Game {
 			this.displayEnvironment();//===================================================modif
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
+
 		count = tabInput.length; //count is equal to the number of words
-		switch (count){
+		switch (count) {
+
 			case 1:
 				switch (tabInput[0]) {
 					case "help" -> this.help(); //show commands
@@ -263,6 +265,7 @@ public class Game {
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
+
 			case 2:
 				switch (tabInput[0]) {
 					case "go" -> this.hero.go(tabInput[1]);
@@ -273,6 +276,7 @@ public class Game {
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
+
 			case 3:
 				switch (tabInput[0]) {
 					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
@@ -281,6 +285,7 @@ public class Game {
 					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
+
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
 	}
