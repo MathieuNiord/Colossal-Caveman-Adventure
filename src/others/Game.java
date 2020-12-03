@@ -154,8 +154,6 @@ public class Game {
 
 	// ***** METHODS *****
 
-
-	// === GETTER ===
 	
 	// === COMMANDS ===
 
@@ -287,6 +285,37 @@ public class Game {
 		}
 	}
 
+	public void gameOver() {
+
+		if (this.hero.getHP() <= 0) {
+
+			Scanner sc = new Scanner(System.in);
+			String choice;
+
+			sysClear();
+			//this.hero.loose();
+			cmdPush(25);
+			System.out.print("Continue ? : ");
+			choice = sc.nextLine();
+
+			switch (choice) {
+				case "yes", "YES", "y", "Y", "1" : this.Play();
+				default :
+					printLetterByLetter("\nOk as you want mister, goodbye !");
+					try {
+						Thread.sleep(200);
+						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
+					}
+					catch (final Exception e) {}
+			}
+		}
+
+		else {
+			sysClear();
+			//this.hero.win();
+		}
+	}
+
 
 	// === DISPLAY ===
 
@@ -294,28 +323,26 @@ public class Game {
 		printLetterByLetter(this.hero.getPlace().toString());
 	}
 
-	public static void printLetterByLetter(String s){
+	public static void printLetterByLetter(String s) {
 		System.out.println();
 		int len = s.length();
-		try{
-		for(int i = 0 ; i < len; i++){
-			char c = s.charAt(i);
-			System.out.print(c);
-			if( c=='.' || c=='?' || c==',' || c=='!')
-			{
-				Thread.sleep(100);
-			}
+		try {
+			for (int i = 0 ; i < len; i++) {
+				char c = s.charAt(i);
+				System.out.print(c);
+				if ( c=='.' || c=='?' || c==',' || c=='!') {
+					Thread.sleep(100);
+				}
 
-			Thread.sleep(20);
-		}}
-		catch (Exception e){
+				Thread.sleep(20);
+			}}
+		catch (Exception e) {
 		
 		}
 
 	}
 
 	//Pour clean la console s'il y a besoin
-	
 	public static void sysClear(){
 		try
 		{
@@ -336,6 +363,12 @@ public class Game {
 			scanner.nextLine();
 		}
 		catch(Exception ignored){}
+	}
+
+	public static void cmdPush(int howmuch) {
+		for (int i = 0; i < howmuch; i++) {
+			System.out.println();
+		}
 	}
 
 
