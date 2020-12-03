@@ -191,8 +191,14 @@ public class Place implements Lookable {
 		if(this.animals != null) {
 			if (this.animals.size() != 0) {
 				int size = this.animals.size();
-
-				retA = new StringBuilder("There is " + size + " animal(s) in this room : ");
+				if(size==1){
+					retA = new StringBuilder("There is " + size + " animal in this room : ");
+					
+				}
+				else{
+					retA = new StringBuilder("There are " + size + " animals in this room : ");
+					
+				}
 				List<String> anim = new ArrayList<>(this.animals.keySet());
 
 				retA.append(anim.get(0));
@@ -212,8 +218,14 @@ public class Place implements Lookable {
 		if(this.objs != null) {
 			if (this.objs.size() != 0) {
 				int size = this.objs.size();
-
-				retO = new StringBuilder("There is " + size + " object(s) : ");
+				if(size==1){
+					retO = new StringBuilder("There is " + size + " object : ");
+					
+				}
+				else{
+					retO = new StringBuilder("There are " + size + " objects : ");
+					
+				}
 				List<String> objs = new ArrayList<>(this.objs.keySet());
 
 				retO.append(objs.get(0));
@@ -234,7 +246,13 @@ public class Place implements Lookable {
 			if (this.up.size() != 0) {
 
 				int size = this.up.size();
-				retD.append("There is ").append(size).append(" exit(s) in up : ");
+				if(size==1){
+					retD.append("There is ").append(size).append(" exit at the top : ");
+					
+				}else{
+					retD.append("There are ").append(size).append(" exits at the top : ");
+					
+				}
 				List<String> up = new ArrayList<>(this.up.keySet());
 
 				retD.append(up.get(0));
@@ -248,7 +266,13 @@ public class Place implements Lookable {
 			if (this.down.size() != 0) {
 
 				int size = this.down.size();
-				retD.append("There is ").append(size).append(" exit(s) in down : ");
+				if(size==1){
+					retD.append("There is ").append(size).append(" exit down : ");
+					
+				}else{
+					retD.append("There are ").append(size).append(" exits down : ");
+					
+				}
 				List<String> down = new ArrayList<>(this.down.keySet());
 
 				retD.append(down.get(0));
@@ -262,7 +286,13 @@ public class Place implements Lookable {
 			if (this.left.size() != 0) {
 
 				int size = this.left.size();
-				retD.append("There is ").append(size).append(" exit(s) in left : ");
+				if(size==1){
+					retD.append("There is ").append(size).append(" exit on the left : ");
+					
+				}else{
+					retD.append("There are ").append(size).append(" exits on the left : ");
+					
+				}
 				List<String> left = new ArrayList<>(this.left.keySet());
 
 				retD.append(left.get(0));
@@ -276,12 +306,18 @@ public class Place implements Lookable {
 			if (this.right.size() != 0) {
 
 				int size = this.right.size();
-				retD.append("There is ").append(size).append(" exit(s) in right : ");
+				if(size==1){
+					retD.append("There is ").append(size).append(" exit on the right : ");
+					
+				}else{
+					retD.append("There are ").append(size).append(" exits on the right : ");
+					
+				}
 				List<String> right = new ArrayList<>(this.right.keySet());
 
 				retD.append(right.get(0));
 				for (int i = 1; i < size; i++) {
-					retD.append(" | ").append(right.get(i));
+					retD.append(", ").append(right.get(i));
 				}
 				retD.append("\n");
 			}
@@ -293,14 +329,14 @@ public class Place implements Lookable {
 		StringBuilder retE = new StringBuilder();
 
 		if(this.enemy != null) {
-			retE.append("There's ennemy : ").append(this.enemy.NAME);
+			retE.append("There is ").append(this.enemy.NAME);
 		}
 		return retE.toString();
 	}
 
 	@Override
 	public String toString() {
-		String intro = "You are in : " + this.getName() + "\n";
+		String intro = "========= " + this.getName() + " =========\n\n";
 
 		String isEnl = "";
 		String isInf = "";
@@ -314,11 +350,11 @@ public class Place implements Lookable {
 		}
 
 		if(!this.isEnlightened()) {
-			isEnl = "The room is not lit, you can't see anything\n";
+			isEnl = "\nThe room is not lit, you can't see anything\n";
 		}
 		else {
 			if (this.isInfested()) {
-				isInf = "The room is infected\n";
+				isInf = "\nThe room is infected\n";
 			}
 
 			if (this.isContainsAnimals()) {

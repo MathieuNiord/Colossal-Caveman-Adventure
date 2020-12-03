@@ -226,6 +226,7 @@ public class Game {
 	public void Play(){
 		sysClear();
 		printLetterByLetter(Script.SYNOPSIS);
+		pressAnyKeyToContinue();
 		sysClear();
 		displayEnvironment();
 
@@ -238,11 +239,11 @@ public class Game {
 	}
 
 	public void PlayATurn(){
-
+		sysClear();
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-
+		this.displayEnvironment();
 		//cmdPush(2);	//========================================SAUTS DE LIGNES
 		//displayEnvironment();//=====================================modif
 		System.out.print("\n\nCommand :> ");
