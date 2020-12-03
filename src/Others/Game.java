@@ -231,7 +231,7 @@ public class Game {
 	// === OTHER ===
 
 	public void Play() throws InterruptedException {
-		System.out.println(Script.DEFAULT_WELCOME);
+		System.out.println(Script.SYNOPSIS);
 		pressAnyKeyToContinue();
 		sysClear();
 		this.displayEnvironment();

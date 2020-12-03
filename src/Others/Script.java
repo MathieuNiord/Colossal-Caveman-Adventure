@@ -4,7 +4,7 @@ public class Script {
 
     // === WELCOME MESSAGES ===
 
-    public static final String DEFAULT_WELCOME = "===== SYNOPSIS =====" +
+    public static final String SYNOPSIS = "===== SYNOPSIS =====" +
             "\nA caveman found frozen in the Arctic." +
             "\nA team of Nazis researchers thaws it and locks it in a laboratory." +
             "\nBeing just an uneducated caveman," +
