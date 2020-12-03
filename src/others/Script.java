@@ -35,8 +35,9 @@ public class Script {
             "\nare voted the sexiest man in the world and your three children, Gaëtan, Benjamin and" +
             "\nMathieu, have obtained a superb rating for their Java project.\n" +
             "\n" +
-            "(Thanks for them)";
-    public static final String YOU_LOOSE = "";
+            "(Thanks for them...)\n\n";
+
+    public static final String YOU_LOOSE = "\nI thought this game was easy, you suck on a keyboard...\nYou remind me of Psychology students ...\n";
     public static final String GAME_OVER = "";
     public static final String CREDITS =
             "======================== CREDITS ========================\n" +
