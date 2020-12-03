@@ -1,8 +1,8 @@
-package Characters;
+package characters;
 
-import Doors.*;
-import Objects.*;
-import Others.*;
+import doors.*;
+import objects.*;
+import others.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
