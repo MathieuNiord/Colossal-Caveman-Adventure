@@ -23,6 +23,8 @@ public class Fuse extends Obj {
 		Game.printLetterByLetter(Script.FUSE_DESCRIPT);
 	}
 
+	//Faire take() avec remove du fuse
+
 	@Override
 	public void use(Hero h) {
 		Game.printLetterByLetter("Use this item with something else...");

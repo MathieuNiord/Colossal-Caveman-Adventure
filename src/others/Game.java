@@ -84,8 +84,8 @@ public class Game {
 		NaziPoster naziPoster = new NaziPoster("NaziPoster",this.hero);
 		SexyPoster sexyPoster = new SexyPoster("SexyPoster",this.hero);
 		Walkman walkman = new Walkman("Walkman");
-		
-		
+
+
 		// DOORS ADDING TO ROOMS
 		animalRoom.addDoor(animAndTransf, "up");
 		changingRoom.addDoor(transfAndChang, "up");
@@ -140,7 +140,7 @@ public class Game {
 		experimentsRoom.addObject(naziPoster);
 		changingRoom.addObject(sexyPoster);
 		locker.addObj(walkman);
-		
+
 		// ENEMIES ADDING TO ROOMS
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
@@ -154,7 +154,7 @@ public class Game {
 
 	// ***** METHODS *****
 
-	
+
 	// === COMMANDS ===
 
 	public void battle(Hero hero, Enemy enemy){
@@ -207,10 +207,9 @@ public class Game {
 		//ONCE ENEMY IS DEFEATED
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
 		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
-		
+
 		hero.getPlace().addObject(enemy.getItem());
 		hero.take(enemy.getItem().NAME);
-		hero.getPlace().getItems().remove(enemy.getItem().NAME);
 		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 		enemy.loot();
 		hero.getPlace().setEnemy(null);
@@ -225,11 +224,14 @@ public class Game {
 
 	public void Play(){
 		sysClear();
-		System.out.println(Script.SYNOPSIS);
+		System.out.print(Script.SYNOPSIS + "\n");
 		pressAnyKeyToContinue();
-		
+		sysClear();
+		displayEnvironment();
 
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
+			sysClear();
+			displayEnvironment();//============================================modif
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -241,8 +243,6 @@ public class Game {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
 		this.displayEnvironment();
-		//cmdPush(2);	//========================================SAUTS DE LIGNES
-		//displayEnvironment();//=====================================modif
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -251,8 +251,6 @@ public class Game {
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			//this.displayEnvironment();//===================================================modif
-			//sysClear();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 
@@ -263,6 +261,7 @@ public class Game {
 				switch (tabInput[0]) {
 					case "help" -> this.help(); //show commands
 					case "quit"-> this.hero.quit(); //Set the life to 0 so the hero die
+					case "look"-> this.hero.getPlace().look();
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -312,8 +311,8 @@ public class Game {
 				case "yes", "YES", "y", "Y", "1" : this.Play();
 
 				default :
-					printLetterByLetter("\nOk as you want mister, goodbye !");
-
+					//EXIT
+					System.out.print(Script.GAME_OVER);
 					try {
 						Thread.sleep(5000);
 						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
@@ -344,7 +343,7 @@ public class Game {
 			}
 			catch (final Exception e) {
 				System.out.println("Error");
-				
+
 			}
 
 			//THANKING
@@ -361,7 +360,9 @@ public class Game {
 			pressAnyKeyToContinue();
 
 			//EXIT
+			System.out.print(Script.GAME_OVER);
 			try {
+				Thread.sleep(5000);
 				new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
 			}
 			catch (final Exception e) {
@@ -378,7 +379,6 @@ public class Game {
 	}
 
 	public static void printLetterByLetter(String s) {
-		//System.out.println();
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
@@ -392,7 +392,7 @@ public class Game {
 			}}
 		catch (Exception e) {
 			System.out.println("Error");
-			
+
 		}
 
 	}
@@ -411,7 +411,7 @@ public class Game {
 	}
 
 	public static void pressAnyKeyToContinue() {
-		System.out.print("Press Enter key to continue...");
+		System.out.print("\nPress Enter key to continue...");
 		Scanner scanner = new Scanner(System.in);
 		try
 		{
@@ -425,24 +425,23 @@ public class Game {
 			System.out.println();
 		}
 	}
-	
+
 	// === MAIN ===
 
 	public static void main(String[] args) {
-		sysClear();
-		
 		Scanner sc = new Scanner(System.in);
+		Game.sysClear();
 		System.out.println(Script.WELCOME_MESSAGE);
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
-		
-		System.out.println("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
+
+		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
 				"\n1 - Yes for sure\t2 - Yes I've no other choice\n");
-		System.out.print("\n\nAnswer : ");
+		System.out.print("\nAnswer : ");
 		sc.nextLine();
-		System.out.println("\n\nAs you want HOUGA BOUGA !\n");
-		pressAnyKeyToContinue();
+		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n");
+		Game.pressAnyKeyToContinue();
 		g.Play();
 	}
-	
+
 }
