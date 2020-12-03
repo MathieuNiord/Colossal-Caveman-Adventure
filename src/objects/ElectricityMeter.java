@@ -16,14 +16,23 @@ public class ElectricityMeter extends Obj{
 
 	public ElectricityMeter(String name, Place p) {
 		super(name);
-		this.hasFuse=false;
-		this.place=p;
+		this.hasFuse = false;
+		this.place = p;
 	}
 
 
 	// ***** METHODS *****
-	
-	
+
+	// === GETTER ===
+
+	public boolean getHasFuse() {
+		return this.hasFuse;
+	}
+
+	public Place getPlace() {
+		return this.place;
+	}
+
 	// === SETTER ===
 
 	public void setHasFuse(){
