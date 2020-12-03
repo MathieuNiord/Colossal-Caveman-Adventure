@@ -4,6 +4,12 @@ public class Script {
 
     // === WELCOME MESSAGES ===
 
+    public static final String WELCOME_MESSAGE = "Hello and welcome to our game The Colossal Caveman Adventure." +
+            " This game is the product of many hours of work and deserves to be fully appreciated." +
+            "\nTherefore if you are reluctant to a little dirty humor, if you hate bad scenarios" +
+            "\nor if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !" +
+            "\n\nConversely, we wish you a good game and hope for a good return.\n";
+
     public static final String SYNOPSIS = "===== SYNOPSIS =====" +
             "\nA caveman found frozen in the Arctic." +
             "\nA team of Nazis researchers thaws it and locks it in a laboratory." +
@@ -14,12 +20,55 @@ public class Script {
 
 
 
+    // === ENDDING MESSAGES ===
+
+    public static final String YOU_WIN = "";
+    public static final String YOU_LOOSE = "";
+    public static final String GAME_OVER = "";
+    public static final String CREDITS =
+            "======================== CREDITS ========================\n" +
+            "=========================================================\n" +
+            "===  SCENARIO :                                       ===\n" +
+            "===                                 BENJAMIN CHEVAIS  ===\n" +
+            "===                                   GAETAN FREJOUX  ===\n" +
+            "===                                    MATHIEU NIORD  ===\n" +
+            "===                                                   ===\n" +
+            "===  STORYBOARD :                                     ===\n" +
+            "===                                 BENJAMIN CHEVAIS  ===\n" +
+            "===                                   GAETAN FREJOUX  ===\n" +
+            "===                                    MATHIEU NIORD  ===\n" +
+            "===                                                   ===\n" +
+            "===  DEVELOPMENT :                                    ===\n" +
+            "===                                 BENJAMIN CHEVAIS  ===\n" +
+            "===                                   GAETAN FREJOUX  ===\n" +
+            "===                                    MATHIEU NIORD  ===\n" +
+            "===                                                   ===\n" +
+            "===  SPECIAL GUESTS :                                 ===\n" +
+            "===                                                   ===\n" +
+            "===    IN THE ROLE OF HOUGA BOUGA :             YOU    ===\n" +
+            "===                                                   ===\n" +
+            "===    IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER  ===\n" +
+            "===    IN THE ROLE OF THE ZOMBIE NAZI : AFIDA TURNER  ===\n" +
+            "===    IN THE ROLE OF THE SUPER-NAZI  : AFIDA TURNER  ===\n" +
+            "===                                                   ===\n" +
+            "===    ORIGINAL SOUND TRACK :         JONNY HALLIDAY  ===\n" +
+            "===    COFFEE OFFICER :                        WOMAN  ===\n" +
+            "===    OPERATIONS DIRECTOR :         THE RENDER DATE  ===\n" +
+            "===                                                   ===\n" +
+            "=========================================================\n" +
+            "=========================================================\n";
+
+    public static final String THANKING_PLAYER = "\n\n\n\tWE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
+
+
     // === INTRO BATTLES ===
 
     public static final String BATTLE_BEGIN = "\n=========== BAAAAAAAATTLE ===========\n" +
             "\nYou come face to face with a ";
+
     public static final String BATTLE_HELP = "\n=========== LIST OF COMMANDS ===========" +
             "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\nBEWARE OF WHAT YOU'RE WRITING OR YOU COULD HAVE A BAD PRESENT...\n\n";
+
     public static final String BATTLE_HELP_DEFAULT = "\n\n=========== LIST OF COMMANDS ===========" +
             "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\n";
 
@@ -29,7 +78,6 @@ public class Script {
 
     public static final String DEFAULT_HERO = "Houga Bouga";
     public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !";
-
 
 
     // === ANIMALS ===

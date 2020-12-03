@@ -74,9 +74,9 @@ public class Game {
 		Stick stick = new Stick("Stick");
 		Flint flint = new Flint("Flint");
 		Fuse fuse = new Fuse("Fuse");
-		Bescherelle catB = new Bescherelle("Cat-Bescherelle");
-		Bescherelle mouseB = new Bescherelle("Mouse-Bescherelle");
-		Bescherelle monkeyB = new Bescherelle("Monkey-Bescherelle");
+		Bescherelle catB = new Bescherelle("Bescherelle");
+		Bescherelle mouseB = new Bescherelle("Bescherelle");
+		Bescherelle monkeyB = new Bescherelle("Bescherelle");
 		Key k1 = new Key("Key1");
 		Key k2 = new Key("Key2");
 		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);

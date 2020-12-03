@@ -20,8 +20,8 @@
 
 	//Packages
 
-	import Characters.*;
-    import Others.*;
-    import Doors.*;
-    import Objects.*;
-    import Interfaces.*;
+	import characters.*;
+    import others.*;
+    import doors.*;
+    import objects.*;
+    import interfaces.*;
