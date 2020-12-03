@@ -8,8 +8,6 @@ import java.util.*;
 
 public class Place implements Lookable {
 
-	// ***** CONSTANTS *****
-
 	// ***** ATTRIBUTES *****
 
 	private final String NAME;
@@ -27,6 +25,7 @@ public class Place implements Lookable {
 
 
 	// ***** CONSTRUCTOR *****
+
 	public Place(String NAME, boolean inf, boolean isEnlighted) {
 		this.NAME = NAME;
 		this.infested = inf;
@@ -45,9 +44,10 @@ public class Place implements Lookable {
 		this.down = null;
 	}
 
+
 	// ***** METHODS *****
 
-	// Getter
+	// === Getter ===
 
 	public String getName() {
 		return this.NAME;
@@ -105,7 +105,8 @@ public class Place implements Lookable {
 		return (this.enemy != null);
 	}
 
-	// Setter
+
+	// === Setter ===
 
 	public void switchEnlightened() {
 		this.enlightened = !this.enlightened;
@@ -171,7 +172,8 @@ public class Place implements Lookable {
 		}
 	}
 
-	// Display
+
+	// === Display ===
 
 	public String toStringAnimal() {
 		StringBuilder retA = new StringBuilder();
@@ -215,7 +217,6 @@ public class Place implements Lookable {
 		return retO.toString();
 	}
 
-	// A refaire : il ne faut pas afficher la pièce dans laquelle le héros se trouve
 	public String toStringDoors() {
 		StringBuilder retD = new StringBuilder();
 
@@ -325,7 +326,10 @@ public class Place implements Lookable {
 
 		return intro + isInf + isEnl + strA + strO + strD + strE;
 	}
-	
+
+
+	// === Commands ===
+
 	@Override
 	public void look() throws InterruptedException {
 		Game.printLetterByLetter(this.toString());

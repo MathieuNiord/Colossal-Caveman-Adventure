@@ -3,18 +3,17 @@ package Characters;
 import Others.*;
 
 public class Monkey extends Animal{
-	
-	// ***** CONSTANTS *****
-	
+
 	// ***** ATTRIBUTES *****
 	
-	/*This attribut is used to know if the Characters.Monkey
+	/*This attribute is used to know if the Characters.Monkey
 	 got the Objects.Banana that he asked for*/
 	private boolean hungry = true;
 	public final String hungryDialog;
 	
 	
 	// ***** CONSTRUCTORS *****
+
 	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
 		super(name, bLevel, noBeschDialog, beschDialog,desc);
 		this.hungryDialog = hungryDialog;
@@ -22,20 +21,15 @@ public class Monkey extends Animal{
 
 	
 	// ***** METHODS *****
-	
-	// Getter
-	
-	
-	
-	// Setter
+
+	// === Setter ===
 
 	public void setUnHungry() {
 		this.hungry = false;
 	}
-	
-	
-	// Display
-	
+
+
+	// === Commands ===
 	
 	@Override
 	public void talk(Hero h) throws InterruptedException {

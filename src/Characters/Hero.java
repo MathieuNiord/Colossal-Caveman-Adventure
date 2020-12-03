@@ -111,7 +111,6 @@ public class Hero {
 	public void showInventory(){
 		System.out.print("\nYour inventory : ");
 		System.out.print(this.getObjs().keySet().toString());
-		Game.sysClear(3);
 	}
 
 
@@ -186,11 +185,12 @@ public class Hero {
 			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
 			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 		}
-		Game.sysClear(2);
+		Game.sysClear();
 	}
 
 	public void heal() throws InterruptedException {
 		if(this.objs.containsKey("Poster")){
+			this.objs.remove("Poster");
 			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
 			this.hp += 20;
 			System.out.println("\nYou gained 20 HP\n");

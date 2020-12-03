@@ -10,14 +10,17 @@ import java.util.Scanner;
 public class Game {
 
 	// ***** ATTRIBUTES *****
+
 	private final Hero hero;
 	private Map<String,Place> places;
+
 
 	// ***** CONSTRUCTORS *****
 
 	public Game(String heroName)
 	{
-		// We create the rooms
+
+		// ROOMS CREATION
 		Place animalRoom = new Place("Animal room", false, true);
 		Place transferRoom = new Place("Transfer room", false, true);
 		Place changingRoom = new Place("Changing room", false, true);
@@ -36,22 +39,16 @@ public class Game {
 		Place exit = new Place("Exit", false, true);
 
 
-		// We create the doors
+		// DOORS CREATION
 		Door secretPassage = new BurnableDoor(archivesRoom);
-
 		Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
-
 		Door changAndEntry = new CondemnedDoor(changingRoom, entry);
-		
 		Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
-		
 		Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
 		Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
-		
 		Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
 		Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
 		Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
-		
 		Door transfAndChang = new Door(transferRoom, changingRoom);
 		Door transfAndExper = new Door(transferRoom, experimentsRoom);
 		Door experimAndMort = new Door(experimentsRoom, mortuary);
@@ -59,87 +56,75 @@ public class Game {
 		Door experimAndCold = new Door(experimentsRoom, coldRoom);
 		Door coldAndGarb = new Door(coldRoom, garbageRoom);
 		Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
-		
-		//We create Animals
+
+
+		// HERO CREATION
+		this.hero = new Hero(heroName, animalRoom);
+
+
+		// ANIMALS CREATION
 		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
 		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
 		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MOUSE_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
-		
-		//We create Objects
-		Weapon club = new Weapon("Club");
 
+
+		// OBJECTS CREATION
+		Weapon club = new Weapon("Club");
 		Potion potion = new Potion("Potion");
-		
 		Banana banana = new Banana("Banana");
 		Stick stick = new Stick("Stick");
 		Flint flint = new Flint("Flint");
 		Fuse fuse = new Fuse("Fuse");
-		
 		Bescherelle catB = new Bescherelle("Cat-Bescherelle");
 		Bescherelle mouseB = new Bescherelle("Mouse-Bescherelle");
 		Bescherelle monkeyB = new Bescherelle("Monkey-Bescherelle");
-
 		Key k1 = new Key("Key1");
 		Key k2 = new Key("Key2");
-		
 		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricityMeter",coldRoom);
-		
-		
-		// We add the doors to the rooms (2 * 15 doors + secret passage)
-		animalRoom.addDoor(animAndTransf, "up");
+		Locker locker = new Locker("Locker",this.hero);
 
+
+		// DOORS ADDING TO ROOMS
+		animalRoom.addDoor(animAndTransf, "up");
 		changingRoom.addDoor(transfAndChang, "up");
 		changingRoom.addDoor(changAndEntry, "down");
-
 		entry.addDoor(changAndEntry, "up"); // doit on vraiment lui ajouter la porte ?
-
 		transferRoom.addDoor(animAndTransf, "down");
 		transferRoom.addDoor(transfAndChang, "down");
 		transferRoom.addDoor(transfAndMeet, "right");
 		transferRoom.addDoor(transfAndExper, "up");
-
 		meetingRoom.addDoor(transfAndMeet, "left");
 		meetingRoom.addDoor(meetAndArch, "right");
-
 		archivesRoom.addDoor(meetAndArch, "left");
-
 		experimentsRoom.addDoor(transfAndExper, "down");
 		experimentsRoom.addDoor(experimAndMort, "right");
 		experimentsRoom.addDoor(experimAndConda, "up");
 		experimentsRoom.addDoor(experimAndReserv, "up");
 		experimentsRoom.addDoor(experimAndCold, "left");
 		experimentsRoom.addDoor(experimAndDirty, "left");
-
 		mortuary.addDoor(experimAndMort, "left");
 		mortuary.addDoor(secretPassage, "down");
-
 		condamnedSAS.addDoor(experimAndConda, "down");
 		condamnedSAS.addDoor(condaAndDesert, "up");
-
 		desertedRoom.addDoor(condaAndDesert, "down");
-
 		productsReserve.addDoor(experimAndReserv, "down");
-
 		coldRoom.addDoor(experimAndCold, "right");
 		coldRoom.addDoor(coldAndGarb, "up");
-
 		garbageRoom.addDoor(coldAndGarb, "down");
-
 		dirtyChangingRoom.addDoor(experimAndDirty, "right");
 		dirtyChangingRoom.addDoor(dirtAndDecon, "left");
-
 		decontaminationRoom.addDoor(dirtAndDecon, "right");
 		decontaminationRoom.addDoor(decontAndExit, "left");
-
 		exit.addDoor(decontAndExit, "right");  // doit on vraiment lui ajouter la porte ?
 
 
-		// We add the animals to the rooms
+		// ANIMALS ADDING TO ROOMS
 		animalRoom.addAnimal(cat);
 		experimentsRoom.addAnimal(monkey);
 		experimentsRoom.addAnimal(mouse);
-		
-		// We add the objects to the rooms
+
+
+		// OBJECTS ADDING TO ROOMS
 		coldRoom.addObject(banana);
 		garbageRoom.addObject(stick);
 		productsReserve.addObject(potion);
@@ -149,25 +134,23 @@ public class Game {
 		archivesRoom.addObject(mouseB);
 		desertedRoom.addObject(monkeyB);
 		transferRoom.addObject(electricityMeter);
+		changingRoom.addObject(locker);
 
-		// We add the enemies to the rooms
+
+		// ENEMIES ADDING TO ROOMS
 		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
 		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
 		decontaminationRoom.addAndCreateEnemy("SUPER-NAZI", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
-
-		// We create the Characters.Hero
-		this.hero = new Hero(heroName, animalRoom);
-		Locker locker = new Locker("Locker",this.hero);
-		//locker.addObj(fuse);
-		changingRoom.addObject(locker);
 	}
+
 
 	// ***** METHODS *****
 
-	// === Getter
+	// === Getter ===
+
 	public Hero getHero() {
 		return this.hero;
 	}
@@ -177,7 +160,8 @@ public class Game {
 	}
 
 
-	// === Display
+	// === Display ===
+
 	public void help() {
 		System.out.println(Script.HELP_DEFAULT);
 	}
@@ -203,10 +187,11 @@ public class Game {
 	}
 
 	//Pour clean la console s'il y a besoin
-	public static void sysClear(int howmuch){
-		for (int i = 0; i < howmuch; i++){
+	public static void sysClear(){
+		for (int i = 0; i < 100; i++) {
 			System.out.println();
 		}
+		System.out.flush();
 	}
 
 	public static void pressAnyKeyToContinue() throws InterruptedException {
@@ -219,11 +204,13 @@ public class Game {
 		catch(Exception ignored){}
 	}
 
-	// === Other
+
+	// === Other ===
+
 	public void Play() throws InterruptedException {
 		System.out.println(Script.DEFAULT_WELCOME);
 		pressAnyKeyToContinue();
-		sysClear(20);
+		sysClear();
 		this.displayEnvironment();
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
@@ -279,10 +266,13 @@ public class Game {
 		}
 	}
 
+
+	// === Commands ===
+
 	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
 
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
-		sysClear(1);
+		sysClear();
 		System.out.print(enemy.NAME + " :");
 		enemy.opening();
 		Scanner sc = new Scanner(System.in);
@@ -336,7 +326,10 @@ public class Game {
 		hero.getPlace().getItems().remove(enemy.getItem().NAME);
 		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
 	}
-	
+
+
+	// === MAIN ===
+
 	public static void main(String[] args) throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
@@ -346,7 +339,7 @@ public class Game {
 		System.out.println("Answer : ");
 		String noMatter = sc.nextLine();
 		printLetterByLetter("As you want HOUGA BOUGA !");
-		sysClear(20);
+		sysClear();
 		g.Play();
 	}
 	

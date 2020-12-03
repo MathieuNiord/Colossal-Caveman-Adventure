@@ -15,7 +15,7 @@ public class Script {
             "\nYou come face to face with a ";
     public static final String BATTLE_HELP = "\n=========== LIST OF COMMANDS ===========" +
             "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\nBEWARE OF WHAT YOU'RE WRITING OR YOU COULD HAVE A BAD PRESENT...\n\n";
-    public static final String BATTLE_HELP_DEFAULT = "\n\n=========== LIST OF COMMANDS ===========\n" +
+    public static final String BATTLE_HELP_DEFAULT = "\n\n=========== LIST OF COMMANDS ===========" +
             "\n - attack\n - heal\n - attack (YOUR ENEMY)\n - heal (YOUR HEAL)\n\n";
     
     // === HERO ===
