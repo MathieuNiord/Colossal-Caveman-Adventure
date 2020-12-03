@@ -11,12 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class KeyTest {
 
     private Hero h;
-    private Place a;
     private Key k;
 
     @BeforeEach
     void setUp() {
-        a = new Place("Place", false, true);
+        Place a = new Place("Place", false, true);
 
         k = new Key("Key");
         a.addObject(k);

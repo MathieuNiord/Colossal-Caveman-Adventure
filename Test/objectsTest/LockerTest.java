@@ -21,8 +21,6 @@ class LockerTest {
         h = new Hero("Test", a);
         l = new Locker("Locker", h);
         a.addObject(l);
-
-
     }
 
     @Test
