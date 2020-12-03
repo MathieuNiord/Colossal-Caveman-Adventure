@@ -10,10 +10,6 @@ public class Place implements Lookable {
 
 	// ***** CONSTANTS *****
 
-	public static final List<String> ANIMALFLAG = Arrays.asList("Monkey", "Animal");
-	public static final List<String> ENNEMIESFLAG = Arrays.asList("AccountGuy", "FinalBoss", "Zombie");
-	public static final List<String> OBJSFLAG = Arrays.asList("Item", "Weapon", "Potion", "Locker");
-
 	// ***** ATTRIBUTES *****
 
 	private final String NAME;
@@ -286,7 +282,7 @@ public class Place implements Lookable {
 		StringBuilder retE = new StringBuilder();
 
 		if(this.enemy != null) {
-			return "There's ennemy : " + this.enemy.NAME;
+			retE.append("There's ennemy : ").append(this.enemy.NAME);
 		}
 		return retE.toString();
 	}
