@@ -4,13 +4,19 @@ public class Script {
 
     // === WELCOME MESSAGES ===
 
-    public static final String WELCOME_MESSAGE = "Hello and welcome to our game The Colossal Caveman Adventure." +
-            "\nThis game is the product of many hours of work and deserves to be fully appreciated." +
-            "\nTherefore if you are reluctant to a little dirty humor, if you hate bad scenarios" +
-            "\nor if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !" +
-            "\n\nConversely, we wish you a good game and hope for a good return.\n";
+    public static final String WELCOME_MESSAGE =
+            "=========================================  WELCOME  ==========================================" +
+            "\n==                                                                                          ==" +
+            "\n==  Hello and welcome to our game The Colossal Caveman Adventure.                           ==" +
+            "\n==  This game is the product of many hours of work and deserves to be fully appreciated.    ==" +
+            "\n==  Therefore if you are reluctant to a little dirty humor, if you hate bad scenarios       ==" +
+            "\n==  or if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !                     ==" +
+            "\n\n==  Conversely, we wish you a good game and hope for a good return.                         ==\n" +
+            "\n==                                                                                          ==" +
+            "\n==============================================================================================";
 
-    public static final String SYNOPSIS = "===== SYNOPSIS =====" +
+    public static final String SYNOPSIS =
+            "=====================  SYNOPSIS  =====================" +
             "\nA caveman found frozen in the Arctic." +
             "\nA team of Nazis researchers thaws it and locks it in a laboratory." +
             "\nBeing just an uneducated caveman," +

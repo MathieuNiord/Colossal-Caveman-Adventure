@@ -226,9 +226,12 @@ public class Game {
 	public void Play(){
 		sysClear();
 		printLetterByLetter(Script.SYNOPSIS);
+		sysClear();
+		displayEnvironment();
 
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
-			//displayEnvironment();//============================================modif
+			sysClear();
+			displayEnvironment();//============================================modif
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -241,7 +244,7 @@ public class Game {
 		}
 
 		//cmdPush(2);	//========================================SAUTS DE LIGNES
-		displayEnvironment();//=====================================modif
+		//displayEnvironment();//=====================================modif
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -251,7 +254,7 @@ public class Game {
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
 			//this.displayEnvironment();//===================================================modif
-			sysClear();
+			//sysClear();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 
@@ -290,6 +293,7 @@ public class Game {
 
 			default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 		}
+		pressAnyKeyToContinue();
 	}
 
 	public void gameOver() {
@@ -410,7 +414,7 @@ public class Game {
 	}
 
 	public static void pressAnyKeyToContinue() {
-		printLetterByLetter("Press Enter key to continue...");
+		System.out.print("Press Enter key to continue...");
 		Scanner scanner = new Scanner(System.in);
 		try
 		{
