@@ -17,7 +17,7 @@ public class BurnableDoor extends LockableDoor{
 	@Override
 	public void cross(Hero hero, String s){
 		if(!this.isUnlock()){
-			if(hero.getObjs().containsKey("FiredStick")){
+			if(hero.getObjs().containsKey("FiredStick")){ // If the hero has the Firestick
 				System.out.println("You burned the door !" +
 						"\nYou are now in the Archives-room");
 				this.unlock();
