@@ -120,19 +120,20 @@ public class Hero {
 	// === COMMANDS ===
 
 	public void attack(Enemy enemy)  {
-		if(this.objs.containsKey("Club")){
-			enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
-			System.out.print("\nHouga Bouga :");
-			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+		if(enemy != null) {
+			if (this.objs.containsKey("Club")) {
+				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
+				System.out.print("\nHouga Bouga :");
+				Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+				Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+			} else {
+				enemy.takeDamage(DEFAULT_DAMAGE);
+				System.out.print("\nHouga Bouga :");
+				Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
+				Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+			}
+			Game.sysClear();
 		}
-		else{
-			enemy.takeDamage(DEFAULT_DAMAGE);
-			System.out.print("\nHouga Bouga :");
-			Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-			Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
-		}
-		Game.sysClear();
 	}
 
 	public void go(String s) {

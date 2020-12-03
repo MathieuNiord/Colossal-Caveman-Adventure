@@ -22,6 +22,11 @@ public class Monkey extends Animal{
 	
 	// ***** METHODS *****
 
+	// === GETTER ===
+
+	public boolean getHungry() {
+		return this.hungry;
+	}
 
 	// === SETTER ===
 

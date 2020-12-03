@@ -31,16 +31,17 @@ public class Banana extends Obj {
 	@Override
 	public void use(Hero h) {
 		if (h.getPlace().getName().equals("Experiments room")) {
+			if(h.getPlace().isContainsAnimals()) {
 
-			Animal a = h.getPlace().getAnimals().get("Monkey");
+				Animal a = h.getPlace().getAnimals().get("Monkey");
 
-			if (a!=null && !(a instanceof Monkey))
-				throw new IllegalStateException("Monkey expected but "+a.getClass()+" found: "+a);
-			Monkey m = (Monkey) a;
+				if (a != null && !(a instanceof Monkey))
+					throw new IllegalStateException("Monkey expected but " + a.getClass() + " found: " + a);
+				Monkey m = (Monkey) a;
 
-			m.setUnHungry();
-			System.out.println("You give the banana to the Monkey MY BOUGA BOUGA !");
-
+				m.setUnHungry();
+				System.out.println("You give the banana to the Monkey MY BOUGA BOUGA !");
+			}
 		} else {
 			count++;
 			if (count < 3) {
