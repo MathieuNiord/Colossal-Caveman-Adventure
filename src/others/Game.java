@@ -232,13 +232,14 @@ public class Game {
 		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
 		}
-		//Die or Win Text
+		this.gameOver();
 	}
 
 	public void PlayATurn(){
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
+		cmdPush(30);	//========================================SAUTS DE LIGNES
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -248,6 +249,7 @@ public class Game {
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
+			sysClear();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
 		count = tabInput.length; //count is equal to the number of words
@@ -291,15 +293,18 @@ public class Game {
 			String choice;
 
 			sysClear();
-			//this.hero.loose();
+			printLetterByLetter(Script.YOU_LOOSE);
 			cmdPush(25);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
 
 			switch (choice) {
+
 				case "yes", "YES", "y", "Y", "1" : this.Play();
+
 				default :
 					printLetterByLetter("\nOk as you want mister, goodbye !");
+
 					try {
 						Thread.sleep(200);
 						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
@@ -310,7 +315,27 @@ public class Game {
 
 		else {
 			sysClear();
-			//this.hero.win();
+			printLetterByLetter(Script.YOU_WIN);
+			try {
+				Thread.sleep(200);
+			}
+			catch (final Exception e) {}
+
+			sysClear();
+			System.out.print(Script.CREDITS);
+
+			try {
+				Thread.sleep(200);
+			}
+			catch (final Exception e) {}
+
+			sysClear();
+			printLetterByLetter(Script.THANKING_PLAYER);
+
+			try {
+				Thread.sleep(200);
+			}
+			catch (final Exception e) {}
 		}
 	}
 
@@ -375,8 +400,6 @@ public class Game {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter(Script.WELCOME_MESSAGE);
-		
-		
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
 		

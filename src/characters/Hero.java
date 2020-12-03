@@ -209,6 +209,18 @@ public class Hero {
 
 	// === OTHER ===
 
+	public void loose() {
+		if (this.hp == 0) {
+			Game.printLetterByLetter(Script.YOU_LOOSE);
+		}
+	}
+
+	public void win() {
+		if (this.getPlace().getName().equalsIgnoreCase("exit")) {
+			Game.printLetterByLetter(Script.YOU_WIN);
+		}
+	}
+
 	public void quit() {
 		this.hp = 0;
 	}
