@@ -6,14 +6,7 @@ import Interfaces.*;
 
 public class Enemy implements Lookable {
 
-
-    // ***** CONSTANTS *****
-
-    private static final int DEFAULT_HP = 30;
-    private static final int DEFAULT_DAMAGE = 7;
-    private static final String DEFAULT_NAME = "Ennemy_TEST";
-
-
+    
     // ***** ATTRIBUTES *****
 
     public final String NAME;

@@ -4,7 +4,7 @@ import Characters.*;
 import Doors.*;
 import Objects.*;
 
-import java.util.Map;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -13,7 +13,6 @@ public class Game {
 	// ***** ATTRIBUTES *****
 
 	private final Hero hero;
-	private Map<String,Place> places;
 
 
 	// ***** CONSTRUCTORS *****
@@ -158,14 +157,11 @@ public class Game {
 		return this.hero;
 	}
 
-	public Map<String, Place> getPlaces() {
-		return this.places;
-	}
-
+	
 
 	// === COMMANDS ===
 
-	public void battle(Hero hero, Enemy enemy) throws InterruptedException{
+	public void battle(Hero hero, Enemy enemy) throws InterruptedException, IOException {
 
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		sysClear();
@@ -230,8 +226,8 @@ public class Game {
 
 	// === OTHER ===
 
-	public void Play() throws InterruptedException {
-		System.out.println(Script.DEFAULT_WELCOME);
+	public void Play() throws InterruptedException, IOException {
+		System.out.println(Script.SYNOPSIS);
 		pressAnyKeyToContinue();
 		sysClear();
 		this.displayEnvironment();
@@ -241,7 +237,7 @@ public class Game {
 		//Die or Win Text
 	}
 
-	public void PlayATurn() throws InterruptedException {
+	public void PlayATurn() throws InterruptedException, IOException {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
@@ -314,8 +310,13 @@ public class Game {
 
 	//Pour clean la console s'il y a besoin
 	public static void sysClear(){
-		for (int i = 0; i < 100; i++) {
-			System.out.println();
+		try
+		{
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		}
+		catch (final Exception e)
+		{
+			//  Handle any exceptions.
 		}
 		System.out.flush();
 	}
@@ -333,14 +334,14 @@ public class Game {
 
 	// === MAIN ===
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		Scanner sc = new Scanner(System.in);
 		printLetterByLetter("Welcome in our Colossal Caveman Adventure ! First we need to get your gamer tag.");
 		System.out.println("Your answer : ");
 		Game g = new Game(sc.nextLine());
 		printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n1 - Yes for sure\t2 - Yes I've no other choice");
 		System.out.println("Answer : ");
-		String noMatter = sc.nextLine();
+		sc.nextLine();
 		printLetterByLetter("As you want HOUGA BOUGA !");
 		sysClear();
 		g.Play();
