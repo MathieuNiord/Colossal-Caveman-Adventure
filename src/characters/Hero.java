@@ -266,7 +266,8 @@ public class Hero {
 		this.quit = true;
 		try {
 			Thread.sleep(5000);
-			new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
+			//new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
+			System.exit(0);
 		}
 		catch (final Exception e) {
 			System.out.println("Error");
