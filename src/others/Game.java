@@ -13,7 +13,6 @@ public class Game {
 
 	private final Hero hero;
 
-
 	// ***** CONSTRUCTORS *****
 
 	public Game(String heroName)
@@ -229,7 +228,7 @@ public class Game {
 		sysClear();
 		
 
-		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("Exit")){
+		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("Exit") && !this.hero.isQuit()){
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -240,8 +239,11 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
-		System.out.println("\nCurrent hp : " + this.hero.getHP() + "\n");
 		this.displayEnvironment();
+		cmdPush(2);
+		System.out.print("\nCurrent HP : " + this.hero.getHP() + "\n");
+		this.hero.showInventory();
+		cmdPush(12);
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
@@ -257,7 +259,7 @@ public class Game {
 		switch (count) {
 
 			case 1:
-				switch (tabInput[0]) {
+				switch (tabInput[0].toLowerCase()) {
 					case "help" -> this.help(); //show commands
 					case "quit"-> this.hero.quit(); //exit prompt
 					case "inventory"->this.hero.showInventory();
@@ -266,7 +268,7 @@ public class Game {
 				break;
 
 			case 2:
-				switch (tabInput[0]) {
+				switch (tabInput[0].toLowerCase()) {
 					case "go" -> this.hero.go(tabInput[1]);
 					case "take" -> this.hero.take(tabInput[1]);
 					case "use" -> this.hero.use(tabInput[1]);
@@ -277,7 +279,7 @@ public class Game {
 				break;
 
 			case 3:
-				switch (tabInput[0]) {
+				switch (tabInput[0].toLowerCase()) {
 					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
 					case "look"-> this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
 					case "use"-> this.hero.use(tabInput[1],tabInput[2]);
@@ -304,9 +306,9 @@ public class Game {
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
 
-			switch (choice) {
+			switch (choice.toLowerCase()) {
 
-				case "yes", "YES", "y", "Y", "1" : this.Play();
+				case "yes", "y", "1" : this.Play();
 
 				default : this.hero.quit();
 			}

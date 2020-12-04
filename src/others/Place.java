@@ -59,6 +59,22 @@ public class Place implements Lookable {
 		return this.doors;
 	}
 
+	public Map<String, Door> getUpDoors() {
+		return this.up;
+	}
+
+	public Map<String, Door> getDownDoors() {
+		return this.down;
+	}
+
+	public Map<String, Door> getLeftDoors() {
+		return this.left;
+	}
+
+	public Map<String, Door> getRightDoors() {
+		return this.right;
+	}
+
 	public String getDestinationName(Door d) {
 		ArrayList<String> list = new ArrayList<>(d.getPlaces().keySet());
 

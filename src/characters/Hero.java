@@ -2,6 +2,7 @@ package characters;
 
 import others.*;
 import objects.*;
+import  doors.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class Hero {
 	private boolean immunised;
 	private final Map<String, Obj> objs;
 	private Place place;
+	private boolean quit = false;
 
 
 	// ***** CONSTRUCTOR *****
@@ -77,6 +79,9 @@ public class Hero {
 		return this.hp>0;
 	}
 
+	public boolean isQuit() {
+		return this.quit;
+	}
 
 	// === SETTER ===
 
@@ -107,14 +112,6 @@ public class Hero {
 	}
 
 
-	// === DISPLAY ===
-
-	public void showInventory(){
-		System.out.print("\nYour inventory : ");
-		System.out.print(this.getObjs().keySet().toString());
-	}
-
-
 	// === COMMANDS ===
 
 	public void attack(Enemy enemy)  {
@@ -135,11 +132,84 @@ public class Hero {
 	}
 
 	public void go(String s) {
-		if(this.getPlace().getDoors() != null && this.getPlace().getDoors().containsKey(s)) {
-			this.getPlace().getDoors().get(s).cross(this, s);
+		//Only if we have doors around
+		if (this.getPlace().getDoors() != null) {
+
+			switch (s.toLowerCase()) {
+				//Up side
+				case "up" :
+					switch (this.getPlace().getUpDoors().size()) {
+						//If there's no door on the side that the user gave
+						case 0 -> System.out.println("No door at the top ! Make some effort !");
+						//If there's only one door
+						case 1 -> {
+							String res = this.getPlace().getUpDoors().entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
+							this.getPlace().getDoors().get(res).cross(this, res);
+						}
+						//If there's too much choices
+						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
+					}
+				break;
+
+				//Down side
+				case "down" :
+					switch (this.getPlace().getDownDoors().size()) {
+						//If there's no door on the side that the user gave
+						case 0 -> System.out.println("No door down ! Go back school !");
+						//If there's only one door
+						case 1 -> {
+							String res = this.getPlace().getDownDoors().entrySet().iterator().next().getKey();          //Not a beauty, I know but I need the key
+							this.getPlace().getDoors().get(res).cross(this, res);
+						}
+						//If there's too much choices
+						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
+					}
+				break;
+
+				//Left side
+				case "left" :
+					switch (this.getPlace().getLeftDoors().size()) {
+						//If there's no door on the side that the user gave
+						case 0 -> System.out.println("No such door on the left side dummy ! Go back to school !");
+						//If there's only one door
+						case 1 -> {
+							String res = this.getPlace().getLeftDoors().entrySet().iterator().next().getKey();          //Not a beauty, I know but I need the key
+							this.getPlace().getDoors().get(res).cross(this, res);
+						}
+						//If there's too much choices
+						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
+					}
+				break;
+
+				//Right side
+				case "right" :
+					switch (this.getPlace().getRightDoors().size()) {
+						//If there's no door on the side that the user gave
+						case 0 -> System.out.println("No such door on your right dummy ! Go back to school !");
+						//If there's only one door
+						case 1 -> {
+							String res = this.getPlace().getRightDoors().entrySet().iterator().next().getKey();         //Not a beauty, I know but I need the key
+							this.getPlace().getDoors().get(res).cross(this, res);
+						}
+						//If there's too much choices
+						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
+					}
+				break;
+
+				default :
+					if (this.getPlace().getDoors() != null && this.getPlace().getDoors().containsKey(s)) {
+						this.getPlace().getDoors().get(s).cross(this, s);
+					}
+					//If the user gave a name which doe's not exit around the room where he is
+					else {
+						System.out.println("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !");
+					}
+			}
 		}
+		//If there's no door in the room (normally impossible if developers are good)
 		else {
-			System.out.print("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
+			System.out.print("\nYou're locked in this room...No escape\n");
+			this.quit();
 		}
 	}
 
@@ -216,11 +286,20 @@ public class Hero {
 	}
 
 
+	// === DISPLAY ===
+
+	public void showInventory(){
+		System.out.print("\nYour inventory : ");
+		System.out.print(this.getObjs().keySet().toString());
+	}
+
+
 	// === OTHER ===
 
 	public void quit() {
 		//EXIT
 		System.out.print(Script.GAME_OVER);
+		this.quit = true;
 		try {
 			Thread.sleep(5000);
 			new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
