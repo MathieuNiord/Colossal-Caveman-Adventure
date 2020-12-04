@@ -69,7 +69,7 @@ public class Locker extends Obj{
 	
 	@Override
 	public void use(Hero h, String s) {
-	
+		this.use(h);
 	}
 	
 	

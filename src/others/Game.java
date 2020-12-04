@@ -68,22 +68,22 @@ public class Game {
 
 
 		// OBJECTS CREATION
-		Weapon club = new Weapon("Club");
-		Potion potion = new Potion("Potion");
-		Banana banana = new Banana("Banana");
-		Stick stick = new Stick("Stick");
-		Flint flint = new Flint("Flint");
-		Fuse fuse = new Fuse("Fuse");
-		Bescherelle catB = new Bescherelle("Bescherelle");
-		Bescherelle mouseB = new Bescherelle("Bescherelle");
-		Bescherelle monkeyB = new Bescherelle("Bescherelle");
-		Key k1 = new Key("Key1");
-		Key k2 = new Key("Key2");
-		ElectricityMeter electricityMeter = new ElectricityMeter("ElectricMeter",coldRoom);
-		Locker locker = new Locker("Locker",this.hero);
-		NaziPoster naziPoster = new NaziPoster("NaziPoster",this.hero);
-		SexyPoster sexyPoster = new SexyPoster("SexyPoster",this.hero);
-		Walkman walkman = new Walkman("Walkman");
+		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME);
+		Potion potion = new Potion(Script.DEFAULT_POTION_NAME);
+		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME);
+		Stick stick = new Stick(Script.DEFAULT_STICK_NAME);
+		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME);
+		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME);
+		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
+		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
+		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
+		Key k1 = new Key(Script.DEFAULT_KEY1_NAME);
+		Key k2 = new Key(Script.DEFAULT_KEY2_NAME);
+		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME,coldRoom);
+		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME,this.hero);
+		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME,this.hero);
+		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME,this.hero);
+		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME);
 
 
 		// DOORS ADDING TO ROOMS
@@ -227,11 +227,9 @@ public class Game {
 		System.out.print(Script.SYNOPSIS + "\n");
 		pressAnyKeyToContinue();
 		sysClear();
-		displayEnvironment();
+		
 
-		while(this.hero.isAlive()&& !this.hero.getPlace().getName().equals("Exit")){
-			sysClear();
-			displayEnvironment();//============================================modif
+		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("Exit")){
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -261,7 +259,6 @@ public class Game {
 				switch (tabInput[0]) {
 					case "help" -> this.help(); //show commands
 					case "quit"-> this.hero.quit(); //Set the life to 0 so the hero die
-					case "look"-> this.hero.getPlace().look();
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}

@@ -24,12 +24,12 @@ public class FiredStick extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item for something else...");
+		Game.printLetterByLetter("Maybe there is something burnable somewhere in this room...\n");
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-	
+		Game.printLetterByLetter("You cannot use this "+ this.NAME+" with something else\n");
 	}
 	
 }

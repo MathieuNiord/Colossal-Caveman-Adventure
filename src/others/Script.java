@@ -1,5 +1,7 @@
 package others;
 
+import objects.*;
+
 public class Script {
 
     // === WELCOME MESSAGES ===
@@ -158,18 +160,37 @@ public class Script {
 
 
     //OBJECTS
-
+    
+    //name
+    public static final String DEFAULT_CLUB_NAME = "Club";
+    public static final String DEFAULT_KEY1_NAME = "Key1";
+    public static final String DEFAULT_KEY2_NAME = "Key2";
+    public static final String DEFAULT_FUSE_NAME = "Fuse";
+    public static final String DEFAULT_STICK_NAME = "Stick";
+    public static final String DEFAULT_FLINT_NAME = "Flint";
+    public static final String DEFAULT_POTION_NAME = "Potion";
+    public static final String DEFAULT_BANANA_NAME = "Banana";
+    public static final String DEFAULT_LOCKER_NAME = "Locker";
+    public static final String DEFAULT_WALKMAN_NAME = "Walkman";
+    public static final String DEFAULT_NAZIPOSTER_NAME = "NaziPoster";
+    public static final String DEFAULT_SEXYPOSTER_NAME = "SexyPoster";
+    public static final String DEFAULT_BESCHERELLE_NAME = "Bescherelle";
+    public static final String DEFAULT_ELECTRICMETER_NAME = "ElectricMeter";
+    
+    //description
     public static final String KEY_DESCRIPT = "It's just a key...\n";
+    public static final String CLUB_DESCRIPT = "Wow, with this Club, you're going to destroy Nazis\n";
+    public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";
+    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
+    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.\n";
     public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.\n";
     public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.\n";
-    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
-    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.\n";
-    public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
     public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
-    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
-    public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";
-    public static final String SEXY_POSTER = "You are looking to this and you're so excited that you're gaining LIFE !!!\n";
+    public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
     public static final String NAZI_POSTER = "You are looking to this and this is so ugly that you've loosed LIFE !!!\n";
+    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
+    public static final String SEXY_POSTER = "Hmmmm ! What a seeeexy girl !\n\nYou took the poster and put it in your inventory\n";
+    
 		
     
     

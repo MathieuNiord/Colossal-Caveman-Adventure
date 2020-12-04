@@ -10,17 +10,17 @@ public class Walkman extends Obj{
 	
 	@Override
 	public void look() {
-		System.out.println("Wow this Walkman has some good music on !!!");
+		Game.printLetterByLetter("Wow this Walkman has some good music on !!!\n");
 	}
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n\n");
+		Game.printLetterByLetter("Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n");
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-	
+		Game.printLetterByLetter("You cannot use this "+ this.NAME+" with something else\n");
 	}
 
 	@Override

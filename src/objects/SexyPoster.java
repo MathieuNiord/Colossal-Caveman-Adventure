@@ -20,7 +20,7 @@ public class SexyPoster extends Poster{
 	
 	@Override
 	public void look() {
-		Game.printLetterByLetter("Hmmmm ! What a seeeexy girl !\n\nYou took the poster and put it in your inventory\n");
+		Game.printLetterByLetter(Script.SEXY_POSTER);
 		this.take(this.HERO);
 	}
 	
@@ -37,7 +37,7 @@ public class SexyPoster extends Poster{
 	
 	@Override
 	public void use(Hero h, String s) {
-	
+		Game.printLetterByLetter("You cannot use this SexyPoster with something else\n");
 	}
 	
 }

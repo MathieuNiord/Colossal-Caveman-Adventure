@@ -25,28 +25,30 @@ public class Flint extends Obj {
 	}
 	
 	@Override
-	public void use(Hero h) {Game.printLetterByLetter("Use this item for something else...");}
+	public void use(Hero h) {
+		Game.printLetterByLetter("Use this item with something else...");
+	}
 	
 	@Override
 	public void use(Hero h,String s) {
-		if(s.equals("Stick")){
+		if(s.equals(Script.DEFAULT_STICK_NAME)){
 			if(h.getPlace().getName().equals("Mortuary")){
 				if(h.getObjs().containsKey(s)){
 					h.getObjs().remove(s);
-					h.getObjs().remove("Flint");
-					FiredStick firedStick = new FiredStick("FiredStick");
+					h.getObjs().remove(Script.DEFAULT_FLINT_NAME);
+					FiredStick firedStick = new FiredStick(Script.DEFAULT_FLINT_NAME);
 					h.getObjs().put(firedStick.NAME,firedStick);
 					Game.printLetterByLetter("With your knowledge of caveman," +
 							"\nyou managed to create fire with your flint and your stick a firedstick." +
-							"\nMaybe he is useful in this room");
+							"\nMaybe he is useful in this room\n");
 				}
 			}
 			else{
-				Game.printLetterByLetter("Maybe you should use it in the right Room...");
+				Game.printLetterByLetter("Maybe you should use it in the right Room...\n");
 			}
 		}
 		else{
-			Game.printLetterByLetter("You cannot combine those object together");
+			Game.printLetterByLetter("You cannot combine those object together\n");
 		}
 	}
 

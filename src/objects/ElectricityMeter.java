@@ -24,11 +24,7 @@ public class ElectricityMeter extends Obj{
 	// ***** METHODS *****
 
 	// === GETTER ===
-
-	public boolean getHasFuse() {
-		return this.hasFuse;
-	}
-
+	
 	public Place getPlace() {
 		return this.place;
 	}
@@ -59,22 +55,29 @@ public class ElectricityMeter extends Obj{
 
 	@Override
 	public void use(Hero h) {
-		if(h.getObjs().containsKey("Fuse")){
-			Game.printLetterByLetter("You just added the missing fuse");
-			h.getObjs().remove("Fuse");
-			this.setHasFuse();
+		Game.printLetterByLetter("Use this item with something else...\n");
+	}
+	
+	@Override
+	public void use(Hero h, String s) {
+		if(!this.hasFuse){
+			
+			if(s.equals(Script.DEFAULT_FUSE_NAME) && h.getObjs().containsKey(Script.DEFAULT_FUSE_NAME)){
+				
+				Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n");
+				
+				h.getObjs().remove(Script.DEFAULT_FUSE_NAME);
+				this.setHasFuse();
+				
+			}
+			
 		}
 		if(this.hasFuse && !place.isEnlightened()){
 			place.setEnlightened();
 		}
 		else{
-			Game.printLetterByLetter("You've already placed the Fuse !");
+			Game.printLetterByLetter("You've already placed the missing "+ Script.DEFAULT_FUSE_NAME +" !\n");
 		}
-	}
-	
-	@Override
-	public void use(Hero h, String s) {
-	
 	}
 	
 }

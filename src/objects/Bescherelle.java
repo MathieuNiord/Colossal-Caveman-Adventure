@@ -20,12 +20,13 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("You cannot use a Bescherelle. STOOPID");
+		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID");
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-	
+		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID");
+		
 	}
 	
 	@Override

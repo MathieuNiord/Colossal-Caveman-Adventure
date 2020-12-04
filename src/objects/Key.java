@@ -18,12 +18,12 @@ public class Key extends Obj{
 
     @Override
     public void use(Hero h) {
-        Game.printLetterByLetter("What exactly are you trying to do with this key ?");
+        Game.printLetterByLetter("What exactly are you trying to do with this key ?\n");
     }
     
     @Override
     public void use(Hero h, String s) {
-    
+        Game.printLetterByLetter("You cannot use this Key with something else\n");
     }
     
     @Override

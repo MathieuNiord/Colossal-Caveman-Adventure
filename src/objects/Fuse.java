@@ -27,13 +27,13 @@ public class Fuse extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...");
+		Game.printLetterByLetter("Use this item with something else...\n");
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-		if(h.getPlace().getItems().containsKey(s)){
-			h.getPlace().getItems().get(s).use(h);
+		if(s.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
+			h.getPlace().getItems().get(Script.DEFAULT_ELECTRICMETER_NAME).use(h,this.NAME);
 		}
 	}
 	

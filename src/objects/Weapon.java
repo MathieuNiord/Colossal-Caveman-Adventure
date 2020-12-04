@@ -19,14 +19,18 @@ public class Weapon extends Obj{
 	// === COMMANDS ===
 
 	@Override
-	public void use(Hero h) {}
+	public void use(Hero h) {
+		Game.printLetterByLetter("Maybe you should find someone to hit with this " + this.NAME);
+	}
 	
 	@Override
-	public void use(Hero h, String s) {}
+	public void use(Hero h, String s) {
+		Game.printLetterByLetter("You cannot use this "+ this.NAME+" with something else\n");
+	}
 	
 	@Override
 	public void look() {
-		Game.printLetterByLetter("Club");
+		Game.printLetterByLetter(Script.CLUB_DESCRIPT);
 	}
 
 }
