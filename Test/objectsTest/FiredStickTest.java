@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import others.Place;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class FiredStickTest {
 
@@ -24,6 +26,13 @@ class FiredStickTest {
     }
 
     @Test
+    void take() {
+        f.take(h);
+        assertTrue(h.getObjs().containsValue(f));
+        assertFalse(h.getPlace().getItems().containsValue(f));
+    }
+
+    @Test
     void look() {
         f.look();
     }
@@ -36,5 +45,10 @@ class FiredStickTest {
     @Test
     void use2() {
         f.use(h, "test");
+    }
+
+    @Test
+    void toStringTest() {
+        System.out.println(f.toString());
     }
 }

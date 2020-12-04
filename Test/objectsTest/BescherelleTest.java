@@ -45,4 +45,9 @@ class BescherelleTest {
     void look() {
         b.look();
     }
+
+    @Test
+    void toStringTest() {
+        System.out.println(b.toString());
+    }
 }

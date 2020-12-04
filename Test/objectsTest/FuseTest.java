@@ -29,6 +29,13 @@ class FuseTest {
     }
 
     @Test
+    void take() {
+        f.take(h);
+        assertTrue(h.getObjs().containsValue(f));
+        assertFalse(h.getPlace().getItems().containsValue(f));
+    }
+
+    @Test
     void look() {
         f.look();
     }
@@ -55,5 +62,10 @@ class FuseTest {
         assertTrue(a.isEnlightened());
         assertFalse(h.getObjs().containsValue(f));
 
+    }
+
+    @Test
+    void toStringTest() {
+        System.out.println(f.toString());
     }
 }

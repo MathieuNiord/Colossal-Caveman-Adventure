@@ -45,4 +45,9 @@ class KeyTest {
     void look() {
         k.look();
     }
+
+    @Test
+    void toStringTest() {
+        System.out.println(k.toString());
+    }
 }

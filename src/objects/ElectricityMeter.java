@@ -29,6 +29,10 @@ public class ElectricityMeter extends Obj{
 		return this.place;
 	}
 
+	public boolean getHasFuse() {
+		return this.hasFuse;
+	}
+
 	// === SETTER ===
 
 	public void setHasFuse(){

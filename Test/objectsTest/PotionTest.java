@@ -1,17 +1,18 @@
 package objectsTest;
 
 import characters.Hero;
-import objects.Key;
 import objects.NaziPoster;
+import objects.Potion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import others.Place;
+import others.Script;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NaziPosterTest {
+class PotionTest {
 
-    private NaziPoster np;
+    private Potion p;
     private Hero h;
 
     @BeforeEach
@@ -20,35 +21,36 @@ class NaziPosterTest {
 
         h = new Hero("Test", a);
 
-        np = new NaziPoster("NaziPoster");
-        a.addObject(np);
-    }
-
-    @Test
-    void look() {
-        np.look();
+        p = new Potion(Script.DEFAULT_POTION_NAME);
+        a.addObject(p);
     }
 
     @Test
     void take() {
-        np.take(h);
-        assertTrue(h.getObjs().containsValue(np));
-        assertFalse(h.getPlace().getItems().containsValue(np));
+        p.take(h);
+        assertTrue(h.getObjs().containsValue(p));
+        assertFalse(h.getPlace().getItems().containsValue(p));
+    }
+
+    @Test
+    void look() {
+        p.look();
     }
 
     @Test
     void use() {
-        np.use(h);
-        assertEquals(Hero.DEFAULT_HP-10, h.getHP());
+        p.use(h);
+        assertTrue(h.isImmun());
+        assertFalse(h.getObjs().containsValue(p));
     }
 
     @Test
     void testUse() {
-        np.use(h, "Test");
+        p.use(h, "Test");
     }
 
     @Test
     void toStringTest() {
-        System.out.println(np.toString());
+        System.out.println(p.toString());
     }
 }

@@ -6,6 +6,7 @@ import objects.Stick;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import others.Place;
+import others.Script;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +24,13 @@ class FlintTest {
         a.addObject(f);
 
         h = new Hero("Test", a);
+    }
+
+    @Test
+    void take() {
+        f.take(h);
+        assertTrue(h.getObjs().containsValue(f));
+        assertFalse(h.getPlace().getItems().containsValue(f));
     }
 
     @Test
@@ -70,7 +78,12 @@ class FlintTest {
 
         assertFalse(h.getObjs().containsValue(f));
         assertFalse(h.getObjs().containsValue(s));
-        assertTrue(h.getObjs().containsKey("FiredStick"));
+        assertTrue(h.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME));
 
+    }
+
+    @Test
+    void toStringTest() {
+        System.out.println(f.toString());
     }
 }

@@ -172,11 +172,13 @@ public class Script {
     public static final String DEFAULT_BANANA_NAME = "Banana";
     public static final String DEFAULT_LOCKER_NAME = "Locker";
     public static final String DEFAULT_WALKMAN_NAME = "Walkman";
+    public static final String DEFAULT_FIREDSTICK_NAME = "FiredStick";
     public static final String DEFAULT_NAZIPOSTER_NAME = "NaziPoster";
     public static final String DEFAULT_SEXYPOSTER_NAME = "SexyPoster";
     public static final String DEFAULT_BESCHERELLE_NAME = "Bescherelle";
     public static final String DEFAULT_ELECTRICMETER_NAME = "ElectricMeter";
-    
+
+
     //description
     public static final String KEY_DESCRIPT = "It's just a key...\n";
     public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";

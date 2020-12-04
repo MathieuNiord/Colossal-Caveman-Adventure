@@ -27,6 +27,18 @@ class BananaTest {
     }
 
     @Test
+    void take() {
+        b.take(h);
+        assertTrue(h.getObjs().containsValue(b));
+        assertFalse(h.getPlace().getItems().containsValue(b));
+    }
+
+    @Test
+    void toStringTest() {
+        System.out.println(b.toString());
+    }
+
+    @Test
     void look() {
         // Banana launch look alone
         b.look();
@@ -37,25 +49,11 @@ class BananaTest {
 
     @Test
     void use() {
-        // case in Another room than Experiments room
         b.use(h);
+    }
+
+    @Test
+    void use2() {
         b.use(h);
-        b.use(h);
-
-        // case with monkey in Experiments room
-        h.take("Banana");
-        assertTrue(h.getObjs().containsValue(b));
-        assertFalse(h.getPlace().getItems().containsValue(b));
-        h.setPlace(B);
-
-
-        Monkey m = new Monkey("Monkey", 0,
-                "Monkey Script noBesch", "Monkey Script Besch",
-                "Script Hungry Diag", "Monkey Description");
-        B.addAnimal(m);
-
-        h.getObjs().get("Banana").use(h);
-
-        assertFalse(m.getHungry());
     }
 }
