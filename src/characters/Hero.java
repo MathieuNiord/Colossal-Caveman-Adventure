@@ -83,6 +83,7 @@ public class Hero {
 		return this.quit;
 	}
 
+
 	// === SETTER ===
 
 	public void increaseBescherelle() {
@@ -175,7 +176,6 @@ public class Hero {
 			this.quit();
 		}
 	}
-	
 
 	public void heal() {
 		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
@@ -266,7 +266,6 @@ public class Hero {
 		this.quit = true;
 		try {
 			Thread.sleep(5000);
-			//new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
 			System.exit(0);
 		}
 		catch (final Exception e) {

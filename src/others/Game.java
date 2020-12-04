@@ -243,7 +243,6 @@ public class Game {
 		cmdPush(2);
 		System.out.print("\nCurrent HP : " + this.hero.getHP() + "\n");
 		this.hero.showInventory();
-		cmdPush(12);
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
 		String input; //input String
