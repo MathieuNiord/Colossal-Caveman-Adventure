@@ -72,12 +72,4 @@ public class Locker extends Obj{
 		this.use(h);
 	}
 	
-	
-	// === DISPLAY ===
-
-	@Override
-	public String toString(){
-		return this.getClass().getSimpleName();
-	}
-
 }

@@ -9,8 +9,8 @@ public class NaziPoster extends Poster{
 	
 	// ***** CONSTRUCTOR *****
 	
-	public NaziPoster(String name, Hero hero) {
-		super(name, hero);
+	public NaziPoster(String name) {
+		super(name);
 	}
 	
 	// ***** METHODS *****
@@ -21,7 +21,6 @@ public class NaziPoster extends Poster{
 	@Override
 	public void look() {
 		System.out.println(Script.NAZI_POSTER);
-		this.HERO.setLife((-10));
 	}
 	
 	@Override
@@ -33,6 +32,7 @@ public class NaziPoster extends Poster{
 	@Override
 	public void use(Hero h){
 		this.look();
+		h.setLife((-10));
 	}
 	
 	@Override

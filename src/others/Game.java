@@ -81,8 +81,8 @@ public class Game {
 		Key k2 = new Key(Script.DEFAULT_KEY2_NAME);
 		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME,coldRoom);
 		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME,this.hero);
-		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME,this.hero);
-		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME,this.hero);
+		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME);
+		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME);
 		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME);
 
 
