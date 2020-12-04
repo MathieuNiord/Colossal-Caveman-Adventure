@@ -10,14 +10,14 @@ public class LockedKeyDoor extends LockableDoor{
 
 	// ***** ATTRIBUTES *****
 
-	public final int keyLvlNeed;
+	public final int KEY_LVL_NEED;
 
 
 	// ***** CONSTRUCTOR *****
 
 	public LockedKeyDoor(int key, Place p1, Place p2){
 		super(p1, p2);
-		this.keyLvlNeed = key;
+		this.KEY_LVL_NEED = key;
 	}
 
 
@@ -34,7 +34,7 @@ public class LockedKeyDoor extends LockableDoor{
 	}
 
 	public void unlock(int key){
-		if(key >= this.keyLvlNeed && !this.isUnlock()) {
+		if(key >= this.KEY_LVL_NEED && !this.isUnlock()) {
 			super.unlock();
 			Random rand = new Random();
 			int tmp = rand.nextInt(10 + 1);
@@ -45,7 +45,7 @@ public class LockedKeyDoor extends LockableDoor{
 				System.out.print("\nWhat a smart guy ! Haha just kidding, you got the key baby ! You unlocked the door !\n");
 			}
 		}
-		else if (key < this.keyLvlNeed){
+		else if (key < this.KEY_LVL_NEED){
 			System.out.print("You must have the good key to open this door STOOOPID CAVEMAN !\n");
 		}
 	}
