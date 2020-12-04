@@ -190,11 +190,6 @@ public class Script {
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
     public static final String NAZI_POSTER = "You are looking to this and this is so ugly that you've loosed LIFE !!!\n";
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
- 
-    
-		
-    
-    
     
     
     //HELP function
@@ -202,7 +197,6 @@ public class Script {
     public static final String HELP_DEFAULT = "List of commands :" +
             "\n- go (location)" +
             "\n- help" +
-            "\n- look" +
             "\n- look (Object)" +
             "\n- take (Object)" +
             "\n- use (Object)" +

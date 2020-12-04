@@ -146,8 +146,8 @@ public class Hero {
 	}
 
 	public void heal() {
-		if(this.objs.containsKey("SexyPoster")){
-			this.objs.remove("SexyPoster");
+		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
+			this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
 			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
 			this.hp += 20;
 			System.out.println("\nYou gained 20 HP\n");
@@ -162,14 +162,21 @@ public class Hero {
 		if(this.getPlace().isContainsEnemies()){
 			this.getPlace().getEnemies().look();
 		}
-		if(this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)){
-			this.getPlace().getAnimals().get(s).look();
-		}
-		if(this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)){
-			this.getPlace().getItems().get(s).look();
-		}
-		if (this.getObjs().containsKey(s)) {
-			this.getObjs().get(s).look();
+		else {
+			if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
+				this.getPlace().getAnimals().get(s).look();
+			} else {
+				if (this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)) {
+					this.getPlace().getItems().get(s).look();
+				} else {
+					if (this.getObjs().containsKey(s)) {
+						this.getObjs().get(s).look();
+					}
+					else{
+						Game.printLetterByLetter("You're trying to look at something that not exist or not lookable.\n");
+					}
+				}
+			}
 		}
 	}
 
@@ -183,7 +190,7 @@ public class Hero {
 	}
 
 	public void talk(String s) {
-		if (this.place.getAnimals().containsKey(s)) {
+		if (this.place.isContainsAnimals() && this.place.getAnimals().containsKey(s)) {
 			this.place.getAnimals().get(s).talk(this);
 		}
 		else{

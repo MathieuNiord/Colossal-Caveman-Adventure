@@ -240,6 +240,7 @@ public class Game {
 		if (this.hero.getPlace().isContainsEnemies()) {
 			battle(this.hero, this.hero.getPlace().getEnemies());
 		}
+		System.out.println("\nCurrent hp : " + this.hero.getHP() + "\n");
 		this.displayEnvironment();
 		System.out.print("\n\nCommand :> ");
 		int count; //count of words
