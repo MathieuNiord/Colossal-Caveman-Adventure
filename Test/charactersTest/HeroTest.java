@@ -142,7 +142,8 @@ class HeroTest {
 
     @org.junit.jupiter.api.Test
     void heal() {
-        //TODO
+        // case without SexyPoster
+        h.heal();
     }
 
     @org.junit.jupiter.api.Test
