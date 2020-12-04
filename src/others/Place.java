@@ -64,7 +64,7 @@ public class Place implements Lookable {
 
 		String res = list.get(0);
 		if(list.contains(this.NAME)) {
-			if (res.equals(this.NAME)) {
+			if (res.equals(this.NAME) && list.size() > 1) {
 				res = list.get(1);
 			}
 		}

@@ -7,8 +7,8 @@ public class BurnableDoor extends LockableDoor{
 	
 	// ***** CONSTRUCTOR *****
 
-	public BurnableDoor(Place p1) {
-		super(p1);
+	public BurnableDoor(Place p1, Place p2) {
+		super(p1, null);
 	}
 
 
@@ -21,6 +21,7 @@ public class BurnableDoor extends LockableDoor{
 				System.out.println("You burned the door !" +
 						"\nYou are now in the Archives-room");
 				this.unlock();
+				this.open();
 				hero.getObjs().remove("FiredStick");
 			}
 			else{

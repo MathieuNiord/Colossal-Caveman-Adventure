@@ -39,7 +39,7 @@ public class Game {
 
 
 		// DOORS CREATION
-		Door secretPassage = new BurnableDoor(archivesRoom);
+		Door secretPassage = new BurnableDoor(archivesRoom, null);
 		Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
 		Door changAndEntry = new CondemnedDoor(changingRoom, entry);
 		Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
