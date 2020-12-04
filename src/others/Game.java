@@ -251,7 +251,7 @@ public class Game {
 			input = scanner.nextLine();
 			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
 		}
-
+		System.out.println();
 		count = tabInput.length; //count is equal to the number of words
 		switch (count) {
 

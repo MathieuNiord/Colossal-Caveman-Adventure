@@ -179,17 +179,18 @@ public class Script {
     
     //description
     public static final String KEY_DESCRIPT = "It's just a key...\n";
-    public static final String CLUB_DESCRIPT = "Wow, with this Club, you're going to destroy Nazis\n";
     public static final String POTION_DESCRIPT = "It looks like an mystic solution.\n";
     public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
     public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.\n";
     public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.\n";
     public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.\n";
+    public static final String CLUB_DESCRIPT = "Wow, with this Club, you're going to destroy Nazis\n";
+    public static final String SEXY_POSTER = "Hmmmm ! What a seeeexy girl !,Maybe you should take it..\n";
     public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
     public static final String NAZI_POSTER = "You are looking to this and this is so ugly that you've loosed LIFE !!!\n";
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
-    public static final String SEXY_POSTER = "Hmmmm ! What a seeeexy girl !\n\nYou took the poster and put it in your inventory\n";
+ 
     
 		
     

@@ -21,13 +21,6 @@ public class SexyPoster extends Poster{
 	@Override
 	public void look() {
 		Game.printLetterByLetter(Script.SEXY_POSTER);
-		this.take(this.HERO);
-	}
-	
-	@Override
-	public void take(Hero h) {
-		this.HERO.getObjs().put(this.NAME,this);
-		this.HERO.getPlace().getItems().remove(this.NAME);
 	}
 	
 	@Override
