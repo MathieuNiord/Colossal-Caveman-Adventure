@@ -1,7 +1,5 @@
 package others;
 
-import objects.*;
-
 public class Script {
 
     // === WELCOME MESSAGES ===

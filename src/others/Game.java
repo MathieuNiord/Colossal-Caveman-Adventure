@@ -420,8 +420,7 @@ public class Game {
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
 
-		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n" +
-				"\n1 - Yes for sure\t2 - Yes I've no other choice\n");
+		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n\n1 - Yes for sure\t2 - Yes I've no other choice\n");
 		System.out.print("\nAnswer : ");
 		sc.nextLine();
 		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n");
