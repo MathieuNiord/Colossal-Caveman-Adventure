@@ -49,6 +49,9 @@ public class SecretCodeDoor extends LockableDoor {
 		}
 	}
 
+	@Override
+	public void unlock(){}
+
 
 	// === OTHER ===
 

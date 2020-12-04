@@ -65,8 +65,6 @@ public class Hero {
 		return this.immunised;
 	}
 
-	
-
 	public Place getPlace() {
 		return this.place;
 	}
@@ -220,20 +218,16 @@ public class Hero {
 
 	// === OTHER ===
 
-	public void loose() {
-		if (this.hp == 0) {
-			Game.printLetterByLetter(Script.YOU_LOOSE);
-		}
-	}
-
-	public void win() {
-		if (this.getPlace().getName().equalsIgnoreCase("exit")) {
-			Game.printLetterByLetter(Script.YOU_WIN);
-		}
-	}
-
 	public void quit() {
-		this.hp = 0;
+		//EXIT
+		System.out.print(Script.GAME_OVER);
+		try {
+			Thread.sleep(5000);
+			new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
+		}
+		catch (final Exception e) {
+			System.out.println("Error");
+		}
 	}
 
 }

@@ -259,7 +259,7 @@ public class Game {
 			case 1:
 				switch (tabInput[0]) {
 					case "help" -> this.help(); //show commands
-					case "quit"-> this.hero.quit(); //Set the life to 0 so the hero die
+					case "quit"-> this.hero.quit(); //exit prompt
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -308,16 +308,7 @@ public class Game {
 
 				case "yes", "YES", "y", "Y", "1" : this.Play();
 
-				default :
-					//EXIT
-					System.out.print(Script.GAME_OVER);
-					try {
-						Thread.sleep(5000);
-						new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
-					}
-					catch (final Exception e) {
-						System.out.println("Error");
-					}
+				default : this.hero.quit();
 			}
 		}
 
@@ -356,16 +347,7 @@ public class Game {
 			}
 
 			pressAnyKeyToContinue();
-
-			//EXIT
-			System.out.print(Script.GAME_OVER);
-			try {
-				Thread.sleep(5000);
-				new ProcessBuilder("cmd", "/c", "exit").inheritIO().start().waitFor();
-			}
-			catch (final Exception e) {
-				System.out.println("Error");
-			}
+			this.hero.quit();
 		}
 	}
 

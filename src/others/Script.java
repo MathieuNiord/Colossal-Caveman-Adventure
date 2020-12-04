@@ -163,8 +163,8 @@ public class Script {
     
     //name
     public static final String DEFAULT_CLUB_NAME = "Club";
-    public static final String DEFAULT_KEY1_NAME = "Key1";
-    public static final String DEFAULT_KEY2_NAME = "Key2";
+    public static final String DEFAULT_KEY1_NAME = "Key_01";
+    public static final String DEFAULT_KEY2_NAME = "Key_02";
     public static final String DEFAULT_FUSE_NAME = "Fuse";
     public static final String DEFAULT_STICK_NAME = "Stick";
     public static final String DEFAULT_FLINT_NAME = "Flint";
