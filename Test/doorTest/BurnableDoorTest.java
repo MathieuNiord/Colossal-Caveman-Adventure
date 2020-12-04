@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BurnableDoorTest {
 
-    private Place A;
     private Place B;
     private Hero h;
     private Door d;
@@ -21,18 +20,18 @@ class BurnableDoorTest {
 
     @BeforeEach
     void setUp() {
-        A = new Place("PlaceA", false, true);
+        Place a = new Place("PlaceA", false, true);
         B = new Place("PlaceB", false, true);
 
         d = new BurnableDoor(B, null);
 
-        A.addDoor(d, "right");
+        a.addDoor(d, "right");
         B.addDoor(d, "left");
 
         fs = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
-        A.addObject(fs);
+        a.addObject(fs);
 
-        h = new Hero("Ben", A);
+        h = new Hero("Ben", a);
     }
 
     @Test
