@@ -315,7 +315,7 @@ public class Game {
 		}
 
 		//WIN ENDING
-		else {
+		else if (!this.hero.isQuit()){
 			sysClear();
 			printLetterByLetter(Script.YOU_WIN);
 			try {
@@ -342,13 +342,17 @@ public class Game {
 			printLetterByLetter(Script.THANKING_PLAYER);
 
 			try {
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 			}
 			catch (final Exception e) {
 				System.out.println("Error");
 			}
 
 			pressAnyKeyToContinue();
+			this.hero.quit();
+		}
+		//ONLY QUIT
+		else {
 			this.hero.quit();
 		}
 	}
