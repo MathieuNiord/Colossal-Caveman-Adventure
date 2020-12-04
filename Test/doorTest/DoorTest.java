@@ -30,7 +30,7 @@ class DoorTest {
         A.addDoor(d, "right");
         B.addDoor(d, "left");
 
-        h = new Hero("Ben", A);
+        h = new Hero("Test", A);
     }
 
     @Test

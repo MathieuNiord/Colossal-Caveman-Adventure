@@ -36,6 +36,7 @@ public class LockedKeyDoor extends LockableDoor{
 	public void unlock(int key){
 		if(key >= this.KEY_LVL_NEED && !this.isUnlock()) {
 			super.unlock();
+			this.open();
 			Random rand = new Random();
 			int tmp = rand.nextInt(10 + 1);
 			if(tmp % 2 == 0){
@@ -55,9 +56,9 @@ public class LockedKeyDoor extends LockableDoor{
 
 	@Override
 	public void cross(Hero hero, String s){
-		this.unlock(hero.getKeyLevel()); //On teste si le joueur possède bien la clé nécessaire
-		if(this.isUnlock()){
-			hero.setPlace(this.getPlaces().get(s));     //Si c'est déverrouillé on peut passer
+		this.unlock(hero.getKeyLevel()); //We test if the player get the right key
+		if(this.isOpen()){
+			hero.setPlace(this.getPlaces().get(s));     //If it's unlocked, we can pass
 		}
 	}
 

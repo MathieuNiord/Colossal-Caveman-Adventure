@@ -2,7 +2,6 @@ package doorTest;
 
 import characters.Hero;
 import doors.BurnableDoor;
-import doors.Door;
 import objects.FiredStick;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ class BurnableDoorTest {
 
     private Place B;
     private Hero h;
-    private Door d;
+    private BurnableDoor d;
     private FiredStick fs;
 
     @BeforeEach
@@ -31,7 +30,7 @@ class BurnableDoorTest {
         fs = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
         a.addObject(fs);
 
-        h = new Hero("Ben", a);
+        h = new Hero("Test", a);
     }
 
     @Test

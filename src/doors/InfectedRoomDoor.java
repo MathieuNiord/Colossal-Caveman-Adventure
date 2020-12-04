@@ -23,6 +23,7 @@ public class InfectedRoomDoor extends LockableDoor{
         if(!this.isUnlock()){
             if(hero.isImmun()) {
                 this.unlock();
+                this.open();
                 System.out.println("You open the door, you're immunded of the nocif gas.");
                 hero.setPlace(this.getPlaces().get(s));
             }

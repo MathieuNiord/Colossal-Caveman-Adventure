@@ -19,6 +19,7 @@ public class DestructableDoor extends LockableDoor {
         
         if(hero.getObjs().containsKey("Club") && !this.isUnlock()){ // If the hero has the Club
             this.unlock();
+            this.open();
             System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
         }
         

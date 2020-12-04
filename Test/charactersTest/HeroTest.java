@@ -126,18 +126,7 @@ class HeroTest {
 
     @org.junit.jupiter.api.Test
     void go() {
-        // null case
-        h.go(null);
-        assertEquals(A, h.getPlace());
-
-        // Existing Place
-        h.go("PlaceB");
-        assertEquals(B, h.getPlace());
-
-        // not existing place
-        h.go("Kitchen");
-        assertEquals(B, h.getPlace());
-
+        //TODO
     }
 
     @org.junit.jupiter.api.Test

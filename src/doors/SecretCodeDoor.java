@@ -35,6 +35,7 @@ public class SecretCodeDoor extends LockableDoor {
 	
 		if (this.CODE.equalsIgnoreCase(code)) {
 			super.unlock();
+			this.open();
 			if(tmp % 2 == 0){
 				System.out.print("\nVALID CODE. The door is now unlocked. Good Boy !\n");
 			}
@@ -58,9 +59,9 @@ public class SecretCodeDoor extends LockableDoor {
 	@Override
 	public void cross(Hero hero, String s) {
 		if (!this.isUnlock()) {
-			Scanner sc = new Scanner(System.in);    //Nouveau scanner
+			Scanner sc = new Scanner(System.in);    //New scanner
 			System.out.print("\nCODE : ");
-			String code = sc.nextLine();            //L'utilisateur rentre le code
+			String code = sc.nextLine();            //The user enter the code
 
 			this.unlock(code);
 		}
