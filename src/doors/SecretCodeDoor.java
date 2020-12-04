@@ -26,6 +26,9 @@ public class SecretCodeDoor extends LockableDoor {
 
 	// === SETTER ===
 
+	@Override
+	public void unlock(){}
+
 	public void unlock(String code) {
 		Random rand = new Random();
 		int tmp = rand.nextInt(10 + 1);
@@ -48,9 +51,6 @@ public class SecretCodeDoor extends LockableDoor {
 			}
 		}
 	}
-
-	@Override
-	public void unlock(){}
 
 
 	// === OTHER ===
