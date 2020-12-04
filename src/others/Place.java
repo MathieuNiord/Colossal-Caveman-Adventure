@@ -6,7 +6,7 @@ import objects.*;
 import interfaces.*;
 import java.util.*;
 
-public class Place implements Lookable {
+public class Place {
 
 
 	// ***** ATTRIBUTES *****
@@ -189,16 +189,6 @@ public class Place implements Lookable {
 			}
 		}
 	}
-
-
-	// === COMMANDS ===
-
-	@Override
-	public void look() {
-		System.out.println(this.toString());
-	}
-
-
 	// === DISPLAY ===
 
 	public String toStringAnimal() {

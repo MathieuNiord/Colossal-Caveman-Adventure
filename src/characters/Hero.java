@@ -130,88 +130,52 @@ public class Hero {
 			Game.sysClear();
 		}
 	}
-
-	public void go(String s) {
-		//Only if we have doors around
-		if (this.getPlace().getDoors() != null) {
-
-			switch (s.toLowerCase()) {
-				//Up side
-				case "up" :
-					switch (this.getPlace().getUpDoors().size()) {
-						//If there's no door on the side that the user gave
-						case 0 -> System.out.println("No door at the top ! Make some effort !");
-						//If there's only one door
-						case 1 -> {
-							String res = this.getPlace().getUpDoors().entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
-							this.getPlace().getDoors().get(res).cross(this, res);
-						}
-						//If there's too much choices
-						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
-					}
-				break;
-
-				//Down side
-				case "down" :
-					switch (this.getPlace().getDownDoors().size()) {
-						//If there's no door on the side that the user gave
-						case 0 -> System.out.println("No door down ! Go back school !");
-						//If there's only one door
-						case 1 -> {
-							String res = this.getPlace().getDownDoors().entrySet().iterator().next().getKey();          //Not a beauty, I know but I need the key
-							this.getPlace().getDoors().get(res).cross(this, res);
-						}
-						//If there's too much choices
-						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
-					}
-				break;
-
-				//Left side
-				case "left" :
-					switch (this.getPlace().getLeftDoors().size()) {
-						//If there's no door on the side that the user gave
-						case 0 -> System.out.println("No such door on the left side dummy ! Go back to school !");
-						//If there's only one door
-						case 1 -> {
-							String res = this.getPlace().getLeftDoors().entrySet().iterator().next().getKey();          //Not a beauty, I know but I need the key
-							this.getPlace().getDoors().get(res).cross(this, res);
-						}
-						//If there's too much choices
-						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
-					}
-				break;
-
-				//Right side
-				case "right" :
-					switch (this.getPlace().getRightDoors().size()) {
-						//If there's no door on the side that the user gave
-						case 0 -> System.out.println("No such door on your right dummy ! Go back to school !");
-						//If there's only one door
-						case 1 -> {
-							String res = this.getPlace().getRightDoors().entrySet().iterator().next().getKey();         //Not a beauty, I know but I need the key
-							this.getPlace().getDoors().get(res).cross(this, res);
-						}
-						//If there's too much choices
-						default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
-					}
-				break;
-
-				default :
-					if (this.getPlace().getDoors() != null && this.getPlace().getDoors().containsKey(s)) {
-						this.getPlace().getDoors().get(s).cross(this, s);
-					}
-					//If the user gave a name which doe's not exit around the room where he is
-					else {
-						System.out.println("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !");
-					}
+	
+	private void go_aux(Map<String,Door> m){
+		if(m!=null){
+			switch (m.size()) {
+				//If there's no door on the side that the user gave
+				case 0 -> System.out.println("No door at the top ! Make some effort !");
+				//If there's only one door
+				case 1 -> {
+					String res = m.entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
+					m.get(res).cross(this, res);
+				}
+				//If there's too much choices
+				default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
 			}
 		}
-		//If there's no door in the room (normally impossible if developers are good)
+		else{
+			System.out.println("No door");
+		}
+	}
+	
+	public void go(String s) {
+	//Only if we have doors around
+		if (this.getPlace().getDoors() != null) {
+		
+			switch (s.toLowerCase()) {
+				case "up" -> go_aux(this.getPlace().getUpDoors());
+				case "down" -> go_aux(this.getPlace().getDownDoors());
+				case "left" -> go_aux(this.getPlace().getLeftDoors());
+				case "right" -> go_aux(this.getPlace().getRightDoors());
+				default -> {
+					if (this.getPlace().getDoors().containsKey(s)) {
+						this.getPlace().getDoors().get(s).cross(this, s);
+					}
+					else {
+						//If the user gave a name which doe's not exit around the room where he is
+						System.out.println("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !");
+					}
+				}
+			}
+		}
 		else {
 			System.out.print("\nYou're locked in this room...No escape\n");
 			this.quit();
 		}
 	}
+	
 
 	public void heal() {
 		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
