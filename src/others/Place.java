@@ -3,7 +3,6 @@ package others;
 import characters.*;
 import doors.*;
 import objects.*;
-import interfaces.*;
 import java.util.*;
 
 public class Place {
@@ -131,10 +130,12 @@ public class Place {
 	}
 
 	public void addAnimal(Animal ani) {
-		if(this.animals == null) {
-			this.animals = new HashMap<>();
+		if(ani != null) {
+			if (this.animals == null) {
+				this.animals = new HashMap<>();
+			}
+			this.animals.put(ani.NAME, ani);
 		}
-		this.animals.put(ani.NAME,ani);
 	}
 
 	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
@@ -148,44 +149,48 @@ public class Place {
 	}
 
 	public void addObject(Obj o) {
-		if(this.objs == null) {
-			this.objs = new HashMap<>();
+		if(o != null) {
+			if (this.objs == null) {
+				this.objs = new HashMap<>();
+			}
+			this.objs.put(o.toString(), o);
 		}
-		this.objs.put(o.toString(),o);
 	}
 
 	public void addDoor(Door d, String where) {
-		if (this.doors == null) {
-			this.doors = new HashMap<>();
-		}
-		if(!this.doors.containsValue(d)) {
-			// On récupère le nom de la destination en fonction du sens où on emprunte la porte
-			String destName = this.getDestinationName(d);
-			this.doors.put(destName, d);
+		if(d != null  && where != null) {
+			if (this.doors == null) {
+				this.doors = new HashMap<>();
+			}
+			if (!this.doors.containsValue(d)) {
+				// On récupère le nom de la destination en fonction du sens où on emprunte la porte
+				String destName = this.getDestinationName(d);
+				this.doors.put(destName, d);
 
-			if(where.equals("up")) {
-				if(this.up == null) {
-					this.up = new HashMap<>();
+				if (where.equals("up")) {
+					if (this.up == null) {
+						this.up = new HashMap<>();
+					}
+					this.up.put(destName, d);
 				}
-				this.up.put(destName, d);
-			}
-			if(where.equals("down")) {
-				if(this.down == null) {
-					this.down = new HashMap<>();
+				if (where.equals("down")) {
+					if (this.down == null) {
+						this.down = new HashMap<>();
+					}
+					this.down.put(destName, d);
 				}
-				this.down.put(destName, d);
-			}
-			if(where.equals("left")) {
-				if(this.left == null) {
-					this.left = new HashMap<>();
+				if (where.equals("left")) {
+					if (this.left == null) {
+						this.left = new HashMap<>();
+					}
+					this.left.put(destName, d);
 				}
-				this.left.put(destName, d);
-			}
-			if(where.equals("right")) {
-				if(this.right == null) {
-					this.right = new HashMap<>();
+				if (where.equals("right")) {
+					if (this.right == null) {
+						this.right = new HashMap<>();
+					}
+					this.right.put(destName, d);
 				}
-				this.right.put(destName, d);
 			}
 		}
 	}
