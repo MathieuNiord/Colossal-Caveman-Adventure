@@ -7,24 +7,24 @@ public class Script {
     // === WELCOME MESSAGES ===
 
     public static final String WELCOME_MESSAGE =
-            "\t=========================================  WELCOME  ==========================================" +
-            "\n\t==                                                                                          ==" +
-            "\n\t==  Hello and welcome to our game The Colossal Caveman Adventure.                           ==" +
-            "\n\t==  This game is the product of many hours of work and deserves to be fully appreciated.    ==" +
-            "\n\t==  Therefore if you are reluctant to a little dirty humor, if you hate bad scenarios       ==" +
-            "\n\t==  or if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !                     ==" +
-            "\n\t==  Conversely, we wish you a good game and hope for a good return.                         ==" +
-            "\n\t==                                                                                          ==" +
-            "\n\t==============================================================================================";
+            "\n\n\n\t\t=========================================  WELCOME  ==========================================" +
+            "\n\t\t==                                                                                          ==" +
+            "\n\t\t==  Hello and welcome to our game The Colossal Caveman Adventure.                           ==" +
+            "\n\t\t==  This game is the product of many hours of work and deserves to be fully appreciated.    ==" +
+            "\n\t\t==  Therefore if you are reluctant to a little dirty humor, if you hate bad scenarios       ==" +
+            "\n\t\t==  or if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !                     ==" +
+            "\n\t\t==  Conversely, we wish you a good game and hope for a good return.                         ==" +
+            "\n\t\t==                                                                                          ==" +
+            "\n\t\t==============================================================================================";
 
     public static final String SYNOPSIS =
-            "\t===============================  SYNOPSIS  ===============================" +
-            "\n\t==  A caveman found frozen in the Arctic.                               ==" +
-            "\n\t== A team of Nazis researchers thaws it and locks it in a laboratory.   ==" +
-            "\n\t== Being just an uneducated caveman,                                    ==" +
-            "\n\t== You have to help him out of this lab.                                ==" +
-            "\n\t==========================================================================" +
-            "\n\tWrite : help, and press enter to get the list of available commands";
+            "\n\n\n\t\t===============================  SYNOPSIS  ===============================" +
+            "\n\t\t==  A caveman found frozen in the Arctic.                               ==" +
+            "\n\t\t== A team of Nazis researchers thaws it and locks it in a laboratory.   ==" +
+            "\n\t\t== Being just an uneducated caveman,                                    ==" +
+            "\n\t\t== You have to help him out of this lab.                                ==" +
+            "\n\t\t==========================================================================" +
+            "\n\t\tWrite : help, and press enter to get the list of available commands";
 
 
 
@@ -74,7 +74,7 @@ public class Script {
             "=========================================================\n" +
             "=========================================================\n";
 
-    public static final String THANKING_PLAYER = "\n\n\n\tWE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
+    public static final String THANKING_PLAYER = "\n...WE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
 
 
     // === INTRO BATTLES ===
@@ -100,7 +100,7 @@ public class Script {
 
     //Cat
     public static final String CAT_TEXT01 = "Meeeeew mew meeew mew\n";
-    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany." +
+    public static final String CAT_TEXT02 = "\nHello where are you from I came from Germany." +
             "\nI saw all those \"glorious soldier\" who left you here." +
             "\nThey laughed and the boss said you were a stupid frenchy caveman who could never find a way out of this mansion !" +
             "\nAnother said that for sure no one will find the password because it is too smart," +
@@ -113,7 +113,7 @@ public class Script {
 
     //Mouse
     public static final String MOUSE_TEXT01 = "krrih krrih…\n";
-    public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very" +
+    public static final String MOUSE_TEXT02 = "\nHey handsome ! Are you alone ? You look well built but obviously not very" +
             "\nsmart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are you homeless ? Hmm…no matter !" +
             "\nThe password is S A GREAT. Bye, come see me later.\n";
     public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.\n";
@@ -121,11 +121,11 @@ public class Script {
 
     //Monkey
     public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !\n";
-    public static final String MONKEY_TEXT02 = "Wuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a" +
+    public static final String MONKEY_TEXT02 = "\nWuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a" +
             "\nf***ing mansion in da f***ing 80’s with da return of da f***ing Nazis : wut da hell bru ? No waaay a die" +
             "\nhere ! and u know wut ma man ? A’m starving like a wulf, yep ! Go find me nice food and a give u da password" +
             "\nu need for escaping those bastards.\n";
-    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause" +
+    public static final String MONKEY_TEXT03 = "\nR u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause" +
             "\na m black… r u a f***ing racist ? … Wait a minute… dat’s not food dumbass, it’s a GOLD BANANA !? eh u know" +
             "\nwut, a give u da password but only ‘cause a m better than u, u know wut u deserve ? dat a grab ma own shit" +
             "\nand throw it in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine not urs ! Pshht," +
