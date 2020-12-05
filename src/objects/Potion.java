@@ -20,20 +20,20 @@ public class Potion extends Obj {
 
 	@Override
 	public void look()  {
-		Game.printLetterByLetter(Script.POTION_DESCRIPT);
+		Game.printLetterByLetter(Script.POTION_DESCRIPT, Script.DEFAULT_NARRATOR);
 	}
 
 	@Override
 	public void use(Hero h) {
 		h.setImmunised();
-		Game.printLetterByLetter("I don't know what was in this solution but you no longer have a nose.\n" +
-				" Fortunately you are an athlete and a freediving champion. You should be immune now.\n");
+		Game.printLetterByLetter("I don't know what was in this solution but you no longer have a nose." +
+				"\nFortunately you are an athlete and a freediving champion. You should be immune now.\n", Script.DEFAULT_NARRATOR);
 		h.getObjs().remove(Script.DEFAULT_POTION_NAME);
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-		Game.printLetterByLetter("You cannot use this potion with something else\n");
+		Game.printLetterByLetter("You cannot use this potion with something else\n", Script.DEFAULT_NARRATOR);
 		
 	}
 	

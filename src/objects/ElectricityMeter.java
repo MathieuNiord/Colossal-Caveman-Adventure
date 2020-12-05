@@ -45,21 +45,21 @@ public class ElectricityMeter extends Obj{
 	@Override
 	public void look() {
 		if(!this.hasFuse){
-			Game.printLetterByLetter(Script.ELECTRICMETER_MISSING_DESCRIPT);
+			Game.printLetterByLetter(Script.ELECTRICMETER_MISSING_DESCRIPT, Script.DEFAULT_NARRATOR);
 		}
 		else{
-			Game.printLetterByLetter(Script.ELECTRICMETER_DESCRIPT);
+			Game.printLetterByLetter(Script.ELECTRICMETER_DESCRIPT, Script.DEFAULT_NARRATOR);
 		}
 	}
 
 	@Override
 	public void take(Hero h) {
-		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n");
+		Game.printLetterByLetter("You cannot take this Electric meter, it's too heavy for HOUGA BOUGA\n", Script.DEFAULT_NARRATOR);
 	}
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...\n");
+		Game.printLetterByLetter("Use this item with something else...\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override
@@ -68,7 +68,7 @@ public class ElectricityMeter extends Obj{
 			
 			if(s.equals(Script.DEFAULT_FUSE_NAME) && h.getObjs().containsKey(Script.DEFAULT_FUSE_NAME)){
 				
-				Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n");
+				Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
 				
 				h.getObjs().remove(Script.DEFAULT_FUSE_NAME);
 				this.setHasFuse();
@@ -80,7 +80,7 @@ public class ElectricityMeter extends Obj{
 			place.setEnlightened();
 		}
 		else{
-			Game.printLetterByLetter("You've already placed the missing "+ Script.DEFAULT_FUSE_NAME +" !\n");
+			Game.printLetterByLetter("You've already placed the missing "+ Script.DEFAULT_FUSE_NAME +" !\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 	

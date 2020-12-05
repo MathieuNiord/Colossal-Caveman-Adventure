@@ -119,14 +119,14 @@ public class Hero {
 		if(enemy != null) {
 			if (this.objs.containsKey("Club")) {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
-				System.out.print("\nHouga Bouga :");
-				Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-				Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
+				Game.printLetterByLetter("\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
-				System.out.print("\nHouga Bouga :");
-				Game.printLetterByLetter(Script.ANGRY_HERO + "\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n");
-				Game.printLetterByLetter(enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
+				Game.printLetterByLetter("\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 			}
 			Game.sysClear();
 		}
@@ -136,7 +136,7 @@ public class Hero {
 		if(m!=null){
 			switch (m.size()) {
 				//If there's no door on the side that the user gave
-				case 0 -> System.out.println("No door at the top ! Make some effort !");
+				case 0 -> Game.printLetterByLetter("No door at the top ! Make some effort !", Script.DEFAULT_NARRATOR);
 				//If there's only one door
 				case 1 -> {
 					String res = m.entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
@@ -166,13 +166,13 @@ public class Hero {
 					}
 					else {
 						//If the user gave a name which doe's not exit around the room where he is
-						System.out.println("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !");
+						Game.printLetterByLetter("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !", Script.DEFAULT_NARRATOR);
 					}
 				}
 			}
 		}
 		else {
-			System.out.print("\nYou're locked in this room...No escape\n");
+			Game.printLetterByLetter("\nYou're locked in this room...No escape\n", Script.DEFAULT_NARRATOR);
 			this.quit();
 		}
 	}
@@ -180,12 +180,12 @@ public class Hero {
 	public void heal() {
 		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
 			this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
-			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n");
+			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
 			this.hp += 20;
 			System.out.println("\nYou gained 20 HP\n");
 		}
 		else{
-			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n");
+			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n", Script.DEFAULT_NARRATOR);
 			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
 		}
 	}
@@ -205,7 +205,7 @@ public class Hero {
 						this.getObjs().get(s).look();
 					}
 					else{
-						Game.printLetterByLetter("You're trying to look at something that not exist or not lookable.\n");
+						Game.printLetterByLetter("You're trying to look at something that not exist or not lookable.\n", Script.DEFAULT_NARRATOR);
 					}
 				}
 			}
@@ -216,8 +216,11 @@ public class Hero {
 		if (this.place.getItems().containsKey(s)) {
 			this.place.getItems().get(s).take(this);
 		}
+		else if (this.getPlace().getAnimals().containsKey(s)) {
+			Game.printLetterByLetter("No please ! Put this " + s + " down on the floor. You're such a savage !\n", Script.DEFAULT_NARRATOR);
+		}
 		else{
-			System.out.print("\nNo kind of " + s + " in this place STOOOPID CAVEMAN !\n");
+			Game.printLetterByLetter("No kind of " + s + " in this place STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -226,7 +229,7 @@ public class Hero {
 			this.place.getAnimals().get(s).talk(this);
 		}
 		else{
-			System.out.print("\nWhere did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n");
+			Game.printLetterByLetter("Where did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -235,10 +238,13 @@ public class Hero {
 			this.getObjs().get(s).use(this);
 		}
 		else if (s.equalsIgnoreCase("ElectricMeter")) {
-			Game.printLetterByLetter("\nI'm not sure you can use this machine, it's heavy and you don't even know how it works.\n");
+			Game.printLetterByLetter("I'm not sure you can use this machine, it's heavy and you don't even know how it works.\n", Script.DEFAULT_NARRATOR);
+		}
+		else if (this.getPlace().getAnimals().containsKey(s)) {
+			Game.printLetterByLetter("Wh..Wha...WHAT ?! No you can't use this " + s +  " !\n", Script.DEFAULT_NARRATOR);
 		}
 		else {
-			Game.printLetterByLetter("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n"); //On se fait insulter
+			Game.printLetterByLetter("You live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n", Script.DEFAULT_NARRATOR); //On se fait insulter
 		}
 
 	}

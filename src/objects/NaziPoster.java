@@ -26,7 +26,7 @@ public class NaziPoster extends Poster{
 	@Override
 	public void take(Hero h)  {
 		super.take(h);
-		Game.printLetterByLetter("\nThis Poster is now in your inventory, use it to lose life !\n");
+		Game.printLetterByLetter("\nThis Poster is now in your inventory, use it to lose life !\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override
@@ -37,7 +37,7 @@ public class NaziPoster extends Poster{
 	
 	@Override
 	public void use(Hero h, String s) {
-		Game.printLetterByLetter("You cannot use this NaziPoster with something else\n");
+		Game.printLetterByLetter("You cannot use this NaziPoster with something else\n", Script.DEFAULT_NARRATOR);
 	}
 	
 }

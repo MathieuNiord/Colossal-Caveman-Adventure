@@ -20,14 +20,14 @@ public class Fuse extends Obj {
 
 	@Override
 	public void look() {
-		Game.printLetterByLetter(Script.FUSE_DESCRIPT);
+		Game.printLetterByLetter(Script.FUSE_DESCRIPT, Script.DEFAULT_NARRATOR);
 	}
 
 	//Faire take() avec remove du fuse
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...\n");
+		Game.printLetterByLetter("Use this item with something else...\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

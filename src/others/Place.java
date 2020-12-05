@@ -189,6 +189,8 @@ public class Place {
 			}
 		}
 	}
+
+
 	// === DISPLAY ===
 
 	public String toStringAnimal() {

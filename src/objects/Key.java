@@ -18,12 +18,12 @@ public class Key extends Obj{
 
     @Override
     public void use(Hero h) {
-        Game.printLetterByLetter("What exactly are you trying to do with this key ?\n");
+        Game.printLetterByLetter("What exactly are you trying to do with this key ?\n", Script.DEFAULT_NARRATOR);
     }
     
     @Override
     public void use(Hero h, String s) {
-        Game.printLetterByLetter("You cannot use this Key with something else\n");
+        Game.printLetterByLetter("You cannot use this Key with something else\n", Script.DEFAULT_NARRATOR);
     }
     
     @Override
@@ -35,7 +35,7 @@ public class Key extends Obj{
 
     @Override
     public void look() {
-        Game.printLetterByLetter(Script.KEY_DESCRIPT);
+        Game.printLetterByLetter(Script.KEY_DESCRIPT, Script.DEFAULT_NARRATOR);
     }
 
 }

@@ -20,12 +20,12 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID");
+		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID");
+		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID", Script.DEFAULT_NARRATOR);
 		
 	}
 	
@@ -37,7 +37,7 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void look() {
-		Game.printLetterByLetter(Script.BESCH_DESCRIPT);
+		Game.printLetterByLetter(Script.BESCH_DESCRIPT, Script.DEFAULT_NARRATOR);
 	}
 
 }

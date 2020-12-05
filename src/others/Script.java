@@ -2,6 +2,8 @@ package others;
 
 public class Script {
 
+    public static final String DEFAULT_NARRATOR = "GUID";
+
     // === WELCOME MESSAGES ===
 
     public static final String WELCOME_MESSAGE =

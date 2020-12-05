@@ -158,10 +158,13 @@ public class Game {
 
 	public void battle(Hero hero, Enemy enemy){
 
+		sysClear();
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
+		pressAnyKeyToContinue();
 		sysClear();
 		System.out.print(enemy.NAME + " :");
 		enemy.opening();
+		enemy.descript();
 		Scanner sc = new Scanner(System.in);
 		String input;
 		String[] tabInput;
@@ -187,30 +190,30 @@ public class Game {
 					switch (tabInput[0]) {
 						case "attack" -> hero.attack(enemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
 						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
-						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n");	//Sinon tant pis pour lui
+						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);	//Sinon tant pis pour lui
 					}
 					break;
 
 				case 2 :
 					switch (tabInput[0]) {
-						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n");	//Cette ligne juste pour le style
-						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n");	//Cette ligne juste pour le style
-						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n");
+						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n", Script.DEFAULT_NARRATOR);	//Cette ligne juste pour le style
+						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n", Script.DEFAULT_NARRATOR);	//Cette ligne juste pour le style
+						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n", Script.DEFAULT_NARRATOR);
 					}
 					break;
 
-				default : printLetterByLetter("Whatever ! You pass your turn !\n");
+				default :
+					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
 			}
-
 		}
 		//ONCE ENEMY IS DEFEATED
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
 		enemy.defeat();
-		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
+		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
 
 		hero.getPlace().addObject(enemy.getItem());
 		hero.take(enemy.getItem().NAME);
-		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like a " + enemy.getItem().NAME + "\n");
+		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like the " + enemy.getItem().NAME + "\n", Script.DEFAULT_NARRATOR);
 		enemy.loot();
 		hero.getPlace().setEnemy(null);
 	}
@@ -301,7 +304,7 @@ public class Game {
 			String choice;
 
 			sysClear();
-			printLetterByLetter(Script.YOU_LOOSE);
+			printLetterByLetter(Script.YOU_LOOSE, "NARRATOR");
 			cmdPush(30);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
@@ -317,7 +320,7 @@ public class Game {
 		//WIN ENDING
 		else if (!this.hero.isQuit()){
 			sysClear();
-			printLetterByLetter(Script.YOU_WIN);
+			printLetterByLetter(Script.YOU_WIN, "NARRATOR");
 			try {
 				Thread.sleep(10000);
 			}
@@ -339,7 +342,7 @@ public class Game {
 
 			//THANKING
 			sysClear();
-			printLetterByLetter(Script.THANKING_PLAYER);
+			printLetterByLetter(Script.THANKING_PLAYER, "DEVELOPERS");
 
 			try {
 				Thread.sleep(5000);
@@ -364,7 +367,8 @@ public class Game {
 		System.out.println("\n" + this.hero.getPlace().toString());
 	}
 
-	public static void printLetterByLetter(String s) {
+	public static void printLetterByLetter(String s, String whom) {
+		System.out.print("\n" + whom + " : ");
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
@@ -380,7 +384,6 @@ public class Game {
 			System.out.println("Error");
 
 		}
-
 	}
 
 	//Pour clean la console s'il y a besoin
@@ -412,6 +415,7 @@ public class Game {
 		}
 	}
 
+
 	// === MAIN ===
 
 	public static void main(String[] args) {
@@ -420,11 +424,10 @@ public class Game {
 		System.out.println(Script.WELCOME_MESSAGE);
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
-
-		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n\n1 - Yes for sure\t2 - Yes I've no other choice\n");
+		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n\n1 - Yes for sure\t2 - Yes I've no other choice\n", Script.DEFAULT_NARRATOR);
 		System.out.print("\nAnswer : ");
 		sc.nextLine();
-		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n");
+		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n", Script.DEFAULT_NARRATOR);
 		Game.pressAnyKeyToContinue();
 		g.Play();
 	}

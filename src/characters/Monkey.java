@@ -44,13 +44,13 @@ public class Monkey extends Animal{
 
 		System.out.print(("\n" + this.NAME + " :\n"));
 		if(this.beschLevel>h.getBLevel()){
-			Game.printLetterByLetter(this.noBeschDialog);
+			Game.printLetterByLetter(this.noBeschDialog, this.NAME);
 		}
 		else if(this.hungry){
-			Game.printLetterByLetter(this.beschDialog);
+			Game.printLetterByLetter(this.beschDialog, this.NAME);
 		}
 		else{
-			Game.printLetterByLetter(this.noHungryDialog);
+			Game.printLetterByLetter(this.noHungryDialog, this.NAME);
 		}
 	}
 

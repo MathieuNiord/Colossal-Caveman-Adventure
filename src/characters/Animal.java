@@ -18,13 +18,11 @@ public class Animal implements Lookable {
 	// ***** CONSTRUCTOR *****
 	
 	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc){
-		
 		this.NAME = name;
 		this.beschLevel=bLevel;
 		this.beschDialog = beschDialog;
 		this.noBeschDialog = noBeschDialog;
 		this.description = desc;
-		
 	}
 
 
@@ -41,20 +39,19 @@ public class Animal implements Lookable {
 	// === COMMANDS ===
 
 	public void talk(Hero h) {
-		System.out.print(("\n" + this.NAME + " :\n"));
 		/*If the Objects.Bescherelle level of the hero is egal or higher than
 		the Objects.Bescherelle level needed to talk with this animal*/
 		if(h.getBLevel()>=beschLevel){
-			Game.printLetterByLetter(this.beschDialog);
+			Game.printLetterByLetter(this.beschDialog, this.NAME);
 		}
 		else {
-			Game.printLetterByLetter(this.noBeschDialog);
+			Game.printLetterByLetter(this.noBeschDialog, this.NAME);
 		}
 	}
 
 	
 	public void look() {
-		Game.printLetterByLetter(this.description);
+		Game.printLetterByLetter(this.description, this.NAME);
 	}
 }
 

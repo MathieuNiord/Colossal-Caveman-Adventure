@@ -18,6 +18,7 @@ public class Enemy implements Lookable {
     private final String attack;
     private final String defeat;
     private final String description;
+    private boolean healed = false;
     //Je pensais ajouter un healcounter de manière à ce que l'ennemi puisse se soigner un certain nb de fois au cours du combat
 
 
@@ -41,6 +42,19 @@ public class Enemy implements Lookable {
 
     // === GETTER ===
 
+    //On souhaite savoir si l'ennemi a perdu
+    public boolean isDefeat() {
+        if (this.hp <= 0) {
+            this.state = false;
+        }
+        return !this.state;
+    }
+
+    //On souhaite savoir si l'ennemi s'est déjà soigné
+    public boolean isHealed() {
+        return this.healed;
+    }
+
     //On souhaite connaître les points de vies restants de l'ennemi
     public int getHP() {
         return this.hp;
@@ -49,14 +63,6 @@ public class Enemy implements Lookable {
     //On souhaite connaître les dégâts d'attaque de l'ennemi
     public int getDamage() {
         return this.damage;
-    }
-
-    //On souhaite savoir si l'ennemi a perdu
-    public boolean isDefeat() {
-        if (this.hp <= 0) {
-            this.state = false;
-        }
-        return !this.state;
     }
 
     //On souhaite connaître l'objet que possède l'ennemi
@@ -73,13 +79,14 @@ public class Enemy implements Lookable {
         }
         else if (hp <= 0 && this.state) {
             this.state = false;
-            Game.printLetterByLetter(this.defeat);
+            this.defeat();
         }
     }
 
     public void heal(int heal) {
         if (this.state && this.hp > 0) {
             this.hp += heal;
+            System.out.print("\n" + this.NAME + " healed itself.\n" + this.NAME + " gain " + heal + " HP.\n");
         }
     }
 
@@ -90,25 +97,26 @@ public class Enemy implements Lookable {
     // === DISPLAY ===
 
     public void opening() {
-        System.out.print(this.NAME + " :");
-        Game.printLetterByLetter(this.opening);
+        Game.printLetterByLetter(this.opening, this.NAME);
     }
 
     public void attack() {
-        System.out.print(this.NAME + " :");
-        Game.printLetterByLetter(this.attack);
+        Game.printLetterByLetter(this.attack, this.NAME);
     }
 
     public void defeat() {
-        System.out.print(this.NAME + " :");
-        Game.printLetterByLetter(this.defeat);
+        Game.printLetterByLetter(this.defeat, this.NAME);
+    }
+
+    public void descript() {
+        Game.printLetterByLetter(this.description, this.NAME);
     }
 
 
     // === COMMANDS ===
 
     public void look() {
-        Game.printLetterByLetter(this.description);
+        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
     }
 
 }
