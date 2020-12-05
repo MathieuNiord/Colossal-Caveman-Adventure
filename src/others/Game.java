@@ -143,13 +143,12 @@ public class Game {
 		locker.addObj(walkman);
 
 		// ENEMIES ADDING TO ROOMS
-		meetingRoom.addAndCreateEnemy("account guy", 10, 1, k1,
+		meetingRoom.addAndCreateEnemy("account guy", 45, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		desertedRoom.addAndCreateEnemy("zombie Nazi", 15, 3, fuse,
+		desertedRoom.addAndCreateEnemy("zombie Nazi", 60, 4, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		decontaminationRoom.addAndCreateEnemy("super-nazi", 20, 6, k2,
+		decontaminationRoom.addAndCreateEnemy("super-nazi", 100, 8, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
-
 	}
 
 
@@ -216,6 +215,7 @@ public class Game {
 				default :
 					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
 			}
+			pressAnyKeyToContinue();
 		}
 
 		//===ONCE ENEMY IS DEFEATED
@@ -224,8 +224,8 @@ public class Game {
 		printLetterByLetter("Good Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
 
 		hero.getPlace().addObject(enemy.getItem());
-		hero.take(enemy.getItem().NAME);
 		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like the " + enemy.getItem().NAME + "\n", Script.DEFAULT_NARRATOR);
+		hero.take(enemy.getItem().NAME);
 		enemy.loot();
 		hero.getPlace().setEnemy(null);
 	}

@@ -27,7 +27,7 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	
 	@Override
 	public void take(Hero h) {
-		Game.printLetterByLetter("You successfully took the object !\n", Script.DEFAULT_NARRATOR);
+		System.out.print("\nYou took the " + this.NAME.toUpperCase() + "\n");
 		h.getObjs().put(this.NAME,this);
 		h.getPlace().getItems().remove(this.NAME);
 	}

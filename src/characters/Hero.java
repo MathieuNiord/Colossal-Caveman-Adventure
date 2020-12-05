@@ -93,13 +93,10 @@ public class Hero {
 		this.keyLevel++;
 	}
 
-	public void setLife(int damageHeal){
-		this.hp += damageHeal;
-		if(damageHeal < 0){
-			Game.printLetterByLetter("\nOuch ! You loose " + -damageHeal + " points of your life ! Take care my man...\n\n\n", Script.DEFAULT_NARRATOR);
-		}
-		else{
-			Game.printLetterByLetter("Sweet ! You have just gained " + damageHeal + " life points !\n\n\n", Script.DEFAULT_NARRATOR);
+	public void setLife(int damage){
+		this.hp += damage;
+		if(damage < 0){
+			Game.printLetterByLetter("Ouch ! You loose " + -damage + " points of your life ! Take care my man...\n\n\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -180,7 +177,7 @@ public class Hero {
 	public void heal() {
 		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
 			this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
-			Game.printLetterByLetter("\nNo please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("No please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
 			this.hp += 20;
 			System.out.println("\nYou gained 20 HP\n");
 		}
