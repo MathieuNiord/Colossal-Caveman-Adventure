@@ -18,13 +18,14 @@ public class Script {
             "\n\t\t==============================================================================================";
 
     public static final String SYNOPSIS =
-            "\n\n\n\t\t===============================  SYNOPSIS  ===============================" +
-            "\n\t\t==  A caveman found frozen in the Arctic.                               ==" +
-            "\n\t\t== A team of Nazis researchers thaws it and locks it in a laboratory.   ==" +
-            "\n\t\t== Being just an uneducated caveman,                                    ==" +
-            "\n\t\t== You have to help him out of this lab.                                ==" +
-            "\n\t\t==========================================================================" +
-            "\n\t\tWrite : help, and press enter to get the list of available commands\n\n";
+            "\n\n\n\t\t=====================================  SYNOPSIS  =======================================" +
+            "\n\t\t==                                                                                    ==" +
+            "\n\t\t== A caveman found frozen in the Arctic during 1984.                                  ==" +
+            "\n\t\t== A team of Nazis researchers thaws it and took him prisoner of their laboratory.    ==" +
+            "\n\t\t== You play this man and your goal is to escape from here alive...                    ==" +
+            "\n\t\t==                                                                                    ==" +
+            "\n\t\t========================================================================================" +
+            "\n\n\t\tWrite : help, and press enter to get the list of available commands\n\n";
 
 
 
@@ -79,13 +80,9 @@ public class Script {
 
     // === BATTLE ===
 
-    public static final String BATTLE_BEGIN = "\n=========== BAAAAAAAATTLE ===========\n" + "\nYou come face to face with a ";
+    public static final String BATTLE_BEGIN = "\n=========== BAAAAAAAATTLE ===========\n\nYou come face to face with a ";
 
-    public static final String BATTLE_HELP = "\n=========== LIST OF COMMANDS ===========" +
-            "\n - attack\n - heal\n\nBEWARE OF WHAT YOU'RE WRITING OR YOU COULD HAVE A BAD PRESENT...\n\n";
-
-    public static final String BATTLE_HELP_DEFAULT = "\n\n=========== LIST OF COMMANDS ===========" + "\n - attack\n - heal\n\n";
-
+    public static final String BATTLE_HELP = "\n=========== LIST OF COMMANDS ===========\n - attack\n - heal\n\nBEWARE OF WHAT YOU'RE WRITING OR YOU COULD HAVE A BAD PRESENT...\n\n";
 
     // === HERO ===
     public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !\n";
