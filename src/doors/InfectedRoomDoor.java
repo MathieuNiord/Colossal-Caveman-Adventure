@@ -20,6 +20,7 @@ public class InfectedRoomDoor extends LockableDoor{
 
     @Override
     public void cross(Hero hero, String s){
+        s = s.toLowerCase();
         if(!this.isUnlock()){
             if(hero.isImmun()) {
                 this.unlock();

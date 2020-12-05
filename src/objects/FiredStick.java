@@ -21,6 +21,7 @@ public class FiredStick extends Obj {
 
 	@Override
 	public void look(){
+		Game.printLetterByLetter(Script.FIRED_STICK_DESCRIPT, Script.DEFAULT_NARRATOR);
 	}
 
 	@Override

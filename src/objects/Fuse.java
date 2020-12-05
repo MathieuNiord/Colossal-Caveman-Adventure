@@ -32,6 +32,7 @@ public class Fuse extends Obj {
 	
 	@Override
 	public void use(Hero h, String s) {
+		s = s.toLowerCase();
 		if(s.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
 			h.getPlace().getItems().get(Script.DEFAULT_ELECTRICMETER_NAME).use(h,this.NAME);
 		}

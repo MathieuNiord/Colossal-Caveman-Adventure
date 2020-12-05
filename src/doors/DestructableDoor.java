@@ -16,7 +16,7 @@ public class DestructableDoor extends LockableDoor {
     
     @Override
     public void cross(Hero hero, String s){
-        
+        s = s.toLowerCase();
         if(hero.getObjs().containsKey("Club") && !this.isUnlock()){ // If the hero has the Club
             this.unlock();
             this.open();

@@ -31,11 +31,12 @@ public class Flint extends Obj {
 	
 	@Override
 	public void use(Hero h,String s) {
+		s = s.toLowerCase();
 		if(s.equals(Script.DEFAULT_STICK_NAME)){
-			if(h.getPlace().getName().equals("Mortuary")){
+			if(h.getPlace().getName().equals("mortuary")){
 				if(h.getObjs().containsKey(s)){
 					h.getObjs().remove(s);
-					h.getObjs().remove(Script.DEFAULT_FLINT_NAME);
+					h.getObjs().remove(this.NAME);
 					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
 					h.getObjs().put(firedStick.NAME,firedStick);
 					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick a firedstick." +

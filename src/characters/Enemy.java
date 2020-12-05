@@ -18,9 +18,6 @@ public class Enemy implements Lookable {
     private final String attack;
     private final String defeat;
     private final String description;
-    private boolean healed = false;
-    //Je pensais ajouter un healcounter de manière à ce que l'ennemi puisse se soigner un certain nb de fois au cours du combat
-
 
     // ***** CONSTRUCTOR *****
 
@@ -48,11 +45,6 @@ public class Enemy implements Lookable {
             this.state = false;
         }
         return !this.state;
-    }
-
-    //On souhaite savoir si l'ennemi s'est déjà soigné
-    public boolean isHealed() {
-        return this.healed;
     }
 
     //On souhaite connaître les points de vies restants de l'ennemi
@@ -94,6 +86,14 @@ public class Enemy implements Lookable {
         this.item=null;
     }
 
+
+    // === COMMANDS ===
+
+    public void look() {
+        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
+    }
+
+
     // === DISPLAY ===
 
     public void opening() {
@@ -110,13 +110,6 @@ public class Enemy implements Lookable {
 
     public void descript() {
         Game.printLetterByLetter(this.description, this.NAME);
-    }
-
-
-    // === COMMANDS ===
-
-    public void look() {
-        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
     }
 
 }

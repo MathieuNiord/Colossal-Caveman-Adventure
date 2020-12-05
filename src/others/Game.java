@@ -5,6 +5,7 @@ import doors.*;
 import objects.*;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Game {
 
@@ -19,22 +20,22 @@ public class Game {
 	{
 
 		// ROOMS CREATION
-		Place animalRoom = new Place("Animal room", false, true);
-		Place transferRoom = new Place("Transfer room", false, true);
-		Place changingRoom = new Place("Changing room", false, true);
-		Place entry = new Place("Entry", false, true);
-		Place meetingRoom = new Place("Meeting room", false, true);
-		Place archivesRoom = new Place("Archives room", false, true);
-		Place experimentsRoom = new Place("Experiments room", false, true);
-		Place mortuary = new Place("Mortuary", false, true); // on éclaire la pièce ?
-		Place condamnedSAS = new Place("Condamned sas", true, true);
-		Place desertedRoom = new Place("Deserted room", false, true);
-		Place productsReserve = new Place("Products reserve", false, true);
-		Place garbageRoom = new Place("Garbage room", false, true);
-		Place coldRoom = new Place("Cold room", false, false);
-		Place dirtyChangingRoom = new Place("Dirty changingRoom", false, true); // est ce qu'on pourrait pas l'enlever ?
-		Place decontaminationRoom = new Place("Decontamination room", false, true);
-		Place exit = new Place("Exit", false, true);
+		Place animalRoom = new Place("animal room", false, true);
+		Place transferRoom = new Place("transfer room", false, true);
+		Place changingRoom = new Place("changing room", false, true);
+		Place entry = new Place("entry", false, true);
+		Place meetingRoom = new Place("meeting room", false, true);
+		Place archivesRoom = new Place("archives room", false, true);
+		Place experimentsRoom = new Place("experiments room", false, true);
+		Place morgue = new Place("morgue", false, true); // on éclaire la pièce ?
+		Place condamnedSAS = new Place("condamned sas", true, true);
+		Place desertedRoom = new Place("deserted room", false, true);
+		Place productsReserve = new Place("products reserve", false, true);
+		Place garbageRoom = new Place("garbage room", false, true);
+		Place coldRoom = new Place("cold room", false, false);
+		Place dirtyChangingRoom = new Place("dirty changingRoom", false, true); // est ce qu'on pourrait pas l'enlever ?
+		Place decontaminationRoom = new Place("decontamination room", false, true);
+		Place exit = new Place("exit", false, true);
 
 
 		// DOORS CREATION
@@ -49,7 +50,7 @@ public class Game {
 		Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
 		Door transfAndChang = new Door(transferRoom, changingRoom);
 		Door transfAndExper = new Door(transferRoom, experimentsRoom);
-		Door experimAndMort = new Door(experimentsRoom, mortuary);
+		Door experimAndMort = new Door(experimentsRoom, morgue);
 		Door condaAndDesert = new Door(condamnedSAS, desertedRoom);
 		Door experimAndCold = new Door(experimentsRoom, coldRoom);
 		Door coldAndGarb = new Door(coldRoom, garbageRoom);
@@ -61,9 +62,9 @@ public class Game {
 
 
 		// ANIMALS CREATION
-		Animal cat = new Animal("Cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
-		Animal mouse = new Animal("Mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-		Animal monkey = new Monkey("Monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+		Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+		Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+		Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
 
 		// OBJECTS CREATION
@@ -103,8 +104,8 @@ public class Game {
 		experimentsRoom.addDoor(experimAndReserv, "up");
 		experimentsRoom.addDoor(experimAndCold, "left");
 		experimentsRoom.addDoor(experimAndDirty, "left");
-		mortuary.addDoor(experimAndMort, "left");
-		mortuary.addDoor(secretPassage, "down");
+		morgue.addDoor(experimAndMort, "left");
+		morgue.addDoor(secretPassage, "down");
 		condamnedSAS.addDoor(experimAndConda, "down");
 		condamnedSAS.addDoor(condaAndDesert, "up");
 		desertedRoom.addDoor(condaAndDesert, "down");
@@ -141,11 +142,11 @@ public class Game {
 		locker.addObj(walkman);
 
 		// ENEMIES ADDING TO ROOMS
-		meetingRoom.addAndCreateEnemy("Account guy", 10, 1, k1,
+		meetingRoom.addAndCreateEnemy("account guy", 10, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		desertedRoom.addAndCreateEnemy("Zombie Nazi", 15, 3, fuse,
+		desertedRoom.addAndCreateEnemy("zombie Nazi", 15, 3, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		decontaminationRoom.addAndCreateEnemy("SUPER-NAZI", 20, 6, k2,
+		decontaminationRoom.addAndCreateEnemy("super-nazi", 20, 6, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
 	}
@@ -158,6 +159,15 @@ public class Game {
 
 	public void battle(Hero hero, Enemy enemy){
 
+		//===VARIABLES
+		Scanner sc = new Scanner(System.in);
+		Random rand = new Random();
+		int eHeal; 																										//Enemy heal
+		String input;
+		String[] tabInput;
+		int count;
+
+		//===BATTLE OPENING
 		sysClear();
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		pressAnyKeyToContinue();
@@ -165,48 +175,50 @@ public class Game {
 		System.out.print(enemy.NAME + " :");
 		enemy.opening();
 		enemy.descript();
-		Scanner sc = new Scanner(System.in);
-		String input;
-		String[] tabInput;
-		int count;
 		System.out.println(Script.BATTLE_HELP);
 
+		//===BATTLE AREA
 		while (hero.isAlive() && !enemy.isDefeat()) {
 
-			//ENEMY TURN
+			//===ENEMY TURN
+			eHeal = rand.nextInt(10+1);																			//The enemy got 10% of luck to cure itself
 			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
-			enemy.attack();
-			hero.setLife(-(enemy.getDamage()));
-			//HERO TURN
+			if (eHeal == 1) {
+				enemy.heal(10);
+			}
+			else {
+				enemy.attack();
+				hero.setLife(-(enemy.getDamage()));
+			}
+
+			//===HERO TURN
 			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
 			System.out.print("Choice :>");
+			//Count of the number of words
 			input = sc.nextLine();
 			tabInput = input.split(" ");
-			count = tabInput.length;	//Au cas où je préfère récupérer le nombre de mots
+			count = tabInput.length;
 
 			switch (count) {
 
 				case 1 :
 					switch (tabInput[0]) {
-						case "attack" -> hero.attack(enemy);	//Si le joueur veut attaquer on attaque directement l'ennemi
-						case "heal" -> hero.heal();				//Si le joueur veut se soigner on appelle la mèthode qui permet de se soigner
-						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);	//Sinon tant pis pour lui
+						case "attack" -> hero.attack(enemy);															//Attack the enemy
+						case "heal" -> hero.heal();																		//Cure the player
+						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
 					}
 					break;
 
 				case 2 :
-					switch (tabInput[0]) {
-						case "attack" -> printLetterByLetter("Why did you knock " + tabInput[1] + " !? You pass your turn !\n", Script.DEFAULT_NARRATOR);	//Cette ligne juste pour le style
-						case "heal" -> printLetterByLetter("You cannot cure " + enemy.NAME + ". On the other hand you will take a hit\n", Script.DEFAULT_NARRATOR);	//Cette ligne juste pour le style
-						default -> printLetterByLetter("A moment... What is " + tabInput[1] + " ? Ohw Gosh pay attention !\n", Script.DEFAULT_NARRATOR);
-					}
+						printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
 					break;
 
 				default :
 					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
 			}
 		}
-		//ONCE ENEMY IS DEFEATED
+
+		//===ONCE ENEMY IS DEFEATED
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
 		enemy.defeat();
 		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
@@ -248,23 +260,23 @@ public class Game {
 		System.out.print("\nCurrent HP : " + this.hero.getHP() + "\n");
 		this.hero.showInventory();
 		System.out.print("\n\nCommand :> ");
-		int count; //count of words
-		String input; //input String
-		String[] tabInput = new String[0]; //Tab of words
-		Scanner scanner = new Scanner(System.in); //Scanner for input
+		int count; 																										//count of words
+		String input; 																									//input String
+		String[] tabInput = new String[0]; 																				//Tab of words
+		Scanner scanner = new Scanner(System.in); 																		//Scanner for input
 
 		if(scanner.hasNext()){
 			input = scanner.nextLine();
-			tabInput = input.split(" "); //Split the input into the tab when the char is "space"
+			tabInput = input.split(" "); 																			//Split the input into the tab when the char is "space"
 		}
 		System.out.println();
-		count = tabInput.length; //count is equal to the number of words
+		count = tabInput.length; 																						//count is equal to the number of words
 		switch (count) {
 
 			case 1:
 				switch (tabInput[0].toLowerCase()) {
-					case "help" -> this.help(); //show commands
-					case "quit"-> this.hero.quit(); //exit prompt
+					case "help" -> this.help(); 																		//show commands
+					case "quit"-> this.hero.quit(); 																	//exit prompt
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -363,13 +375,14 @@ public class Game {
 
 	// === DISPLAY ===
 
+	//Display the environment
 	public void displayEnvironment() {
 		System.out.println("\n" + this.hero.getPlace().toString());
 	}
 
-	//Effets de style pour l'affichage
+	//Display effect for dialogs
 	public static void printLetterByLetter(String s, String whom) {
-		System.out.print("\n" + whom + " : ");
+		System.out.print("\n" + whom.toUpperCase() + " : ");																			//Display the character who talks
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
@@ -386,7 +399,7 @@ public class Game {
 		}
 	}
 
-	//Pour clean la console s'il y a besoin
+	//To clean the prompt
 	public static void sysClear(){
 		try
 		{
@@ -424,10 +437,10 @@ public class Game {
 		System.out.println(Script.WELCOME_MESSAGE);
 		System.out.print("\n\nPlease, choose your name : ");
 		Game g = new Game(sc.nextLine());
-		Game.printLetterByLetter("\nOk so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ?\n\n1 - Yes for sure\t2 - Yes I've no other choice\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("Ok so you choose \"HOUGA BOUGA\" as gamer tag. You agreed ? \n\n1 - Yes for sure\t2 - Yes I've no other choice\n\n", Script.DEFAULT_NARRATOR);
 		System.out.print("\nAnswer : ");
 		sc.nextLine();
-		Game.printLetterByLetter("\nAs you want HOUGA BOUGA !\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("As you want HOUGA BOUGA !\n", Script.DEFAULT_NARRATOR);
 		Game.pressAnyKeyToContinue();
 		g.Play();
 	}

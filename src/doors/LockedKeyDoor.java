@@ -56,6 +56,7 @@ public class LockedKeyDoor extends LockableDoor{
 
 	@Override
 	public void cross(Hero hero, String s){
+		s = s.toLowerCase();
 		this.unlock(hero.getKeyLevel()); //We test if the player get the right key
 		if(this.isOpen()){
 			hero.setPlace(this.getPlaces().get(s));     //If it's unlocked, we can pass

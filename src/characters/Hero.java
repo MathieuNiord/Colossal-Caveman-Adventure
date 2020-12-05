@@ -151,7 +151,8 @@ public class Hero {
 	}
 	
 	public void go(String s) {
-	//Only if we have doors around
+		s = s.toLowerCase();																							//It's for the user, he can tap room, ROOM, RoOm, no matter
+		//Only if there is doors around
 		if (this.getPlace().getDoors() != null) {
 		
 			switch (s.toLowerCase()) {
@@ -190,6 +191,7 @@ public class Hero {
 	}
 
 	public void lookAt(String s) {
+		s = s.toLowerCase();
 		if(this.getPlace().isContainsEnemies()){
 			this.getPlace().getEnemies().look();
 		}
@@ -212,6 +214,7 @@ public class Hero {
 	}
 
 	public void take(String s) {
+		s = s.toLowerCase();
 		if (this.place.getItems().containsKey(s)) {
 			this.place.getItems().get(s).take(this);
 		}
@@ -224,6 +227,7 @@ public class Hero {
 	}
 
 	public void talk(String s) {
+		s = s.toLowerCase();
 		if (this.place.isContainsAnimals() && this.place.getAnimals().containsKey(s)) {
 			this.place.getAnimals().get(s).talk(this);
 		}
@@ -233,14 +237,18 @@ public class Hero {
 	}
 
 	public void use(String s) {
-		if(this.getObjs().containsKey(s)){
+		s = s.toLowerCase();
+		if(this.getObjs().containsKey(s.toLowerCase())){
 			this.getObjs().get(s).use(this);
 		}
-		else if (s.equalsIgnoreCase("ElectricMeter")) {
+		else if (s.equalsIgnoreCase(Script.DEFAULT_ELECTRICMETER_NAME)) {
 			Game.printLetterByLetter("I'm not sure you can use this machine, it's heavy and you don't even know how it works.\n", Script.DEFAULT_NARRATOR);
 		}
 		else if (this.getPlace().getAnimals().containsKey(s)) {
-			Game.printLetterByLetter("Wh..Wha...WHAT ?! No you can't use this " + s +  " !\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("Wh..Wha...WHAT !? No you can't use this " + s +  " !\n", Script.DEFAULT_NARRATOR);
+		}
+		else if (this.getPlace().getItems().containsKey(s)) {
+			Game.printLetterByLetter("Maybe you can take it before try to use it, simple suggestion.\n", Script.DEFAULT_NARRATOR); //On se fait insulter
 		}
 		else {
 			Game.printLetterByLetter("You live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n", Script.DEFAULT_NARRATOR); //On se fait insulter
@@ -249,6 +257,8 @@ public class Hero {
 	}
 
 	public void use(String s1,String s2) {
+		s1 = s1.toLowerCase();
+		s2 = s2.toLowerCase();
 		if(this.getObjs().containsKey(s1)){
 			this.getObjs().get(s1).use(this,s2);
 		}

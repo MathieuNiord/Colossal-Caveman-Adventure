@@ -31,12 +31,12 @@ public class Place {
 		this.infested = inf;
 		this.enlightened = isEnlighted;
 
-		// On ajoute avec AddAndCreate les animaux, objets et ennemies
+		//We add animals, objects or enemies thanks to addAndCreate()
 		this.animals = null;
 		this.objs = null;
 		this.enemy = null;
 
-		// Il faut impérativement ajouter les portes après avec la méthode addDoors
+		//We'll have to add the doors afterwards thanks to addDoors()
 		this.doors = null;
 		this.left = null;
 		this.right = null;
@@ -54,6 +54,7 @@ public class Place {
 		return this.NAME;
 	}
 
+	//DOORS
 	public Map<String, Door> getDoors() {
 		return this.doors;
 	}
@@ -86,18 +87,22 @@ public class Place {
 		return res;
 	}
 
+	//ANIMALS
 	public Map<String, Animal> getAnimals() {
 		return this.animals;
 	}
 
+	//ENEMIES
 	public Enemy getEnemies() {
 		return this.enemy;
 	}
 
+	//OBJECTS
 	public Map<String, Obj> getItems() {
 		return this.objs;
     }
 
+    //PLACE STATE
 	public boolean isInfested() {
 		return this.infested;
 	}
@@ -129,6 +134,7 @@ public class Place {
 		this.enlightened =true;
 	}
 
+	//ADD ANIMALS, ENEMIES AND DOORS
 	public void addAnimal(Animal ani) {
 		if(ani != null) {
 			if (this.animals == null) {
@@ -305,14 +311,14 @@ public class Place {
 		StringBuilder retE = new StringBuilder();
 
 		if(this.enemy != null) {
-			retE.append("There is ").append(this.enemy.NAME);
+			retE.append("There is ").append(this.enemy.NAME.toUpperCase());
 		}
 		return retE.toString();
 	}
 
 	@Override
 	public String toString() {
-		String intro = "========= " + this.getName() + " =========\n\n";
+		String intro = "========= " + this.getName().toUpperCase() + " =========\n\n";
 
 		String isEnl = "";
 		String isInf = "";

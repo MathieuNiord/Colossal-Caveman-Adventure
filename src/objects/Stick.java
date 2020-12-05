@@ -30,12 +30,13 @@ public class Stick extends Obj {
 
 	@Override
 	public void use(Hero h,String s) {
-		if(s.equals("Flint")){
-			if(h.getPlace().getName().equals("Mortuary")){
+		s = s.toLowerCase();
+		if(s.equals(Script.DEFAULT_FLINT_NAME)){
+			if(h.getPlace().getName().equalsIgnoreCase("morgue")){
 				if(h.getObjs().containsKey(s)){
 					h.getObjs().remove(s);
-					h.getObjs().remove("Stick");
-					FiredStick firedStick = new FiredStick("FiredStick");
+					h.getObjs().remove(this.NAME);
+					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
 					h.getObjs().put(firedStick.NAME,firedStick);
 					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick a firedstick." +
 							"\nMaybe he is useful in this room\n", Script.DEFAULT_NARRATOR);
