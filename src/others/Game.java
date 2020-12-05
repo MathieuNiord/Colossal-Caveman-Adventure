@@ -205,6 +205,7 @@ public class Game {
 		}
 		//ONCE ENEMY IS DEFEATED
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
+		enemy.defeat();
 		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n");
 
 		hero.getPlace().addObject(enemy.getItem());
