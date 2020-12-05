@@ -30,10 +30,6 @@ public class Monkey extends Animal{
 
 	// === SETTER ===
 
-	public void setUnHungry() {
-		this.hungry = false;
-	}
-
 
 	// === COMMANDS ===
 	
