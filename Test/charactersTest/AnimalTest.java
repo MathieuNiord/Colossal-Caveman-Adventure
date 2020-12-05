@@ -37,8 +37,8 @@ class AnimalTest {
 
     @Test
     void talk() {
-        Bescherelle b1 = new Bescherelle("B1");
-        Bescherelle b2 = new Bescherelle("B2");
+        Bescherelle b1 = new Bescherelle("b1");
+        Bescherelle b2 = new Bescherelle("b2");
         a.addObject(b1);
         a.addObject(b2);
         assertTrue(a.getItems().containsValue(b1));

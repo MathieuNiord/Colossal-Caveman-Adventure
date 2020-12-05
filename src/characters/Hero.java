@@ -116,7 +116,7 @@ public class Hero {
 
 	public void attack(Enemy enemy)  {
 		if(enemy != null) {
-			if (this.objs.containsKey("Club")) {
+			if (this.objs.containsKey(Script.DEFAULT_CLUB_NAME)) {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
 				Game.printLetterByLetter("\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
@@ -191,22 +191,22 @@ public class Hero {
 	}
 
 	public void lookAt(String s) {
-		s = s.toLowerCase();
-		if(this.getPlace().isContainsEnemies()){
-			this.getPlace().getEnemies().look();
-		}
-		else {
-			if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
-				this.getPlace().getAnimals().get(s).look();
+		if(s != null) {
+			s = s.toLowerCase();
+			if (this.getPlace().isContainsEnemies()) {
+				this.getPlace().getEnemies().look();
 			} else {
-				if (this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)) {
-					this.getPlace().getItems().get(s).look();
+				if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
+					this.getPlace().getAnimals().get(s).look();
 				} else {
-					if (this.getObjs().containsKey(s)) {
-						this.getObjs().get(s).look();
-					}
-					else{
-						Game.printLetterByLetter("You're trying to look at something that not exist or not lookable.\n", Script.DEFAULT_NARRATOR);
+					if (this.getPlace().isContainsObjs() && this.getPlace().getItems().containsKey(s)) {
+						this.getPlace().getItems().get(s).look();
+					} else {
+						if (this.getObjs().containsKey(s)) {
+							this.getObjs().get(s).look();
+						} else {
+							Game.printLetterByLetter("You're trying to look at something that not exist or not lookable.\n", Script.DEFAULT_NARRATOR);
+						}
 					}
 				}
 			}
@@ -218,7 +218,7 @@ public class Hero {
 			s = s.toLowerCase();
 			if (this.place.getItems().containsKey(s)) {
 				this.place.getItems().get(s).take(this);
-			} else if (this.getPlace().getAnimals().containsKey(s)) {
+			} else if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
 				Game.printLetterByLetter("No please ! Put this " + s + " down on the floor. You're such a savage !\n", Script.DEFAULT_NARRATOR);
 			} else {
 				Game.printLetterByLetter("No kind of " + s + " in this place STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
@@ -255,10 +255,12 @@ public class Hero {
 	}
 
 	public void use(String s1,String s2) {
-		s1 = s1.toLowerCase();
-		s2 = s2.toLowerCase();
-		if(this.getObjs().containsKey(s1)){
-			this.getObjs().get(s1).use(this,s2);
+		if(s1 != null && s2 != null) {
+			s1 = s1.toLowerCase();
+			s2 = s2.toLowerCase();
+			if (this.getObjs().containsKey(s1)) {
+				this.getObjs().get(s1).use(this, s2);
+			}
 		}
 	}
 
