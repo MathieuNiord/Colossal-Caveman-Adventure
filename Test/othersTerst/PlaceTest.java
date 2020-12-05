@@ -2,7 +2,6 @@ package othersTerst;
 
 import characters.Animal;
 import characters.Enemy;
-import characters.Hero;
 import doors.Door;
 import objects.Flint;
 import objects.Stick;
@@ -17,14 +16,11 @@ class PlaceTest {
 
     private Place A;
     private Place B;
-    private Hero h;
 
     @BeforeEach
     void setUp() {
         A = new Place("PlaceA", false, false);
         B = new Place("PlaceB", true, true);
-
-        h = new Hero("HERO", A);
     }
 
     @Test
