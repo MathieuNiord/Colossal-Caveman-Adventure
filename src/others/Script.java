@@ -24,7 +24,7 @@ public class Script {
             "\n\t\t== Being just an uneducated caveman,                                    ==" +
             "\n\t\t== You have to help him out of this lab.                                ==" +
             "\n\t\t==========================================================================" +
-            "\n\t\tWrite : help, and press enter to get the list of available commands";
+            "\n\t\tWrite : help, and press enter to get the list of available commands\n\n";
 
 
 
@@ -92,7 +92,7 @@ public class Script {
 
     // === HERO ===
 
-    public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !";
+    public static final String ANGRY_HERO = "HOOOUGA BOOUGAAA !\n";
 
 
     // === ANIMALS ===
@@ -151,7 +151,7 @@ public class Script {
     public static final String ZOMBIEDESCRIPT = "So it was true, the Nazis created zombies ?! However, we are in the 80s, beware of the clichés.\n";
 
 
-    //Boss Final
+    //Final Boss
     public static final String BOSS_DEFAULT = "Blablablablablablablabla\n";
     public static final String BOSS_ATTACCK = "BlablablACHTUNG !\n";
     public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...\n";

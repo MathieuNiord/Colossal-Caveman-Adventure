@@ -42,7 +42,6 @@ public class Hero {
 		this.immunised = DEFAULT_IMMUNISED_VALUE;
 		this.objs = new HashMap<>();
 		this.place = place;
-
 	}
 
 
@@ -97,10 +96,10 @@ public class Hero {
 	public void setLife(int damageHeal){
 		this.hp += damageHeal;
 		if(damageHeal < 0){
-			System.out.println("\nOuch ! You loose " + damageHeal + " points of your life ! Take care my man...\n");
+			Game.printLetterByLetter("\nOuch ! You loose " + damageHeal + " points of your life ! Take care my man...\n", Script.DEFAULT_NARRATOR);
 		}
 		else{
-			System.out.println("\nYou have just gained " + damageHeal + " life points! Well done Champion !\n");
+			Game.printLetterByLetter("Sweet ! You have just gained " + damageHeal + " life points !\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -120,12 +119,12 @@ public class Hero {
 			if (this.objs.containsKey("Club")) {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				Game.printLetterByLetter("\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
 				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("\n\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				Game.printLetterByLetter("\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
 				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
 			}
 			Game.sysClear();
@@ -143,11 +142,11 @@ public class Hero {
 					m.get(res).cross(this, res);
 				}
 				//If there's too much choices
-				default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"");
+				default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"\n");
 			}
 		}
 		else{
-			System.out.println("No door");
+			Game.printLetterByLetter("\nThere's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 	
@@ -166,13 +165,13 @@ public class Hero {
 					}
 					else {
 						//If the user gave a name which doe's not exit around the room where he is
-						Game.printLetterByLetter("\nYou live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !", Script.DEFAULT_NARRATOR);
+						Game.printLetterByLetter("You live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !", Script.DEFAULT_NARRATOR);
 					}
 				}
 			}
 		}
 		else {
-			Game.printLetterByLetter("\nYou're locked in this room...No escape\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("You're locked in this room...No escape\n", Script.DEFAULT_NARRATOR);
 			this.quit();
 		}
 	}
@@ -185,7 +184,7 @@ public class Hero {
 			System.out.println("\nYou gained 20 HP\n");
 		}
 		else{
-			Game.printLetterByLetter("\n\nYou got absolutely nothing for healing yourself, you're such a stupid little thing...\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("You got absolutely nothing for healing yourself, you're such a stupid little thing...\n", Script.DEFAULT_NARRATOR);
 			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
 		}
 	}

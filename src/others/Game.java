@@ -367,6 +367,7 @@ public class Game {
 		System.out.println("\n" + this.hero.getPlace().toString());
 	}
 
+	//Effets de style pour l'affichage
 	public static void printLetterByLetter(String s, String whom) {
 		System.out.print("\n" + whom + " : ");
 		int len = s.length();
@@ -377,12 +378,11 @@ public class Game {
 				if ( c=='.' || c=='?' || c==',') {
 					Thread.sleep(500);
 				}
-
 				Thread.sleep(20);
-			}}
+			}
+		}
 		catch (Exception e) {
 			System.out.println("Error");
-
 		}
 	}
 
