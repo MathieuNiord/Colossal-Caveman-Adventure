@@ -44,7 +44,7 @@ public class Flint extends Obj {
 				}
 			}
 			else{
-				Game.printLetterByLetter("You cannot combine those object together\n", Script.DEFAULT_NARRATOR);
+				Game.printLetterByLetter("You cannot combine those objects together\n", Script.DEFAULT_NARRATOR);
 			}
 		}
 	}
