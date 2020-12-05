@@ -17,12 +17,6 @@ public class Door implements Crossable {
 
 	// ***** CONSTRUCTORS *****
 
-	/*Door(Place place){
-		this.open = true;
-		this.places = new HashMap<>();
-		this.places.put(place.getName(), place);
-	}*/
-
 	public Door(Place p1, Place p2){
 		this.open = true;
 		this.places = new HashMap<>();
@@ -59,11 +53,13 @@ public class Door implements Crossable {
 	// === OTHER ===
 
 	public void cross(Hero hero, String s){
-		s = s.toLowerCase();
-		if(hero.getPlace().getDoors() != null) {
-			if (hero.getPlace().getDoors().containsKey(s) && s != null) {
-				if (this.isOpen()) {
-					hero.setPlace(this.getPlaces().get(s));     //Si c'est ouvert on peut passer
+		if(s != null) {
+			s = s.toLowerCase();
+			if (hero.getPlace().getDoors() != null) {
+				if (hero.getPlace().getDoors().containsKey(s)) {
+					if (this.isOpen()) {
+						hero.setPlace(this.getPlaces().get(s));     //If it's open we can pass
+					}
 				}
 			}
 		}

@@ -214,46 +214,44 @@ public class Hero {
 	}
 
 	public void take(String s) {
-		s = s.toLowerCase();
-		if (this.place.getItems().containsKey(s)) {
-			this.place.getItems().get(s).take(this);
-		}
-		else if (this.getPlace().getAnimals().containsKey(s)) {
-			Game.printLetterByLetter("No please ! Put this " + s + " down on the floor. You're such a savage !\n", Script.DEFAULT_NARRATOR);
-		}
-		else{
-			Game.printLetterByLetter("No kind of " + s + " in this place STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
+		if(s != null) {
+			s = s.toLowerCase();
+			if (this.place.getItems().containsKey(s)) {
+				this.place.getItems().get(s).take(this);
+			} else if (this.getPlace().getAnimals().containsKey(s)) {
+				Game.printLetterByLetter("No please ! Put this " + s + " down on the floor. You're such a savage !\n", Script.DEFAULT_NARRATOR);
+			} else {
+				Game.printLetterByLetter("No kind of " + s + " in this place STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
+			}
 		}
 	}
 
 	public void talk(String s) {
-		s = s.toLowerCase();
-		if (this.place.isContainsAnimals() && this.place.getAnimals().containsKey(s)) {
-			this.place.getAnimals().get(s).talk(this);
-		}
-		else{
-			Game.printLetterByLetter("Where did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
+		if(s != null) {
+			s = s.toLowerCase();
+			if (this.place.isContainsAnimals() && this.place.getAnimals().containsKey(s)) {
+				this.place.getAnimals().get(s).talk(this);
+			} else {
+				Game.printLetterByLetter("Where did you see a " + s + " in this place !? STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
+			}
 		}
 	}
 
 	public void use(String s) {
-		s = s.toLowerCase();
-		if(this.getObjs().containsKey(s.toLowerCase())){
-			this.getObjs().get(s).use(this);
+		if(s != null) {
+			s = s.toLowerCase();
+			if (this.getObjs().containsKey(s.toLowerCase())) {
+				this.getObjs().get(s).use(this);
+			} else if (this.getPlace().isContainsObjs() &&  s.equalsIgnoreCase(Script.DEFAULT_ELECTRICMETER_NAME)) {
+				Game.printLetterByLetter("I'm not sure you can use this machine, it's heavy and you don't even know how it works.\n", Script.DEFAULT_NARRATOR);
+			} else if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
+				Game.printLetterByLetter("Wh..Wha...WHAT !? No you can't use this " + s + " !\n", Script.DEFAULT_NARRATOR);
+			} else if (this.getPlace().getItems().containsKey(s)) {
+				Game.printLetterByLetter("Maybe you can take it before try to use it, simple suggestion.\n", Script.DEFAULT_NARRATOR); //On se fait insulter
+			} else {
+				Game.printLetterByLetter("You live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n", Script.DEFAULT_NARRATOR); //On se fait insulter
+			}
 		}
-		else if (s.equalsIgnoreCase(Script.DEFAULT_ELECTRICMETER_NAME)) {
-			Game.printLetterByLetter("I'm not sure you can use this machine, it's heavy and you don't even know how it works.\n", Script.DEFAULT_NARRATOR);
-		}
-		else if (this.getPlace().getAnimals().containsKey(s)) {
-			Game.printLetterByLetter("Wh..Wha...WHAT !? No you can't use this " + s +  " !\n", Script.DEFAULT_NARRATOR);
-		}
-		else if (this.getPlace().getItems().containsKey(s)) {
-			Game.printLetterByLetter("Maybe you can take it before try to use it, simple suggestion.\n", Script.DEFAULT_NARRATOR); //On se fait insulter
-		}
-		else {
-			Game.printLetterByLetter("You live in a cave ? There's nothing like \"" + s + "\" around you stupid caveman !\n", Script.DEFAULT_NARRATOR); //On se fait insulter
-		}
-
 	}
 
 	public void use(String s1,String s2) {

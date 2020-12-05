@@ -62,8 +62,6 @@ class DoorTest {
         assertEquals(C, h.getPlace());
 
         System.out.println(h.getPlace().getDoors());
-        h.go("PlaceA");
-        assertEquals(C, h.getPlace());
 
     }
 }
