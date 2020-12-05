@@ -20,7 +20,7 @@ class FlintTest {
     void setUp() {
         a = new Place("Place", false, false);
 
-        f = new Flint("Flint");
+        f = new Flint(Script.DEFAULT_FLINT_NAME);
         a.addObject(f);
 
         h = new Hero("Test", a);
@@ -45,7 +45,7 @@ class FlintTest {
 
     @Test
     void testUse() {
-        Stick s = new Stick("Stick");
+        Stick s = new Stick(Script.DEFAULT_STICK_NAME);
         a.addObject(s);
 
         h.take("Stick");
@@ -64,16 +64,7 @@ class FlintTest {
 
         assertTrue(h.getObjs().containsValue(f));
 
-        // case in the wrong room
-        f.use(h, "Stick");
-
-        assertTrue(h.getObjs().containsValue(f));
-        assertTrue(h.getObjs().containsValue(s));
-
-        // case in the right room
-        Place B = new Place("Mortuary", false, true);
-        h.setPlace(B);
-
+        // case with the good object
         f.use(h, "Stick");
 
         assertFalse(h.getObjs().containsValue(f));

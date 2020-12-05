@@ -20,7 +20,7 @@ class ElectricityMeterTest {
     void setUp() {
         Place a = new Place("Place", false, false);
 
-        e = new ElectricityMeter("ElecTest", a);
+        e = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, a);
         a.addObject(e);
 
         h = new Hero("Test", a);
@@ -44,7 +44,7 @@ class ElectricityMeterTest {
 
     @Test
     void take() {
-        h.take("ElecTest");
+        h.take(Script.DEFAULT_ELECTRICMETER_NAME);
         assertFalse(h.getObjs().containsValue(e));
         assertTrue(h.getPlace().getItems().containsValue(e));
     }
@@ -59,13 +59,13 @@ class ElectricityMeterTest {
         Fuse f = new Fuse(Script.DEFAULT_FUSE_NAME);
         h.getPlace().addObject(f);
 
-        h.take("Fuse");
+        h.take(Script.DEFAULT_FUSE_NAME);
         assertTrue(h.getObjs().containsValue(f));
         assertFalse(h.getPlace().getItems().containsValue(f));
 
         assertFalse(e.getPlace().isEnlightened());
 
-        e.use(h, "Fuse");
+        e.use(h, Script.DEFAULT_FUSE_NAME);
         assertFalse(h.getObjs().containsValue(f));
         assertTrue(e.getHasFuse());
         assertTrue(e.getPlace().isEnlightened());

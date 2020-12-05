@@ -20,8 +20,8 @@ class LockedKeyDoorTest {
 
     @BeforeEach
     void setUp() {
-        a = new Place("PlaceA", false, true);
-        b = new Place("PlaceB", false, true);
+        a = new Place("placea", false, true);
+        b = new Place("placeb", false, true);
 
         d = new LockedKeyDoor(1, b, null);
 

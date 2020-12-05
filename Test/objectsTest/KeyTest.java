@@ -17,7 +17,7 @@ class KeyTest {
     void setUp() {
         Place a = new Place("Place", false, true);
 
-        k = new Key("Key");
+        k = new Key("key");
         a.addObject(k);
 
         h = new Hero("Test", a);
@@ -35,7 +35,7 @@ class KeyTest {
 
     @Test
     void take() {
-        h.take("Key");
+        h.take("key");
         assertTrue(h.getObjs().containsValue(k));
         assertFalse(h.getPlace().getItems().containsValue(k));
         assertEquals(Hero.DEFAULT_KEY_LEVEL+1, h.getKeyLevel());

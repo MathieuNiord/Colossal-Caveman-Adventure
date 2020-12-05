@@ -20,8 +20,8 @@ class DestructableDoorTest {
 
     @BeforeEach
     void setUp() {
-        a = new Place("PlaceA", false, true);
-        b = new Place("PlaceB", false, true);
+        a = new Place("placea", false, true);
+        b = new Place("placeb", false, true);
 
         d = new DestructableDoor(b, null);
 

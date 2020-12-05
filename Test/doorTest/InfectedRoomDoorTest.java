@@ -20,8 +20,8 @@ class InfectedRoomDoorTest {
 
     @BeforeEach
     void setUp() {
-        a = new Place("PlaceA", false, true);
-        b = new Place("PlaceB", false, true);
+        a = new Place("placea", false, true);
+        b = new Place("placeb", false, true);
 
         d = new InfectedRoomDoor(b, null);
 
@@ -47,10 +47,10 @@ class InfectedRoomDoorTest {
         assertEquals(a, h.getPlace());
 
         // case with Potion
-        h.take("Potion");
+        h.take(Script.DEFAULT_POTION_NAME);
         assertTrue(h.getObjs().containsValue(p));
         assertFalse(a.getItems().containsValue(p));
-        h.use("Potion");
+        h.use(Script.DEFAULT_POTION_NAME);
         assertTrue(h.isImmun());
 
         d.cross(h, "PlaceB");

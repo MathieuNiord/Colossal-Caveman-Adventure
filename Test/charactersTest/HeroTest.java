@@ -19,8 +19,8 @@ class HeroTest {
 
     @BeforeEach
     void setUp() {
-        A = new Place("PlaceA", false, true);
-        B = new Place("PlaceB", false, true);
+        A = new Place("placea", false, true);
+        B = new Place("placeb", false, true);
         h = new Hero("Test", A);
 
         Door d = new Door(A, B);
@@ -99,7 +99,7 @@ class HeroTest {
     @Test
     void go() {
         // add a second door
-        Place C = new Place("PlaceC", false, true);
+        Place C = new Place("placec", false, true);
         Door d1 = new Door(A, C);
         A.addDoor(d1, "up");
         C.addDoor(d1, "down");
@@ -199,7 +199,7 @@ class HeroTest {
         Banana banana = new Banana(Script.DEFAULT_BANANA_NAME);
         A.addObject(banana);
 
-        h.take("banana"); // object that doesn't exist
+        h.take("blabla"); // object that doesn't exist
         assertFalse(h.getObjs().containsValue(banana));
         assertTrue(h.getPlace().getItems().containsValue(banana));
 
@@ -251,10 +251,10 @@ class HeroTest {
         h.use("Key1");
 
         // existing use implementation
-        SexyPoster sp = new SexyPoster("SexyPoster");
+        SexyPoster sp = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME);
         A.addObject(sp);
-        h.take("SexyPoster");
-        h.use("SexyPoster");
+        h.take(Script.DEFAULT_SEXYPOSTER_NAME);
+        h.use(Script.DEFAULT_SEXYPOSTER_NAME);
         assertEquals(Hero.DEFAULT_HP+20, h.getHP());
     }
 
@@ -267,9 +267,9 @@ class HeroTest {
         Stick stick = new Stick(Script.DEFAULT_STICK_NAME);
         A.addObject(stick);
         h.take(stick.NAME);
-        SexyPoster sp = new SexyPoster("SexyPoster");
+        SexyPoster sp = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME);
         A.addObject(sp);
-        h.take("SexyPoster");
+        h.take(Script.DEFAULT_SEXYPOSTER_NAME);
 
         h.use(stick.NAME, null);
         h.use(sp.NAME, null);
@@ -281,11 +281,6 @@ class HeroTest {
         A.addObject(flint);
 
         h.take(flint.NAME);
-
-        Place C = new Place("Mortuary", false, true);
-        Door d = new Door(A, C);
-        A.addDoor(d, "left");
-        h.go("left");
 
         h.use(stick.NAME,flint.NAME);
         assertFalse(h.getObjs().containsValue(stick));

@@ -19,9 +19,9 @@ class DoorTest {
 
     @BeforeEach
     void setUp() {
-        A = new Place("PlaceA", false, true);
-        B = new Place("PlaceB", false, true);
-        C = new Place("PlaceC", false, true);
+        A = new Place("placea", false, true);
+        B = new Place("placeb", false, true);
+        C = new Place("placec", false, true);
 
         d = new Door(A, B);
         d1 = new Door(C, null);

@@ -19,8 +19,8 @@ class BurnableDoorTest {
 
     @BeforeEach
     void setUp() {
-        Place a = new Place("PlaceA", false, true);
-        B = new Place("PlaceB", false, true);
+        Place a = new Place("placea", false, true);
+        B = new Place("placeb", false, true);
 
         d = new BurnableDoor(B, null);
 

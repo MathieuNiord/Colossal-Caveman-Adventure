@@ -6,6 +6,7 @@ import objects.Fuse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import others.Place;
+import others.Script;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,9 +21,9 @@ class FuseTest {
     void setUp() {
         a = new Place("Place", false, false);
 
-        f = new Fuse("Fuse");
+        f = new Fuse(Script.DEFAULT_FUSE_NAME);
         a.addObject(f);
-        e = new ElectricityMeter("ElectricMeter", a);
+        e = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, a);
         a.addObject(e);
 
         h = new Hero("Test", a);
@@ -47,7 +48,7 @@ class FuseTest {
 
     @Test
     void testUse() {
-        h.take("Fuse");
+        h.take(Script.DEFAULT_FUSE_NAME);
         assertTrue(h.getObjs().containsValue(f));
         assertFalse(h.getPlace().getItems().containsValue(f));
 
@@ -57,7 +58,7 @@ class FuseTest {
 
         // case with ElectricMeter
         assertTrue(a.getItems().containsValue(e));
-        f.use(h, "ElectricMeter");
+        f.use(h, Script.DEFAULT_ELECTRICMETER_NAME);
         assertTrue(e.getHasFuse());
         assertTrue(a.isEnlightened());
         assertFalse(h.getObjs().containsValue(f));

@@ -17,7 +17,7 @@ class BescherelleTest {
     void setUp() {
         Place a = new Place("Place", false, true);
 
-        b = new Bescherelle("Bescherelle");
+        b = new Bescherelle("bescherelle");
         a.addObject(b);
 
         h = new Hero("Test", a);

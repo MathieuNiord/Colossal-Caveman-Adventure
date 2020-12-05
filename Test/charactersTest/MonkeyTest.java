@@ -34,7 +34,7 @@ class MonkeyTest {
 
     @Test
     void talk() {
-        Bescherelle b1 = new Bescherelle("B1");
+        Bescherelle b1 = new Bescherelle("b1");
         a.addObject(b1);
         assertTrue(a.getItems().containsValue(b1));
 

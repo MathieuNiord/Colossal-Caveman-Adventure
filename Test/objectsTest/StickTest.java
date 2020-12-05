@@ -61,16 +61,7 @@ class StickTest {
 
         assertTrue(h.getObjs().containsValue(s));
 
-        // case in the wrong room
-        f.use(h, Script.DEFAULT_STICK_NAME);
-
-        assertTrue(h.getObjs().containsValue(f));
-        assertTrue(h.getObjs().containsValue(s));
-
-        // case in the right room
-        Place B = new Place("Mortuary", false, true);
-        h.setPlace(B);
-
+        // case with the good object
         s.use(h, Script.DEFAULT_FLINT_NAME);
 
         assertFalse(h.getObjs().containsValue(f));
