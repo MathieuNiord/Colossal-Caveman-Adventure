@@ -44,9 +44,6 @@ public class Door implements Crossable {
 
 	public void open(){
 		this.open = true;
-		if(!this.getClass().getSimpleName().equals("Doors.DestructableDoor")){
-			System.out.println("\nYou opened the door, u gat dat hommy !");
-		}
 	}
 
 

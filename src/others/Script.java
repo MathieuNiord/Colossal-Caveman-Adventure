@@ -2,7 +2,7 @@ package others;
 
 public class Script {
 
-    public static final String DEFAULT_NARRATOR = "GUID";
+    public static final String DEFAULT_NARRATOR = "GUID VOICE";
 
     // === WELCOME MESSAGES ===
 
@@ -27,7 +27,19 @@ public class Script {
             "\n\t\t========================================================================================" +
             "\n\n\t\tWrite : help, and press enter to get the list of available commands\n\n";
 
-
+    //BEGIN
+    public static final String NAZI_BLAHBLAH = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah\n" +
+                                               doSpaces("Nazi Researcher") + "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah\n" +
+                                               doSpaces("Nazi Researcher") + "Blah Blah Blah...(Nazi Blah Blah)\n\n";
+    public static final String OTHER_NAZI_BLAHBLAH = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah\n" +
+                                                     doSpaces("Other Nazi Researcher") + "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah\n" +
+                                                     doSpaces("Other Nazi Researcher") + "Blah Blah Blah ?\n\n";
+    public static final String NAZI_JOKE = "Blah ? Blah Blah...BLAH ! (Nazi Joke)\n\n";
+    public static final String NAZI_LAUGH = "HAACH HACH HACH HACH HACH HACH ! (Nazi Laugh)\n\n";
+    public static final String CONTEXT_01 = "Wow, it's really cold in here...\n\n";
+    public static final String CONTEXT_02 = "...You're hearing weird voices...\n\n";
+    public static final String CONTEXT_03 = "Nazis leave the room\n\n";
+    public static final String CONTEXT_04 = "You're finally waking up.";
 
     // === ENDING MESSAGES ===
 
@@ -41,7 +53,7 @@ public class Script {
                     "(Thanks for them...)\n\n";
 
     public static final String YOU_LOOSE = "\nI thought this game was easy, you suck on a keyboard...\nYou remind me of Psychology students ...\n";
-    public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you xoxo !\n";
+    public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
             "\n\n\n\t\t======================== CREDITS ========================\n" +
             "\t\t=========================================================\n" +
@@ -92,36 +104,48 @@ public class Script {
 
     //Cat
     public static final String CAT_TEXT01 = "Meeeeew mew meeew mew\n";
-    public static final String CAT_TEXT02 = "\n\tHello where are you from I came from Germany." +
-            "\n\tI saw all those \"glorious soldier\" who left you here." +
-            "\n\tThey laughed and the boss said you were a stupid frenchy caveman who could never find a way out of this mansion !" +
-            "\n\tAnother said that for sure no one will find the password because it is too smart," +
-            "\n\ttwo letters I ... T. IT, IT, IT is the password !" +
-            "\n\tWhat a funny password, who came up with this great idea ? " +
-            "\n\tDefinitely someone in a psychology degree course, haha, of course you have to be smart" +
-            "\n\tand quirky if you want to come up with those kinds of passwords or become a Nazi.\n";
+
+    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany.\n" +
+            doSpaces("Cat") +  "I saw all those \"glorious soldier\" who left you here.\n" +
+            doSpaces("Cat") +  "They laughed and the boss said you were a stupid frenchy\n" +
+            doSpaces("Cat") +  "caveman who could never find a way out of this mansion !\n" +
+            doSpaces("Cat") +  "Another said that for sure no one will find the password\n" +
+            doSpaces("Cat") +  "because it is too smart, two letters I ... T. IT, IT, IT\n" +
+            doSpaces("Cat") +  "is the password !\n" +
+            doSpaces("Cat") +  "What a funny password, who came up with this great idea ?\n" +
+            doSpaces("Cat") +  "Definitely someone in a psychology degree course, haha, of\n" +
+            doSpaces("Cat") +  "course you have to be smart and quirky if you want to come\n" +
+            doSpaces("Cat") +  "up with those kinds of passwords or become a Nazi.\n";
+
     public static final String CAT_DESCRIPT = "Ohw easy man ! It's one of those Nazi cats !\n";
 
     //Mouse
     public static final String MOUSE_TEXT01 = "krrih krrih…\n";
-    public static final String MOUSE_TEXT02 = "\n\tHey handsome ! Are you alone ? You look well built but obviously not very" +
-            "\n\tsmart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are you homeless ? Hmm…no matter !" +
-            "\n\tThe password is S A GREAT. Bye, come see me later.\n";
+
+    public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very\n" +
+            doSpaces("Mouse") +  "smart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are\n" +
+            doSpaces("Mouse") +  "you homeless ? Hmm…no matter ! The password is \"S A GREAT\". I heard about\n" +
+            doSpaces("Mouse") +  "a potion that would make gas invulnerable in this room. Bye, come see me later.\n";
+
     public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.\n";
 
     //Monkey
     public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !\n";
-    public static final String MONKEY_TEXT02 = "\n\tWuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a" +
-            "\n\tf***ing mansion in da f***ing 80’s with da return of da f***ing Nazis : wut da hell bru ? No waaay a die" +
-            "\n\there ! and u know wut ma man ? A’m starving like a wulf, yep ! Go find me nice food and a give u da password" +
-            "\n\tu need for escaping those bastards.\n";
-    public static final String MONKEY_TEXT03 = "\n\tR u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause" +
-            "\n\ta m black… r u a f***ing racist ? … Wait a minute… dat’s not food dumbass, it’s a GOLD BANANA !? eh u know" +
-            "\n\twut, a give u da password but only ‘cause a m better than u, u know wut u deserve ? dat a grab ma own shit" +
-            "\n\tand throw it in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine not urs ! Pshht," +
-            "\n\tgo away !\n";
-    public static final String MONKEY_DESCRIPT = "Do you know this monkey ? He calls you with great gestures. Maybe he's family ?\n";
 
+    public static final String MONKEY_TEXT02 = "Wuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a\n" +
+            doSpaces("Monkey") +  "f***ing mansion in da f***ing 80’s with da return of da f***ing Nazis :\n" +
+            doSpaces("Monkey") +  "wut da hell bru ? No waaay a die here ! and u know wut ma man ? A’m starving\n" +
+            doSpaces("Monkey") +  "ike a wulf, yep ! Go find me nice food and a give u da password u need for\n" +
+            doSpaces("Monkey") +  "escaping those bastards.\n";
+
+    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause\n" +
+            doSpaces("Monkey") +  "a m black… r u a f***ing racist ? … Wait a minute… dat’s not food dumbass,\n" +
+            doSpaces("Monkey") +  "it’s a GOLD BANANA !? eh u know wut, a give u da password but only ‘cause\n" +
+            doSpaces("Monkey") +  "a m better than u, u know wut u deserve ? dat a grab ma own shit and throw it\n" +
+            doSpaces("Monkey") +  "in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine\n" +
+            doSpaces("Monkey") +  "not urs ! Pshht, go away !\n";
+
+    public static final String MONKEY_DESCRIPT = "Do you know this monkey ? He calls you with great gestures. Maybe he's family ?\n";
 
 
     // === ENNEMIES ===
@@ -192,4 +216,13 @@ public class Script {
             "\n- inventory" +
             "\n- talk (Somebody)" +
             "\n- quit";
+
+    public static String doSpaces(String size){
+        int spaces = size.length() + 3;
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < spaces; i++){
+            s.append(" ");
+        }
+        return s.toString();
+    }
 }

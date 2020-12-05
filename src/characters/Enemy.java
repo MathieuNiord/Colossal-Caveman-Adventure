@@ -109,7 +109,7 @@ public class Enemy implements Lookable {
     }
 
     public void descript() {
-        Game.printLetterByLetter(this.description, this.NAME);
+        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
     }
 
 }

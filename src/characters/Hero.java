@@ -96,10 +96,10 @@ public class Hero {
 	public void setLife(int damageHeal){
 		this.hp += damageHeal;
 		if(damageHeal < 0){
-			Game.printLetterByLetter("\nOuch ! You loose " + damageHeal + " points of your life ! Take care my man...\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("\nOuch ! You loose " + -damageHeal + " points of your life ! Take care my man...\n\n\n", Script.DEFAULT_NARRATOR);
 		}
 		else{
-			Game.printLetterByLetter("Sweet ! You have just gained " + damageHeal + " life points !\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("Sweet ! You have just gained " + damageHeal + " life points !\n\n\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -119,13 +119,13 @@ public class Hero {
 			if (this.objs.containsKey(Script.DEFAULT_CLUB_NAME)) {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\n\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP());
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("\nYEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nRest of " + enemy.NAME + " life : " + enemy.getHP());
+				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP());
 			}
 			Game.sysClear();
 		}
@@ -173,7 +173,7 @@ public class Hero {
 		}
 		else {
 			Game.printLetterByLetter("You're locked in this room...No escape\n", Script.DEFAULT_NARRATOR);
-			this.quit();
+			this.quit(this.PLAYERNAME);
 		}
 	}
 
@@ -275,9 +275,9 @@ public class Hero {
 
 	// === OTHER ===
 
-	public void quit() {
+	public void quit(String name) {
 		//EXIT
-		System.out.print(Script.GAME_OVER);
+		System.out.print(Script.GAME_OVER + name + " !\n");
 		this.quit = true;
 		try {
 			Thread.sleep(5000);

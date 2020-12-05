@@ -13,6 +13,7 @@ public class Game {
 	// ***** ATTRIBUTES *****
 
 	private final Hero hero;
+	private int party = 1;
 
 	// ***** CONSTRUCTORS *****
 
@@ -172,7 +173,6 @@ public class Game {
 		System.out.println(Script.BATTLE_BEGIN + enemy.NAME);
 		pressAnyKeyToContinue();
 		sysClear();
-		System.out.print(enemy.NAME + " :");
 		enemy.opening();
 		enemy.descript();
 		System.out.println(Script.BATTLE_HELP);
@@ -182,7 +182,7 @@ public class Game {
 
 			//===ENEMY TURN
 			eHeal = rand.nextInt(10+1);																			//The enemy got 10% of luck to cure itself
-			System.out.println("========== " + enemy.NAME + " turn : ==========\n");
+			System.out.println("========== " + enemy.NAME.toUpperCase() + " turn : ==========\n");
 			if (eHeal == 1) {
 				enemy.heal(10);
 			}
@@ -205,7 +205,7 @@ public class Game {
 					switch (tabInput[0]) {
 						case "attack" -> hero.attack(enemy);															//Attack the enemy
 						case "heal" -> hero.heal();																		//Cure the player
-						default -> printLetterByLetter("\nHaha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
+						default -> printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
 					}
 					break;
 
@@ -221,7 +221,7 @@ public class Game {
 		//===ONCE ENEMY IS DEFEATED
 		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
 		enemy.defeat();
-		printLetterByLetter("\nGood Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
+		printLetterByLetter("Good Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
 
 		hero.getPlace().addObject(enemy.getItem());
 		hero.take(enemy.getItem().NAME);
@@ -238,12 +238,13 @@ public class Game {
 	// === OTHER ===
 
 	public void Play(){
-		sysClear();
-		System.out.print(Script.SYNOPSIS + "\n");
-		pressAnyKeyToContinue();
-		sysClear();
-		
-
+		if (this.party < 2){																							//Don't need a new synopsis and context after a game over
+			sysClear();
+			System.out.print(Script.SYNOPSIS + "\n");
+			pressAnyKeyToContinue();
+			sysClear();
+			openingGame();
+		}
 		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("Exit") && !this.hero.isQuit()){
 			this.PlayATurn();
 		}
@@ -276,7 +277,7 @@ public class Game {
 			case 1:
 				switch (tabInput[0].toLowerCase()) {
 					case "help" -> this.help(); 																		//show commands
-					case "quit"-> this.hero.quit(); 																	//exit prompt
+					case "quit"-> this.hero.quit(this.hero.PLAYERNAME); 																	//exit prompt
 					case "inventory"->this.hero.showInventory();
 					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -307,6 +308,7 @@ public class Game {
 		pressAnyKeyToContinue();
 	}
 
+	//Game Over - with Loose, Win and default exceptions
 	public void gameOver() {
 
 		//LOOSE ENDING
@@ -316,60 +318,66 @@ public class Game {
 			String choice;
 
 			sysClear();
-			printLetterByLetter(Script.YOU_LOOSE, "NARRATOR");
+			printLetterByLetter(Script.YOU_LOOSE, Script.DEFAULT_NARRATOR);
 			cmdPush(30);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
 
 			switch (choice.toLowerCase()) {
 
-				case "yes", "y", "1" : this.Play();
+				case "yes", "y", "1" :
+					this.party++;
+					this.Play();
 
-				default : this.hero.quit();
+				default : this.hero.quit(this.hero.PLAYERNAME);
 			}
 		}
 
 		//WIN ENDING
 		else if (!this.hero.isQuit()){
 			sysClear();
-			printLetterByLetter(Script.YOU_WIN, "NARRATOR");
-			try {
-				Thread.sleep(10000);
-			}
-			catch (final Exception e) {
-				System.out.println("Error");
-			}
+			printLetterByLetter(Script.YOU_WIN, Script.DEFAULT_NARRATOR);
+			sleep(10000);
 
 			//CREDITS
 			sysClear();
 			System.out.print(Script.CREDITS);
-
-			try {
-				Thread.sleep(10000);
-			}
-			catch (final Exception e) {
-				System.out.println("Error");
-
-			}
+			sleep(10000);
 
 			//THANKING
 			sysClear();
 			printLetterByLetter(Script.THANKING_PLAYER, "DEVELOPERS");
-
-			try {
-				Thread.sleep(5000);
-			}
-			catch (final Exception e) {
-				System.out.println("Error");
-			}
+			sleep(5000);
 
 			pressAnyKeyToContinue();
-			this.hero.quit();
+			this.hero.quit(this.hero.PLAYERNAME);
 		}
 		//ONLY QUIT
 		else {
-			this.hero.quit();
+			this.hero.quit(this.hero.PLAYERNAME);
 		}
+	}
+
+	//Only for a context in the beginning
+	public static void openingGame() {
+		printLetterByLetter(Script.CONTEXT_01, Script.DEFAULT_NARRATOR);
+		pressAnyKeyToContinue();
+		sysClear();
+		printLetterByLetter(Script.CONTEXT_02, Script.DEFAULT_NARRATOR);
+		sleep(2000);
+		printLetterByLetter(Script.NAZI_BLAHBLAH, "Nazi Researcher");
+		sleep(2000);
+		printLetterByLetter(Script.OTHER_NAZI_BLAHBLAH, "Other Nazi Researcher");
+		sleep(2000);
+		printLetterByLetter(Script.NAZI_JOKE, "Nazi's Funny Guy");
+		sleep(2000);
+		printLetterByLetter(Script.NAZI_LAUGH, "All the Nazis");
+		sleep(3000);
+		printLetterByLetter(Script.CONTEXT_03, Script.DEFAULT_NARRATOR);
+		pressAnyKeyToContinue();
+		sysClear();
+		printLetterByLetter(Script.CONTEXT_04, Script.DEFAULT_NARRATOR);
+		sysClear();
 	}
 
 
@@ -425,6 +433,16 @@ public class Game {
 	public static void cmdPush(int howmuch) {
 		for (int i = 0; i < howmuch; i++) {
 			System.out.println();
+		}
+	}
+
+	//Just cause I don't want to throw exception anytime
+	public static void sleep(int time){
+		try{
+			Thread.sleep(time);
+		}
+		catch (Exception e){
+			System.out.println("Error");
 		}
 	}
 
