@@ -117,13 +117,14 @@ public class Hero {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
 				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\n\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP());
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\n\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
 				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP());
+				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			}
+			Game.pressAnyKeyToContinue();
 			Game.sysClear();
 		}
 	}

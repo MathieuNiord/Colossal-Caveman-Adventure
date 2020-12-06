@@ -252,7 +252,7 @@ public class Place {
 
 				int size = this.up.size();
 				
-				retD.append("At the top : \n");
+				retD.append("UP : \n");
 				
 				List<String> up = new ArrayList<>(this.up.keySet());
 				
@@ -266,7 +266,7 @@ public class Place {
 			if (this.down.size() != 0) {
 
 				int size = this.down.size();
-				retD.append("Down : \n");
+				retD.append("DOWN : \n");
 				
 				List<String> down = new ArrayList<>(this.down.keySet());
 				
@@ -280,7 +280,7 @@ public class Place {
 			if (this.left.size() != 0) {
 
 				int size = this.left.size();
-				retD.append("On the left : \n");
+				retD.append("LEFT : \n");
 				
 				List<String> left = new ArrayList<>(this.left.keySet());
 				
@@ -294,7 +294,7 @@ public class Place {
 			if (this.right.size() != 0) {
 
 				int size = this.right.size();
-				retD.append("On the right : \n");
+				retD.append("RIGHT : \n");
 				
 				List<String> right = new ArrayList<>(this.right.keySet());
 				
