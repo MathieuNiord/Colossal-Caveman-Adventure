@@ -19,15 +19,13 @@ public class BurnableDoor extends LockableDoor{
 		s = s.toLowerCase();
 		if(!this.isUnlock()){
 			if(hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME)){ // If the hero has the Firedstick
-				System.out.println("You burned the door !" +
-						"\nYou are now in the Archives-room");
+				Game.printLetterByLetter("Congrats ! You burned the door !\n", Script.DEFAULT_NARRATOR);
 				this.unlock();
 				this.open();
 				hero.getObjs().remove(Script.DEFAULT_FIREDSTICK_NAME);
 			}
 			else{
-				System.out.println("This door looks very dry," +
-						"\nMaybe you can do something here with your items");
+				Game.printLetterByLetter("This door looks very dry, maybe you can do something here with your items\n", Script.DEFAULT_NARRATOR);
 			}
 		}
 		if(this.isUnlock()){

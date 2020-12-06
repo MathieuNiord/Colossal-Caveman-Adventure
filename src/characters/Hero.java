@@ -133,11 +133,12 @@ public class Hero {
 		if(m!=null){
 			switch (m.size()) {
 				//If there's no door on the side that the user gave
-				case 0 -> Game.printLetterByLetter("No door at the top ! Make some effort !", Script.DEFAULT_NARRATOR);
+				case 0 -> Game.printLetterByLetter("There's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
 				//If there's only one door
 				case 1 -> {
 					String res = m.entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
 					m.get(res).cross(this, res);
+					System.out.print("You enter in " + this.getPlace().getName().toUpperCase() + "\n");
 				}
 				//If there's too much choices
 				default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"\n");
@@ -161,6 +162,7 @@ public class Hero {
 				default -> {
 					if (this.getPlace().getDoors().containsKey(s)) {
 						this.getPlace().getDoors().get(s).cross(this, s);
+						System.out.print("You enter in " + this.getPlace().getName().toUpperCase() + "\n");
 					}
 					else {
 						//If the user gave a name which doe's not exit around the room where he is

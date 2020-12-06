@@ -175,6 +175,7 @@ public class Game {
 		enemy.opening();
 		enemy.descript();
 		System.out.println(Script.BATTLE_HELP);
+		sleep(1000);
 
 		//===BATTLE AREA
 		while (hero.isAlive() && !enemy.isDefeat()) {
@@ -182,6 +183,7 @@ public class Game {
 			//===ENEMY TURN
 			eHeal = rand.nextInt(10+1);																			//The enemy got 10% of luck to cure itself
 			System.out.println("========== " + enemy.NAME.toUpperCase() + " turn : ==========\n");
+			sleep(1000);
 			if (eHeal == 1) {
 				enemy.heal(10);
 			}
@@ -189,7 +191,7 @@ public class Game {
 				enemy.attack();
 				hero.setLife(-(enemy.getDamage()));
 			}
-
+			sleep(1000);
 			//===HERO TURN
 			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
 			System.out.print("Choice :>");
