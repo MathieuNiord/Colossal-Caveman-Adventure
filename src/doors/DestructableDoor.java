@@ -20,14 +20,15 @@ public class DestructableDoor extends LockableDoor {
         if(hero.getObjs().containsKey(Script.DEFAULT_CLUB_NAME) && !this.isUnlock()){ // If the hero has the Club
             this.unlock();
             this.open();
-            System.out.print("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n");
+            System.out.print("\nCongrats, you destruct the door !\n");
+            Game.printLetterByLetter("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n", Script.DEFAULT_NARRATOR);
         }
         
         if(this.isUnlock()){
             hero.setPlace(this.getPlaces().get(s));
         }
         else{
-            System.out.print("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n");
+            Game.printLetterByLetter("Although the outcome is doomed, this door seems DOWNRIGHT fragile.\n", Script.DEFAULT_NARRATOR);
         }
     }
 
