@@ -18,6 +18,7 @@ public class Hero {
 	public final static boolean DEFAULT_IMMUNISED_VALUE = false;
 	public final static int DEFAULT_CLUB_DAMAGE = 15;
 	public final static int DEFAULT_DAMAGE = 1;
+	public final static int DEFAULT_HEAL = 20;
 
 	// ***** ATTRIBUTES *****
 
@@ -94,9 +95,10 @@ public class Hero {
 	}
 
 	public void setLife(int damage){
-		this.hp += damage;
-		if(damage < 0){
-			Game.printLetterByLetter("Ouch ! You loose " + -damage + " points of your life ! Take care my man...\n\n\n", Script.DEFAULT_NARRATOR);
+		this.hp -= damage;
+		System.out.print("\nYou loose " + damage + "points of your life\n");
+		if(damage > 10){
+			Game.printLetterByLetter("Ouch ! You loose " + damage + " points of your life ! Take care my man...\n\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 
@@ -121,8 +123,8 @@ public class Hero {
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
+				Game.printLetterByLetter("Hum, you better find yourself a weapon for a chance face to face this " + enemy.NAME + "...\n\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took a damage : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			}
 			Game.pressAnyKeyToContinue();
 			Game.sysClear();
@@ -178,15 +180,27 @@ public class Hero {
 	}
 
 	public void heal() {
-		if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
-			this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
-			Game.printLetterByLetter("No please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
-			this.hp += 20;
-			System.out.println("\nYou gained 20 HP\n");
+		int bonus = DEFAULT_HEAL;
+		if (this.hp < DEFAULT_HP) {
+			if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
+				if(this.hp + bonus > DEFAULT_HP){
+					bonus = DEFAULT_BESCHERELLE_LEVEL - this.hp;
+					this.hp = DEFAULT_HP;
+				}
+				else {
+					this.hp += bonus;
+				}
+				this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
+				Game.printLetterByLetter("No please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
+				System.out.println("\nYou gained " + bonus + " HP\n");
+			}
+			else{
+				Game.printLetterByLetter("You got absolutely nothing for healing yourself, you're such a stupid little thing...\n", Script.DEFAULT_NARRATOR);
+				System.out.println("\nYou gained 0 HP, What did you expect ?\n");
+			}
 		}
-		else{
-			Game.printLetterByLetter("You got absolutely nothing for healing yourself, you're such a stupid little thing...\n", Script.DEFAULT_NARRATOR);
-			System.out.println("\nYou gained 0 HP, What did you expect ?\n");
+		else {
+			System.out.print("\nYour life is already full\n");
 		}
 	}
 
@@ -268,8 +282,7 @@ public class Hero {
 	// === DISPLAY ===
 
 	public void showInventory(){
-		System.out.print("\nYour inventory : ");
-		System.out.print(this.getObjs().keySet().toString());
+		System.out.print("\nYour inventory : " + this.getObjs().keySet().toString()+ "\n");
 	}
 
 

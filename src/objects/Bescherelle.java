@@ -20,12 +20,12 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("NO PLEASE DON'T EAT THIS " + this.NAME.toUpperCase() + "\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override
 	public void use(Hero h, String s) {
-		Game.printLetterByLetter("You cannot use a "+ this.NAME +". STOOPID", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("NO PLEASE DON'T EAT THIS " + this.NAME.toUpperCase() + "\n", Script.DEFAULT_NARRATOR);
 		
 	}
 	

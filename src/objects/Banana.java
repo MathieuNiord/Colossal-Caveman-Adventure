@@ -25,7 +25,7 @@ public class Banana extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Maybe someone is interested for this " +this.NAME+"...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("Maybe someone is interested for this " + this.NAME + "...\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

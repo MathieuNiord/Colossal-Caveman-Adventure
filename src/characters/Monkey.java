@@ -36,8 +36,8 @@ public class Monkey extends Animal{
 	@Override
 	public void talk(Hero h) {
 
-		if(h.getObjs().containsKey("Banana")){
-			h.getObjs().remove("Banana");
+		if(h.getObjs().containsKey("banana")){
+			h.getObjs().remove("banana");
 			
 			this.hungry = false;
 		}

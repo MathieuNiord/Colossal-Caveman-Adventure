@@ -11,6 +11,7 @@ public class Enemy implements Lookable {
 
     public final String NAME;
     private int hp;
+    private final int HP_MAX;
     private final int damage;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
     private boolean state = true; //true = vivant
@@ -24,6 +25,7 @@ public class Enemy implements Lookable {
     public Enemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
         this.NAME = name;
         this.hp = hp;
+        this.HP_MAX = hp;
         this.damage = dmg;
         this.item = loot;
         this.opening = op;
@@ -76,9 +78,14 @@ public class Enemy implements Lookable {
     }
 
     public void heal(int heal) {
-        if (this.state && this.hp > 0) {
-            this.hp += heal;
-            System.out.print("\n" + this.NAME + " healed itself.\n" + this.NAME + " gain " + heal + " HP.\n");
+        if (this.hp < HP_MAX && this.hp > 0 && this.state) {
+            if (this.hp + heal > HP_MAX) {
+                this.hp = HP_MAX;
+                System.out.print("\n" + this.NAME + " healed itself. He recovered all his HP\n");
+            } else {
+                this.hp += heal;
+                System.out.print("\n" + this.NAME + " healed itself.\n" + this.NAME + " gain " + heal + " HP.\n");
+            }
         }
     }
 

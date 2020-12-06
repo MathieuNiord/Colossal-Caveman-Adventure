@@ -26,8 +26,8 @@ public class Potion extends Obj {
 	@Override
 	public void use(Hero h) {
 		h.setImmunised();
-		Game.printLetterByLetter("I don't know what was in this solution but you no longer have a nose." +
-				"\nFortunately you are an athlete and a freediving champion. You should be immune now.\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("I don't know what was in this solution but you no longer have a nose.\n" +
+				Script.doSpaces(Script.DEFAULT_NARRATOR) + "Fortunately you are an athlete and a freediving champion. You should be immune now.\n", Script.DEFAULT_NARRATOR);
 		h.getObjs().remove(Script.DEFAULT_POTION_NAME);
 	}
 	

@@ -26,7 +26,7 @@ public class FiredStick extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Maybe there is something burnable somewhere in this room...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter("Maybe there is something burnable somewhere in this Laboratory...\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

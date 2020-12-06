@@ -128,19 +128,21 @@ public class Game {
 
 
 		// OBJECTS ADDING TO ROOMS
+		animalRoom.addObject(catB);
+		transferRoom.addObject(flint);
+		transferRoom.addObject(electricityMeter);
+		changingRoom.addObject(sexyPoster);
+		changingRoom.addObject(locker);
+		locker.addObj(walkman);
+		experimentsRoom.addObject(naziPoster);
 		coldRoom.addObject(banana);
 		garbageRoom.addObject(stick);
-		productsReserve.addObject(potion);
 		archivesRoom.addObject(club);
-		transferRoom.addObject(flint);
-		animalRoom.addObject(catB);
 		archivesRoom.addObject(mouseB);
+		productsReserve.addObject(potion);
 		desertedRoom.addObject(monkeyB);
-		transferRoom.addObject(electricityMeter);
-		changingRoom.addObject(locker);
-		experimentsRoom.addObject(naziPoster);
-		changingRoom.addObject(sexyPoster);
-		locker.addObj(walkman);
+		dirtyChangingRoom.addObject(sexyPoster);
+
 
 		// ENEMIES ADDING TO ROOMS
 		meetingRoom.addAndCreateEnemy("account guy", 45, 1, k1,
@@ -189,7 +191,7 @@ public class Game {
 			}
 			else {
 				enemy.attack();
-				hero.setLife(-(enemy.getDamage()));
+				hero.setLife(enemy.getDamage());
 			}
 			sleep(1000);
 			//===HERO TURN

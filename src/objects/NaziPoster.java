@@ -32,7 +32,7 @@ public class NaziPoster extends Poster{
 	@Override
 	public void use(Hero h){
 		this.look();
-		h.setLife((-10));
+		h.setLife(10);
 	}
 	
 	@Override
