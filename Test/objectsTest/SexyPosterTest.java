@@ -40,9 +40,10 @@ class SexyPosterTest {
     void use() {
         h.take(Script.DEFAULT_SEXYPOSTER_NAME);
         assertTrue(h.getObjs().containsValue(sp));
+        h.setLife(20);
         sp.use(h);
         assertFalse(h.getObjs().containsValue(sp));
-        assertEquals(Hero.DEFAULT_HP+20, h.getHP());
+        assertEquals(Hero.DEFAULT_HP, h.getHP());
     }
 
     @Test

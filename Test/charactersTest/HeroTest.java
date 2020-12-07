@@ -44,12 +44,12 @@ class HeroTest {
     @Test
     void setLife() {
         h.setLife(10);
-        assertEquals(Hero.DEFAULT_HP + 10, h.getHP());
+        assertEquals(Hero.DEFAULT_HP - 10, h.getHP());
 
         h.setLife(-10);
         assertEquals(Hero.DEFAULT_HP, h.getHP());
 
-        h.setLife(-1000);
+        h.setLife(1000);
         assertFalse(h.isAlive());
     }
 
@@ -154,14 +154,20 @@ class HeroTest {
         h.take(sp.NAME);
         assertTrue(h.getObjs().containsValue(sp));
 
+        // case with full life
+        h.heal();
+        assertEquals(Hero.DEFAULT_HP, h.getHP());
+
+        h.setLife(20);
         h.heal();
         assertFalse(h.getObjs().containsValue(sp));
-        assertEquals(Hero.DEFAULT_HP+20, h.getHP());
+        assertEquals(Hero.DEFAULT_HP, h.getHP());
 
         // case without SexyPoster
         int hp = h.getHP();
         h.heal();
         assertEquals(hp, h.getHP());
+
     }
 
     @Test
@@ -254,8 +260,9 @@ class HeroTest {
         SexyPoster sp = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME);
         A.addObject(sp);
         h.take(Script.DEFAULT_SEXYPOSTER_NAME);
+        h.setLife(20);
         h.use(Script.DEFAULT_SEXYPOSTER_NAME);
-        assertEquals(Hero.DEFAULT_HP+20, h.getHP());
+        assertEquals(Hero.DEFAULT_HP, h.getHP());
     }
 
     @Test

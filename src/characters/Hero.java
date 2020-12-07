@@ -126,7 +126,6 @@ public class Hero {
 				Game.printLetterByLetter("Hum, you better find yourself a weapon for a chance face to face this " + enemy.NAME + "...\n\n", Script.DEFAULT_NARRATOR);
 				System.out.print("\n" + enemy.NAME + " took a damage : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			}
-			Game.pressAnyKeyToContinue();
 			Game.sysClear();
 		}
 	}

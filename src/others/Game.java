@@ -203,25 +203,19 @@ public class Game {
 			count = tabInput.length;
 
 			switch (count) {
-
-				case 1 :
+				case 1 -> {
 					switch (tabInput[0]) {
-						case "attack" -> hero.attack(enemy);															//Attack the enemy
-						case "heal" -> hero.heal();																		//Cure the player
-						default ->{
-							printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
-							pressAnyKeyToContinue();
-						}
+						case "attack" -> hero.attack(enemy);                                                            //Attack the enemy
+						case "heal" -> hero.heal();                                                                        //Cure the player
+						default -> printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
 					}
-					break;
-
-				case 2 :
-						printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
-						pressAnyKeyToContinue();
-						break;
-
-				default :
-					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
+					pressAnyKeyToContinue();
+				}
+				case 2 -> {
+					printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
+					pressAnyKeyToContinue();
+				}
+				default -> printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
 			}
 		}
 
