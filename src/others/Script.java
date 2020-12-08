@@ -218,6 +218,10 @@ public class Script {
 
     public static String doSpaces(String size){
         int spaces = size.length() + 3;
-        return " ".repeat(Math.max(0, spaces));
+        StringBuilder s= new StringBuilder();
+        for(int i = 0 ; i< spaces ; i++){
+            s.append(" ");
+        }
+        return s.toString();
     }
 }
