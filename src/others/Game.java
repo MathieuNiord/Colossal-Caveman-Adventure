@@ -397,7 +397,7 @@ public class Game {
 
 	//Display effect for dialogs
 	public static void printLetterByLetter(String s, String whom) {
-		System.out.print("\n" + whom.toUpperCase() + " : ");																			//Display the character who talks
+		System.out.print("\n" + whom.toUpperCase() + " : ");															//Display the character who talks
 		int len = s.length();
 		try {
 			for (int i = 0 ; i < len; i++) {
@@ -418,7 +418,10 @@ public class Game {
 	public static void sysClear(){
 		try
 		{
+			//On PowerShell
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			//On Bash
+			//new ProcessBuilder("cmd", "/c", "clear").inheritIO().start().waitFor();
 		}
 		catch (final Exception e)
 		{
