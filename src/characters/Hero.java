@@ -126,7 +126,6 @@ public class Hero {
 				Game.printLetterByLetter("Hum, you better find yourself a weapon for a chance face to face this " + enemy.NAME + "...\n\n", Script.DEFAULT_NARRATOR);
 				System.out.print("\n" + enemy.NAME + " took a damage : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			}
-			Game.pressAnyKeyToContinue();
 			Game.sysClear();
 		}
 	}
@@ -135,15 +134,16 @@ public class Hero {
 		if(m!=null){
 			switch (m.size()) {
 				//If there's no door on the side that the user gave
-				case 0 -> Game.printLetterByLetter("There's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
+				case 0 : Game.printLetterByLetter("There's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
+					break;
 				//If there's only one door
-				case 1 -> {
+				case 1 :
 					String res = m.entrySet().iterator().next().getKey();            //Not a beauty, I know but I need the key
 					m.get(res).cross(this, res);
 					System.out.print("You enter in " + this.getPlace().getName().toUpperCase() + "\n");
-				}
+					break;
 				//If there's too much choices
-				default -> System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"\n");
+				default : System.out.println("\nWhich room ? Please make sure to write \"go + the room where you want to go\"\n");
 			}
 		}
 		else{
@@ -157,11 +157,15 @@ public class Hero {
 		if (this.getPlace().getDoors() != null) {
 		
 			switch (s.toLowerCase()) {
-				case "up" -> go_aux(this.getPlace().getUpDoors());
-				case "down" -> go_aux(this.getPlace().getDownDoors());
-				case "left" -> go_aux(this.getPlace().getLeftDoors());
-				case "right" -> go_aux(this.getPlace().getRightDoors());
-				default -> {
+				case "up" : go_aux(this.getPlace().getUpDoors());
+					break;
+				case "down" : go_aux(this.getPlace().getDownDoors());
+					break;
+				case "left" : go_aux(this.getPlace().getLeftDoors());
+					break;
+				case "right":  go_aux(this.getPlace().getRightDoors());
+					break;
+				default : {
 					if (this.getPlace().getDoors().containsKey(s)) {
 						this.getPlace().getDoors().get(s).cross(this, s);
 						System.out.print("You enter in " + this.getPlace().getName().toUpperCase() + "\n");

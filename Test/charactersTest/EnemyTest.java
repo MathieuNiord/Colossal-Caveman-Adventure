@@ -63,6 +63,11 @@ class EnemyTest {
 
     @Test
     void heal() {
+        assertEquals(10, ac.getHP());
+        ac.takeDamage(1);
+        assertEquals(9, ac.getHP());
+        ac.heal(2);
+        assertEquals(10, ac.getHP());
     }
 
     @Test

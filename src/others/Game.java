@@ -203,25 +203,23 @@ public class Game {
 			count = tabInput.length;
 
 			switch (count) {
-
 				case 1 :
 					switch (tabInput[0]) {
-						case "attack" -> hero.attack(enemy);															//Attack the enemy
-						case "heal" -> hero.heal();																		//Cure the player
-						default ->{
-							printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
-							pressAnyKeyToContinue();
-						}
+						case "attack":
+							hero.attack(enemy);                                                            //Attack the enemy
+							break;
+						case "heal":
+							hero.heal();                                                                        //Cure the player
+							break;
+						default : printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
 					}
+					pressAnyKeyToContinue();
+				
+				case 2:
+					printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
+					pressAnyKeyToContinue();
 					break;
-
-				case 2 :
-						printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
-						pressAnyKeyToContinue();
-						break;
-
-				default :
-					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
+				default : printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
 			}
 		}
 
@@ -283,30 +281,52 @@ public class Game {
 
 			case 1:
 				switch (tabInput[0].toLowerCase()) {
-					case "help" -> this.help(); 																		//show commands
-					case "quit"-> this.hero.quit(this.hero.PLAYERNAME); 																	//exit prompt
-					case "inventory"->this.hero.showInventory();
-					default-> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+					case "help":
+						this.help(); 																		//show commandsbreak;
+						break;
+					case "quit":
+						this.hero.quit(this.hero.PLAYERNAME); 																//exit prompt
+						break;
+					case "inventory":
+						this.hero.showInventory();
+						break;
+					default: System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
 
 			case 2:
 				switch (tabInput[0].toLowerCase()) {
-					case "go" -> this.hero.go(tabInput[1]);
-					case "take" -> this.hero.take(tabInput[1]);
-					case "use" -> this.hero.use(tabInput[1]);
-					case "look" -> this.hero.lookAt(tabInput[1]);
-					case "talk" -> this.hero.talk(tabInput[1]);
-					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+					case "go":
+						this.hero.go(tabInput[1]);
+						break;
+					case "take":
+						this.hero.take(tabInput[1]);
+						break;
+					case "use":
+						this.hero.use(tabInput[1]);
+						break;
+					case "look":
+						this.hero.lookAt(tabInput[1]);
+						break;
+					case "talk":
+						this.hero.talk(tabInput[1]);
+						break;
+					default:  System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
 
 			case 3:
 				switch (tabInput[0].toLowerCase()) {
-					case "go" -> this.hero.go(tabInput[1]+" "+tabInput[2]);
-					case "look"-> this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
-					case "use"-> this.hero.use(tabInput[1],tabInput[2]);
-					default -> System.out.println("Wrong input, write \"help\" if you're lost with commands");
+					case "go":
+						this.hero.go(tabInput[1]+" "+tabInput[2]);
+						break;
+					case "look":
+						this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
+						break;
+					case "use":
+						this.hero.use(tabInput[1],tabInput[2]);
+						break;
+					default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
 				break;
 
@@ -329,15 +349,16 @@ public class Game {
 			cmdPush(30);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
-
-			switch (choice.toLowerCase()) {
-
-				case "yes", "y", "1" :
-					this.party++;
-					this.Play();
-
-				default : this.hero.quit(this.hero.PLAYERNAME);
+			if (choice.toLowerCase().equals("yes")) {
+				this.party++;
+				this.Play();
 			}
+			else{
+				this.hero.quit(this.hero.PLAYERNAME);
+			}
+
+			
+				
 		}
 
 		//WIN ENDING
