@@ -366,7 +366,7 @@ public class Game {
 			if (choice.equalsIgnoreCase("YES") || choice.equalsIgnoreCase("Y")) {
 				this.party++;
 				this.hero.setLife(-(Hero.DEFAULT_HP));																	//-100 cause setLife() remove life to the Hero, so -(-100) = +100
-				this.Play();
+				this.Play();																							//You return where you were before die
 			}
 			else{
 				this.hero.quit(this.hero.PLAYERNAME);
@@ -458,7 +458,7 @@ public class Game {
 		}
 		catch (final Exception e)
 		{
-			//  Handle any exceptions.
+			System.out.println("Error");
 		}
 		System.out.flush();
 	}
