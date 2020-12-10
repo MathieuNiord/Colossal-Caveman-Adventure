@@ -14,7 +14,7 @@ public class Hero {
 
 	public final static int DEFAULT_HP = 100;
 	public final static int DEFAULT_BESCHERELLE_LEVEL = 0;
-	public final static int DEFAULT_KEY_LEVEL = 1;
+	public final static int DEFAULT_KEY_LEVEL = 0;
 	public final static boolean DEFAULT_IMMUNISED_VALUE = false;
 	public final static int DEFAULT_CLUB_DAMAGE = 15;
 	public final static int DEFAULT_DAMAGE = 1;

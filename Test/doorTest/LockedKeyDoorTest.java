@@ -67,7 +67,7 @@ class LockedKeyDoorTest {
     @Test
     void cross() {
         // case without key
-        d.cross(h, "PlaceB");
+        d.cross(h, "placeb");
         assertEquals(a, h.getPlace());
 
         // case with Key
@@ -75,7 +75,7 @@ class LockedKeyDoorTest {
         assertTrue(h.getObjs().containsValue(k));
         assertFalse(a.getItems().containsValue(k));
         assertEquals(Hero.DEFAULT_KEY_LEVEL+1, h.getKeyLevel());
-        d.cross(h, "PlaceB");
+        d.cross(h, "placeb");
         assertEquals(b, h.getPlace());
     }
 }

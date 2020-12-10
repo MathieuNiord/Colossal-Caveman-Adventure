@@ -86,14 +86,13 @@ class HeroTest {
         h.attack(e);
         assertEquals(hpEnemy-Hero.DEFAULT_DAMAGE, e.getHP());
 
-        // case with Club
-        hpEnemy = e.getHP();
+        // case with Club;
         Weapon w = new Weapon(Script.DEFAULT_CLUB_NAME);
         A.addObject(w);
         h.take(Script.DEFAULT_CLUB_NAME);
 
         h.attack(e);
-        assertEquals(hpEnemy-Hero.DEFAULT_CLUB_DAMAGE, e.getHP());
+        assertEquals(0, e.getHP());
     }
 
     @Test
