@@ -44,15 +44,13 @@ public class Script {
     // === ENDING MESSAGES ===
 
     public static final String YOU_WIN =
-            "\nYou managed to run away from the lab and escape those fucking Nazis ! You are free !\n" +
-                    "\n36 years later you are the head of the stock exchange, rising star of cinema and " +
-                    "\npresident of the United States of America. Women run after you and men envy you, you" +
-                    "\nare voted the sexiest man in the world and your three children, Gaëtan, Benjamin and" +
-                    "\nMathieu, have obtained a superb rating for their Java project.\n" +
-                    "\n" +
-                    "(Thanks for them...)\n\n";
+                    "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n" +
+                    doSpaces(DEFAULT_NARRATOR) + "36 years later you are the head of the stock exchange, rising star of cinema and president\n" +
+                    doSpaces(DEFAULT_NARRATOR) + "of the United States of America. Women run after you and men envy you, you are voted the\n" +
+                    doSpaces(DEFAULT_NARRATOR) + "sexiest man in the world and your three children, Gaëtan, Benjamin and Mathieu, have obtained\n" +
+                    doSpaces(DEFAULT_NARRATOR) + "a superb rating for their Java project.\n\n" + "\t(Thanks for them...)\n\n";
 
-    public static final String YOU_LOOSE = "\nI thought this game was easy, you suck on a keyboard...\nYou remind me of Psychology students ...\n";
+    public static final String YOU_LOOSE = "I thought this game was easy, you suck on a keyboard...You remind me of Psychology students ...\n";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
             "\n\n\n\t\t======================== CREDITS ========================\n" +
@@ -87,7 +85,7 @@ public class Script {
             "\t\t=========================================================\n" +
             "\t\t=========================================================\n";
 
-    public static final String THANKING_PLAYER = "\n...WE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
+    public static final String THANKING_PLAYER = "...WE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
 
 
     // === BATTLE ===
@@ -132,15 +130,15 @@ public class Script {
     //Monkey
     public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !\n";
 
-    public static final String MONKEY_TEXT02 = "Wuts’up bru ? Com’on u saw all da shit ? Wtf !? I’m a f***ing monky in a\n" +
+    public static final String MONKEY_TEXT02 = "Wuts up bru ? Comon u saw all da shit ? Wtf !? I m a f***ing monky in a\n" +
             doSpaces("Monkey") +  "f***ing mansion in da f***ing 80’s with da return of da f***ing Nazis :\n" +
-            doSpaces("Monkey") +  "wut da hell bru ? No waaay a die here ! and u know wut ma man ? A’m starving\n" +
-            doSpaces("Monkey") +  "ike a wulf, yep ! Go find me nice food and a give u da password u need for\n" +
+            doSpaces("Monkey") +  "wut da hell bru ? No waaay a die here ! and u know wut ma man ? Am starving\n" +
+            doSpaces("Monkey") +  "like a wulf, yep ! Go find me nice food and a give u da password u need for\n" +
             doSpaces("Monkey") +  "escaping those bastards.\n";
 
-    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid “cartoon monky” bro ? oh, a see, ‘cause\n" +
-            doSpaces("Monkey") +  "a m black… r u a f***ing racist ? … Wait a minute… dat’s not food dumbass,\n" +
-            doSpaces("Monkey") +  "it’s a GOLD BANANA !? eh u know wut, a give u da password but only ‘cause\n" +
+    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid \"cartoon monky\" bro ? oh, a see, cause\n" +
+            doSpaces("Monkey") +  "a m black… r u a f***ing racist ? … Wait a minute… dat s not food dumbass,\n" +
+            doSpaces("Monkey") +  "it’s a GOLD BANANA !? eh u know wut, a give u da password but only cause\n" +
             doSpaces("Monkey") +  "a m better than u, u know wut u deserve ? dat a grab ma own shit and throw it\n" +
             doSpaces("Monkey") +  "in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine\n" +
             doSpaces("Monkey") +  "not urs ! Pshht, go away !\n";
@@ -163,7 +161,7 @@ public class Script {
     public static final String ZOMBIEDESCRIPT = "So it was true, the Nazis created zombies ?! However, we are in the 80s, beware of the clichés.\n";
 
     //Final Boss
-    public static final String BOSS_DEFAULT = "Blablablablablablablabla\n";
+    public static final String BOSS_DEFAULT = "lah Blah Blah Blah Blah Blah Blah\n";
     public static final String BOSS_ATTACCK = "BlablablACHTUNG !\n";
     public static final String BOSS_DEFEAT = "AAAaarrrgh sooo...\n";
     public static final String BOSS_DESCRIPT = "Wow, what a big and strong man ! He's certainly a kind of final boss...\n";
@@ -201,7 +199,7 @@ public class Script {
     public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
     public static final String NAZI_POSTER = "You are looking at this poster. What a ugly Nazi face...\n";
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
-    public static final String FIRED_STICK_DESCRIPT = "The door of the morgue seems dry and this stick is on fire. Try to go through the door to see what gonna happen\n";
+    public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?\n";
     
     
     // === HELP COMMANDS ===

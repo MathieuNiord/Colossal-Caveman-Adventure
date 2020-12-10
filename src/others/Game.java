@@ -34,7 +34,7 @@ public class Game {
 		Place productsReserve = new Place("products reserve", false, true);
 		Place garbageRoom = new Place("garbage room", false, true);
 		Place coldRoom = new Place("cold room", false, false);
-		Place dirtyChangingRoom = new Place("dirty changingRoom", false, true); // est ce qu'on pourrait pas l'enlever ?
+		Place dirtyChangingRoom = new Place("dirty changingroom", false, true); // est ce qu'on pourrait pas l'enlever ?
 		Place decontaminationRoom = new Place("decontamination room", false, true);
 		Place exit = new Place("exit", false, true);
 
@@ -147,7 +147,7 @@ public class Game {
 		// ENEMIES ADDING TO ROOMS
 		meetingRoom.addAndCreateEnemy("account guy", 45, 1, k1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		desertedRoom.addAndCreateEnemy("zombie Nazi", 60, 4, fuse,
+		desertedRoom.addAndCreateEnemy("zombie nazi", 60, 4, fuse,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
 		decontaminationRoom.addAndCreateEnemy("super-nazi", 100, 8, k2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
@@ -184,18 +184,21 @@ public class Game {
 
 			//===ENEMY TURN
 			eHeal = rand.nextInt(10+1);																			//The enemy got 10% of luck to cure itself
-			System.out.println("========== " + enemy.NAME.toUpperCase() + " turn : ==========\n");
+			System.out.println("\n========== " + enemy.NAME.toUpperCase() + " turn : ==========");
 			sleep(1000);
 			if (eHeal == 1) {
 				enemy.heal(10);
 			}
 			else {
 				enemy.attack();
-				hero.setLife(enemy.getDamage());
 			}
+			hero.setLife(enemy.getDamage());
 			sleep(1000);
+			if (hero.getHP() == 0) {
+				break;
+			}
 			//===HERO TURN
-			System.out.println("========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
+			System.out.println("\n========== Your turn : ==========\n\nLIFE : " + hero.getHP() + "\n");
 			System.out.print("Choice :>");
 			//Count of the number of words
 			input = sc.nextLine();
@@ -206,33 +209,44 @@ public class Game {
 				case 1 :
 					switch (tabInput[0]) {
 						case "attack":
-							hero.attack(enemy);                                                            //Attack the enemy
+							hero.attack(enemy);                                                            				//Attack the enemy
 							break;
 						case "heal":
-							hero.heal();                                                                        //Cure the player
+							hero.heal();                                                                        		//Cure the player
 							break;
 						default : printLetterByLetter("Haha I know you can't read but make a little effort if you don't want to end up in mush...You pass your turn !\n", Script.DEFAULT_NARRATOR);
 					}
 					pressAnyKeyToContinue();
+					break;
 				
 				case 2:
 					printLetterByLetter("You have no time for 2-words commands, you're fighting ! So please only 1 command, I know that you aren't a genius but make some effort.\n", Script.DEFAULT_NARRATOR);
 					pressAnyKeyToContinue();
 					break;
-				default : printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
+
+				default :
+					printLetterByLetter("Whatever ! You pass your turn !\n", Script.DEFAULT_NARRATOR);
+					pressAnyKeyToContinue();
 			}
+			sysClear();
 		}
 
 		//===ONCE ENEMY IS DEFEATED
-		System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
-		enemy.defeat();
-		printLetterByLetter("Good Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
-
-		hero.getPlace().addObject(enemy.getItem());
-		printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like the " + enemy.getItem().NAME + "\n", Script.DEFAULT_NARRATOR);
-		hero.take(enemy.getItem().NAME);
-		enemy.loot();
-		hero.getPlace().setEnemy(null);
+		if (enemy.isDefeat()) {
+			System.out.println("============= END OF THE BATTLE : " + enemy.NAME + " DEFEATED =============");
+			enemy.defeat();
+			printLetterByLetter("Good Game, you defeat this bad Nazi crap !\n", Script.DEFAULT_NARRATOR);
+			hero.getPlace().addObject(enemy.getItem());
+			printLetterByLetter("An object fell from the corpse of " + enemy.NAME + ". Looks like the " + enemy.getItem().NAME + "\n", Script.DEFAULT_NARRATOR);
+			hero.take(enemy.getItem().NAME);
+			enemy.loot();
+			hero.getPlace().setEnemy(null);
+			pressAnyKeyToContinue();
+			sysClear();
+		}
+		else {
+			gameOver();
+		}
 	}
 
 	public void help() {
@@ -250,7 +264,7 @@ public class Game {
 			sysClear();
 			openingGame();
 		}
-		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("Exit") && !this.hero.isQuit()){
+		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("exit") && !this.hero.isQuit()){
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -282,7 +296,7 @@ public class Game {
 			case 1:
 				switch (tabInput[0].toLowerCase()) {
 					case "help":
-						this.help(); 																		//show commandsbreak;
+						this.help(); 																					//show commandsbreak;
 						break;
 					case "quit":
 						this.hero.quit(this.hero.PLAYERNAME); 																//exit prompt
@@ -349,16 +363,14 @@ public class Game {
 			cmdPush(30);
 			System.out.print("Continue ? : ");
 			choice = sc.nextLine();
-			if (choice.toLowerCase().equals("yes")) {
+			if (choice.equalsIgnoreCase("YES") || choice.equalsIgnoreCase("Y")) {
 				this.party++;
+				this.hero.setLife(-(Hero.DEFAULT_HP));																	//-100 cause setLife() remove life to the Hero, so -(-100) = +100
 				this.Play();
 			}
 			else{
 				this.hero.quit(this.hero.PLAYERNAME);
 			}
-
-			
-				
 		}
 
 		//WIN ENDING

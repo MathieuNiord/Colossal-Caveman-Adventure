@@ -14,7 +14,7 @@ public class Hero {
 
 	public final static int DEFAULT_HP = 100;
 	public final static int DEFAULT_BESCHERELLE_LEVEL = 0;
-	public final static int DEFAULT_KEY_LEVEL = 0;
+	public final static int DEFAULT_KEY_LEVEL = 1;
 	public final static boolean DEFAULT_IMMUNISED_VALUE = false;
 	public final static int DEFAULT_CLUB_DAMAGE = 15;
 	public final static int DEFAULT_DAMAGE = 1;
@@ -95,9 +95,17 @@ public class Hero {
 	}
 
 	public void setLife(int damage){
-		this.hp -= damage;
-		System.out.print("\nYou loose " + damage + "points of your life\n");
-		if(damage > 10){
+		if (damage < 0) {
+			this.hp -= damage;
+			System.out.print("\nYou recover your life\n\n");
+			Game.printLetterByLetter("Welcome...again...\n\n", Script.DEFAULT_NARRATOR);
+		}
+		else if (this.hp - damage < 0) {
+			this.hp = 0;
+		}
+		else {
+			this.hp -= damage;
+			System.out.print("\nYou loose " + damage + " point(s) of your life\n\n");
 			Game.printLetterByLetter("Ouch ! You loose " + damage + " points of your life ! Take care my man...\n\n", Script.DEFAULT_NARRATOR);
 		}
 	}
@@ -118,15 +126,14 @@ public class Hero {
 			if (this.objs.containsKey(Script.DEFAULT_CLUB_NAME)) {
 				enemy.takeDamage(DEFAULT_CLUB_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n\n", Script.DEFAULT_NARRATOR);
+				Game.printLetterByLetter("YEAAAH !!! Come on ! Destroy HIM ! It's a f***ing " + enemy.NAME + " !\n", Script.DEFAULT_NARRATOR);
 				System.out.print("\n" + enemy.NAME + " took several damages : -" + DEFAULT_CLUB_DAMAGE + " HP\n\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			} else {
 				enemy.takeDamage(DEFAULT_DAMAGE);
 				Game.printLetterByLetter(Script.ANGRY_HERO, "HOUGA BOUGA");
-				Game.printLetterByLetter("Hum, you better find yourself a weapon for a chance face to face this " + enemy.NAME + "...\n\n", Script.DEFAULT_NARRATOR);
-				System.out.print("\n" + enemy.NAME + " took a damage : -" + DEFAULT_DAMAGE + " HP\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
+				Game.printLetterByLetter("Hum, you better find yourself a weapon for a chance face to face this " + enemy.NAME.toUpperCase() + "...\n", Script.DEFAULT_NARRATOR);
+				System.out.print("\n" + enemy.NAME + " took a damage : -" + DEFAULT_DAMAGE + " HP\n\nREST OF " + enemy.NAME.toUpperCase() + " LIFE : " + enemy.getHP() + "\n\n");
 			}
-			Game.sysClear();
 		}
 	}
 	
@@ -147,7 +154,7 @@ public class Hero {
 			}
 		}
 		else{
-			Game.printLetterByLetter("\nThere's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
+			Game.printLetterByLetter("There's no door on this side and, despite the fact you're a freak, there's absolutely no way you can pass a wall...\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 	
@@ -168,7 +175,7 @@ public class Hero {
 				default : {
 					if (this.getPlace().getDoors().containsKey(s)) {
 						this.getPlace().getDoors().get(s).cross(this, s);
-						System.out.print("You enter in " + this.getPlace().getName().toUpperCase() + "\n");
+						System.out.print("\nYou enter in " + this.getPlace().getName().toUpperCase() + "\n");
 					}
 					else {
 						//If the user gave a name which doe's not exit around the room where he is
@@ -188,7 +195,7 @@ public class Hero {
 		if (this.hp < DEFAULT_HP) {
 			if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
 				if(this.hp + bonus > DEFAULT_HP){
-					bonus = DEFAULT_BESCHERELLE_LEVEL - this.hp;
+					bonus = DEFAULT_HP - this.hp;
 					this.hp = DEFAULT_HP;
 				}
 				else {

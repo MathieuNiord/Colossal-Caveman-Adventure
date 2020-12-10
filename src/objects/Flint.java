@@ -39,7 +39,7 @@ public class Flint extends Obj {
 					h.getObjs().remove(this.NAME);
 					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
 					h.getObjs().put(firedStick.NAME,firedStick);
-					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick a fired stick.\n", Script.DEFAULT_NARRATOR);
+					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick, a fired stick.\n", Script.DEFAULT_NARRATOR);
 				}
 			}
 			else{

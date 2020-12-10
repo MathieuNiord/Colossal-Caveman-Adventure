@@ -68,7 +68,12 @@ public class Enemy implements Lookable {
     // === SETTER ===
 
     public void takeDamage(int damage) {
-        if (this.hp > 0 && this.state) {
+        if (this.hp - damage < 0) {
+            this.hp = 0;
+            this.state = false;
+            this.defeat();
+        }
+        else if (this.hp > 0 && this.state) {
             this.hp -= damage;
         }
         else if (hp <= 0 && this.state) {
@@ -81,10 +86,10 @@ public class Enemy implements Lookable {
         if (this.hp < HP_MAX && this.hp > 0 && this.state) {
             if (this.hp + heal > HP_MAX) {
                 this.hp = HP_MAX;
-                System.out.print("\n" + this.NAME + " healed itself. He recovered all his HP\n");
+                System.out.print("\n" + this.NAME.toUpperCase() + " healed itself. He recovered all his HP\n\n");
             } else {
                 this.hp += heal;
-                System.out.print("\n" + this.NAME + " healed itself.\n" + this.NAME + " gain " + heal + " HP.\n");
+                System.out.print("\n" + this.NAME.toUpperCase() + " healed itself.\n\n" + this.NAME.toUpperCase() + " gain " + heal + " HP.\n\n");
             }
         }
     }

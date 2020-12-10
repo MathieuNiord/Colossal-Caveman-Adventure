@@ -38,8 +38,7 @@ public class Stick extends Obj {
 					h.getObjs().remove(this.NAME);
 					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME);
 					h.getObjs().put(firedStick.NAME, firedStick);
-					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick a firedstick." +
-							"\nMaybe he is useful in this room\n", Script.DEFAULT_NARRATOR);
+					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick, a fired stick.\n", Script.DEFAULT_NARRATOR);
 				}
 			} else {
 				Game.printLetterByLetter("You cannot combine those objects together\n", Script.DEFAULT_NARRATOR);

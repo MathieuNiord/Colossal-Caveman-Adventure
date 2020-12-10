@@ -25,11 +25,11 @@ public class InfectedRoomDoor extends LockableDoor{
             if(hero.isImmun()) {
                 this.unlock();
                 this.open();
-                System.out.println("You open the door, you're immunded of the nocif gas.");
+                System.out.println("You open the door, you're immuned of the nocif gas.\n");
                 hero.setPlace(this.getPlaces().get(s));
             }
             else{
-                System.out.println("The room seems like infected because of gas.");
+                System.out.println("The room seems like infected because of gas.\n");
             }
         }
         else{

@@ -40,14 +40,14 @@ public class LockedKeyDoor extends LockableDoor{
 			Random rand = new Random();
 			int tmp = rand.nextInt(10 + 1);
 			if(tmp % 2 == 0){
-				System.out.print("Wow !!! Where did you find this key ?\nThe door is now unlocked. Who's the Good Boy ?\n");
+				Game.printLetterByLetter("Wow !!! Where did you find this key ? The door is now unlocked. Who's the Good Boy ?\n", Script.DEFAULT_NARRATOR);
 			}
 			else{
-				System.out.print("\nWhat a smart guy ! Haha just kidding, you got the key baby ! You unlocked the door !\n");
+				Game.printLetterByLetter("What a smart guy ! Haha just kidding, you got the key baby ! You unlocked the door !\n", Script.DEFAULT_NARRATOR);
 			}
 		}
 		else if (key < this.KEY_LVL_NEED){
-			System.out.print("You must have the good key to open this door STOOOPID CAVEMAN !\n");
+			Game.printLetterByLetter("You must have the good key to open this door STOOOPID CAVEMAN !\n", Script.DEFAULT_NARRATOR);
 		}
 	}
 

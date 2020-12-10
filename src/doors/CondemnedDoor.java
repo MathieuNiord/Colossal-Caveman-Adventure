@@ -20,7 +20,7 @@ public class CondemnedDoor extends Door {
 
 	@Override
 	public void open() {
-		System.out.println("This door is condemned, you can't open it");
+		System.out.println("This door is condemned, you can't open it\n");
 	}
 
 	@Override

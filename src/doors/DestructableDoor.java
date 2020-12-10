@@ -21,7 +21,7 @@ public class DestructableDoor extends LockableDoor {
             this.unlock();
             this.open();
             System.out.print("\nCongrats, you destruct the door !\n");
-            Game.printLetterByLetter("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ???\nHum...The door is open yet...\n", Script.DEFAULT_NARRATOR);
+            Game.printLetterByLetter("WHAT THE HELL DUDE !? IT'S JUST A SIMPLE DOOR ! WHAT'S YOUR F***ING PROBLEM ??? Hum...The door is open yet...\n", Script.DEFAULT_NARRATOR);
         }
         
         if(this.isUnlock()){
